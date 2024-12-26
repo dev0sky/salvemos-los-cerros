@@ -1,0 +1,12 @@
+[submodule "src/api/django-template"]
+	path = src/api/django-template
+	url = https://github.com/dev0sky/django-template.git
+[submodule "src/data/redis-template"]
+	path = src/data/redis-template
+	url = https://github.com/dev0sky/redis-template.git
+[submodule "src/data/psql-template"]
+	path = src/data/psql-template
+	url = https://github.com/dev0sky/psql-template.git
+[submodule "src/server/nginx-template"]
+	path = src/server/nginx-template
+	url = https://github.com/dev0sky/nginx-template.git

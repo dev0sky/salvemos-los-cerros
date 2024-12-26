@@ -1,0 +1,133 @@
+services:
+  psql:
+    container_name: ${PSQL_CONTAINER_NAME}
+    build:
+      context: ${PSQL_ROOT_PATH}
+      dockerfile: Dockerfile
+    environment:
+      PSQL_NAME: ${PSQL_NAME}
+      PSQL_USER: ${PSQL_USER}
+      PSQL_PASSWORD: ${PSQL_PASSWORD}
+      POSTGRES_PASSWORD: ${PSQL_PASSWORD}
+      ENCODING: ${ENCODING}
+      PGDATA: /var/lib/postgresql/data
+      TZ: ${TZ} 
+    expose:
+      - ${PSQL_PORT}
+    mem_limit: ${PSQL_MEM_LIMIT}MB
+    networks:
+      - psql-network
+      - api-network
+    ports:
+      - "${PSQL_PORT}:${PSQL_PORT}"
+    volumes:
+      - postgres_data:/var/lib/postgresql/data 
+      - ${PSQL_ROOT_PATH}/init.d:/config
+    command: ["postgres", "-p", "${PSQL_PORT}"]
+
+  redis:
+    container_name: ${REDIS_CONTAINER_NAME}
+    build:
+      context: ${REDIS_ROOT_PATH}
+      dockerfile: Dockerfile
+    environment:
+      TZ: ${TZ}
+      REDIS_HOST: ${REDIS_HOST}
+      REDIS_PORT: ${REDIS_PORT}
+    expose:
+      - ${REDIS_PORT}
+    mem_limit: ${REDIS_MEM_LIMIT}MB
+    depends_on:
+      - psql
+    networks:
+      - psql-network
+      - api-network
+    ports:
+      - "${REDIS_PORT}:${REDIS_PORT}"
+    restart: always
+    volumes:
+      - ${REDIS_ROOT_PATH}/dump:/dump
+    command: ["redis-server", "/usr/local/etc/redis/redis.conf", "--port", "${REDIS_PORT}"]
+
+  api:
+    container_name: ${DJANGO_CONTAINER_NAME}
+    build:
+      context: ${DJANGO_ROOT_PATH}
+      dockerfile: Dockerfile
+    depends_on:
+      - psql
+      - redis
+    env_file: ${DJANGO_ROOT_PATH}/.env
+    environment:
+      APP_NAME: ${APP_NAME}
+      APP_DESCRIPTION: ${APP_DESCRIPTION}
+      PROTOCOL: ${PROTOCOL}
+      MAIN_DOMAIN: ${MAIN_DOMAIN}
+      DJANGO_APP_PORT: ${DJANGO_APP_PORT} 
+      NGINX_APP_PORT: ${NGINX_APP_PORT}
+      PSQL_PORT: ${PSQL_PORT}
+      REDIS_PORT: ${REDIS_PORT}
+      PSQL_ENGINE: ${PSQL_ENGINE}
+      PSQL_NAME: ${PSQL_NAME}
+      PSQL_USER: ${PSQL_USER}
+      PSQL_PASSWORD: ${PSQL_PASSWORD}
+      PSQL_HOST: ${PSQL_HOST}
+      TZ: ${TZ}
+      LANGUAGE_CODE: ${LANGUAGE_CODE}
+    networks:
+      - api-network
+      - psql-network
+    ports:
+      - ${DJANGO_APP_PORT}:${DJANGO_APP_PORT}
+    mem_limit: ${DJANGO_MEM_LIMIT}MB
+    command: ["gunicorn", "-c", "config/gunicorn/conf.py", "--bind", ":${DJANGO_APP_PORT}", "--chdir", "${APP_NAME}", "${APP_NAME}.wsgi:application"]
+    restart: always
+    volumes:
+      - staticfiles:/api/staticfiles
+      - ${DJANGO_ROOT_PATH}:/api
+
+  nginx:
+    container_name: ${NGINX_CONTAINER_NAME}
+    build:
+      context: ${NGINX_ROOT_PATH}
+      dockerfile: Dockerfile
+    depends_on:
+      - api
+      - redis
+    environment:
+      TZ: ${TZ}
+      MAIN_DOMAIN: ${MAIN_DOMAIN}
+      NGINX_APP_PORT: ${NGINX_APP_PORT}
+      DJANGO_APP_PORT: ${DJANGO_APP_PORT}
+      REDIS_PORT: ${REDIS_PORT}
+      REDIS_HOST: ${REDIS_HOST}
+      PROTOCOL: ${PROTOCOL}
+      ENCODING: ${ENCODING}
+    expose:
+      - ${NGINX_APP_PORT}
+    mem_limit: ${NGINX_MEM_LIMIT}MB
+    networks:
+      - api-network
+    ports:
+      - "${NGINX_APP_PORT}:${NGINX_APP_PORT}"
+    restart: always
+    volumes:
+      - staticfiles:/api/staticfiles
+      - media:/api/media
+      - public:/usr/share/nginx/html
+
+networks:
+  psql-network:
+    driver: bridge
+    name: psql-network
+  admin-network:
+    name: admin-network
+  api-network:
+    name: api-network 
+
+volumes:
+  postgres_data:
+  staticfiles:
+  media:
+  public:
+  redis:
