@@ -13,12 +13,14 @@ export const MainLayout: React.FC<MainLayoutProps> = ({ children }) => {
   const [mobileMenuOpen, setMobileMenuOpen] = useState(false);
   const [location] = useLocation();
 
+
   const navLinks = [
     { label: STRINGS.NAV_HOME, path: ROUTES.HOME },
     { label: STRINGS.NAV_PROYECTOS, path: ROUTES.PROYECTOS },
     { label: STRINGS.NAV_NOSOTROS, path: ROUTES.NOSOTROS },
     { label: STRINGS.NAV_EVENTOS, path: ROUTES.EVENTOS },
     { label: STRINGS.NAV_NOTICIAS, path: ROUTES.NOTICIAS },
+    { label: STRINGS.NAV_GALERIA, path: ROUTES.GALERIA },
   ];
 
   const isActive = (path: string) => location === path;

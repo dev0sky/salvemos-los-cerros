@@ -8,6 +8,7 @@ export const STRINGS = {
     NAV_NOSOTROS: 'Nosotros',
     NAV_EVENTOS: 'Eventos',
     NAV_NOTICIAS: 'Noticias',
+    NAV_GALERIA: 'Galería',
     
     // Home Page
     HERO_TITLE: 'Protegiendo Nuestros Cerros',

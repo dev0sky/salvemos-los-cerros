@@ -31,7 +31,7 @@ export const NewsCard: React.FC<NewsCardProps> = ({ article }) => {
     >
       <Card className="overflow-hidden h-full flex flex-col">
         {article.image && (
-          <div className="w-full h-48 bg-secondary/10 -m-6 mb-4">
+          <div className="w-full aspect-[4/3] bg-secondary/10 overflow-hidden">
             <img 
               src={article.image} 
               alt={article.title}
@@ -40,7 +40,8 @@ export const NewsCard: React.FC<NewsCardProps> = ({ article }) => {
           </div>
         )}
         
-        <div className="flex items-center justify-between mb-3">
+        <div className="p-6 flex flex-col flex-1">
+          <div className="flex items-center justify-between mb-3 flex-wrap gap-2">
           <Badge variant={CATEGORY_VARIANTS[article.category]}>
             {CATEGORY_LABELS[article.category]}
           </Badge>
@@ -62,10 +63,11 @@ export const NewsCard: React.FC<NewsCardProps> = ({ article }) => {
           </div>
           <a 
             href="#" 
-            className="text-primary text-sm font-semibold flex items-center gap-1 hover:gap-2 transition-all"
+            className="text-primary text-sm font-semibold flex items-center gap-1 hover:gap-2 transition-all whitespace-nowrap"
           >
             Leer más <IconArrowRight size={14} />
           </a>
+        </div>
         </div>
       </Card>
     </motion.div>

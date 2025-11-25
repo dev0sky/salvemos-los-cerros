@@ -33,7 +33,7 @@ export const ProjectCard: React.FC<ProjectCardProps> = ({ project }) => {
     >
       <Card className="overflow-hidden h-full flex flex-col">
         {project.image && (
-          <div className="w-full h-48 bg-secondary/10 -m-6 mb-4">
+          <div className="w-full aspect-[4/3] bg-secondary/10 overflow-hidden">
             <img 
               src={project.image} 
               alt={project.title}
@@ -42,7 +42,8 @@ export const ProjectCard: React.FC<ProjectCardProps> = ({ project }) => {
           </div>
         )}
         
-        <div className="flex items-center justify-between mb-3">
+        <div className="p-6 flex flex-col flex-1">
+          <div className="flex items-center justify-between mb-3">
           <Badge variant={STATUS_VARIANTS[project.status]}>
             {STATUS_LABELS[project.status]}
           </Badge>
@@ -80,10 +81,11 @@ export const ProjectCard: React.FC<ProjectCardProps> = ({ project }) => {
           </div>
         </div>
 
-        <Button variant="outline" size="sm" className="w-full group">
+        <Button variant="outline" size="sm" className="w-full group whitespace-nowrap">
           Ver detalles
           <IconArrowRight size={16} className="ml-2 group-hover:translate-x-1 transition-transform" />
         </Button>
+        </div>
       </Card>
     </motion.div>
   );

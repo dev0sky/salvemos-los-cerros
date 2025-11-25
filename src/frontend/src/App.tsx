@@ -5,6 +5,7 @@ import { ProyectosPage } from './modules/proyectos/pages/ProyectosPage';
 import { NosotrosPage } from './modules/nosotros/pages/NosotrosPage';
 import { EventosPage } from './modules/eventos/pages/EventosPage';
 import { NoticiasPage } from './modules/noticias/pages/NoticiasPage';
+import { GaleriaPage } from './modules/galeria/pages/GaleriaPage';
 import { ROUTES } from './constants/routes';
 
 function App() {
@@ -16,6 +17,7 @@ function App() {
         <Route path={ROUTES.NOSOTROS} component={NosotrosPage} />
         <Route path={ROUTES.EVENTOS} component={EventosPage} />
         <Route path={ROUTES.NOTICIAS} component={NoticiasPage} />
+        <Route path={ROUTES.GALERIA} component={GaleriaPage} />
         <Route>404 - Página no encontrada</Route>
       </Switch>
     </MainLayout>

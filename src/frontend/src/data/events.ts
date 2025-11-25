@@ -1,4 +1,5 @@
 import type { Event } from '@/types';
+import { getStaticPhoto, IMAGE_TOPICS } from '@/services/imageService';
 
 export const MOCK_EVENTS: Event[] = [
   {
@@ -11,6 +12,7 @@ export const MOCK_EVENTS: Event[] = [
     type: 'cleanup',
     attendees: 45,
     maxAttendees: 60,
+    image: getStaticPhoto(IMAGE_TOPICS.CLEANUP, 800, 600),
   },
   {
     id: '2',
@@ -22,6 +24,7 @@ export const MOCK_EVENTS: Event[] = [
     type: 'workshop',
     attendees: 18,
     maxAttendees: 25,
+    image: getStaticPhoto(IMAGE_TOPICS.WORKSHOP, 800, 600),
   },
   {
     id: '3',
@@ -33,6 +36,7 @@ export const MOCK_EVENTS: Event[] = [
     type: 'reforestation',
     attendees: 32,
     maxAttendees: 50,
+    image: getStaticPhoto(IMAGE_TOPICS.REFORESTATION, 800, 600),
   },
   {
     id: '4',
@@ -44,6 +48,7 @@ export const MOCK_EVENTS: Event[] = [
     type: 'other',
     attendees: 12,
     maxAttendees: 20,
+    image: getStaticPhoto(IMAGE_TOPICS.BIRDS, 800, 600),
   },
   {
     id: '5',
@@ -55,6 +60,7 @@ export const MOCK_EVENTS: Event[] = [
     type: 'cleanup',
     attendees: 35,
     maxAttendees: 40,
+    image: getStaticPhoto(IMAGE_TOPICS.MOUNTAINS, 800, 600),
   },
   {
     id: '6',
@@ -66,6 +72,7 @@ export const MOCK_EVENTS: Event[] = [
     type: 'workshop',
     attendees: 60,
     maxAttendees: 80,
+    image: getStaticPhoto(IMAGE_TOPICS.CONSERVATION, 800, 600),
   },
   {
     id: '7',
@@ -77,5 +84,7 @@ export const MOCK_EVENTS: Event[] = [
     type: 'other',
     attendees: 0,
     maxAttendees: 200,
+    image: getStaticPhoto(IMAGE_TOPICS.COMMUNITY, 800, 600),
   },
 ];
+

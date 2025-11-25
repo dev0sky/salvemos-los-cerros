@@ -37,7 +37,7 @@ export const EventCard: React.FC<EventCardProps> = ({ event }) => {
     >
       <Card className="overflow-hidden h-full flex flex-col">
         {event.image && (
-          <div className="w-full h-48 bg-secondary/10 -m-6 mb-4">
+          <div className="w-full aspect-[4/3] bg-secondary/10 overflow-hidden">
             <img 
               src={event.image} 
               alt={event.title}
@@ -46,7 +46,8 @@ export const EventCard: React.FC<EventCardProps> = ({ event }) => {
           </div>
         )}
         
-        <div className="flex items-center justify-between mb-3">
+        <div className="p-6 flex flex-col flex-1">
+          <div className="flex items-center justify-between mb-3 flex-wrap gap-2">
           <Badge variant={TYPE_VARIANTS[event.type]}>
             {TYPE_LABELS[event.type]}
           </Badge>
@@ -87,12 +88,13 @@ export const EventCard: React.FC<EventCardProps> = ({ event }) => {
           <Button 
             variant={isFull ? "outline" : "primary"} 
             size="sm" 
-            className="w-full"
+            className="w-full whitespace-nowrap"
             disabled={!!isFull}
           >
             {isFull ? 'Evento lleno' : 'Registrarse'}
           </Button>
         )}
+        </div>
       </Card>
     </motion.div>
   );

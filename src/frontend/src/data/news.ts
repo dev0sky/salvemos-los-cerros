@@ -1,4 +1,5 @@
 import type { NewsArticle } from '@/types';
+import { getStaticPhoto, IMAGE_TOPICS } from '@/services/imageService';
 
 export const MOCK_NEWS: NewsArticle[] = [
   {
@@ -9,6 +10,7 @@ export const MOCK_NEWS: NewsArticle[] = [
     date: '2024-11-20',
     author: 'María González',
     featured: true,
+    image: getStaticPhoto(IMAGE_TOPICS.REFORESTATION, 800, 600),
   },
   {
     id: '2',
@@ -17,6 +19,7 @@ export const MOCK_NEWS: NewsArticle[] = [
     category: 'education',
     date: '2024-11-18',
     author: 'Luis Torres',
+    image: getStaticPhoto(IMAGE_TOPICS.WORKSHOP, 800, 600),
   },
   {
     id: '3',
@@ -25,6 +28,7 @@ export const MOCK_NEWS: NewsArticle[] = [
     category: 'events',
     date: '2024-11-15',
     author: 'Carlos Ramírez',
+    image: getStaticPhoto(IMAGE_TOPICS.CLEANUP, 800, 600),
   },
   {
     id: '4',
@@ -34,6 +38,7 @@ export const MOCK_NEWS: NewsArticle[] = [
     date: '2024-11-10',
     author: 'Ana Martínez',
     featured: true,
+    image: getStaticPhoto(IMAGE_TOPICS.CONSERVATION, 800, 600),
   },
   {
     id: '5',
@@ -42,6 +47,7 @@ export const MOCK_NEWS: NewsArticle[] = [
     category: 'conservation',
     date: '2024-11-05',
     author: 'María González',
+    image: getStaticPhoto(IMAGE_TOPICS.NATURE, 800, 600),
   },
   {
     id: '6',
@@ -50,5 +56,7 @@ export const MOCK_NEWS: NewsArticle[] = [
     category: 'education',
     date: '2024-11-01',
     author: 'Luis Torres',
+    image: getStaticPhoto(IMAGE_TOPICS.COMMUNITY, 800, 600),
   },
 ];
+

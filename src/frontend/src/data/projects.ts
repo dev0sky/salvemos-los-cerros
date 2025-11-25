@@ -1,4 +1,5 @@
 import type { Project } from '@/types';
+import { getStaticPhoto, IMAGE_TOPICS } from '@/services/imageService';
 
 export const MOCK_PROJECTS: Project[] = [
   {
@@ -9,6 +10,7 @@ export const MOCK_PROJECTS: Project[] = [
     status: 'active',
     progress: 65,
     startDate: 'Enero 2024',
+    image: getStaticPhoto(IMAGE_TOPICS.REFORESTATION, 800, 600),
   },
   {
     id: '2',
@@ -18,6 +20,7 @@ export const MOCK_PROJECTS: Project[] = [
     status: 'active',
     progress: 80,
     startDate: 'Marzo 2024',
+    image: getStaticPhoto(IMAGE_TOPICS.CLEANUP, 800, 600),
   },
   {
     id: '3',
@@ -27,6 +30,7 @@ export const MOCK_PROJECTS: Project[] = [
     status: 'completed',
     progress: 100,
     startDate: 'Septiembre 2023',
+    image: getStaticPhoto(IMAGE_TOPICS.NATURE, 800, 600),
   },
   {
     id: '4',
@@ -36,6 +40,7 @@ export const MOCK_PROJECTS: Project[] = [
     status: 'planned',
     progress: 15,
     startDate: 'Junio 2024',
+    image: getStaticPhoto(IMAGE_TOPICS.CONSERVATION, 800, 600),
   },
   {
     id: '5',
@@ -45,6 +50,7 @@ export const MOCK_PROJECTS: Project[] = [
     status: 'active',
     progress: 45,
     startDate: 'Febrero 2024',
+    image: getStaticPhoto(IMAGE_TOPICS.MOUNTAINS, 800, 600),
   },
   {
     id: '6',
@@ -54,6 +60,7 @@ export const MOCK_PROJECTS: Project[] = [
     status: 'active',
     progress: 55,
     startDate: 'Enero 2024',
+    image: getStaticPhoto(IMAGE_TOPICS.BIRDS, 800, 600),
   },
 ];
 
