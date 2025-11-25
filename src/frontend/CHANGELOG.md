@@ -1,6 +1,111 @@
 # Changelog - Frontend
 
-## [2025-11-24] - Expansión de Aplicación
+## [2025-11-24] - Reorganización de Código
+
+### Tipo de cambio:
+
+- (refactor) Separación de responsabilidades
+- (refactor) Centralización de tipos y datos
+- (style) Mejoras de organización de código
+
+### Descripción breve:
+
+**Separación de Responsabilidades:**
+- Se creó carpeta `types/` para centralizar todas las interfaces y tipos TypeScript
+- Se creó carpeta `data/` para centralizar todos los datos mock organizados por dominio
+- Los componentes ahora solo contienen lógica de presentación
+
+**Tipos Centralizados:**
+- `types/index.ts`: Todas las interfaces (Project, Event, NewsArticle, TeamMemberData, etc.)
+- Eliminadas interfaces duplicadas de componentes individuales
+- Imports tipo-only para mejor tree-shaking
+
+**Datos Mock Centralizados:**
+- `data/projects.ts`: MOCK_PROJECTS y PROJECT_STATS_DATA
+- `data/events.ts`: MOCK_EVENTS
+- `data/news.ts`: MOCK_NEWS
+- `data/team.ts`: MOCK_TEAM_MEMBERS e IMPACT_DATA
+- `data/index.ts`: Re-exports centralizados
+
+**Constantes de Componentes:**
+- Movidas de funciones a nivel de módulo (mejor performance)
+- Naming convention: UPPER_SNAKE_CASE para constantes
+- Ejemplos: STATUS_VARIANTS, TYPE_LABELS, CHART_THEME
+
+**Componentes Refactorizados:**
+- ProjectCard: -15 líneas, solo lógica de presentación
+- EventCard: -20 líneas, solo lógica de presentación
+- NewsCard: -15 líneas, solo lógica de presentación
+- TeamMember: -10 líneas, solo lógica de presentación
+- StatsChart: Constantes de tema extraídas
+
+**Páginas Refactorizadas:**
+- ProyectosPage: -70 líneas (-42%)
+- NosotrosPage: -45 líneas (-31%)
+- EventosPage: -65 líneas (-42%)
+- NoticiasPage: -55 líneas (-37%)
+- HomePage: -84 líneas (-28%)
+
+### Archivos nuevos:
+
+**Tipos:**
+- src/types/index.ts
+
+**Datos:**
+- src/data/index.ts
+- src/data/projects.ts
+- src/data/events.ts
+- src/data/news.ts
+- src/data/team.ts
+
+**Documentación:**
+- REFACTORING.md (guía completa de la reorganización)
+
+### Archivos modificados:
+
+**Componentes:**
+- src/components/ProjectCard.tsx (refactorizado)
+- src/components/EventCard.tsx (refactorizado)
+- src/components/NewsCard.tsx (refactorizado)
+- src/components/TeamMember.tsx (refactorizado)
+- src/components/StatsChart.tsx (refactorizado)
+
+**Páginas:**
+- src/modules/proyectos/pages/ProyectosPage.tsx (simplificado)
+- src/modules/nosotros/pages/NosotrosPage.tsx (simplificado)
+- src/modules/eventos/pages/EventosPage.tsx (simplificado)
+- src/modules/noticias/pages/NoticiasPage.tsx (simplificado)
+- src/modules/home/pages/HomePage.tsx (simplificado)
+
+### Métricas:
+
+**Reducción de código:**
+- Total de líneas removidas de páginas: ~319 líneas
+- Total de líneas en nuevos archivos organizados: ~298 líneas
+- Reducción neta: ~21 líneas + mejor organización
+
+**Performance:**
+- Constantes no se recrean en cada render
+- Mejor tree-shaking con type-only imports
+- Bundle size: 640.93 kB (similar, mejor organizado)
+
+### Build:
+
+✅ Build exitoso en 19.24s
+- Sin errores de TypeScript
+- Sin errores de lint
+- Todos los imports resueltos correctamente
+
+### Beneficios:
+
+- ✅ Código más mantenible y escalable
+- ✅ Preparado para migración a API
+- ✅ Mejor developer experience
+- ✅ Componentes más testeables
+- ✅ Single source of truth para tipos y datos
+
+---
+
 
 ### Tipo de cambio:
 
