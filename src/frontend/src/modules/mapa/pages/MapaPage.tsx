@@ -1,9 +1,31 @@
 import React from 'react';
 import { motion } from 'framer-motion';
+import { useQuery } from '@tanstack/react-query';
 import { MapComponent } from '@/components/Map/MapComponent';
-import { CERROS } from '@/data/cerros';
+import { getCerros } from '@/services/data';
 
 export const MapaPage: React.FC = () => {
+  const { data: cerros = [], isLoading, error } = useQuery({
+    queryKey: ['cerros'],
+    queryFn: getCerros,
+  });
+
+  if (isLoading) {
+    return (
+      <div className="flex justify-center items-center h-screen">
+        <div className="animate-spin rounded-full h-32 w-32 border-t-2 border-b-2 border-primary"></div>
+      </div>
+    );
+  }
+
+  if (error) {
+    return (
+      <div className="flex justify-center items-center h-screen text-red-500">
+        Error al cargar el mapa.
+      </div>
+    );
+  }
+
   return (
     <div className="space-y-8 pb-20">
       {/* Header */}
@@ -33,7 +55,7 @@ export const MapaPage: React.FC = () => {
           className="h-full"
         >
           <MapComponent 
-            cerros={CERROS} 
+            cerros={cerros} 
             height="100%" 
             zoom={12}
           />

@@ -1,9 +1,31 @@
 import React from 'react';
 import { motion } from 'framer-motion';
+import { useQuery } from '@tanstack/react-query';
 import { CerroCard } from '@/components/CerroCard';
-import { CERROS } from '@/data/cerros';
+import { getCerros } from '@/services/data';
 
 export const CerrosPage: React.FC = () => {
+  const { data: cerros = [], isLoading, error } = useQuery({
+    queryKey: ['cerros'],
+    queryFn: getCerros,
+  });
+
+  if (isLoading) {
+    return (
+      <div className="flex justify-center items-center h-screen">
+        <div className="animate-spin rounded-full h-32 w-32 border-t-2 border-b-2 border-primary"></div>
+      </div>
+    );
+  }
+
+  if (error) {
+    return (
+      <div className="flex justify-center items-center h-screen text-red-500">
+        Error al cargar cerros.
+      </div>
+    );
+  }
+
   return (
     <div className="space-y-12 md:space-y-20 pb-20">
       {/* Hero Section */}
@@ -27,7 +49,7 @@ export const CerrosPage: React.FC = () => {
       {/* Grid Section */}
       <section className="container mx-auto px-4">
         <div className="grid grid-cols-1 md:grid-cols-2 lg:grid-cols-3 gap-8">
-          {CERROS.map((cerro, index) => (
+          {cerros.map((cerro, index) => (
             <motion.div
               key={cerro.id}
               initial={{ opacity: 0, y: 20 }}

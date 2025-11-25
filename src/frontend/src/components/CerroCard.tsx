@@ -3,7 +3,7 @@ import { motion } from 'framer-motion';
 import { IconMountain, IconMapPin, IconArrowRight } from '@tabler/icons-react';
 import { Card } from './ui/Card';
 import { Badge } from './ui/Badge';
-import { Cerro } from '@/data/cerros';
+import { Cerro } from '@/types';
 import { Link } from 'wouter';
 
 interface CerroCardProps {

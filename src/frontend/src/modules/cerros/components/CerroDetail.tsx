@@ -3,7 +3,7 @@ import { motion, Variants } from 'framer-motion';
 import { IconMountain, IconMapPin, IconAlertTriangle, IconLeaf, IconPaw, IconHistory, IconPick } from '@tabler/icons-react';
 import { Card } from '@/components/ui/Card';
 import { Badge } from '@/components/ui/Badge';
-import { Cerro } from '@/data/cerros';
+import { Cerro } from '@/types';
 import { MapComponent } from '@/components/Map/MapComponent';
 
 interface CerroDetailProps {

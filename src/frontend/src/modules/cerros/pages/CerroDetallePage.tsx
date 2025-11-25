@@ -1,21 +1,35 @@
 import React from 'react';
-import { useRoute } from 'wouter';
-import { CerroDetail } from '../components/CerroDetail';
-import { CERROS } from '@/data/cerros';
-import { IconArrowLeft } from '@tabler/icons-react';
-import { Link } from 'wouter';
-
+import { useRoute, Link } from 'wouter';
+import { useQuery } from '@tanstack/react-query';
 import { motion } from 'framer-motion';
+import { IconArrowLeft } from '@tabler/icons-react';
+import { CerroDetail } from '../components/CerroDetail';
+import { getCerroById } from '@/services/data';
 
 export const CerroDetallePage: React.FC = () => {
   const [match, params] = useRoute('/cerros/:id');
   const cerroId = match ? params.id : null;
-  const cerro = CERROS.find(c => c.id === cerroId);
 
-  if (!cerro) {
+  const { data: cerro, isLoading, error } = useQuery({
+    queryKey: ['cerro', cerroId],
+    queryFn: () => getCerroById(cerroId!),
+    enabled: !!cerroId,
+  });
+
+  if (isLoading) {
+    return (
+      <div className="flex justify-center items-center h-screen">
+        <div className="animate-spin rounded-full h-32 w-32 border-t-2 border-b-2 border-primary"></div>
+      </div>
+    );
+  }
+
+  if (error || !cerro) {
     return (
       <div className="container mx-auto px-4 py-20 text-center">
-        <h1 className="text-2xl font-bold text-text-main mb-4">Cerro no encontrado</h1>
+        <h1 className="text-2xl font-bold text-text-main mb-4">
+          {error ? 'Error al cargar el cerro' : 'Cerro no encontrado'}
+        </h1>
         <Link href="/cerros">
           <a className="text-primary hover:underline">Volver a la lista</a>
         </Link>

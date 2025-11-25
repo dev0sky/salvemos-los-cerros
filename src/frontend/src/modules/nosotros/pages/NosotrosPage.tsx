@@ -1,14 +1,37 @@
 import React from 'react';
 import { motion } from 'framer-motion';
 import { IconTarget, IconEye, IconTrophy } from '@tabler/icons-react';
+import { useQuery } from '@tanstack/react-query';
 import { TeamMember } from '@/components/TeamMember';
 import { PieChart } from '@/components/StatsChart';
 import { Card } from '@/components/ui/Card';
 import { STRINGS } from '@/constants/strings';
-import { MOCK_TEAM_MEMBERS, IMPACT_DATA } from '@/data/team';
+import { getTeam } from '@/services/data';
+import { IMPACT_DATA } from '@/data/team'; // Keep impact data mock for now
 import { PAGE_VARIANTS, FADE_UP_ITEM, STAGGER_CONTAINER, SCALE_IN, HOVER_LIFT } from '@/constants/animations';
 
 export const NosotrosPage: React.FC = () => {
+  const { data: team = [], isLoading, error } = useQuery({
+    queryKey: ['team'],
+    queryFn: getTeam,
+  });
+
+  if (isLoading) {
+    return (
+      <div className="flex justify-center items-center h-screen">
+        <div className="animate-spin rounded-full h-32 w-32 border-t-2 border-b-2 border-primary"></div>
+      </div>
+    );
+  }
+
+  if (error) {
+    return (
+      <div className="flex justify-center items-center h-screen text-red-500">
+        Error al cargar equipo.
+      </div>
+    );
+  }
+
   return (
     <motion.div 
       className="space-y-12 md:space-y-20 pb-20"
@@ -97,7 +120,7 @@ export const NosotrosPage: React.FC = () => {
           className="grid grid-cols-1 md:grid-cols-2 lg:grid-cols-4 gap-6"
           variants={STAGGER_CONTAINER}
         >
-          {MOCK_TEAM_MEMBERS.map((member) => (
+          {team.map((member) => (
             <motion.div
               key={member.id}
               variants={SCALE_IN}

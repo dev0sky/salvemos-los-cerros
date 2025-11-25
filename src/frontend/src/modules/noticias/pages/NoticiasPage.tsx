@@ -1,21 +1,27 @@
 import React from 'react';
 import { motion, AnimatePresence } from 'framer-motion';
 import { IconFilter, IconNews } from '@tabler/icons-react';
+import { useQuery } from '@tanstack/react-query';
 import { NewsCard } from '@/components/NewsCard';
 import { Button } from '@/components/ui/Button';
 import { STRINGS } from '@/constants/strings';
 import { useAppStore } from '@/stores/useAppStore';
-import { MOCK_NEWS } from '@/data/news';
+import { getNews } from '@/services/data';
 import { PAGE_VARIANTS, FADE_UP_ITEM, SCALE_IN, HOVER_LIFT } from '@/constants/animations';
 
 export const NoticiasPage: React.FC = () => {
   const { newsCategory, setNewsCategory } = useAppStore();
 
-  const filteredNews = MOCK_NEWS.filter(article => 
+  const { data: news = [], isLoading, error } = useQuery({
+    queryKey: ['news'],
+    queryFn: getNews,
+  });
+
+  const filteredNews = news.filter(article => 
     newsCategory === 'all' || article.category === newsCategory
   );
 
-  const featuredArticle = MOCK_NEWS.find(article => article.featured);
+  const featuredArticle = news.find(article => article.featured);
 
   const filters = [
     { value: 'all' as const, label: STRINGS.FILTER_ALL },
@@ -23,6 +29,22 @@ export const NoticiasPage: React.FC = () => {
     { value: 'events' as const, label: STRINGS.CATEGORY_EVENTS },
     { value: 'education' as const, label: STRINGS.CATEGORY_EDUCATION },
   ];
+
+  if (isLoading) {
+    return (
+      <div className="flex justify-center items-center h-screen">
+        <div className="animate-spin rounded-full h-32 w-32 border-t-2 border-b-2 border-primary"></div>
+      </div>
+    );
+  }
+
+  if (error) {
+    return (
+      <div className="flex justify-center items-center h-screen text-red-500">
+        Error al cargar noticias.
+      </div>
+    );
+  }
 
   return (
     <motion.div 

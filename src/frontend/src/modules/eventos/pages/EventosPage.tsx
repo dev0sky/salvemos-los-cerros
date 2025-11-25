@@ -1,18 +1,24 @@
 import React from 'react';
 import { motion, AnimatePresence } from 'framer-motion';
 import { IconFilter, IconCalendarEvent } from '@tabler/icons-react';
+import { useQuery } from '@tanstack/react-query';
 import { EventCard } from '@/components/EventCard';
 import { Button } from '@/components/ui/Button';
 import { STRINGS } from '@/constants/strings';
 import { useAppStore } from '@/stores/useAppStore';
-import { MOCK_EVENTS } from '@/data/events';
+import { getEvents } from '@/services/data';
 import { PAGE_VARIANTS, FADE_UP_ITEM, SCALE_IN, HOVER_LIFT } from '@/constants/animations';
 
 export const EventosPage: React.FC = () => {
   const { eventFilter, setEventFilter } = useAppStore();
 
+  const { data: events = [], isLoading, error } = useQuery({
+    queryKey: ['events'],
+    queryFn: getEvents,
+  });
+
   const now = new Date();
-  const filteredEvents = MOCK_EVENTS.filter(event => {
+  const filteredEvents = events.filter(event => {
     const eventDate = new Date(event.date);
     if (eventFilter === 'upcoming') return eventDate >= now;
     if (eventFilter === 'past') return eventDate < now;
@@ -24,6 +30,22 @@ export const EventosPage: React.FC = () => {
     { value: 'upcoming' as const, label: STRINGS.FILTER_UPCOMING },
     { value: 'past' as const, label: STRINGS.FILTER_PAST },
   ];
+
+  if (isLoading) {
+    return (
+      <div className="flex justify-center items-center h-screen">
+        <div className="animate-spin rounded-full h-32 w-32 border-t-2 border-b-2 border-primary"></div>
+      </div>
+    );
+  }
+
+  if (error) {
+    return (
+      <div className="flex justify-center items-center h-screen text-red-500">
+        Error al cargar eventos.
+      </div>
+    );
+  }
 
   return (
     <motion.div 

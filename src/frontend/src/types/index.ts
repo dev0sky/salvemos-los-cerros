@@ -68,3 +68,34 @@ export interface GalleryImage {
   photographer?: string;
   tags: string[];
 }
+
+// Cerro types
+export interface Cerro {
+  id: string;
+  name: string;
+  altitude: number;
+  location: {
+    municipality: string;
+    lat: number;
+    lng: number;
+  };
+  geology: {
+    rock: string;
+    age: string;
+    notes: string;
+  };
+  ecological_value: {
+    flora: string[];
+    fauna: string[];
+    cultural: string[];
+  };
+  materials: {
+    minerals: string;
+  };
+  legal_status: {
+    proposed_protection: string;
+    status: string;
+  };
+  threats: string[];
+  image: string;
+}

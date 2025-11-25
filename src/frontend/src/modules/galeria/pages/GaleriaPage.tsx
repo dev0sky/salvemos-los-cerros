@@ -1,9 +1,10 @@
 import React, { useState } from 'react';
 import { motion, AnimatePresence } from 'framer-motion';
 import { IconFilter, IconPhoto } from '@tabler/icons-react';
+import { useQuery } from '@tanstack/react-query';
 import { Button } from '@/components/ui/Button';
 import { Lightbox } from '@/components/Lightbox';
-import { MOCK_GALLERY } from '@/data/gallery';
+import { getGallery } from '@/services/data';
 import type { GalleryImage } from '@/types';
 import { PAGE_VARIANTS, FADE_UP_ITEM, SCALE_IN, HOVER_LIFT } from '@/constants/animations';
 
@@ -14,7 +15,12 @@ export const GaleriaPage: React.FC = () => {
   const [lightboxOpen, setLightboxOpen] = useState(false);
   const [lightboxIndex, setLightboxIndex] = useState(0);
 
-  const filteredImages = MOCK_GALLERY.filter(
+  const { data: gallery = [], isLoading, error } = useQuery({
+    queryKey: ['gallery'],
+    queryFn: getGallery,
+  });
+
+  const filteredImages = gallery.filter(
     image => categoryFilter === 'all' || image.category === categoryFilter
   );
 
@@ -30,6 +36,22 @@ export const GaleriaPage: React.FC = () => {
     setLightboxIndex(index);
     setLightboxOpen(true);
   };
+
+  if (isLoading) {
+    return (
+      <div className="flex justify-center items-center h-screen">
+        <div className="animate-spin rounded-full h-32 w-32 border-t-2 border-b-2 border-primary"></div>
+      </div>
+    );
+  }
+
+  if (error) {
+    return (
+      <div className="flex justify-center items-center h-screen text-red-500">
+        Error al cargar galería.
+      </div>
+    );
+  }
 
   return (
     <motion.div 

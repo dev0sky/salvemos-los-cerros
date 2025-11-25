@@ -2,6 +2,7 @@ import React from 'react';
 import { Link } from 'wouter';
 import { motion } from 'framer-motion';
 import { IconArrowRight, IconLeaf, IconUsers, IconCalendar, IconMap } from '@tabler/icons-react';
+import { useQuery } from '@tanstack/react-query';
 import { Button } from '@/components/ui/Button';
 import { Card } from '@/components/ui/Card';
 import { ProjectCard } from '@/components/ProjectCard';
@@ -9,16 +10,18 @@ import { EventCard } from '@/components/EventCard';
 import { NewsCard } from '@/components/NewsCard';
 import { STRINGS } from '@/constants/strings';
 import { ROUTES } from '@/constants/routes';
-import { MOCK_PROJECTS } from '@/data/projects';
-import { MOCK_EVENTS } from '@/data/events';
-import { MOCK_NEWS } from '@/data/news';
+import { getProjects, getEvents, getNews } from '@/services/data';
 import { PAGE_VARIANTS, FADE_UP_ITEM, STAGGER_CONTAINER, HOVER_LIFT, SCALE_IN } from '@/constants/animations';
 
 export const HomePage: React.FC = () => {
+  const { data: projects = [] } = useQuery({ queryKey: ['projects'], queryFn: getProjects });
+  const { data: events = [] } = useQuery({ queryKey: ['events'], queryFn: getEvents });
+  const { data: news = [] } = useQuery({ queryKey: ['news'], queryFn: getNews });
+
   // Get preview data (first 3 items from each)
-  const featuredProjects = MOCK_PROJECTS.slice(0, 3);
-  const upcomingEvents = MOCK_EVENTS.filter(e => new Date(e.date) >= new Date()).slice(0, 3);
-  const latestNews = MOCK_NEWS.slice(0, 3);
+  const featuredProjects = projects.slice(0, 3);
+  const upcomingEvents = events.filter(e => new Date(e.date) >= new Date()).slice(0, 3);
+  const latestNews = news.slice(0, 3);
 
   return (
     <motion.div 
