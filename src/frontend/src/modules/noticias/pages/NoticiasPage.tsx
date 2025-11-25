@@ -1,11 +1,12 @@
 import React from 'react';
-import { motion } from 'framer-motion';
+import { motion, AnimatePresence } from 'framer-motion';
 import { IconFilter, IconNews } from '@tabler/icons-react';
 import { NewsCard } from '@/components/NewsCard';
 import { Button } from '@/components/ui/Button';
 import { STRINGS } from '@/constants/strings';
 import { useAppStore } from '@/stores/useAppStore';
 import { MOCK_NEWS } from '@/data/news';
+import { PAGE_VARIANTS, FADE_UP_ITEM, SCALE_IN, HOVER_LIFT } from '@/constants/animations';
 
 export const NoticiasPage: React.FC = () => {
   const { newsCategory, setNewsCategory } = useAppStore();
@@ -24,13 +25,17 @@ export const NoticiasPage: React.FC = () => {
   ];
 
   return (
-    <div className="space-y-12 md:space-y-20 pb-20">
+    <motion.div 
+      className="space-y-12 md:space-y-20 pb-20"
+      initial="hidden"
+      animate="visible"
+      variants={PAGE_VARIANTS}
+    >
       {/* Hero Section */}
       <section className="bg-surface rounded-b-3xl p-10 md:p-20 border-b border-border-soft">
         <div className="container mx-auto">
           <motion.div
-            initial={{ opacity: 0, y: 20 }}
-            animate={{ opacity: 1, y: 0 }}
+            variants={FADE_UP_ITEM}
             className="max-w-3xl"
           >
             <div className="inline-flex items-center gap-2 px-3 py-1 rounded-full bg-primary/10 text-primary text-sm font-medium mb-4">
@@ -51,9 +56,9 @@ export const NoticiasPage: React.FC = () => {
       {featuredArticle && newsCategory === 'all' && (
         <section className="container mx-auto px-4">
           <motion.div
-            initial={{ opacity: 0, scale: 0.95 }}
-            animate={{ opacity: 1, scale: 1 }}
+            variants={SCALE_IN}
             className="max-w-4xl mx-auto"
+            whileHover={HOVER_LIFT}
           >
             <NewsCard article={featuredArticle} />
           </motion.div>
@@ -62,7 +67,10 @@ export const NoticiasPage: React.FC = () => {
 
       {/* Filter Section */}
       <section className="container mx-auto px-4">
-        <div className="flex items-center gap-3 flex-wrap">
+        <motion.div 
+          className="flex items-center gap-3 flex-wrap"
+          variants={FADE_UP_ITEM}
+        >
           <IconFilter size={20} className="text-text-muted" />
           <span className="text-sm font-medium text-text-muted">Filtrar por categoría:</span>
           {filters.map((filter) => (
@@ -71,26 +79,46 @@ export const NoticiasPage: React.FC = () => {
               variant={newsCategory === filter.value ? 'primary' : 'outline'}
               size="sm"
               onClick={() => setNewsCategory(filter.value)}
+              className="transition-all duration-300"
             >
               {filter.label}
             </Button>
           ))}
-        </div>
+        </motion.div>
       </section>
 
       {/* News Grid */}
       <section className="container mx-auto px-4">
-        <div className="grid grid-cols-1 md:grid-cols-2 lg:grid-cols-3 gap-6">
-          {filteredNews.map((article) => (
-            <NewsCard key={article.id} article={article} />
-          ))}
-        </div>
+        <motion.div 
+          className="grid grid-cols-1 md:grid-cols-2 lg:grid-cols-3 gap-6"
+          layout
+        >
+          <AnimatePresence mode='popLayout'>
+            {filteredNews.map((article) => (
+              <motion.div 
+                key={article.id} 
+                variants={SCALE_IN}
+                initial="hidden"
+                animate="visible"
+                exit={{ opacity: 0, scale: 0.9 }}
+                layout
+                whileHover={HOVER_LIFT}
+              >
+                <NewsCard article={article} />
+              </motion.div>
+            ))}
+          </AnimatePresence>
+        </motion.div>
         {filteredNews.length === 0 && (
-          <div className="text-center py-12">
+          <motion.div 
+            className="text-center py-12"
+            initial={{ opacity: 0 }}
+            animate={{ opacity: 1 }}
+          >
             <p className="text-text-muted">No hay noticias en esta categoría.</p>
-          </div>
+          </motion.div>
         )}
       </section>
-    </div>
+    </motion.div>
   );
 };

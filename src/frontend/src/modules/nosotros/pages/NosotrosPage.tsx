@@ -6,16 +6,21 @@ import { PieChart } from '@/components/StatsChart';
 import { Card } from '@/components/ui/Card';
 import { STRINGS } from '@/constants/strings';
 import { MOCK_TEAM_MEMBERS, IMPACT_DATA } from '@/data/team';
+import { PAGE_VARIANTS, FADE_UP_ITEM, STAGGER_CONTAINER, SCALE_IN, HOVER_LIFT } from '@/constants/animations';
 
 export const NosotrosPage: React.FC = () => {
   return (
-    <div className="space-y-12 md:space-y-20 pb-20">
+    <motion.div 
+      className="space-y-12 md:space-y-20 pb-20"
+      initial="hidden"
+      animate="visible"
+      variants={PAGE_VARIANTS}
+    >
       {/* Hero Section */}
       <section className="bg-surface rounded-b-3xl p-10 md:p-20 border-b border-border-soft">
         <div className="container mx-auto">
           <motion.div
-            initial={{ opacity: 0, y: 20 }}
-            animate={{ opacity: 1, y: 0 }}
+            variants={FADE_UP_ITEM}
             className="max-w-3xl"
           >
             <h1 className="text-4xl md:text-5xl font-bold text-text-main mb-4">
@@ -30,13 +35,12 @@ export const NosotrosPage: React.FC = () => {
 
       {/* Mission & Vision */}
       <section className="container mx-auto px-4">
-        <div className="grid grid-cols-1 md:grid-cols-2 gap-6">
-          <motion.div
-            initial={{ opacity: 0, x: -20 }}
-            animate={{ opacity: 1, x: 0 }}
-            transition={{ delay: 0.1 }}
-          >
-            <Card>
+        <motion.div 
+          className="grid grid-cols-1 md:grid-cols-2 gap-6"
+          variants={STAGGER_CONTAINER}
+        >
+          <motion.div variants={FADE_UP_ITEM} whileHover={HOVER_LIFT}>
+            <Card className="h-full">
               <div className="w-12 h-12 rounded-xl bg-primary/10 flex items-center justify-center mb-4">
                 <IconTarget size={24} className="text-primary" />
               </div>
@@ -49,12 +53,8 @@ export const NosotrosPage: React.FC = () => {
             </Card>
           </motion.div>
 
-          <motion.div
-            initial={{ opacity: 0, x: 20 }}
-            animate={{ opacity: 1, x: 0 }}
-            transition={{ delay: 0.2 }}
-          >
-            <Card>
+          <motion.div variants={FADE_UP_ITEM} whileHover={HOVER_LIFT}>
+            <Card className="h-full">
               <div className="w-12 h-12 rounded-xl bg-secondary/20 flex items-center justify-center mb-4">
                 <IconEye size={24} className="text-text-main" />
               </div>
@@ -66,42 +66,49 @@ export const NosotrosPage: React.FC = () => {
               </p>
             </Card>
           </motion.div>
-        </div>
+        </motion.div>
       </section>
 
       {/* Impact Stats */}
       <section className="container mx-auto px-4">
-        <Card>
-          <div className="flex items-center gap-3 mb-6">
-            <IconTrophy size={24} className="text-primary" />
-            <h2 className="text-2xl font-bold text-text-main">Nuestro Impacto</h2>
-          </div>
-          <PieChart data={IMPACT_DATA} />
-        </Card>
+        <motion.div variants={FADE_UP_ITEM}>
+          <Card>
+            <div className="flex items-center gap-3 mb-6">
+              <IconTrophy size={24} className="text-primary" />
+              <h2 className="text-2xl font-bold text-text-main">Nuestro Impacto</h2>
+            </div>
+            <PieChart data={IMPACT_DATA} />
+          </Card>
+        </motion.div>
       </section>
 
       {/* Team Section */}
       <section className="container mx-auto px-4">
-        <div className="text-center mb-12">
+        <motion.div 
+          className="text-center mb-12"
+          variants={FADE_UP_ITEM}
+        >
           <h2 className="text-3xl font-bold text-text-main mb-4">Nuestro Equipo</h2>
           <p className="text-text-muted max-w-2xl mx-auto">
             Conoce a las personas dedicadas que hacen posible nuestra misión de conservación.
           </p>
-        </div>
-        <div className="grid grid-cols-1 md:grid-cols-2 lg:grid-cols-4 gap-6">
-          {MOCK_TEAM_MEMBERS.map((member, index) => (
+        </motion.div>
+        <motion.div 
+          className="grid grid-cols-1 md:grid-cols-2 lg:grid-cols-4 gap-6"
+          variants={STAGGER_CONTAINER}
+        >
+          {MOCK_TEAM_MEMBERS.map((member) => (
             <motion.div
               key={member.id}
-              initial={{ opacity: 0, y: 20 }}
-              animate={{ opacity: 1, y: 0 }}
-              transition={{ delay: index * 0.1 }}
+              variants={SCALE_IN}
+              whileHover={HOVER_LIFT}
               className="h-full"
             >
               <TeamMember member={member} />
             </motion.div>
           ))}
-        </div>
+        </motion.div>
       </section>
-    </div>
+    </motion.div>
   );
 };

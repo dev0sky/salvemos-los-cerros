@@ -5,6 +5,7 @@ import { Button } from '@/components/ui/Button';
 import { Lightbox } from '@/components/Lightbox';
 import { MOCK_GALLERY } from '@/data/gallery';
 import type { GalleryImage } from '@/types';
+import { PAGE_VARIANTS, FADE_UP_ITEM, SCALE_IN, HOVER_LIFT } from '@/constants/animations';
 
 type CategoryFilter = 'all' | GalleryImage['category'];
 
@@ -31,13 +32,17 @@ export const GaleriaPage: React.FC = () => {
   };
 
   return (
-    <div className="space-y-12 md:space-y-20 pb-20">
+    <motion.div 
+      className="space-y-12 md:space-y-20 pb-20"
+      initial="hidden"
+      animate="visible"
+      variants={PAGE_VARIANTS}
+    >
       {/* Hero Section */}
       <section className="bg-surface rounded-b-3xl p-10 md:p-20 border-b border-border-soft">
         <div className="container mx-auto">
           <motion.div
-            initial={{ opacity: 0, y: 20 }}
-            animate={{ opacity: 1, y: 0 }}
+            variants={FADE_UP_ITEM}
             className="max-w-3xl"
           >
             <div className="inline-flex items-center gap-2 px-3 py-1 rounded-full bg-primary/10 text-primary text-sm font-medium mb-4">
@@ -56,7 +61,10 @@ export const GaleriaPage: React.FC = () => {
 
       {/* Filter Section */}
       <section className="container mx-auto px-4">
-        <div className="flex items-center gap-3 flex-wrap">
+        <motion.div 
+          className="flex items-center gap-3 flex-wrap"
+          variants={FADE_UP_ITEM}
+        >
           <IconFilter size={20} className="text-text-muted" />
           <span className="text-sm font-medium text-text-muted">Filtrar por:</span>
           {filters.map((filter) => (
@@ -65,24 +73,30 @@ export const GaleriaPage: React.FC = () => {
               variant={categoryFilter === filter.value ? 'primary' : 'outline'}
               size="sm"
               onClick={() => setCategoryFilter(filter.value)}
+              className="transition-all duration-300"
             >
               {filter.label}
             </Button>
           ))}
-        </div>
+        </motion.div>
       </section>
 
       {/* Gallery Grid */}
       <section className="container mx-auto px-4">
-        {filteredImages.length > 0 ? (
-          <div className="grid grid-cols-1 md:grid-cols-2 lg:grid-cols-3 gap-6">
+        <motion.div 
+          className="grid grid-cols-1 md:grid-cols-2 lg:grid-cols-3 gap-6"
+          layout
+        >
+          <AnimatePresence mode='popLayout'>
             {filteredImages.map((image, index) => (
               <motion.div
                 key={image.id}
-                initial={{ opacity: 0, y: 20 }}
-                animate={{ opacity: 1, y: 0 }}
-                transition={{ delay: index * 0.05 }}
-                whileHover={{ y: -4 }}
+                variants={SCALE_IN}
+                initial="hidden"
+                animate="visible"
+                exit={{ opacity: 0, scale: 0.9 }}
+                layout
+                whileHover={HOVER_LIFT}
                 className="cursor-pointer group"
                 onClick={() => openLightbox(index)}
               >
@@ -90,7 +104,7 @@ export const GaleriaPage: React.FC = () => {
                   <img
                     src={image.imageUrl}
                     alt={image.title}
-                    className="w-full h-full object-cover transition-transform duration-300 group-hover:scale-110"
+                    className="w-full h-full object-cover transition-transform duration-500 group-hover:scale-110"
                   />
                   <div className="absolute inset-0 bg-gradient-to-t from-black/60 to-transparent opacity-0 group-hover:opacity-100 transition-opacity duration-300">
                     <div className="absolute bottom-0 left-0 right-0 p-4 text-white">
@@ -101,11 +115,16 @@ export const GaleriaPage: React.FC = () => {
                 </div>
               </motion.div>
             ))}
-          </div>
-        ) : (
-          <div className="text-center py-12">
+          </AnimatePresence>
+        </motion.div>
+        {filteredImages.length === 0 && (
+          <motion.div 
+            className="text-center py-12"
+            initial={{ opacity: 0 }}
+            animate={{ opacity: 1 }}
+          >
             <p className="text-text-muted">No hay imágenes en esta categoría.</p>
-          </div>
+          </motion.div>
         )}
       </section>
 
@@ -119,6 +138,6 @@ export const GaleriaPage: React.FC = () => {
           />
         )}
       </AnimatePresence>
-    </div>
+    </motion.div>
   );
 };

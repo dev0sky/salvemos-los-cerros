@@ -1,6 +1,7 @@
 import React from 'react';
 import { Link } from 'wouter';
 import { motion } from 'framer-motion';
+import { IconArrowRight, IconLeaf, IconUsers, IconCalendar, IconMap } from '@tabler/icons-react';
 import { Button } from '@/components/ui/Button';
 import { Card } from '@/components/ui/Card';
 import { ProjectCard } from '@/components/ProjectCard';
@@ -11,7 +12,7 @@ import { ROUTES } from '@/constants/routes';
 import { MOCK_PROJECTS } from '@/data/projects';
 import { MOCK_EVENTS } from '@/data/events';
 import { MOCK_NEWS } from '@/data/news';
-import { ArrowRight, Leaf, Map, Users } from 'lucide-react';
+import { PAGE_VARIANTS, FADE_UP_ITEM, STAGGER_CONTAINER, HOVER_LIFT, SCALE_IN } from '@/constants/animations';
 
 export const HomePage: React.FC = () => {
   // Get preview data (first 3 items from each)
@@ -20,219 +21,253 @@ export const HomePage: React.FC = () => {
   const latestNews = MOCK_NEWS.slice(0, 3);
 
   return (
-    <div className="space-y-12 md:space-y-20 pb-20">
+    <motion.div 
+      className="space-y-12 md:space-y-20 pb-20"
+      initial="hidden"
+      animate="visible"
+      variants={PAGE_VARIANTS}
+    >
       {/* Hero Section */}
-      <section className="bg-surface rounded-b-3xl p-10 md:p-20 flex flex-col items-center text-center gap-6 border-b border-border-soft">
-        <motion.div
-          initial={{ opacity: 0, scale: 0.9 }}
-          animate={{ opacity: 1, scale: 1 }}
-          transition={{ duration: 0.5 }}
-          className="inline-flex items-center gap-2 px-3 py-1 rounded-full bg-primary/10 text-primary text-sm font-medium"
-        >
-          <Leaf size={16} />
-          <span>Iniciativa Comunitaria</span>
-        </motion.div>
-        <motion.h1
-          initial={{ opacity: 0, y: 20 }}
-          animate={{ opacity: 1, y: 0 }}
-          transition={{ delay: 0.1 }}
-          className="text-4xl md:text-6xl font-bold max-w-3xl text-text-main tracking-tight"
-        >
-          {STRINGS.HERO_TITLE}
-        </motion.h1>
-        <motion.p
-          initial={{ opacity: 0, y: 20 }}
-          animate={{ opacity: 1, y: 0 }}
-          transition={{ delay: 0.2 }}
-          className="text-text-muted text-lg md:text-xl max-w-2xl leading-relaxed"
-        >
-          {STRINGS.HERO_SUBTITLE}
-        </motion.p>
-        <motion.div
-          initial={{ opacity: 0, y: 20 }}
-          animate={{ opacity: 1, y: 0 }}
-          transition={{ delay: 0.3 }}
-          className="flex flex-wrap gap-4 justify-center mt-4"
-        >
-          <Button size="lg" className="h-12 px-8 text-base">
-            {STRINGS.CTA_PRIMARY}
-          </Button>
-          <Link href={ROUTES.NOSOTROS}>
-            <a>
-              <Button variant="outline" size="lg" className="h-12 px-8 text-base">
+      <section className="relative h-[80vh] min-h-[600px] flex items-center justify-center overflow-hidden">
+        <div className="absolute inset-0 z-0">
+          <motion.img 
+            src="https://images.unsplash.com/photo-1464822759023-fed622ff2c3b?auto=format&fit=crop&q=80"
+            alt="Hero Background" 
+            className="w-full h-full object-cover"
+            initial={{ scale: 1.1 }}
+            animate={{ scale: 1 }}
+            transition={{ duration: 1.5, ease: "easeOut" }}
+          />
+          <div className="absolute inset-0 bg-black/40" />
+        </div>
+        
+        <div className="container mx-auto px-4 relative z-10 text-center text-white">
+          <motion.div variants={FADE_UP_ITEM}>
+            <div className="inline-flex items-center gap-2 px-4 py-1.5 rounded-full bg-white/10 backdrop-blur-md border border-white/20 text-white text-sm font-medium mb-6">
+              <IconLeaf size={16} />
+              <span>Iniciativa Comunitaria</span>
+            </div>
+          </motion.div>
+          
+          <motion.h1 
+            className="text-5xl md:text-7xl font-bold mb-6 tracking-tight"
+            variants={FADE_UP_ITEM}
+          >
+            {STRINGS.HERO_TITLE}
+          </motion.h1>
+          
+          <motion.p 
+            className="text-xl md:text-2xl mb-10 max-w-2xl mx-auto text-white/90"
+            variants={FADE_UP_ITEM}
+          >
+            {STRINGS.HERO_SUBTITLE}
+          </motion.p>
+          
+          <motion.div 
+            className="flex flex-col sm:flex-row gap-4 justify-center"
+            variants={FADE_UP_ITEM}
+          >
+            <Link href={ROUTES.NOSOTROS}>
+              <Button size="lg" className="text-lg px-8 h-14">
+                {STRINGS.CTA_PRIMARY}
+              </Button>
+            </Link>
+            <Link href={ROUTES.PROYECTOS}>
+              <Button variant="outline" size="lg" className="text-lg px-8 h-14 bg-white/10 backdrop-blur-sm border-white/30 text-white hover:bg-white/20 hover:text-white hover:border-white/50">
                 {STRINGS.CTA_SECONDARY}
               </Button>
-            </a>
-          </Link>
-        </motion.div>
-      </section>
-
-      {/* Features Grid */}
-      <section className="container mx-auto px-4">
-        <div className="grid grid-cols-1 md:grid-cols-3 gap-6">
-          <motion.div
-            initial={{ opacity: 0, y: 20 }}
-            animate={{ opacity: 1, y: 0 }}
-            transition={{ delay: 0.1 }}
-          >
-            <Card className="hover:-translate-y-1 transition-transform duration-300">
-              <div className="w-12 h-12 rounded-xl bg-primary/10 flex items-center justify-center mb-4 text-primary">
-                <Map size={24} />
-              </div>
-              <h3 className="text-xl font-semibold text-text-main">Mapeo de Áreas</h3>
-              <p className="text-text-muted">
-                Identificamos y catalogamos las zonas de alto valor ecológico para su protección prioritaria.
-              </p>
-              <div className="pt-2">
-                <Link href={ROUTES.PROYECTOS}>
-                  <a className="text-primary text-sm font-semibold flex items-center gap-1 hover:gap-2 transition-all">
-                    Ver proyectos <ArrowRight size={14} />
-                  </a>
-                </Link>
-              </div>
-            </Card>
-          </motion.div>
-
-          <motion.div
-            initial={{ opacity: 0, y: 20 }}
-            animate={{ opacity: 1, y: 0 }}
-            transition={{ delay: 0.2 }}
-          >
-            <Card className="hover:-translate-y-1 transition-transform duration-300">
-              <div className="w-12 h-12 rounded-xl bg-secondary/20 flex items-center justify-center mb-4 text-text-main">
-                <Users size={24} />
-              </div>
-              <h3 className="text-xl font-semibold text-text-main">Voluntariado</h3>
-              <p className="text-text-muted">
-                Únete a nuestras jornadas de limpieza y reforestación. Tu ayuda es fundamental.
-              </p>
-              <div className="pt-2">
-                <Link href={ROUTES.EVENTOS}>
-                  <a className="text-primary text-sm font-semibold flex items-center gap-1 hover:gap-2 transition-all">
-                    Ver eventos <ArrowRight size={14} />
-                  </a>
-                </Link>
-              </div>
-            </Card>
-          </motion.div>
-
-          <motion.div
-            initial={{ opacity: 0, y: 20 }}
-            animate={{ opacity: 1, y: 0 }}
-            transition={{ delay: 0.3 }}
-          >
-            <Card className="hover:-translate-y-1 transition-transform duration-300">
-              <div className="w-12 h-12 rounded-xl bg-green-100 flex items-center justify-center mb-4 text-green-700">
-                <Leaf size={24} />
-              </div>
-              <h3 className="text-xl font-semibold text-text-main">Educación Ambiental</h3>
-              <p className="text-text-muted">
-                Talleres y charlas para concientizar sobre la importancia de nuestra flora y fauna nativa.
-              </p>
-              <div className="pt-2">
-                <Link href={ROUTES.NOTICIAS}>
-                  <a className="text-primary text-sm font-semibold flex items-center gap-1 hover:gap-2 transition-all">
-                    Leer noticias <ArrowRight size={14} />
-                  </a>
-                </Link>
-              </div>
-            </Card>
+            </Link>
           </motion.div>
         </div>
       </section>
 
+      {/* Features Grid */}
+      <section className="container mx-auto px-4">
+        <motion.div 
+          className="grid grid-cols-1 md:grid-cols-3 gap-8"
+          variants={STAGGER_CONTAINER}
+        >
+          <Link href={ROUTES.MAPA}>
+            <motion.div variants={FADE_UP_ITEM} whileHover={HOVER_LIFT} className="h-full">
+              <Card className="h-full p-8 flex flex-col items-center text-center cursor-pointer hover:border-primary/50 transition-colors group">
+                <div className="w-16 h-16 rounded-2xl bg-primary/10 flex items-center justify-center mb-6 group-hover:bg-primary/20 transition-colors text-primary">
+                  <IconMap size={32} />
+                </div>
+                <h3 className="text-2xl font-bold mb-3 text-text-main">Mapeo de Áreas</h3>
+                <p className="text-text-muted mb-6">Identificamos y catalogamos las zonas de alto valor ecológico para su protección prioritaria.</p>
+                <span className="text-primary font-semibold flex items-center gap-2 mt-auto group-hover:gap-3 transition-all">
+                  Ver mapa <IconArrowRight size={18} />
+                </span>
+              </Card>
+            </motion.div>
+          </Link>
+
+          <Link href={ROUTES.EVENTOS}>
+            <motion.div variants={FADE_UP_ITEM} whileHover={HOVER_LIFT} className="h-full">
+              <Card className="h-full p-8 flex flex-col items-center text-center cursor-pointer hover:border-primary/50 transition-colors group">
+                <div className="w-16 h-16 rounded-2xl bg-secondary/20 flex items-center justify-center mb-6 group-hover:bg-secondary/30 transition-colors text-text-main">
+                  <IconUsers size={32} />
+                </div>
+                <h3 className="text-2xl font-bold mb-3 text-text-main">Voluntariado</h3>
+                <p className="text-text-muted mb-6">Únete a nuestras jornadas de limpieza y reforestación. Tu ayuda es fundamental.</p>
+                <span className="text-primary font-semibold flex items-center gap-2 mt-auto group-hover:gap-3 transition-all">
+                  Ver eventos <IconArrowRight size={18} />
+                </span>
+              </Card>
+            </motion.div>
+          </Link>
+
+          <Link href={ROUTES.NOTICIAS}>
+            <motion.div variants={FADE_UP_ITEM} whileHover={HOVER_LIFT} className="h-full">
+              <Card className="h-full p-8 flex flex-col items-center text-center cursor-pointer hover:border-primary/50 transition-colors group">
+                <div className="w-16 h-16 rounded-2xl bg-green-100 flex items-center justify-center mb-6 group-hover:bg-green-200 transition-colors text-green-700">
+                  <IconLeaf size={32} />
+                </div>
+                <h3 className="text-2xl font-bold mb-3 text-text-main">Educación Ambiental</h3>
+                <p className="text-text-muted mb-6">Talleres y charlas para concientizar sobre la importancia de nuestra flora y fauna nativa.</p>
+                <span className="text-primary font-semibold flex items-center gap-2 mt-auto group-hover:gap-3 transition-all">
+                  Leer noticias <IconArrowRight size={18} />
+                </span>
+              </Card>
+            </motion.div>
+          </Link>
+        </motion.div>
+      </section>
+
       {/* Featured Projects */}
       <section className="container mx-auto px-4">
-        <div className="flex items-center justify-between mb-8">
+        <motion.div 
+          className="flex items-center justify-between mb-8"
+          variants={FADE_UP_ITEM}
+        >
           <div>
             <h2 className="text-3xl font-bold text-text-main mb-2">Proyectos Destacados</h2>
             <p className="text-text-muted">Conoce nuestras iniciativas activas</p>
           </div>
           <Link href={ROUTES.PROYECTOS}>
-            <a>
-              <Button variant="outline">
-                Ver todos <ArrowRight size={16} className="ml-2" />
-              </Button>
-            </a>
+            <Button variant="outline" className="hidden sm:flex group">
+              Ver todos <IconArrowRight size={16} className="ml-2 group-hover:translate-x-1 transition-transform" />
+            </Button>
           </Link>
-        </div>
-        <div className="grid grid-cols-1 md:grid-cols-3 gap-6">
+        </motion.div>
+        
+        <motion.div 
+          className="grid grid-cols-1 md:grid-cols-3 gap-6"
+          variants={STAGGER_CONTAINER}
+        >
           {featuredProjects.map((project) => (
-            <ProjectCard key={project.id} project={project} />
+            <motion.div key={project.id} variants={SCALE_IN} whileHover={HOVER_LIFT}>
+              <ProjectCard project={project} />
+            </motion.div>
           ))}
+        </motion.div>
+        
+        <div className="mt-8 text-center sm:hidden">
+          <Link href={ROUTES.PROYECTOS}>
+            <Button variant="outline" className="w-full">
+              Ver todos los proyectos
+            </Button>
+          </Link>
         </div>
       </section>
 
       {/* Upcoming Events */}
       <section className="container mx-auto px-4">
-        <div className="flex items-center justify-between mb-8">
+        <motion.div 
+          className="flex items-center justify-between mb-8"
+          variants={FADE_UP_ITEM}
+        >
           <div>
             <h2 className="text-3xl font-bold text-text-main mb-2">Próximos Eventos</h2>
             <p className="text-text-muted">Únete a nuestras actividades</p>
           </div>
           <Link href={ROUTES.EVENTOS}>
-            <a>
-              <Button variant="outline">
-                Ver todos <ArrowRight size={16} className="ml-2" />
-              </Button>
-            </a>
+            <Button variant="outline" className="hidden sm:flex group">
+              Ver todos <IconArrowRight size={16} className="ml-2 group-hover:translate-x-1 transition-transform" />
+            </Button>
           </Link>
-        </div>
+        </motion.div>
+        
         {upcomingEvents.length > 0 ? (
-          <div className="grid grid-cols-1 md:grid-cols-3 gap-6">
+          <motion.div 
+            className="grid grid-cols-1 md:grid-cols-3 gap-6"
+            variants={STAGGER_CONTAINER}
+          >
             {upcomingEvents.map((event) => (
-              <EventCard key={event.id} event={event} />
+              <motion.div key={event.id} variants={SCALE_IN} whileHover={HOVER_LIFT}>
+                <EventCard event={event} />
+              </motion.div>
             ))}
-          </div>
+          </motion.div>
         ) : (
           <motion.div
-            initial={{ opacity: 0, y: 20 }}
-            animate={{ opacity: 1, y: 0 }}
+            variants={FADE_UP_ITEM}
             className="text-center py-12"
           >
-            <Card className="max-w-md mx-auto">
+            <Card className="max-w-md mx-auto p-8">
               <div className="w-16 h-16 mx-auto mb-4 rounded-full bg-secondary/20 flex items-center justify-center">
-                <span className="text-3xl">📅</span>
+                <IconCalendar size={32} className="text-text-main" />
               </div>
               <h3 className="text-xl font-semibold text-text-main mb-2">
                 No hay eventos próximos
               </h3>
-              <p className="text-text-muted mb-4">
+              <p className="text-text-muted mb-6">
                 Estamos planificando nuevas actividades. Vuelve pronto para ver las próximas jornadas.
               </p>
               <Link href={ROUTES.EVENTOS}>
-                <a>
-                  <Button variant="outline" size="sm">
-                    Ver eventos pasados
-                  </Button>
-                </a>
+                <Button variant="outline" size="sm">
+                  Ver eventos pasados
+                </Button>
               </Link>
             </Card>
           </motion.div>
         )}
+        
+        <div className="mt-8 text-center sm:hidden">
+          <Link href={ROUTES.EVENTOS}>
+            <Button variant="outline" className="w-full">
+              Ver todos los eventos
+            </Button>
+          </Link>
+        </div>
       </section>
 
       {/* Latest News */}
       <section className="container mx-auto px-4">
-        <div className="flex items-center justify-between mb-8">
+        <motion.div 
+          className="flex items-center justify-between mb-8"
+          variants={FADE_UP_ITEM}
+        >
           <div>
             <h2 className="text-3xl font-bold text-text-main mb-2">Últimas Noticias</h2>
             <p className="text-text-muted">Mantente informado sobre nuestras actividades</p>
           </div>
           <Link href={ROUTES.NOTICIAS}>
-            <a>
-              <Button variant="outline">
-                Ver todas <ArrowRight size={16} className="ml-2" />
-              </Button>
-            </a>
+            <Button variant="outline" className="hidden sm:flex group">
+              Ver todas <IconArrowRight size={16} className="ml-2 group-hover:translate-x-1 transition-transform" />
+            </Button>
+          </Link>
+        </motion.div>
+        
+        <motion.div 
+          className="grid grid-cols-1 md:grid-cols-3 gap-6"
+          variants={STAGGER_CONTAINER}
+        >
+          {latestNews.map((article) => (
+            <motion.div key={article.id} variants={SCALE_IN} whileHover={HOVER_LIFT}>
+              <NewsCard article={article} />
+            </motion.div>
+          ))}
+        </motion.div>
+        
+        <div className="mt-8 text-center sm:hidden">
+          <Link href={ROUTES.NOTICIAS}>
+            <Button variant="outline" className="w-full">
+              Ver todas las noticias
+            </Button>
           </Link>
         </div>
-        <div className="grid grid-cols-1 md:grid-cols-3 gap-6">
-          {latestNews.map((article) => (
-            <NewsCard key={article.id} article={article} />
-          ))}
-        </div>
       </section>
-    </div>
+    </motion.div>
   );
 };
