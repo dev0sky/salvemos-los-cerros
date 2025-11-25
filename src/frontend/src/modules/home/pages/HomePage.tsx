@@ -1,81 +1,293 @@
 import React from 'react';
+import { Link } from 'wouter';
+import { motion } from 'framer-motion';
 import { Button } from '@/components/ui/Button';
 import { Card } from '@/components/ui/Card';
+import { ProjectCard } from '@/components/ProjectCard';
+import { EventCard } from '@/components/EventCard';
+import { NewsCard } from '@/components/NewsCard';
 import { STRINGS } from '@/constants/strings';
+import { ROUTES } from '@/constants/routes';
 import { ArrowRight, Leaf, Map, Users } from 'lucide-react';
 
 export const HomePage: React.FC = () => {
+  // Mock preview data
+  const featuredProjects = [
+    {
+      id: '1',
+      title: 'Reforestación Cerro Grande',
+      description: 'Plantación de 500 árboles nativos en la zona norte del Cerro Grande.',
+      location: 'Cerro Grande, Zona Norte',
+      status: 'active' as const,
+      progress: 65,
+      startDate: 'Enero 2024',
+    },
+    {
+      id: '2',
+      title: 'Limpieza Sendero El Mirador',
+      description: 'Jornada mensual de limpieza y mantenimiento del sendero principal.',
+      location: 'Sendero El Mirador',
+      status: 'active' as const,
+      progress: 80,
+      startDate: 'Marzo 2024',
+    },
+    {
+      id: '3',
+      title: 'Jardín de Mariposas',
+      description: 'Creación de un jardín con plantas nativas para atraer mariposas.',
+      location: 'Parque Central',
+      status: 'planned' as const,
+      progress: 15,
+      startDate: 'Junio 2024',
+    },
+  ];
+
+  const upcomingEvents = [
+    {
+      id: '1',
+      title: 'Jornada de Limpieza Cerro Grande',
+      description: 'Únete a nuestra jornada mensual de limpieza.',
+      date: '2024-12-15',
+      time: '08:00 - 12:00',
+      location: 'Cerro Grande',
+      type: 'cleanup' as const,
+      attendees: 45,
+      maxAttendees: 60,
+    },
+    {
+      id: '2',
+      title: 'Taller de Compostaje',
+      description: 'Aprende técnicas de compostaje casero.',
+      date: '2024-12-20',
+      time: '15:00 - 17:00',
+      location: 'Centro Comunitario',
+      type: 'workshop' as const,
+      attendees: 18,
+      maxAttendees: 25,
+    },
+    {
+      id: '3',
+      title: 'Reforestación Quebrada Los Pinos',
+      description: 'Plantaremos 200 árboles nativos.',
+      date: '2024-12-28',
+      time: '07:00 - 13:00',
+      location: 'Quebrada Los Pinos',
+      type: 'reforestation' as const,
+      attendees: 32,
+      maxAttendees: 50,
+    },
+  ];
+
+  const latestNews = [
+    {
+      id: '1',
+      title: 'Exitosa Jornada de Reforestación en Cerro Grande',
+      excerpt: 'Más de 50 voluntarios participaron en la plantación de 300 árboles nativos.',
+      category: 'conservation' as const,
+      date: '2024-11-20',
+      featured: true,
+    },
+    {
+      id: '2',
+      title: 'Nuevo Taller de Educación Ambiental para Niños',
+      excerpt: 'Lanzamos un programa educativo dirigido a escuelas primarias.',
+      category: 'education' as const,
+      date: '2024-11-18',
+    },
+    {
+      id: '3',
+      title: 'Limpieza Masiva Recolecta 500kg de Residuos',
+      excerpt: 'La comunidad se unió para limpiar el Sendero El Mirador.',
+      category: 'events' as const,
+      date: '2024-11-15',
+    },
+  ];
+
   return (
     <div className="space-y-12 md:space-y-20 pb-20">
       {/* Hero Section */}
       <section className="bg-surface rounded-b-3xl p-10 md:p-20 flex flex-col items-center text-center gap-6 border-b border-border-soft">
-        <div className="inline-flex items-center gap-2 px-3 py-1 rounded-full bg-primary/10 text-primary text-sm font-medium">
+        <motion.div
+          initial={{ opacity: 0, scale: 0.9 }}
+          animate={{ opacity: 1, scale: 1 }}
+          transition={{ duration: 0.5 }}
+          className="inline-flex items-center gap-2 px-3 py-1 rounded-full bg-primary/10 text-primary text-sm font-medium"
+        >
           <Leaf size={16} />
           <span>Iniciativa Comunitaria</span>
-        </div>
-        <h1 className="text-4xl md:text-6xl font-bold max-w-3xl text-text-main tracking-tight">
+        </motion.div>
+        <motion.h1
+          initial={{ opacity: 0, y: 20 }}
+          animate={{ opacity: 1, y: 0 }}
+          transition={{ delay: 0.1 }}
+          className="text-4xl md:text-6xl font-bold max-w-3xl text-text-main tracking-tight"
+        >
           {STRINGS.HERO_TITLE}
-        </h1>
-        <p className="text-text-muted text-lg md:text-xl max-w-2xl leading-relaxed">
+        </motion.h1>
+        <motion.p
+          initial={{ opacity: 0, y: 20 }}
+          animate={{ opacity: 1, y: 0 }}
+          transition={{ delay: 0.2 }}
+          className="text-text-muted text-lg md:text-xl max-w-2xl leading-relaxed"
+        >
           {STRINGS.HERO_SUBTITLE}
-        </p>
-        <div className="flex flex-wrap gap-4 justify-center mt-4">
+        </motion.p>
+        <motion.div
+          initial={{ opacity: 0, y: 20 }}
+          animate={{ opacity: 1, y: 0 }}
+          transition={{ delay: 0.3 }}
+          className="flex flex-wrap gap-4 justify-center mt-4"
+        >
           <Button size="lg" className="h-12 px-8 text-base">
             {STRINGS.CTA_PRIMARY}
           </Button>
-          <Button variant="outline" size="lg" className="h-12 px-8 text-base">
-            {STRINGS.CTA_SECONDARY}
-          </Button>
-        </div>
+          <Link href={ROUTES.NOSOTROS}>
+            <a>
+              <Button variant="outline" size="lg" className="h-12 px-8 text-base">
+                {STRINGS.CTA_SECONDARY}
+              </Button>
+            </a>
+          </Link>
+        </motion.div>
       </section>
 
       {/* Features Grid */}
       <section className="container mx-auto px-4">
         <div className="grid grid-cols-1 md:grid-cols-3 gap-6">
-          <Card className="hover:-translate-y-1 transition-transform duration-300">
-            <div className="w-12 h-12 rounded-xl bg-primary/10 flex items-center justify-center mb-4 text-primary">
-              <Map size={24} />
-            </div>
-            <h3 className="text-xl font-semibold text-text-main">Mapeo de Áreas</h3>
-            <p className="text-text-muted">
-              Identificamos y catalogamos las zonas de alto valor ecológico para su protección prioritaria.
-            </p>
-            <div className="pt-2">
-              <a href="#" className="text-primary text-sm font-semibold flex items-center gap-1 hover:gap-2 transition-all">
-                Ver mapa <ArrowRight size={14} />
-              </a>
-            </div>
-          </Card>
+          <motion.div
+            initial={{ opacity: 0, y: 20 }}
+            animate={{ opacity: 1, y: 0 }}
+            transition={{ delay: 0.1 }}
+          >
+            <Card className="hover:-translate-y-1 transition-transform duration-300">
+              <div className="w-12 h-12 rounded-xl bg-primary/10 flex items-center justify-center mb-4 text-primary">
+                <Map size={24} />
+              </div>
+              <h3 className="text-xl font-semibold text-text-main">Mapeo de Áreas</h3>
+              <p className="text-text-muted">
+                Identificamos y catalogamos las zonas de alto valor ecológico para su protección prioritaria.
+              </p>
+              <div className="pt-2">
+                <Link href={ROUTES.PROYECTOS}>
+                  <a className="text-primary text-sm font-semibold flex items-center gap-1 hover:gap-2 transition-all">
+                    Ver proyectos <ArrowRight size={14} />
+                  </a>
+                </Link>
+              </div>
+            </Card>
+          </motion.div>
 
-          <Card className="hover:-translate-y-1 transition-transform duration-300">
-            <div className="w-12 h-12 rounded-xl bg-secondary/20 flex items-center justify-center mb-4 text-text-main">
-              <Users size={24} />
-            </div>
-            <h3 className="text-xl font-semibold text-text-main">Voluntariado</h3>
-            <p className="text-text-muted">
-              Únete a nuestras jornadas de limpieza y reforestación. Tu ayuda es fundamental.
-            </p>
-            <div className="pt-2">
-              <a href="#" className="text-primary text-sm font-semibold flex items-center gap-1 hover:gap-2 transition-all">
-                Participar <ArrowRight size={14} />
-              </a>
-            </div>
-          </Card>
+          <motion.div
+            initial={{ opacity: 0, y: 20 }}
+            animate={{ opacity: 1, y: 0 }}
+            transition={{ delay: 0.2 }}
+          >
+            <Card className="hover:-translate-y-1 transition-transform duration-300">
+              <div className="w-12 h-12 rounded-xl bg-secondary/20 flex items-center justify-center mb-4 text-text-main">
+                <Users size={24} />
+              </div>
+              <h3 className="text-xl font-semibold text-text-main">Voluntariado</h3>
+              <p className="text-text-muted">
+                Únete a nuestras jornadas de limpieza y reforestación. Tu ayuda es fundamental.
+              </p>
+              <div className="pt-2">
+                <Link href={ROUTES.EVENTOS}>
+                  <a className="text-primary text-sm font-semibold flex items-center gap-1 hover:gap-2 transition-all">
+                    Ver eventos <ArrowRight size={14} />
+                  </a>
+                </Link>
+              </div>
+            </Card>
+          </motion.div>
 
-          <Card className="hover:-translate-y-1 transition-transform duration-300">
-            <div className="w-12 h-12 rounded-xl bg-green-100 flex items-center justify-center mb-4 text-green-700">
-              <Leaf size={24} />
-            </div>
-            <h3 className="text-xl font-semibold text-text-main">Educación Ambiental</h3>
-            <p className="text-text-muted">
-              Talleres y charlas para concientizar sobre la importancia de nuestra flora y fauna nativa.
-            </p>
-            <div className="pt-2">
-              <a href="#" className="text-primary text-sm font-semibold flex items-center gap-1 hover:gap-2 transition-all">
-                Aprender más <ArrowRight size={14} />
-              </a>
-            </div>
-          </Card>
+          <motion.div
+            initial={{ opacity: 0, y: 20 }}
+            animate={{ opacity: 1, y: 0 }}
+            transition={{ delay: 0.3 }}
+          >
+            <Card className="hover:-translate-y-1 transition-transform duration-300">
+              <div className="w-12 h-12 rounded-xl bg-green-100 flex items-center justify-center mb-4 text-green-700">
+                <Leaf size={24} />
+              </div>
+              <h3 className="text-xl font-semibold text-text-main">Educación Ambiental</h3>
+              <p className="text-text-muted">
+                Talleres y charlas para concientizar sobre la importancia de nuestra flora y fauna nativa.
+              </p>
+              <div className="pt-2">
+                <Link href={ROUTES.NOTICIAS}>
+                  <a className="text-primary text-sm font-semibold flex items-center gap-1 hover:gap-2 transition-all">
+                    Leer noticias <ArrowRight size={14} />
+                  </a>
+                </Link>
+              </div>
+            </Card>
+          </motion.div>
+        </div>
+      </section>
+
+      {/* Featured Projects */}
+      <section className="container mx-auto px-4">
+        <div className="flex items-center justify-between mb-8">
+          <div>
+            <h2 className="text-3xl font-bold text-text-main mb-2">Proyectos Destacados</h2>
+            <p className="text-text-muted">Conoce nuestras iniciativas activas</p>
+          </div>
+          <Link href={ROUTES.PROYECTOS}>
+            <a>
+              <Button variant="outline">
+                Ver todos <ArrowRight size={16} className="ml-2" />
+              </Button>
+            </a>
+          </Link>
+        </div>
+        <div className="grid grid-cols-1 md:grid-cols-3 gap-6">
+          {featuredProjects.map((project) => (
+            <ProjectCard key={project.id} project={project} />
+          ))}
+        </div>
+      </section>
+
+      {/* Upcoming Events */}
+      <section className="container mx-auto px-4">
+        <div className="flex items-center justify-between mb-8">
+          <div>
+            <h2 className="text-3xl font-bold text-text-main mb-2">Próximos Eventos</h2>
+            <p className="text-text-muted">Únete a nuestras actividades</p>
+          </div>
+          <Link href={ROUTES.EVENTOS}>
+            <a>
+              <Button variant="outline">
+                Ver todos <ArrowRight size={16} className="ml-2" />
+              </Button>
+            </a>
+          </Link>
+        </div>
+        <div className="grid grid-cols-1 md:grid-cols-3 gap-6">
+          {upcomingEvents.map((event) => (
+            <EventCard key={event.id} event={event} />
+          ))}
+        </div>
+      </section>
+
+      {/* Latest News */}
+      <section className="container mx-auto px-4">
+        <div className="flex items-center justify-between mb-8">
+          <div>
+            <h2 className="text-3xl font-bold text-text-main mb-2">Últimas Noticias</h2>
+            <p className="text-text-muted">Mantente informado sobre nuestras actividades</p>
+          </div>
+          <Link href={ROUTES.NOTICIAS}>
+            <a>
+              <Button variant="outline">
+                Ver todas <ArrowRight size={16} className="ml-2" />
+              </Button>
+            </a>
+          </Link>
+        </div>
+        <div className="grid grid-cols-1 md:grid-cols-3 gap-6">
+          {latestNews.map((article) => (
+            <NewsCard key={article.id} article={article} />
+          ))}
         </div>
       </section>
     </div>
