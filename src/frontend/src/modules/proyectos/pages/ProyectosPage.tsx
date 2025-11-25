@@ -11,10 +11,12 @@ import { useProjects } from '@/hooks/useData';
 import { PROJECT_STATS_DATA } from '@/data/projects'; // Keep stats mock for now or calculate from data
 import { PAGE_VARIANTS, FADE_UP_ITEM, SCALE_IN, HOVER_LIFT } from '@/constants/animations';
 
+import { ErrorState } from '@/components/ui/ErrorState';
+
 export const ProyectosPage: React.FC = () => {
   const { projectFilter, setProjectFilter } = useAppStore();
 
-  const { data: projects = [], isLoading, error } = useProjects();
+  const { data: projects = [], isLoading, error, refetch } = useProjects();
 
   const filteredProjects = projects.filter(project => 
     projectFilter === 'all' || project.status === projectFilter
@@ -26,18 +28,6 @@ export const ProyectosPage: React.FC = () => {
     { value: 'completed' as const, label: STRINGS.FILTER_COMPLETED },
     { value: 'planned' as const, label: STRINGS.FILTER_PLANNED },
   ];
-
-  if (isLoading) {
-    return <LoadingSpinner />;
-  }
-
-  if (error) {
-    return (
-      <div className="flex justify-center items-center h-screen text-red-500">
-        Error al cargar proyectos.
-      </div>
-    );
-  }
 
   return (
     <motion.div 
@@ -98,27 +88,34 @@ export const ProyectosPage: React.FC = () => {
 
       {/* Projects Grid */}
       <section className="container mx-auto px-4">
-        <motion.div 
-          className="grid grid-cols-1 md:grid-cols-2 lg:grid-cols-3 gap-6"
-          layout
-        >
-          <AnimatePresence mode='popLayout'>
-            {filteredProjects.map((project) => (
-              <motion.div 
-                key={project.id} 
-                variants={SCALE_IN}
-                initial="hidden"
-                animate="visible"
-                exit={{ opacity: 0, scale: 0.9 }}
-                layout
-                whileHover={HOVER_LIFT}
-              >
-                <ProjectCard project={project} />
-              </motion.div>
-            ))}
-          </AnimatePresence>
-        </motion.div>
-        {filteredProjects.length === 0 && (
+        {isLoading ? (
+          <div className="flex justify-center py-12">
+            <LoadingSpinner />
+          </div>
+        ) : error ? (
+          <ErrorState onRetry={() => refetch()} />
+        ) : filteredProjects.length > 0 ? (
+          <motion.div 
+            className="grid grid-cols-1 md:grid-cols-2 lg:grid-cols-3 gap-6"
+            layout
+          >
+            <AnimatePresence mode='popLayout'>
+              {filteredProjects.map((project) => (
+                <motion.div 
+                  key={project.id} 
+                  variants={SCALE_IN}
+                  initial="hidden"
+                  animate="visible"
+                  exit={{ opacity: 0, scale: 0.9 }}
+                  layout
+                  whileHover={HOVER_LIFT}
+                >
+                  <ProjectCard project={project} />
+                </motion.div>
+              ))}
+            </AnimatePresence>
+          </motion.div>
+        ) : (
           <motion.div 
             className="text-center py-12"
             initial={{ opacity: 0 }}

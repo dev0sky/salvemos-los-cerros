@@ -1,0 +1,65 @@
+{
+    "app_title": "Nature Vivante",
+    "footer_text": "Tous droits réservés.",
+    "nav": {
+        "home": "Accueil",
+        "projects": "Projets",
+        "about": "À Propos",
+        "events": "Événements",
+        "news": "Nouvelles",
+        "gallery": "Galerie",
+        "map": "Carte",
+        "hills": "Collines"
+    },
+    "hero": {
+        "badge": "Initiative Communautaire",
+        "title": "Sauvons les Collines de Chihuahua",
+        "subtitle": "Une association d'activisme social pour la protection des zones naturelles à Chihuahua comme les collines, les rivières, les lacs, les lagunes, les barrages, les montagnes, les canyons, et la flore et la faune qui les habitent.",
+        "description": "Actuellement, nous sommes seulement à Chihuahua capitale mais nous cherchons à aller dans tout l'état à l'avenir. Nous sommes apolitiques, nous réalisons des manifestations et des changements qui cherchent à inspirer et à réaliser des changements pour la durabilité commune des habitants, en sensibilisant aux dangers de la gentrification et en permettant également de sensibiliser à l'utilisation appropriée des ressources naturelles et comment mieux les exploiter.",
+        "cta_primary": "À Propos de Nous",
+        "cta_secondary": "Nos Projets"
+    },
+    "features": {
+        "map": {
+            "title": "Cartographie des Zones",
+            "description": "Nous identifions et cataloguons les zones de haute valeur écologique pour leur protection prioritaire.",
+            "link": "Voir la carte"
+        },
+        "volunteer": {
+            "title": "Bénévolat",
+            "description": "Rejoignez nos journées de nettoyage et de reboisement. Votre aide est fondamentale.",
+            "link": "Voir les événements"
+        },
+        "education": {
+            "title": "Éducation Environnementale",
+            "description": "Ateliers et conférences pour sensibiliser à l'importance de notre flore et faune indigènes.",
+            "link": "Lire les nouvelles"
+        }
+    },
+    "sections": {
+        "projects": {
+            "title": "Projets en Vedette",
+            "subtitle": "Découvrez nos initiatives actives",
+            "view_all": "Voir tout",
+            "empty_title": "Aucun projet en vedette",
+            "empty_desc": "Nous publierons bientôt de nouvelles initiatives. Restez à l'écoute !",
+            "empty_btn": "Voir tous les projets"
+        },
+        "events": {
+            "title": "Événements à Venir",
+            "subtitle": "Rejoignez nos activités",
+            "view_all": "Voir tout",
+            "empty_title": "Aucun événement à venir",
+            "empty_desc": "Nous planifions de nouvelles activités. Revenez bientôt pour voir les prochaines journées.",
+            "empty_btn": "Voir les événements passés"
+        },
+        "news": {
+            "title": "Dernières Nouvelles",
+            "subtitle": "Restez informé de nos activités",
+            "view_all": "Voir tout",
+            "empty_title": "Aucune nouvelle récente",
+            "empty_desc": "Nous travaillons sur de nouvelles mises à jour. Revenez bientôt !",
+            "empty_btn": "Voir toutes les nouvelles"
+        }
+    }
+}

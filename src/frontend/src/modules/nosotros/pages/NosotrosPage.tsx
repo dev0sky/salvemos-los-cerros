@@ -10,20 +10,10 @@ import { useTeam } from '@/hooks/useData';
 import { IMPACT_DATA } from '@/data/team'; // Keep impact data mock for now
 import { PAGE_VARIANTS, FADE_UP_ITEM, STAGGER_CONTAINER, SCALE_IN, HOVER_LIFT } from '@/constants/animations';
 
+import { ErrorState } from '@/components/ui/ErrorState';
+
 export const NosotrosPage: React.FC = () => {
-  const { data: team = [], isLoading, error } = useTeam();
-
-  if (isLoading) {
-    return <LoadingSpinner />;
-  }
-
-  if (error) {
-    return (
-      <div className="flex justify-center items-center h-screen text-red-500">
-        Error al cargar equipo.
-      </div>
-    );
-  }
+  const { data: team = [], isLoading, error, refetch } = useTeam();
 
   return (
     <motion.div 
@@ -109,21 +99,29 @@ export const NosotrosPage: React.FC = () => {
             Conoce a las personas dedicadas que hacen posible nuestra misión de conservación.
           </p>
         </motion.div>
-        <motion.div 
-          className="grid grid-cols-1 md:grid-cols-2 lg:grid-cols-4 gap-6"
-          variants={STAGGER_CONTAINER}
-        >
-          {team.map((member) => (
-            <motion.div
-              key={member.id}
-              variants={SCALE_IN}
-              whileHover={HOVER_LIFT}
-              className="h-full"
-            >
-              <TeamMember member={member} />
-            </motion.div>
-          ))}
-        </motion.div>
+        {isLoading ? (
+          <div className="flex justify-center py-12">
+            <LoadingSpinner />
+          </div>
+        ) : error ? (
+          <ErrorState onRetry={() => refetch()} />
+        ) : (
+          <motion.div 
+            className="grid grid-cols-1 md:grid-cols-2 lg:grid-cols-4 gap-6"
+            variants={STAGGER_CONTAINER}
+          >
+            {team.map((member) => (
+              <motion.div
+                key={member.id}
+                variants={SCALE_IN}
+                whileHover={HOVER_LIFT}
+                className="h-full"
+              >
+                <TeamMember member={member} />
+              </motion.div>
+            ))}
+          </motion.div>
+        )}
       </section>
     </motion.div>
   );

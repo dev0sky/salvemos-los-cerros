@@ -1,0 +1,65 @@
+{
+    "app_title": "Nature Alive",
+    "footer_text": "All rights reserved.",
+    "nav": {
+        "home": "Home",
+        "projects": "Projects",
+        "about": "About Us",
+        "events": "Events",
+        "news": "News",
+        "gallery": "Gallery",
+        "map": "Map",
+        "hills": "Hills"
+    },
+    "hero": {
+        "badge": "Community Initiative",
+        "title": "Save the Hills of Chihuahua",
+        "subtitle": "A social activism association for the protection of natural areas in Chihuahua such as hills, rivers, lakes, lagoons, dams, mountains, canyons, and the flora and fauna that inhabit them.",
+        "description": "Currently we are only in Chihuahua capital but we seek to go to the whole state in the future. We are apolitical, we carry out demonstrations and changes that seek to inspire and make changes for the common sustainability of the inhabitants, raising awareness about the dangers of gentrification and also allowing awareness about the proper use of natural resources and how to make better use of them.",
+        "cta_primary": "About Us",
+        "cta_secondary": "Our Projects"
+    },
+    "features": {
+        "map": {
+            "title": "Area Mapping",
+            "description": "We identify and catalog areas of high ecological value for their priority protection.",
+            "link": "View map"
+        },
+        "volunteer": {
+            "title": "Volunteering",
+            "description": "Join our cleaning and reforestation days. Your help is fundamental.",
+            "link": "View events"
+        },
+        "education": {
+            "title": "Environmental Education",
+            "description": "Workshops and talks to raise awareness about the importance of our native flora and fauna.",
+            "link": "Read news"
+        }
+    },
+    "sections": {
+        "projects": {
+            "title": "Featured Projects",
+            "subtitle": "Know our active initiatives",
+            "view_all": "View all",
+            "empty_title": "No featured projects",
+            "empty_desc": "We will publish new initiatives soon. Stay tuned!",
+            "empty_btn": "View all projects"
+        },
+        "events": {
+            "title": "Upcoming Events",
+            "subtitle": "Join our activities",
+            "view_all": "View all",
+            "empty_title": "No upcoming events",
+            "empty_desc": "We are planning new activities. Come back soon to see the next days.",
+            "empty_btn": "View past events"
+        },
+        "news": {
+            "title": "Latest News",
+            "subtitle": "Stay informed about our activities",
+            "view_all": "View all",
+            "empty_title": "No recent news",
+            "empty_desc": "We are working on new updates. Come back soon!",
+            "empty_btn": "View all news"
+        }
+    }
+}

@@ -1,0 +1,65 @@
+{
+    "app_title": "Naturaleza Viva",
+    "footer_text": "Todos los derechos reservados.",
+    "nav": {
+        "home": "Inicio",
+        "projects": "Proyectos",
+        "about": "Nosotros",
+        "events": "Eventos",
+        "news": "Noticias",
+        "gallery": "Galería",
+        "map": "Mapa",
+        "hills": "Cerros"
+    },
+    "hero": {
+        "badge": "Iniciativa Comunitaria",
+        "title": "Salvemos los Cerros de Chihuahua",
+        "subtitle": "Una asociación de activismo social para la protección de áreas naturales en Chihuahua como cerros, ríos, lagos, lagunas, presas, montañas, cañones, de la flora y la fauna que habitan en ellos.",
+        "description": "Actualmente estamos solo en Chihuahua capital pero buscamos ir a todo el estado en un futuro. Somos apolíticos, realizamos manifestaciones y cambios que buscan inspirar y realizar cambios para la sostenibilidad común de los habitantes, haciendo conciencia sobre los peligros de la gentrificación y permitiendo también concientizar sobre el uso adecuado de los recursos naturales y cómo aprovecharlos mejor.",
+        "cta_primary": "Conócenos",
+        "cta_secondary": "Nuestros Proyectos"
+    },
+    "features": {
+        "map": {
+            "title": "Mapeo de Áreas",
+            "description": "Identificamos y catalogamos las zonas de alto valor ecológico para su protección prioritaria.",
+            "link": "Ver mapa"
+        },
+        "volunteer": {
+            "title": "Voluntariado",
+            "description": "Únete a nuestras jornadas de limpieza y reforestación. Tu ayuda es fundamental.",
+            "link": "Ver eventos"
+        },
+        "education": {
+            "title": "Educación Ambiental",
+            "description": "Talleres y charlas para concientizar sobre la importancia de nuestra flora y fauna nativa.",
+            "link": "Leer noticias"
+        }
+    },
+    "sections": {
+        "projects": {
+            "title": "Proyectos Destacados",
+            "subtitle": "Conoce nuestras iniciativas activas",
+            "view_all": "Ver todos",
+            "empty_title": "No hay proyectos destacados",
+            "empty_desc": "Pronto publicaremos nuevas iniciativas. ¡Mantente atento!",
+            "empty_btn": "Ver todos los proyectos"
+        },
+        "events": {
+            "title": "Próximos Eventos",
+            "subtitle": "Únete a nuestras actividades",
+            "view_all": "Ver todos",
+            "empty_title": "No hay eventos próximos",
+            "empty_desc": "Estamos planificando nuevas actividades. Vuelve pronto para ver las próximas jornadas.",
+            "empty_btn": "Ver eventos pasados"
+        },
+        "news": {
+            "title": "Últimas Noticias",
+            "subtitle": "Mantente informado sobre nuestras actividades",
+            "view_all": "Ver todas",
+            "empty_title": "No hay noticias recientes",
+            "empty_desc": "Estamos trabajando en nuevas actualizaciones. ¡Vuelve pronto!",
+            "empty_btn": "Ver todas las noticias"
+        }
+    }
+}

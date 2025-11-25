@@ -1,28 +1,30 @@
 import React, { useState } from 'react';
 import { Link, useLocation } from 'wouter';
 import { motion, AnimatePresence } from 'framer-motion';
+import { useTranslation } from 'react-i18next';
 import { IconMenu2, IconX, IconLeaf } from '@tabler/icons-react';
-import { STRINGS } from '../constants/strings';
 import { ROUTES } from '../constants/routes';
+import { LanguageSelector } from '../components/LanguageSelector';
 
 interface MainLayoutProps {
   children: React.ReactNode;
 }
 
 export const MainLayout: React.FC<MainLayoutProps> = ({ children }) => {
+  const { t } = useTranslation();
   const [mobileMenuOpen, setMobileMenuOpen] = useState(false);
   const [location] = useLocation();
 
 
   const navLinks = [
-    { label: STRINGS.NAV_HOME, path: ROUTES.HOME },
-    { label: STRINGS.NAV_PROYECTOS, path: ROUTES.PROYECTOS },
-    { label: STRINGS.NAV_NOSOTROS, path: ROUTES.NOSOTROS },
-    { label: STRINGS.NAV_EVENTOS, path: ROUTES.EVENTOS },
-    { label: STRINGS.NAV_NOTICIAS, path: ROUTES.NOTICIAS },
-    { label: STRINGS.NAV_GALERIA, path: ROUTES.GALERIA },
-    { label: STRINGS.NAV_MAPA, path: ROUTES.MAPA },
-    { label: STRINGS.NAV_CERROS, path: ROUTES.CERROS },
+    { label: t('nav.home'), path: ROUTES.HOME },
+    { label: t('nav.projects'), path: ROUTES.PROYECTOS },
+    { label: t('nav.about'), path: ROUTES.NOSOTROS },
+    { label: t('nav.events'), path: ROUTES.EVENTOS },
+    { label: t('nav.news'), path: ROUTES.NOTICIAS },
+    { label: t('nav.gallery'), path: ROUTES.GALERIA },
+    { label: t('nav.map'), path: ROUTES.MAPA },
+    { label: t('nav.hills'), path: ROUTES.CERROS },
   ];
 
   const isActive = (path: string) => location === path;
@@ -36,7 +38,7 @@ export const MainLayout: React.FC<MainLayoutProps> = ({ children }) => {
               <div className="w-8 h-8 rounded-full bg-primary/20 flex items-center justify-center">
                 <IconLeaf className="text-primary" size={20} />
               </div>
-              <span className="text-xl font-bold text-text-main">{STRINGS.APP_TITLE}</span>
+              <span className="text-xl font-bold text-text-main">{t('app_title')}</span>
             </a>
           </Link>
 
@@ -62,15 +64,21 @@ export const MainLayout: React.FC<MainLayoutProps> = ({ children }) => {
                 </a>
               </Link>
             ))}
+            <div className="pl-4 border-l border-border-soft">
+              <LanguageSelector />
+            </div>
           </nav>
 
           {/* Mobile Menu Button */}
-          <button
-            className="md:hidden p-2 text-text-main"
-            onClick={() => setMobileMenuOpen(!mobileMenuOpen)}
-          >
-            {mobileMenuOpen ? <IconX size={24} /> : <IconMenu2 size={24} />}
-          </button>
+          <div className="flex items-center gap-4 md:hidden">
+            <LanguageSelector />
+            <button
+              className="p-2 text-text-main"
+              onClick={() => setMobileMenuOpen(!mobileMenuOpen)}
+            >
+              {mobileMenuOpen ? <IconX size={24} /> : <IconMenu2 size={24} />}
+            </button>
+          </div>
         </div>
 
         {/* Mobile Navigation */}
@@ -110,7 +118,7 @@ export const MainLayout: React.FC<MainLayoutProps> = ({ children }) => {
 
       <footer className="border-t border-border-soft bg-card py-8 mt-auto">
         <div className="container mx-auto px-4 text-center text-text-muted text-sm">
-          <p>&copy; {new Date().getFullYear()} {STRINGS.APP_TITLE}. {STRINGS.FOOTER_TEXT}</p>
+          <p>&copy; {new Date().getFullYear()} {t('app_title')}. {t('footer_text')}</p>
         </div>
       </footer>
     </div>

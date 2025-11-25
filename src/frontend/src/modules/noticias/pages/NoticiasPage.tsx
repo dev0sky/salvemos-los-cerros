@@ -9,10 +9,12 @@ import { useAppStore } from '@/stores/useAppStore';
 import { useNews } from '@/hooks/useData';
 import { PAGE_VARIANTS, FADE_UP_ITEM, SCALE_IN, HOVER_LIFT } from '@/constants/animations';
 
+import { ErrorState } from '@/components/ui/ErrorState';
+
 export const NoticiasPage: React.FC = () => {
   const { newsCategory, setNewsCategory } = useAppStore();
 
-  const { data: news = [], isLoading, error } = useNews();
+  const { data: news = [], isLoading, error, refetch } = useNews();
 
   const filteredNews = news.filter(article => 
     newsCategory === 'all' || article.category === newsCategory
@@ -26,18 +28,6 @@ export const NoticiasPage: React.FC = () => {
     { value: 'events' as const, label: STRINGS.CATEGORY_EVENTS },
     { value: 'education' as const, label: STRINGS.CATEGORY_EDUCATION },
   ];
-
-  if (isLoading) {
-    return <LoadingSpinner />;
-  }
-
-  if (error) {
-    return (
-      <div className="flex justify-center items-center h-screen text-red-500">
-        Error al cargar noticias.
-      </div>
-    );
-  }
 
   return (
     <motion.div 
@@ -68,7 +58,7 @@ export const NoticiasPage: React.FC = () => {
       </section>
 
       {/* Featured Article */}
-      {featuredArticle && newsCategory === 'all' && (
+      {featuredArticle && newsCategory === 'all' && !isLoading && !error && (
         <section className="container mx-auto px-4">
           <motion.div
             variants={SCALE_IN}
@@ -104,27 +94,34 @@ export const NoticiasPage: React.FC = () => {
 
       {/* News Grid */}
       <section className="container mx-auto px-4">
-        <motion.div 
-          className="grid grid-cols-1 md:grid-cols-2 lg:grid-cols-3 gap-6"
-          layout
-        >
-          <AnimatePresence mode='popLayout'>
-            {filteredNews.map((article) => (
-              <motion.div 
-                key={article.id} 
-                variants={SCALE_IN}
-                initial="hidden"
-                animate="visible"
-                exit={{ opacity: 0, scale: 0.9 }}
-                layout
-                whileHover={HOVER_LIFT}
-              >
-                <NewsCard article={article} />
-              </motion.div>
-            ))}
-          </AnimatePresence>
-        </motion.div>
-        {filteredNews.length === 0 && (
+        {isLoading ? (
+          <div className="flex justify-center py-12">
+            <LoadingSpinner />
+          </div>
+        ) : error ? (
+          <ErrorState onRetry={() => refetch()} />
+        ) : filteredNews.length > 0 ? (
+          <motion.div 
+            className="grid grid-cols-1 md:grid-cols-2 lg:grid-cols-3 gap-6"
+            layout
+          >
+            <AnimatePresence mode='popLayout'>
+              {filteredNews.map((article) => (
+                <motion.div 
+                  key={article.id} 
+                  variants={SCALE_IN}
+                  initial="hidden"
+                  animate="visible"
+                  exit={{ opacity: 0, scale: 0.9 }}
+                  layout
+                  whileHover={HOVER_LIFT}
+                >
+                  <NewsCard article={article} />
+                </motion.div>
+              ))}
+            </AnimatePresence>
+          </motion.div>
+        ) : (
           <motion.div 
             className="text-center py-12"
             initial={{ opacity: 0 }}

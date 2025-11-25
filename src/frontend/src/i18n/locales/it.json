@@ -1,0 +1,65 @@
+{
+    "app_title": "Natura Viva",
+    "footer_text": "Tutti i diritti riservati.",
+    "nav": {
+        "home": "Home",
+        "projects": "Progetti",
+        "about": "Chi Siamo",
+        "events": "Eventi",
+        "news": "Notizie",
+        "gallery": "Galleria",
+        "map": "Mappa",
+        "hills": "Colline"
+    },
+    "hero": {
+        "badge": "Iniziativa Comunitaria",
+        "title": "Salviamo le Colline di Chihuahua",
+        "subtitle": "Un'associazione di attivismo sociale per la protezione delle aree naturali a Chihuahua come colline, fiumi, laghi, lagune, dighe, montagne, canyon e la flora e la fauna che li abitano.",
+        "description": "Attualmente siamo solo a Chihuahua capitale ma cerchiamo di andare in tutto lo stato in futuro. Siamo apolitici, realizziamo manifestazioni e cambiamenti che cercano di ispirare e realizzare cambiamenti per la sostenibilità comune degli abitanti, sensibilizzando sui pericoli della gentrificazione e permettendo anche di sensibilizzare sull'uso adeguato delle risorse naturali e come sfruttarle meglio.",
+        "cta_primary": "Chi Siamo",
+        "cta_secondary": "I Nostri Progetti"
+    },
+    "features": {
+        "map": {
+            "title": "Mappatura delle Aree",
+            "description": "Identifichiamo e cataloghiamo le zone di alto valore ecologico per la loro protezione prioritaria.",
+            "link": "Vedi mappa"
+        },
+        "volunteer": {
+            "title": "Volontariato",
+            "description": "Unisciti alle nostre giornate di pulizia e riforestazione. Il tuo aiuto è fondamentale.",
+            "link": "Vedi eventi"
+        },
+        "education": {
+            "title": "Educazione Ambientale",
+            "description": "Workshop e conferenze per sensibilizzare sull'importanza della nostra flora e fauna nativa.",
+            "link": "Leggi notizie"
+        }
+    },
+    "sections": {
+        "projects": {
+            "title": "Progetti in Evidenza",
+            "subtitle": "Conosci le nostre iniziative attive",
+            "view_all": "Vedi tutti",
+            "empty_title": "Nessun progetto in evidenza",
+            "empty_desc": "Pubblicheremo presto nuove iniziative. Rimanete sintonizzati!",
+            "empty_btn": "Vedi tutti i progetti"
+        },
+        "events": {
+            "title": "Prossimi Eventi",
+            "subtitle": "Unisciti alle nostre attività",
+            "view_all": "Vedi tutti",
+            "empty_title": "Nessun evento imminente",
+            "empty_desc": "Stiamo pianificando nuove attività. Torna presto per vedere le prossime giornate.",
+            "empty_btn": "Vedi eventi passati"
+        },
+        "news": {
+            "title": "Ultime Notizie",
+            "subtitle": "Rimani informato sulle nostre attività",
+            "view_all": "Vedi tutte",
+            "empty_title": "Nessuna notizia recente",
+            "empty_desc": "Stiamo lavorando a nuovi aggiornamenti. Torna presto!",
+            "empty_btn": "Vedi tutte le notizie"
+        }
+    }
+}

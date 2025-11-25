@@ -8,11 +8,12 @@ import { STRINGS } from '@/constants/strings';
 import { useAppStore } from '@/stores/useAppStore';
 import { useEvents } from '@/hooks/useData';
 import { PAGE_VARIANTS, FADE_UP_ITEM, SCALE_IN, HOVER_LIFT } from '@/constants/animations';
+import { ErrorState } from '@/components/ui/ErrorState';
 
 export const EventosPage: React.FC = () => {
   const { eventFilter, setEventFilter } = useAppStore();
 
-  const { data: events = [], isLoading, error } = useEvents();
+  const { data: events = [], isLoading, error, refetch } = useEvents();
 
   const now = new Date();
   const filteredEvents = events.filter(event => {
@@ -27,18 +28,6 @@ export const EventosPage: React.FC = () => {
     { value: 'upcoming' as const, label: STRINGS.FILTER_UPCOMING },
     { value: 'past' as const, label: STRINGS.FILTER_PAST },
   ];
-
-  if (isLoading) {
-    return <LoadingSpinner />;
-  }
-
-  if (error) {
-    return (
-      <div className="flex justify-center items-center h-screen text-red-500">
-        Error al cargar eventos.
-      </div>
-    );
-  }
 
   return (
     <motion.div 
@@ -92,27 +81,34 @@ export const EventosPage: React.FC = () => {
 
       {/* Events Grid */}
       <section className="container mx-auto px-4">
-        <motion.div 
-          className="grid grid-cols-1 md:grid-cols-2 lg:grid-cols-3 gap-6"
-          layout
-        >
-          <AnimatePresence mode='popLayout'>
-            {filteredEvents.map((event) => (
-              <motion.div 
-                key={event.id} 
-                variants={SCALE_IN}
-                initial="hidden"
-                animate="visible"
-                exit={{ opacity: 0, scale: 0.9 }}
-                layout
-                whileHover={HOVER_LIFT}
-              >
-                <EventCard event={event} />
-              </motion.div>
-            ))}
-          </AnimatePresence>
-        </motion.div>
-        {filteredEvents.length === 0 && (
+        {isLoading ? (
+          <div className="flex justify-center py-12">
+            <LoadingSpinner />
+          </div>
+        ) : error ? (
+          <ErrorState onRetry={() => refetch()} />
+        ) : filteredEvents.length > 0 ? (
+          <motion.div 
+            className="grid grid-cols-1 md:grid-cols-2 lg:grid-cols-3 gap-6"
+            layout
+          >
+            <AnimatePresence mode='popLayout'>
+              {filteredEvents.map((event) => (
+                <motion.div 
+                  key={event.id} 
+                  variants={SCALE_IN}
+                  initial="hidden"
+                  animate="visible"
+                  exit={{ opacity: 0, scale: 0.9 }}
+                  layout
+                  whileHover={HOVER_LIFT}
+                >
+                  <EventCard event={event} />
+                </motion.div>
+              ))}
+            </AnimatePresence>
+          </motion.div>
+        ) : (
           <motion.div 
             className="text-center py-12"
             initial={{ opacity: 0 }}

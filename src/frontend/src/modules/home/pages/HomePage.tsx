@@ -1,4 +1,5 @@
 import React from 'react';
+import { useTranslation } from 'react-i18next';
 import { Link } from 'wouter';
 import { motion } from 'framer-motion';
 import { IconArrowRight, IconLeaf, IconUsers, IconCalendar, IconMap, IconNews, IconShovel } from '@tabler/icons-react';
@@ -8,26 +9,23 @@ import { LoadingSpinner } from '@/components/ui/LoadingSpinner';
 import { ProjectCard } from '@/components/ProjectCard';
 import { EventCard } from '@/components/EventCard';
 import { NewsCard } from '@/components/NewsCard';
-import { STRINGS } from '@/constants/strings';
 import { ROUTES } from '@/constants/routes';
 import { useProjects, useEvents, useNews } from '@/hooks/useData';
 import { PAGE_VARIANTS, FADE_UP_ITEM, STAGGER_CONTAINER, HOVER_LIFT, SCALE_IN } from '@/constants/animations';
 
-export const HomePage: React.FC = () => {
-  const { data: projects = [], isLoading: loadingProjects } = useProjects();
-  const { data: events = [], isLoading: loadingEvents } = useEvents();
-  const { data: news = [], isLoading: loadingNews } = useNews();
+import { ErrorState } from '@/components/ui/ErrorState';
 
-  const isLoading = loadingProjects || loadingEvents || loadingNews;
+export const HomePage: React.FC = () => {
+  const { t } = useTranslation();
+  const { data: projects = [], isLoading: loadingProjects, error: errorProjects, refetch: refetchProjects } = useProjects();
+  const { data: events = [], isLoading: loadingEvents, error: errorEvents, refetch: refetchEvents } = useEvents();
+  const { data: news = [], isLoading: loadingNews, error: errorNews, refetch: refetchNews } = useNews();
 
   // Get preview data (first 3 items from each)
   const featuredProjects = projects.slice(0, 3);
   const upcomingEvents = events.filter(e => new Date(e.date) >= new Date()).slice(0, 3);
   const latestNews = news.slice(0, 3);
 
-  if (isLoading) {
-    return <LoadingSpinner />;
-  }
 
   return (
     <motion.div 
@@ -37,7 +35,7 @@ export const HomePage: React.FC = () => {
       variants={PAGE_VARIANTS}
     >
       {/* Hero Section */}
-      <section className="relative h-[80vh] min-h-[600px] flex items-center justify-center overflow-hidden">
+      <section className="relative min-h-[80vh] flex items-center justify-center overflow-hidden py-20">
         <div className="absolute inset-0 z-0">
           <motion.img 
             src="https://images.unsplash.com/photo-1464822759023-fed622ff2c3b?auto=format&fit=crop&q=80"
@@ -54,22 +52,29 @@ export const HomePage: React.FC = () => {
           <motion.div variants={FADE_UP_ITEM}>
             <div className="inline-flex items-center gap-2 px-4 py-1.5 rounded-full bg-white/10 backdrop-blur-md border border-white/20 text-white text-sm font-medium mb-6">
               <IconLeaf size={16} />
-              <span>Iniciativa Comunitaria</span>
+              <span>{t('hero.badge')}</span>
             </div>
           </motion.div>
           
           <motion.h1 
-            className="text-5xl md:text-7xl font-bold mb-6 tracking-tight"
+            className="text-4xl md:text-7xl font-bold mb-6 tracking-tight"
             variants={FADE_UP_ITEM}
           >
-            {STRINGS.HERO_TITLE}
+            {t('hero.title')}
           </motion.h1>
           
           <motion.p 
             className="text-xl md:text-2xl mb-10 max-w-2xl mx-auto text-white/90"
             variants={FADE_UP_ITEM}
           >
-            {STRINGS.HERO_SUBTITLE}
+            {t('hero.subtitle')}
+          </motion.p>
+
+          <motion.p 
+            className="text-lg mb-10 max-w-3xl mx-auto text-white/80"
+            variants={FADE_UP_ITEM}
+          >
+            {t('hero.description')}
           </motion.p>
           
           <motion.div 
@@ -78,12 +83,12 @@ export const HomePage: React.FC = () => {
           >
             <Link href={ROUTES.NOSOTROS}>
               <Button size="lg" className="text-lg px-8 h-14">
-                {STRINGS.CTA_PRIMARY}
+                {t('hero.cta_primary')}
               </Button>
             </Link>
             <Link href={ROUTES.PROYECTOS}>
               <Button variant="outline" size="lg" className="text-lg px-8 h-14 bg-white/10 backdrop-blur-sm border-white/30 text-white hover:bg-white/20 hover:text-white hover:border-white/50">
-                {STRINGS.CTA_SECONDARY}
+                {t('hero.cta_secondary')}
               </Button>
             </Link>
           </motion.div>
@@ -102,10 +107,10 @@ export const HomePage: React.FC = () => {
                 <div className="w-16 h-16 rounded-2xl bg-primary/10 flex items-center justify-center mb-6 group-hover:bg-primary/20 transition-colors text-primary">
                   <IconMap size={32} />
                 </div>
-                <h3 className="text-2xl font-bold mb-3 text-text-main">Mapeo de Áreas</h3>
-                <p className="text-text-muted mb-6">Identificamos y catalogamos las zonas de alto valor ecológico para su protección prioritaria.</p>
+                <h3 className="text-2xl font-bold mb-3 text-text-main">{t('features.map.title')}</h3>
+                <p className="text-text-muted mb-6">{t('features.map.description')}</p>
                 <span className="text-primary font-semibold flex items-center gap-2 mt-auto group-hover:gap-3 transition-all">
-                  Ver mapa <IconArrowRight size={18} />
+                  {t('features.map.link')} <IconArrowRight size={18} />
                 </span>
               </Card>
             </motion.div>
@@ -117,10 +122,10 @@ export const HomePage: React.FC = () => {
                 <div className="w-16 h-16 rounded-2xl bg-secondary/20 flex items-center justify-center mb-6 group-hover:bg-secondary/30 transition-colors text-text-main">
                   <IconUsers size={32} />
                 </div>
-                <h3 className="text-2xl font-bold mb-3 text-text-main">Voluntariado</h3>
-                <p className="text-text-muted mb-6">Únete a nuestras jornadas de limpieza y reforestación. Tu ayuda es fundamental.</p>
+                <h3 className="text-2xl font-bold mb-3 text-text-main">{t('features.volunteer.title')}</h3>
+                <p className="text-text-muted mb-6">{t('features.volunteer.description')}</p>
                 <span className="text-primary font-semibold flex items-center gap-2 mt-auto group-hover:gap-3 transition-all">
-                  Ver eventos <IconArrowRight size={18} />
+                  {t('features.volunteer.link')} <IconArrowRight size={18} />
                 </span>
               </Card>
             </motion.div>
@@ -132,10 +137,10 @@ export const HomePage: React.FC = () => {
                 <div className="w-16 h-16 rounded-2xl bg-green-100 flex items-center justify-center mb-6 group-hover:bg-green-200 transition-colors text-green-700">
                   <IconLeaf size={32} />
                 </div>
-                <h3 className="text-2xl font-bold mb-3 text-text-main">Educación Ambiental</h3>
-                <p className="text-text-muted mb-6">Talleres y charlas para concientizar sobre la importancia de nuestra flora y fauna nativa.</p>
+                <h3 className="text-2xl font-bold mb-3 text-text-main">{t('features.education.title')}</h3>
+                <p className="text-text-muted mb-6">{t('features.education.description')}</p>
                 <span className="text-primary font-semibold flex items-center gap-2 mt-auto group-hover:gap-3 transition-all">
-                  Leer noticias <IconArrowRight size={18} />
+                  {t('features.education.link')} <IconArrowRight size={18} />
                 </span>
               </Card>
             </motion.div>
@@ -150,17 +155,23 @@ export const HomePage: React.FC = () => {
           variants={FADE_UP_ITEM}
         >
           <div>
-            <h2 className="text-3xl font-bold text-text-main mb-2">Proyectos Destacados</h2>
-            <p className="text-text-muted">Conoce nuestras iniciativas activas</p>
+            <h2 className="text-3xl font-bold text-text-main mb-2">{t('sections.projects.title')}</h2>
+            <p className="text-text-muted">{t('sections.projects.subtitle')}</p>
           </div>
           <Link href={ROUTES.PROYECTOS}>
             <Button variant="outline" className="hidden sm:flex group">
-              Ver todos <IconArrowRight size={16} className="ml-2 group-hover:translate-x-1 transition-transform" />
+              {t('sections.projects.view_all')} <IconArrowRight size={16} className="ml-2 group-hover:translate-x-1 transition-transform" />
             </Button>
           </Link>
         </motion.div>
         
-        {featuredProjects.length > 0 ? (
+        {loadingProjects ? (
+          <div className="flex justify-center py-12">
+            <LoadingSpinner />
+          </div>
+        ) : errorProjects ? (
+          <ErrorState onRetry={() => refetchProjects()} />
+        ) : featuredProjects.length > 0 ? (
           <motion.div 
             className="grid grid-cols-1 md:grid-cols-3 gap-6"
             variants={STAGGER_CONTAINER}
@@ -181,14 +192,14 @@ export const HomePage: React.FC = () => {
                 <IconShovel size={32} className="text-primary" />
               </div>
               <h3 className="text-xl font-semibold text-text-main mb-2">
-                No hay proyectos destacados
+                {t('sections.projects.empty_title')}
               </h3>
               <p className="text-text-muted mb-6">
-                Pronto publicaremos nuevas iniciativas. ¡Mantente atento!
+                {t('sections.projects.empty_desc')}
               </p>
               <Link href={ROUTES.PROYECTOS}>
                 <Button variant="outline" size="sm">
-                  Ver todos los proyectos
+                  {t('sections.projects.empty_btn')}
                 </Button>
               </Link>
             </Card>
@@ -198,7 +209,7 @@ export const HomePage: React.FC = () => {
         <div className="mt-8 text-center sm:hidden">
           <Link href={ROUTES.PROYECTOS}>
             <Button variant="outline" className="w-full">
-              Ver todos los proyectos
+              {t('sections.projects.empty_btn')}
             </Button>
           </Link>
         </div>
@@ -211,17 +222,23 @@ export const HomePage: React.FC = () => {
           variants={FADE_UP_ITEM}
         >
           <div>
-            <h2 className="text-3xl font-bold text-text-main mb-2">Próximos Eventos</h2>
-            <p className="text-text-muted">Únete a nuestras actividades</p>
+            <h2 className="text-3xl font-bold text-text-main mb-2">{t('sections.events.title')}</h2>
+            <p className="text-text-muted">{t('sections.events.subtitle')}</p>
           </div>
           <Link href={ROUTES.EVENTOS}>
             <Button variant="outline" className="hidden sm:flex group">
-              Ver todos <IconArrowRight size={16} className="ml-2 group-hover:translate-x-1 transition-transform" />
+              {t('sections.events.view_all')} <IconArrowRight size={16} className="ml-2 group-hover:translate-x-1 transition-transform" />
             </Button>
           </Link>
         </motion.div>
         
-        {upcomingEvents.length > 0 ? (
+        {loadingEvents ? (
+          <div className="flex justify-center py-12">
+            <LoadingSpinner />
+          </div>
+        ) : errorEvents ? (
+          <ErrorState onRetry={() => refetchEvents()} />
+        ) : upcomingEvents.length > 0 ? (
           <motion.div 
             className="grid grid-cols-1 md:grid-cols-3 gap-6"
             variants={STAGGER_CONTAINER}
@@ -242,14 +259,14 @@ export const HomePage: React.FC = () => {
                 <IconCalendar size={32} className="text-text-main" />
               </div>
               <h3 className="text-xl font-semibold text-text-main mb-2">
-                No hay eventos próximos
+                {t('sections.events.empty_title')}
               </h3>
               <p className="text-text-muted mb-6">
-                Estamos planificando nuevas actividades. Vuelve pronto para ver las próximas jornadas.
+                {t('sections.events.empty_desc')}
               </p>
               <Link href={ROUTES.EVENTOS}>
                 <Button variant="outline" size="sm">
-                  Ver eventos pasados
+                  {t('sections.events.empty_btn')}
                 </Button>
               </Link>
             </Card>
@@ -259,7 +276,7 @@ export const HomePage: React.FC = () => {
         <div className="mt-8 text-center sm:hidden">
           <Link href={ROUTES.EVENTOS}>
             <Button variant="outline" className="w-full">
-              Ver todos los eventos
+              {t('sections.events.empty_btn')}
             </Button>
           </Link>
         </div>
@@ -272,17 +289,153 @@ export const HomePage: React.FC = () => {
           variants={FADE_UP_ITEM}
         >
           <div>
-            <h2 className="text-3xl font-bold text-text-main mb-2">Últimas Noticias</h2>
-            <p className="text-text-muted">Mantente informado sobre nuestras actividades</p>
+            <h2 className="text-3xl font-bold text-text-main mb-2">{t('sections.news.title')}</h2>
+            <p className="text-text-muted">{t('sections.news.subtitle')}</p>
           </div>
           <Link href={ROUTES.NOTICIAS}>
             <Button variant="outline" className="hidden sm:flex group">
-              Ver todas <IconArrowRight size={16} className="ml-2 group-hover:translate-x-1 transition-transform" />
+              {t('sections.news.view_all')} <IconArrowRight size={16} className="ml-2 group-hover:translate-x-1 transition-transform" />
             </Button>
           </Link>
         </motion.div>
         
-        {latestNews.length > 0 ? (
+        {loadingNews ? (
+          <div className="flex justify-center py-12">
+            <LoadingSpinner />
+          </div>
+        ) : errorNews ? (
+          <ErrorState onRetry={() => refetchNews()} />
+        ) : latestNews.length > 0 ? (
+          <motion.div 
+            className="grid grid-cols-1 md:grid-cols-3 gap-6"
+            variants={STAGGER_CONTAINER}
+          >
+            {latestNews.map((article) => (
+              <motion.div key={article.id} variants={SCALE_IN} whileHover={HOVER_LIFT}>
+                <NewsCard article={article} />
+              </motion.div>
+            ))}
+          </motion.div>
+        ) : (
+          <motion.div
+            variants={FADE_UP_ITEM}
+            className="text-center py-12"
+          >
+            <Card className="max-w-md mx-auto p-8">
+              <div className="w-16 h-16 mx-auto mb-4 rounded-full bg-primary/10 flex items-center justify-center">
+                <IconShovel size={32} className="text-primary" />
+              </div>
+              <h3 className="text-xl font-semibold text-text-main mb-2">
+                {t('sections.projects.empty_title')}
+              </h3>
+              <p className="text-text-muted mb-6">
+                {t('sections.projects.empty_desc')}
+              </p>
+              <Link href={ROUTES.PROYECTOS}>
+                <Button variant="outline" size="sm">
+                  {t('sections.projects.empty_btn')}
+                </Button>
+              </Link>
+            </Card>
+          </motion.div>
+        )}
+        
+        <div className="mt-8 text-center sm:hidden">
+          <Link href={ROUTES.PROYECTOS}>
+            <Button variant="outline" className="w-full">
+              {t('sections.projects.empty_btn')}
+            </Button>
+          </Link>
+        </div>
+      </section>
+
+      {/* Upcoming Events */}
+      <section className="container mx-auto px-4">
+        <motion.div 
+          className="flex items-center justify-between mb-8"
+          variants={FADE_UP_ITEM}
+        >
+          <div>
+            <h2 className="text-3xl font-bold text-text-main mb-2">{t('sections.events.title')}</h2>
+            <p className="text-text-muted">{t('sections.events.subtitle')}</p>
+          </div>
+          <Link href={ROUTES.EVENTOS}>
+            <Button variant="outline" className="hidden sm:flex group">
+              {t('sections.events.view_all')} <IconArrowRight size={16} className="ml-2 group-hover:translate-x-1 transition-transform" />
+            </Button>
+          </Link>
+        </motion.div>
+        
+        {loadingEvents ? (
+          <div className="flex justify-center py-12">
+            <LoadingSpinner />
+          </div>
+        ) : upcomingEvents.length > 0 ? (
+          <motion.div 
+            className="grid grid-cols-1 md:grid-cols-3 gap-6"
+            variants={STAGGER_CONTAINER}
+          >
+            {upcomingEvents.map((event) => (
+              <motion.div key={event.id} variants={SCALE_IN} whileHover={HOVER_LIFT}>
+                <EventCard event={event} />
+              </motion.div>
+            ))}
+          </motion.div>
+        ) : (
+          <motion.div
+            variants={FADE_UP_ITEM}
+            className="text-center py-12"
+          >
+            <Card className="max-w-md mx-auto p-8">
+              <div className="w-16 h-16 mx-auto mb-4 rounded-full bg-secondary/20 flex items-center justify-center">
+                <IconCalendar size={32} className="text-text-main" />
+              </div>
+              <h3 className="text-xl font-semibold text-text-main mb-2">
+                {t('sections.events.empty_title')}
+              </h3>
+              <p className="text-text-muted mb-6">
+                {t('sections.events.empty_desc')}
+              </p>
+              <Link href={ROUTES.EVENTOS}>
+                <Button variant="outline" size="sm">
+                  {t('sections.events.empty_btn')}
+                </Button>
+              </Link>
+            </Card>
+          </motion.div>
+        )}
+        
+        <div className="mt-8 text-center sm:hidden">
+          <Link href={ROUTES.EVENTOS}>
+            <Button variant="outline" className="w-full">
+              {t('sections.events.empty_btn')}
+            </Button>
+          </Link>
+        </div>
+      </section>
+
+      {/* Latest News */}
+      <section className="container mx-auto px-4">
+        <motion.div 
+          className="flex items-center justify-between mb-8"
+          variants={FADE_UP_ITEM}
+        >
+          <div>
+            <h2 className="text-3xl font-bold text-text-main mb-2">{t('sections.news.title')}</h2>
+            <p className="text-text-muted">{t('sections.news.subtitle')}</p>
+          </div>
+          <Link href={ROUTES.NOTICIAS}>
+            <Button variant="outline" className="hidden sm:flex group">
+              {t('sections.news.view_all')} <IconArrowRight size={16} className="ml-2 group-hover:translate-x-1 transition-transform" />
+            </Button>
+          </Link>
+        </motion.div>
+        
+        {loadingNews ? (
+          <div className="flex justify-center py-12">
+            <LoadingSpinner />
+          </div>
+        ) : latestNews.length > 0 ? (
           <motion.div 
             className="grid grid-cols-1 md:grid-cols-3 gap-6"
             variants={STAGGER_CONTAINER}
@@ -303,14 +456,14 @@ export const HomePage: React.FC = () => {
                 <IconNews size={32} className="text-green-700" />
               </div>
               <h3 className="text-xl font-semibold text-text-main mb-2">
-                No hay noticias recientes
+                {t('sections.news.empty_title')}
               </h3>
               <p className="text-text-muted mb-6">
-                Estamos trabajando en nuevas actualizaciones. ¡Vuelve pronto!
+                {t('sections.news.empty_desc')}
               </p>
               <Link href={ROUTES.NOTICIAS}>
                 <Button variant="outline" size="sm">
-                  Ver todas las noticias
+                  {t('sections.news.empty_btn')}
                 </Button>
               </Link>
             </Card>
@@ -320,7 +473,7 @@ export const HomePage: React.FC = () => {
         <div className="mt-8 text-center sm:hidden">
           <Link href={ROUTES.NOTICIAS}>
             <Button variant="outline" className="w-full">
-              Ver todas las noticias
+              {t('sections.news.empty_btn')}
             </Button>
           </Link>
         </div>
