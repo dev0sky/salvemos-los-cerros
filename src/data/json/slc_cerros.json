@@ -1,0 +1,239 @@
+{
+    "cerros": [
+        {
+            "name": "Cerro Grande (Arewákawi)",
+            "altitude_m": 1900,
+            "location": {
+                "municipality": "Chihuahua, Chihuahua",
+                "source": "Wikipedia"
+            },
+            "geology": {
+                "rock": "Toba ignimbrita (ígnea extrusiva)",
+                "age": "Oligoceno",
+                "notes": "También hay granodiorita intrusiva en la base."
+            },
+            "ecological_value": {
+                "flora": [
+                    "Encino chihuahuense (Quercus chihuahuensis)",
+                    "Cactus diversos",
+                    "Arbustos nativos"
+                ],
+                "fauna": [
+                    "Cánidos (se han encontrado excrementos)",
+                    "Felinos",
+                    "Otras especies silvestres"
+                ],
+                "cultural": [
+                    "Cuevas con pinturas rupestres (INAH)",
+                    "‘Ojo de agua’ como fuente de agua para fauna",
+                    "Importancia simbólica para la identidad de Chihuahua y como cerro sagrado Rarámuri"
+                ]
+            },
+            "materials": {
+                "minerals": "Inventario de recursos minerales documenta presencia de rocas ígneas, pómice, posiblemente material volcánico útil."
+            },
+            "legal_status": {
+                "proposed_protection": "ANP / Zona de valorización ecológica",
+                "status": "Zona E en el PDU de Chihuahua según plan urbano municipal"
+            },
+            "threats": [
+                "Urbanización",
+                "Destrucción del paisaje y cuevas",
+                "Presión inmobiliaria"
+            ],
+            "sources": [
+                {
+                    "name": "Wikipedia",
+                    "link": "https://es.wikipedia.org/wiki/Cerro_Grande_(Chihuahua)"
+                },
+                {
+                    "name": "Azteca Chihuahua",
+                    "link": "https://www.aztecachihuahua.com/noticias/proponen-declarar-cinco-cerros-chihuahua-como-zonas-naturales-protegidas"
+                }
+            ]
+        },
+        {
+            "name": "Cerro Coronel (Guaguachic)",
+            "altitude_m": 1655,
+            "location": {
+                "municipality": "Chihuahua, Chihuahua",
+                "source": "Wikipedia"
+            },
+            "geology": {
+                "rock": "Ignimbrita riolítica (volcánica extinta)",
+                "age": "Oligoceno",
+                "notes": "Origen volcánico según inventario geológico."
+            },
+            "ecological_value": {
+                "flora": [
+                    "Vegetación desértica / arbustos escasos"
+                ],
+                "fauna": [
+                    "Fauna local desértica, posible riesgo de deslizamientos de rocas"
+                ],
+                "cultural": [
+                    "Símbolo de la ciudad, mirador urbano"
+                ]
+            },
+            "materials": {
+                "minerals": "Se reporta que antiguamente fue mina de oro. :contentReference[oaicite:0]{index=0}"
+            },
+            "legal_status": {
+                "proposed_protection": "ANP (Zona E para preservación ecológica según municipio)",
+                "status": "Protección municipal prevista en Plan Desarrollo Urbano. :contentReference[oaicite:1]{index=1}"
+            },
+            "threats": [
+                "Deslizamientos por laderas fracturadas",
+                "Urbanización",
+                "Presión para desarrollo"
+            ],
+            "sources": [
+                {
+                    "name": "Wikipedia",
+                    "link": "https://es.wikipedia.org/wiki/Cerro_Coronel"
+                },
+                {
+                    "name": "El Heraldo de Chihuahua",
+                    "link": "https://oem.com.mx/elheraldodechihuahua/cultura/sabias-que-el-cerro-del-coronel-era-una-mina-de-oro-conoce-esto-y-mas-sobre-este-icono-de-chihuahua-21142417"
+                }
+            ]
+        },
+        {
+            "name": "Picos de la Luna (Sierra Nombre de Dios)",
+            "altitude_max_m": 1704,
+            "location": {
+                "municipality": "Chihuahua, Chihuahua",
+                "source": "Wikiloc / AllTrails"
+            },
+            "ecological_value": {
+                "flora": [
+                    "Formaciones rocosas, cactus locales"
+                ],
+                "fauna": [
+                    "Especies desérticas y serranas"
+                ],
+                "cultural": [
+                    "Área popular para senderismo",
+                    "Paisaje emblemático en la sierra Nombre de Dios"
+                ]
+            },
+            "materials": {
+                "minerals": "La sierra Nombre de Dios tiene explotación de caliza, toba, piedras agregadas según atlas de materias primas. :contentReference[oaicite:2]{index=2}"
+            },
+            "legal_status": {
+                "proposed_protection": "ANP / Zona natural protegida",
+                "status": "IMPULSO por IMPLAN para declararla área protegida. :contentReference[oaicite:3]{index=3}"
+            },
+            "threats": [
+                "Urbanización",
+                "Actividades recreativas descontroladas",
+                "Explotación de material pétreo"
+            ],
+            "sources": [
+                {
+                    "name": "AllTrails",
+                    "link": "https://www.alltrails.com/es-mx/ruta/mexico/chihuahua/cerro-picos-de-la-luna"
+                },
+                {
+                    "name": "Wikiloc Ruta",
+                    "link": "https://es.wikiloc.com/rutas-senderismo/chihuahua-chih-los-picos-de-la-luna-por-cara-oriente-ruta02-sierra-de-nombre-de-dios-64434690"
+                },
+                {
+                    "name": "Piedepágina",
+                    "link": "https://piedepagina.mx/debe-protegerse-la-sierra-de-nombre-de-dios-inicia-la-primera-consulta-publica-en-chihuahua/"
+                }
+            ]
+        },
+        {
+            "name": "Cañón del Marro",
+            "location": {
+                "municipality": "Chihuahua, Chihuahua",
+                "source": "Azteca Chihuahua"
+            },
+            "ecological_value": {
+                "flora": [
+                    "Vegetación serrana, especies nativas"
+                ],
+                "fauna": [
+                    "Especies de la sierra Nombre de Dios"
+                ],
+                "cultural": [
+                    "Paisaje escénico, uso para senderismo"
+                ]
+            },
+            "materials": {
+                "minerals": "Potencial de explotación de materiales pétreos según plan de materias primas. :contentReference[oaicite:4]{index=4}"
+            },
+            "legal_status": {
+                "proposed_protection": "ANP (área de preservación ecológica)",
+                "status": "Incluido en propuesta para ANP de cuatro cerros según consejo municipal. :contentReference[oaicite:5]{index=5}"
+            },
+            "threats": [
+                "Urbanización",
+                "Desarrollo de fraccionamientos",
+                "Impacto recreativo"
+            ],
+            "sources": [
+                {
+                    "name": "Azteca Chihuahua",
+                    "link": "https://www.aztecachihuahua.com/noticias/proponen-declarar-cinco-cerros-chihuahua-como-zonas-naturales-protegidas"
+                },
+                {
+                    "name": "Noro / Raíchali",
+                    "link": "https://noro.mx/noticias/arewakawi-cerro-grande-chihuahua-area-natural/"
+                }
+            ]
+        },
+        {
+            "name": "Sierra Nombre de Dios (general, incluye varios cerros)",
+            "location": {
+                "municipality": "Chihuahua, Chihuahua",
+                "source": "Piedepágina / Estudio IMPLAN"
+            },
+            "ecological_value": {
+                "flora": [
+                    "Cactus Echinocereus palmeri (endémico) :contentReference[oaicite:6]{index=6}",
+                    "Otras especies desertícolas"
+                ],
+                "fauna": [
+                    "Pecarí de collar (Dicotyles tajacu) :contentReference[oaicite:7]{index=7}",
+                    "Halcón cola roja (Buteo jamaicensis) :contentReference[oaicite:8]{index=8}",
+                    "Cacomixtle norteño (Bassariscus astutus) :contentReference[oaicite:9]{index=9}",
+                    "Tarántula gris mexicana (Aphonopelma pallidum) :contentReference[oaicite:10]{index=10}",
+                    "Águila real (Aquila chrysaetos) :contentReference[oaicite:11]{index=11}"
+                ],
+                "cultural": [
+                    "Pinturas rupestres en cuevas",
+                    "Importancia histórica y arqueológica"
+                ]
+            },
+            "materials": {
+                "minerals": "Explotación de piedra caliza, arcillas, agregados pétreos, toba, sílice, perlita, carbonato de calcio en la sierra según atlas de materias primas. :contentReference[oaicite:12]{index=12}"
+            },
+            "legal_status": {
+                "proposed_protection": "Monumento Natural (ANP estatal)",
+                "status": "Consulta pública iniciada para declararla ANP. :contentReference[oaicite:13]{index=13}"
+            },
+            "threats": [
+                "Explotación minera / canteras",
+                "Urbanización irregular",
+                "Incendios forestales (ha habido reportes recientes) :contentReference[oaicite:14]{index=14}"
+            ],
+            "sources": [
+                {
+                    "name": "Piedepágina",
+                    "link": "https://piedepagina.mx/debe-protegerse-la-sierra-de-nombre-de-dios-inicia-la-primera-consulta-publica-en-chihuahua/"
+                },
+                {
+                    "name": "Estudio IMPLAN",
+                    "link": "https://implanchihuahua.org/proyectos/CentroEstudios/EstudiosAmbientales/pdf/CEE_1812_Estudio_areas_ambientales.pdf"
+                },
+                {
+                    "name": "Norte de Chihuahua (noticias cerros)",
+                    "link": "https://nortedechihuahua.mx/tag/cerros/"
+                }
+            ]
+        }
+    ],
+    "notes": "Las coordenadas precisas (polígonos) no están disponibles públicamente en un GeoJSON oficial. Este JSON se basa en rutas de senderismo, estudios públicos de IMPLAN y notas periodísticas. Para mayor precisión geoespacial, se recomienda usar estudios técnicos (planes de desarrollo, estudios ambientales, SIG del municipio)."
+}

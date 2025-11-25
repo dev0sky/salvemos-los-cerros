@@ -15,8 +15,9 @@ export const TeamMember: React.FC<TeamMemberProps> = ({ member }) => {
       animate={{ opacity: 1, scale: 1 }}
       transition={{ duration: 0.3 }}
       whileHover={{ scale: 1.02 }}
+      className="h-full"
     >
-      <Card className="text-center">
+      <Card className="text-center h-full flex flex-col">
         <div className="w-24 h-24 mx-auto mb-4 rounded-full bg-primary/10 flex items-center justify-center overflow-hidden">
           {member.image ? (
             <img 
@@ -39,14 +40,14 @@ export const TeamMember: React.FC<TeamMemberProps> = ({ member }) => {
           {member.role}
         </p>
 
-        <p className="text-sm text-text-muted mb-4">
+        <p className="text-sm text-text-muted mb-4 flex-1">
           {member.bio}
         </p>
 
         {member.email && (
           <a 
             href={`mailto:${member.email}`}
-            className="inline-flex items-center gap-2 text-sm text-primary hover:underline"
+            className="inline-flex items-center gap-2 text-sm text-primary hover:underline mt-auto"
           >
             <IconMail size={16} />
             Contactar

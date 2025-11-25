@@ -1,9 +1,8 @@
 import React from 'react';
 import { motion } from 'framer-motion';
-import { IconCalendar, IconMapPin, IconUsers, IconClock } from '@tabler/icons-react';
+import { IconCalendar, IconClock, IconMapPin, IconUsers, IconArrowRight } from '@tabler/icons-react';
 import { Card } from './ui/Card';
 import { Badge } from './ui/Badge';
-import { Button } from './ui/Button';
 import type { Event } from '@/types';
 
 interface EventCardProps {
@@ -11,8 +10,8 @@ interface EventCardProps {
 }
 
 const TYPE_VARIANTS = {
-  cleanup: 'primary',
-  reforestation: 'success',
+  cleanup: 'success',
+  reforestation: 'primary',
   workshop: 'warning',
   other: 'default',
 } as const;
@@ -48,52 +47,59 @@ export const EventCard: React.FC<EventCardProps> = ({ event }) => {
         
         <div className="p-6 flex flex-col flex-1">
           <div className="flex items-center justify-between mb-3 flex-wrap gap-2">
-          <Badge variant={TYPE_VARIANTS[event.type]}>
-            {TYPE_LABELS[event.type]}
-          </Badge>
-          {isPast && <Badge variant="default">Pasado</Badge>}
-          {isFull && !isPast && <Badge variant="danger">Lleno</Badge>}
-        </div>
-
-        <h3 className="text-xl font-semibold text-text-main mb-2">
-          {event.title}
-        </h3>
-
-        <p className="text-text-muted text-sm mb-4 flex-1">
-          {event.description}
-        </p>
-
-        <div className="space-y-2 mb-4">
-          <div className="flex items-center gap-2 text-sm text-text-muted">
-            <IconCalendar size={16} className="text-primary" />
-            <span>{event.date}</span>
+            <Badge variant={TYPE_VARIANTS[event.type]}>
+              {TYPE_LABELS[event.type]}
+            </Badge>
+            {isPast && <Badge variant="default">Pasado</Badge>}
+            {isFull && !isPast && <Badge variant="danger">Lleno</Badge>}
           </div>
-          <div className="flex items-center gap-2 text-sm text-text-muted">
-            <IconClock size={16} className="text-primary" />
-            <span>{event.time}</span>
-          </div>
-          <div className="flex items-center gap-2 text-sm text-text-muted">
-            <IconMapPin size={16} className="text-primary" />
-            <span>{event.location}</span>
-          </div>
-          <div className="flex items-center gap-2 text-sm text-text-muted">
-            <IconUsers size={16} className="text-primary" />
-            <span>
-              {event.attendees} {event.maxAttendees ? `/ ${event.maxAttendees}` : ''} participantes
-            </span>
-          </div>
-        </div>
 
-        {!isPast && (
-          <Button 
-            variant={isFull ? "outline" : "primary"} 
-            size="sm" 
-            className="w-full whitespace-nowrap"
-            disabled={!!isFull}
-          >
-            {isFull ? 'Evento lleno' : 'Registrarse'}
-          </Button>
-        )}
+          <h3 className="text-xl font-semibold text-text-main mb-2">
+            {event.title}
+          </h3>
+
+          <p className="text-text-muted text-sm mb-4 flex-1">
+            {event.description}
+          </p>
+
+          <div className="space-y-2 mb-4">
+            <div className="flex items-center gap-2 text-sm text-text-muted">
+              <IconCalendar size={16} className="text-primary flex-shrink-0" />
+              <span>{event.date}</span>
+            </div>
+            <div className="flex items-center gap-2 text-sm text-text-muted">
+              <IconClock size={16} className="text-primary flex-shrink-0" />
+              <span>{event.time}</span>
+            </div>
+            <div className="flex items-center gap-2 text-sm text-text-muted">
+              <IconMapPin size={16} className="text-primary flex-shrink-0" />
+              <span className="line-clamp-1">{event.location}</span>
+            </div>
+            <div className="flex items-center gap-2 text-sm text-text-muted">
+              <IconUsers size={16} className="text-primary flex-shrink-0" />
+              <span>
+                {event.attendees} {event.maxAttendees ? `/ ${event.maxAttendees}` : ''} participantes
+              </span>
+            </div>
+          </div>
+
+          <div className="flex items-center justify-between pt-4 border-t border-border-soft">
+            <div className="text-xs text-text-muted">
+              {event.date}
+            </div>
+            {!isPast ? (
+              <a 
+                href="#" 
+                className={`text-sm font-semibold flex items-center gap-1 hover:gap-2 transition-all whitespace-nowrap ${
+                  isFull ? 'text-text-muted cursor-not-allowed' : 'text-primary'
+                }`}
+              >
+                {isFull ? 'Evento lleno' : 'Registrarse'} <IconArrowRight size={14} />
+              </a>
+            ) : (
+              <span className="text-xs text-text-muted">Evento finalizado</span>
+            )}
+          </div>
         </div>
       </Card>
     </motion.div>
