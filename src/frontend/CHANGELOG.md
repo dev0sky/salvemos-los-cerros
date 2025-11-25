@@ -1,5 +1,51 @@
 # Changelog - Frontend
 
+## [2025-11-25] - Integración con API Django
+
+### Tipo de cambio:
+
+- (feat) Integración con API Backend Django REST Framework
+- (feat) Configuración de variables de entorno
+- (refactor) Migración de datos mock a datos reales de API
+
+### Descripción breve:
+
+**Integración API:**
+- Se configuró `axios` como cliente HTTP.
+- Se creó el servicio `src/services/api.ts` para la configuración base de Axios.
+- Se creó el servicio `src/services/data.ts` para centralizar las llamadas a la API (`getProjects`, `getEvents`, `getNews`, `getTeam`, `getGallery`, `getCerros`, `getCerroById`).
+- Se creó `.env.template` con la variable `VITE_API_URL`.
+
+**Refactorización de Páginas:**
+- Todas las páginas principales ahora obtienen sus datos del backend usando `useQuery` de TanStack Query.
+- Se eliminó la dependencia de los archivos de datos mock (`MOCK_PROJECTS`, `MOCK_EVENTS`, etc.) en los componentes de página.
+- Se añadieron estados de carga (`isLoading`) y error (`error`) en las páginas.
+- Páginas actualizadas: `HomePage`, `ProyectosPage`, `EventosPage`, `NoticiasPage`, `GaleriaPage`, `NosotrosPage`, `CerrosPage`, `MapaPage`, `CerroDetallePage`.
+
+**Tipos:**
+- Se añadió la interfaz `Cerro` a `src/types/index.ts`.
+
+### Archivos nuevos:
+
+- src/services/api.ts
+- src/services/data.ts
+- .env.template
+
+### Archivos modificados:
+
+- src/types/index.ts
+- src/modules/home/pages/HomePage.tsx
+- src/modules/proyectos/pages/ProyectosPage.tsx
+- src/modules/eventos/pages/EventosPage.tsx
+- src/modules/noticias/pages/NoticiasPage.tsx
+- src/modules/galeria/pages/GaleriaPage.tsx
+- src/modules/nosotros/pages/NosotrosPage.tsx
+- src/modules/cerros/pages/CerrosPage.tsx
+- src/modules/mapa/pages/MapaPage.tsx
+- src/modules/cerros/pages/CerroDetallePage.tsx
+
+---
+
 ## [2025-11-24] - Sistema de Animaciones y Micro-interacciones
 
 ### Tipo de cambio:
