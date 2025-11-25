@@ -1,5 +1,52 @@
 # Changelog - Frontend
 
+## [2025-11-25] - Mejoras de UX y Manejo de Errores
+
+### Tipo de cambio:
+
+- (feat) Implementación de Hooks personalizados con TanStack Query
+- (feat) Sistema global de notificaciones (Toasts) con `sonner`
+- (feat) Componente de carga `LoadingSpinner` reutilizable
+- (fix) Corrección de rutas de importación y linting
+- (style) Estados vacíos y de carga mejorados en todas las páginas
+
+### Descripción breve:
+
+**Hooks Personalizados:**
+- Se crearon hooks en `src/hooks/useData.ts` para abstraer la lógica de `useQuery`: `useProjects`, `useEvents`, `useNews`, `useTeam`, `useGallery`, `useCerros`, `useCerro`.
+- Esto simplifica los componentes y centraliza la configuración de caché y fetching.
+
+**Mejoras de UX:**
+- **LoadingSpinner:** Nuevo componente animado para estados de carga, implementado en todas las páginas principales.
+- **Toasts:** Integración de `sonner` para mostrar errores de conexión de forma elegante y no intrusiva. Configuración global en `QueryClient`.
+- **Estados Vacíos:** Mensajes amigables en `HomePage` cuando no hay contenido destacado (proyectos, noticias, eventos).
+
+**Correcciones:**
+- Solucionado error de importación en `useData.ts`.
+- Eliminados imports no utilizados en `GaleriaPage`.
+- Ajustes de tipado para mejor seguridad en TypeScript.
+
+### Archivos nuevos:
+
+- src/hooks/useData.ts
+- src/components/ui/LoadingSpinner.tsx
+
+### Archivos modificados:
+
+- src/main.tsx (configuración de QueryClient y Toaster)
+- src/modules/home/pages/HomePage.tsx
+- src/modules/proyectos/pages/ProyectosPage.tsx
+- src/modules/eventos/pages/EventosPage.tsx
+- src/modules/noticias/pages/NoticiasPage.tsx
+- src/modules/galeria/pages/GaleriaPage.tsx
+- src/modules/nosotros/pages/NosotrosPage.tsx
+- src/modules/cerros/pages/CerrosPage.tsx
+- src/modules/mapa/pages/MapaPage.tsx
+- src/modules/cerros/pages/CerroDetallePage.tsx
+- src/constants/strings.ts
+
+---
+
 ## [2025-11-25] - Integración con API Django
 
 ### Tipo de cambio:
