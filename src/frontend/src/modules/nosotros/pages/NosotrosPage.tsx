@@ -1,27 +1,20 @@
 import React from 'react';
 import { motion } from 'framer-motion';
 import { IconTarget, IconEye, IconTrophy } from '@tabler/icons-react';
-import { useQuery } from '@tanstack/react-query';
 import { TeamMember } from '@/components/TeamMember';
 import { PieChart } from '@/components/StatsChart';
 import { Card } from '@/components/ui/Card';
+import { LoadingSpinner } from '@/components/ui/LoadingSpinner';
 import { STRINGS } from '@/constants/strings';
-import { getTeam } from '@/services/data';
+import { useTeam } from '@/hooks/useData';
 import { IMPACT_DATA } from '@/data/team'; // Keep impact data mock for now
 import { PAGE_VARIANTS, FADE_UP_ITEM, STAGGER_CONTAINER, SCALE_IN, HOVER_LIFT } from '@/constants/animations';
 
 export const NosotrosPage: React.FC = () => {
-  const { data: team = [], isLoading, error } = useQuery({
-    queryKey: ['team'],
-    queryFn: getTeam,
-  });
+  const { data: team = [], isLoading, error } = useTeam();
 
   if (isLoading) {
-    return (
-      <div className="flex justify-center items-center h-screen">
-        <div className="animate-spin rounded-full h-32 w-32 border-t-2 border-b-2 border-primary"></div>
-      </div>
-    );
+    return <LoadingSpinner />;
   }
 
   if (error) {

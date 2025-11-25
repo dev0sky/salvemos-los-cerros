@@ -12,6 +12,10 @@ export const STRINGS = {
     NAV_MAPA: 'Mapa',
     NAV_CERROS: 'Cerros',
     
+    // Galeria Page
+    GALERIA_TITLE: 'Galería',
+    GALERIA_SUBTITLE: 'Explora nuestros momentos capturados en la naturaleza',
+    
     // Hero Section
     HERO_TITLE: 'Protegiendo Nuestros Cerros',
     HERO_SUBTITLE: 'Únete a la iniciativa para conservar los espacios naturales de nuestra comunidad. Juntos podemos marcar la diferencia.',

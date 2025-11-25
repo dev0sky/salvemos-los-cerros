@@ -1,21 +1,18 @@
 import React from 'react';
 import { motion, AnimatePresence } from 'framer-motion';
 import { IconFilter, IconNews } from '@tabler/icons-react';
-import { useQuery } from '@tanstack/react-query';
 import { NewsCard } from '@/components/NewsCard';
 import { Button } from '@/components/ui/Button';
+import { LoadingSpinner } from '@/components/ui/LoadingSpinner';
 import { STRINGS } from '@/constants/strings';
 import { useAppStore } from '@/stores/useAppStore';
-import { getNews } from '@/services/data';
+import { useNews } from '@/hooks/useData';
 import { PAGE_VARIANTS, FADE_UP_ITEM, SCALE_IN, HOVER_LIFT } from '@/constants/animations';
 
 export const NoticiasPage: React.FC = () => {
   const { newsCategory, setNewsCategory } = useAppStore();
 
-  const { data: news = [], isLoading, error } = useQuery({
-    queryKey: ['news'],
-    queryFn: getNews,
-  });
+  const { data: news = [], isLoading, error } = useNews();
 
   const filteredNews = news.filter(article => 
     newsCategory === 'all' || article.category === newsCategory
@@ -31,11 +28,7 @@ export const NoticiasPage: React.FC = () => {
   ];
 
   if (isLoading) {
-    return (
-      <div className="flex justify-center items-center h-screen">
-        <div className="animate-spin rounded-full h-32 w-32 border-t-2 border-b-2 border-primary"></div>
-      </div>
-    );
+    return <LoadingSpinner />;
   }
 
   if (error) {

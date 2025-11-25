@@ -1,23 +1,20 @@
 import React from 'react';
 import { motion, AnimatePresence } from 'framer-motion';
 import { IconFilter } from '@tabler/icons-react';
-import { useQuery } from '@tanstack/react-query';
 import { ProjectCard } from '@/components/ProjectCard';
 import { BarChart } from '@/components/StatsChart';
 import { Button } from '@/components/ui/Button';
+import { LoadingSpinner } from '@/components/ui/LoadingSpinner';
 import { STRINGS } from '@/constants/strings';
 import { useAppStore } from '@/stores/useAppStore';
-import { getProjects } from '@/services/data';
+import { useProjects } from '@/hooks/useData';
 import { PROJECT_STATS_DATA } from '@/data/projects'; // Keep stats mock for now or calculate from data
 import { PAGE_VARIANTS, FADE_UP_ITEM, SCALE_IN, HOVER_LIFT } from '@/constants/animations';
 
 export const ProyectosPage: React.FC = () => {
   const { projectFilter, setProjectFilter } = useAppStore();
 
-  const { data: projects = [], isLoading, error } = useQuery({
-    queryKey: ['projects'],
-    queryFn: getProjects,
-  });
+  const { data: projects = [], isLoading, error } = useProjects();
 
   const filteredProjects = projects.filter(project => 
     projectFilter === 'all' || project.status === projectFilter
@@ -31,11 +28,7 @@ export const ProyectosPage: React.FC = () => {
   ];
 
   if (isLoading) {
-    return (
-      <div className="flex justify-center items-center h-screen">
-        <div className="animate-spin rounded-full h-32 w-32 border-t-2 border-b-2 border-primary"></div>
-      </div>
-    );
+    return <LoadingSpinner />;
   }
 
   if (error) {

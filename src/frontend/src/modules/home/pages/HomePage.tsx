@@ -1,27 +1,33 @@
 import React from 'react';
 import { Link } from 'wouter';
 import { motion } from 'framer-motion';
-import { IconArrowRight, IconLeaf, IconUsers, IconCalendar, IconMap } from '@tabler/icons-react';
-import { useQuery } from '@tanstack/react-query';
+import { IconArrowRight, IconLeaf, IconUsers, IconCalendar, IconMap, IconNews, IconShovel } from '@tabler/icons-react';
 import { Button } from '@/components/ui/Button';
 import { Card } from '@/components/ui/Card';
+import { LoadingSpinner } from '@/components/ui/LoadingSpinner';
 import { ProjectCard } from '@/components/ProjectCard';
 import { EventCard } from '@/components/EventCard';
 import { NewsCard } from '@/components/NewsCard';
 import { STRINGS } from '@/constants/strings';
 import { ROUTES } from '@/constants/routes';
-import { getProjects, getEvents, getNews } from '@/services/data';
+import { useProjects, useEvents, useNews } from '@/hooks/useData';
 import { PAGE_VARIANTS, FADE_UP_ITEM, STAGGER_CONTAINER, HOVER_LIFT, SCALE_IN } from '@/constants/animations';
 
 export const HomePage: React.FC = () => {
-  const { data: projects = [] } = useQuery({ queryKey: ['projects'], queryFn: getProjects });
-  const { data: events = [] } = useQuery({ queryKey: ['events'], queryFn: getEvents });
-  const { data: news = [] } = useQuery({ queryKey: ['news'], queryFn: getNews });
+  const { data: projects = [], isLoading: loadingProjects } = useProjects();
+  const { data: events = [], isLoading: loadingEvents } = useEvents();
+  const { data: news = [], isLoading: loadingNews } = useNews();
+
+  const isLoading = loadingProjects || loadingEvents || loadingNews;
 
   // Get preview data (first 3 items from each)
   const featuredProjects = projects.slice(0, 3);
   const upcomingEvents = events.filter(e => new Date(e.date) >= new Date()).slice(0, 3);
   const latestNews = news.slice(0, 3);
+
+  if (isLoading) {
+    return <LoadingSpinner />;
+  }
 
   return (
     <motion.div 
@@ -154,16 +160,40 @@ export const HomePage: React.FC = () => {
           </Link>
         </motion.div>
         
-        <motion.div 
-          className="grid grid-cols-1 md:grid-cols-3 gap-6"
-          variants={STAGGER_CONTAINER}
-        >
-          {featuredProjects.map((project) => (
-            <motion.div key={project.id} variants={SCALE_IN} whileHover={HOVER_LIFT}>
-              <ProjectCard project={project} />
-            </motion.div>
-          ))}
-        </motion.div>
+        {featuredProjects.length > 0 ? (
+          <motion.div 
+            className="grid grid-cols-1 md:grid-cols-3 gap-6"
+            variants={STAGGER_CONTAINER}
+          >
+            {featuredProjects.map((project) => (
+              <motion.div key={project.id} variants={SCALE_IN} whileHover={HOVER_LIFT}>
+                <ProjectCard project={project} />
+              </motion.div>
+            ))}
+          </motion.div>
+        ) : (
+          <motion.div
+            variants={FADE_UP_ITEM}
+            className="text-center py-12"
+          >
+            <Card className="max-w-md mx-auto p-8">
+              <div className="w-16 h-16 mx-auto mb-4 rounded-full bg-primary/10 flex items-center justify-center">
+                <IconShovel size={32} className="text-primary" />
+              </div>
+              <h3 className="text-xl font-semibold text-text-main mb-2">
+                No hay proyectos destacados
+              </h3>
+              <p className="text-text-muted mb-6">
+                Pronto publicaremos nuevas iniciativas. ¡Mantente atento!
+              </p>
+              <Link href={ROUTES.PROYECTOS}>
+                <Button variant="outline" size="sm">
+                  Ver todos los proyectos
+                </Button>
+              </Link>
+            </Card>
+          </motion.div>
+        )}
         
         <div className="mt-8 text-center sm:hidden">
           <Link href={ROUTES.PROYECTOS}>
@@ -252,16 +282,40 @@ export const HomePage: React.FC = () => {
           </Link>
         </motion.div>
         
-        <motion.div 
-          className="grid grid-cols-1 md:grid-cols-3 gap-6"
-          variants={STAGGER_CONTAINER}
-        >
-          {latestNews.map((article) => (
-            <motion.div key={article.id} variants={SCALE_IN} whileHover={HOVER_LIFT}>
-              <NewsCard article={article} />
-            </motion.div>
-          ))}
-        </motion.div>
+        {latestNews.length > 0 ? (
+          <motion.div 
+            className="grid grid-cols-1 md:grid-cols-3 gap-6"
+            variants={STAGGER_CONTAINER}
+          >
+            {latestNews.map((article) => (
+              <motion.div key={article.id} variants={SCALE_IN} whileHover={HOVER_LIFT}>
+                <NewsCard article={article} />
+              </motion.div>
+            ))}
+          </motion.div>
+        ) : (
+          <motion.div
+            variants={FADE_UP_ITEM}
+            className="text-center py-12"
+          >
+            <Card className="max-w-md mx-auto p-8">
+              <div className="w-16 h-16 mx-auto mb-4 rounded-full bg-green-100 flex items-center justify-center">
+                <IconNews size={32} className="text-green-700" />
+              </div>
+              <h3 className="text-xl font-semibold text-text-main mb-2">
+                No hay noticias recientes
+              </h3>
+              <p className="text-text-muted mb-6">
+                Estamos trabajando en nuevas actualizaciones. ¡Vuelve pronto!
+              </p>
+              <Link href={ROUTES.NOTICIAS}>
+                <Button variant="outline" size="sm">
+                  Ver todas las noticias
+                </Button>
+              </Link>
+            </Card>
+          </motion.div>
+        )}
         
         <div className="mt-8 text-center sm:hidden">
           <Link href={ROUTES.NOTICIAS}>

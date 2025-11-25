@@ -1,21 +1,18 @@
 import React from 'react';
 import { motion, AnimatePresence } from 'framer-motion';
 import { IconFilter, IconCalendarEvent } from '@tabler/icons-react';
-import { useQuery } from '@tanstack/react-query';
 import { EventCard } from '@/components/EventCard';
 import { Button } from '@/components/ui/Button';
+import { LoadingSpinner } from '@/components/ui/LoadingSpinner';
 import { STRINGS } from '@/constants/strings';
 import { useAppStore } from '@/stores/useAppStore';
-import { getEvents } from '@/services/data';
+import { useEvents } from '@/hooks/useData';
 import { PAGE_VARIANTS, FADE_UP_ITEM, SCALE_IN, HOVER_LIFT } from '@/constants/animations';
 
 export const EventosPage: React.FC = () => {
   const { eventFilter, setEventFilter } = useAppStore();
 
-  const { data: events = [], isLoading, error } = useQuery({
-    queryKey: ['events'],
-    queryFn: getEvents,
-  });
+  const { data: events = [], isLoading, error } = useEvents();
 
   const now = new Date();
   const filteredEvents = events.filter(event => {
@@ -32,11 +29,7 @@ export const EventosPage: React.FC = () => {
   ];
 
   if (isLoading) {
-    return (
-      <div className="flex justify-center items-center h-screen">
-        <div className="animate-spin rounded-full h-32 w-32 border-t-2 border-b-2 border-primary"></div>
-      </div>
-    );
+    return <LoadingSpinner />;
   }
 
   if (error) {

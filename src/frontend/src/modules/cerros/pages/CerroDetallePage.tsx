@@ -1,27 +1,19 @@
 import React from 'react';
 import { useRoute, Link } from 'wouter';
-import { useQuery } from '@tanstack/react-query';
 import { motion } from 'framer-motion';
 import { IconArrowLeft } from '@tabler/icons-react';
 import { CerroDetail } from '../components/CerroDetail';
-import { getCerroById } from '@/services/data';
+import { LoadingSpinner } from '@/components/ui/LoadingSpinner';
+import { useCerro } from '@/hooks/useData';
 
 export const CerroDetallePage: React.FC = () => {
   const [match, params] = useRoute('/cerros/:id');
   const cerroId = match ? params.id : null;
 
-  const { data: cerro, isLoading, error } = useQuery({
-    queryKey: ['cerro', cerroId],
-    queryFn: () => getCerroById(cerroId!),
-    enabled: !!cerroId,
-  });
+  const { data: cerro, isLoading, error } = useCerro(cerroId);
 
   if (isLoading) {
-    return (
-      <div className="flex justify-center items-center h-screen">
-        <div className="animate-spin rounded-full h-32 w-32 border-t-2 border-b-2 border-primary"></div>
-      </div>
-    );
+    return <LoadingSpinner />;
   }
 
   if (error || !cerro) {
