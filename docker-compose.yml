@@ -8,16 +8,9 @@ services:
     env_file:
       - .env
     environment:
-      # These environment variables act as default values.
-      # The application should be configured to read from /run/secrets/<secret_name>
-      # and override these environment variables if the secret file exists.
-      - DEBUG=${DEBUG_SECRET:-True}
-      - ALLOWED_HOSTS=${ALLOWED_HOSTS_SECRET:-*}
-      - CORS_ALLOWED_ORIGINS=${CORS_ALLOWED_ORIGINS_SECRET:-http://localhost,http://127.0.0.1,http://localhost:5173}
-    secrets:
-      - debug_secret
-      - allowed_hosts_secret
-      - cors_allowed_origins_secret
+      - DEBUG=${DEBUG:-True}
+      - ALLOWED_HOSTS=${ALLOWED_HOSTS:-*}
+      - CORS_ALLOWED_ORIGINS=${CORS_ALLOWED_ORIGINS:-http://localhost,http://127.0.0.1,http://localhost:5173}
 
   frontend:
     build: ./src/frontend
@@ -25,14 +18,3 @@ services:
       - "80:80"
     depends_on:
       - backend
-
-secrets:
-  debug_secret:
-    # If a file named 'debug_secret' exists in the same directory as docker-compose.yml,
-    # its content will be mounted as /run/secrets/debug_secret in the container.
-    # Otherwise, the default 'True' from the environment variable will be used.
-    file: ./debug_secret
-  allowed_hosts_secret:
-    file: ./allowed_hosts_secret
-  cors_allowed_origins_secret:
-    file: ./cors_allowed_origins_secret
