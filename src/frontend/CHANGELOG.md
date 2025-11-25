@@ -1,5 +1,55 @@
 # Changelog - Frontend
 
+## [2025-11-25] - Docker, i18n y Mejoras de UX
+
+### Tipo de cambio:
+
+- (feat) Dockerización del frontend
+- (feat) Internacionalización (i18n)
+- (feat) Selector de idioma
+- (feat) Manejo de errores granular con reintento
+- (fix) Responsividad en Hero section
+
+### Descripción breve:
+
+**Docker:**
+- Se creó `Dockerfile` multi-stage (build con Node, serve con Nginx).
+- Configuración de `.dockerignore` para optimizar contexto de build.
+
+**Internacionalización (i18n):**
+- Integración de `i18next` y `react-i18next`.
+- Detección automática de idioma del navegador.
+- Soporte para Español (default), Inglés, Italiano y Francés.
+- Archivos de traducción JSON en `src/i18n/locales/`.
+- Componente `LanguageSelector` con banderas en el menú de navegación.
+
+**Mejoras de UX:**
+- **Carga Granular:** Se eliminó el spinner global bloqueante. Ahora cada sección (Proyectos, Eventos, Noticias) muestra su propio estado de carga, permitiendo ver el resto de la página.
+- **Manejo de Errores:** Nuevo componente `ErrorState` con botón de "Reintentar".
+- **Toasts Inteligentes:** Lógica para evitar duplicación de notificaciones de error (agrupación con contador).
+- **Hero Móvil:** Ajuste de altura mínima (`min-h`) y tamaño de texto para evitar cortes en dispositivos móviles.
+
+### Archivos nuevos:
+
+- src/i18n/config.ts
+- src/i18n/locales/*.json
+- src/components/LanguageSelector.tsx
+- src/components/ui/ErrorState.tsx
+- Dockerfile
+- .dockerignore
+
+### Archivos modificados:
+
+- src/main.tsx (i18n init, error handling logic)
+- src/layouts/MainLayout.tsx (LanguageSelector, traducciones)
+- src/modules/home/pages/HomePage.tsx (traducciones, error states, hero fix)
+- src/modules/proyectos/pages/ProyectosPage.tsx (error states)
+- src/modules/eventos/pages/EventosPage.tsx (error states)
+- src/modules/noticias/pages/NoticiasPage.tsx (error states)
+- src/modules/nosotros/pages/NosotrosPage.tsx (error states)
+
+---
+
 ## [2025-11-25] - Mejoras de UX y Manejo de Errores
 
 ### Tipo de cambio:
