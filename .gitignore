@@ -20,6 +20,15 @@ dist/
 out/ # Next.js static export
 public/build/ # Create React App build output in public folder
 
+# Django
+*.pyc
+__pycache__/
+db.sqlite3
+media/
+static/
+.venv/
+venv/
+
 # IDEs and OS
 .vscode/
 .idea/
