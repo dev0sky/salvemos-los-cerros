@@ -4,39 +4,27 @@ import { IconCalendar, IconMapPin, IconUsers, IconClock } from '@tabler/icons-re
 import { Card } from './ui/Card';
 import { Badge } from './ui/Badge';
 import { Button } from './ui/Button';
-
-export interface Event {
-  id: string;
-  title: string;
-  description: string;
-  date: string;
-  time: string;
-  location: string;
-  type: 'cleanup' | 'reforestation' | 'workshop' | 'other';
-  attendees: number;
-  maxAttendees?: number;
-  image?: string;
-}
+import type { Event } from '@/types';
 
 interface EventCardProps {
   event: Event;
 }
 
+const TYPE_VARIANTS = {
+  cleanup: 'primary',
+  reforestation: 'success',
+  workshop: 'warning',
+  other: 'default',
+} as const;
+
+const TYPE_LABELS = {
+  cleanup: 'Limpieza',
+  reforestation: 'Reforestación',
+  workshop: 'Taller',
+  other: 'Otro',
+};
+
 export const EventCard: React.FC<EventCardProps> = ({ event }) => {
-  const typeVariants = {
-    cleanup: 'primary',
-    reforestation: 'success',
-    workshop: 'warning',
-    other: 'default',
-  } as const;
-
-  const typeLabels = {
-    cleanup: 'Limpieza',
-    reforestation: 'Reforestación',
-    workshop: 'Taller',
-    other: 'Otro',
-  };
-
   const isPast = new Date(event.date) < new Date();
   const isFull = event.maxAttendees && event.attendees >= event.maxAttendees;
 
@@ -59,8 +47,8 @@ export const EventCard: React.FC<EventCardProps> = ({ event }) => {
         )}
         
         <div className="flex items-center justify-between mb-3">
-          <Badge variant={typeVariants[event.type]}>
-            {typeLabels[event.type]}
+          <Badge variant={TYPE_VARIANTS[event.type]}>
+            {TYPE_LABELS[event.type]}
           </Badge>
           {isPast && <Badge variant="default">Pasado</Badge>}
           {isFull && !isPast && <Badge variant="danger">Lleno</Badge>}

@@ -4,35 +4,26 @@ import { IconMapPin, IconCalendar, IconArrowRight } from '@tabler/icons-react';
 import { Card } from './ui/Card';
 import { Badge } from './ui/Badge';
 import { Button } from './ui/Button';
-
-export interface Project {
-  id: string;
-  title: string;
-  description: string;
-  location: string;
-  status: 'active' | 'completed' | 'planned';
-  progress: number;
-  startDate: string;
-  image?: string;
-}
+import type { Project } from '@/types';
 
 interface ProjectCardProps {
   project: Project;
 }
 
+const STATUS_VARIANTS = {
+  active: 'success',
+  completed: 'primary',
+  planned: 'warning',
+} as const;
+
+const STATUS_LABELS = {
+  active: 'Activo',
+  completed: 'Completado',
+  planned: 'Planificado',
+};
+
+
 export const ProjectCard: React.FC<ProjectCardProps> = ({ project }) => {
-  const statusVariants = {
-    active: 'success',
-    completed: 'primary',
-    planned: 'warning',
-  } as const;
-
-  const statusLabels = {
-    active: 'Activo',
-    completed: 'Completado',
-    planned: 'Planificado',
-  };
-
   return (
     <motion.div
       initial={{ opacity: 0, y: 20 }}
@@ -52,8 +43,8 @@ export const ProjectCard: React.FC<ProjectCardProps> = ({ project }) => {
         )}
         
         <div className="flex items-center justify-between mb-3">
-          <Badge variant={statusVariants[project.status]}>
-            {statusLabels[project.status]}
+          <Badge variant={STATUS_VARIANTS[project.status]}>
+            {STATUS_LABELS[project.status]}
           </Badge>
           <span className="text-xs text-text-muted">{project.progress}% completado</span>
         </div>

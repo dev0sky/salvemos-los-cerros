@@ -3,35 +3,25 @@ import { motion } from 'framer-motion';
 import { IconCalendar, IconArrowRight } from '@tabler/icons-react';
 import { Card } from './ui/Card';
 import { Badge } from './ui/Badge';
-
-export interface NewsArticle {
-  id: string;
-  title: string;
-  excerpt: string;
-  category: 'conservation' | 'events' | 'education';
-  date: string;
-  author?: string;
-  image?: string;
-  featured?: boolean;
-}
+import type { NewsArticle } from '@/types';
 
 interface NewsCardProps {
   article: NewsArticle;
 }
 
+const CATEGORY_VARIANTS = {
+  conservation: 'success',
+  events: 'primary',
+  education: 'warning',
+} as const;
+
+const CATEGORY_LABELS = {
+  conservation: 'Conservación',
+  events: 'Eventos',
+  education: 'Educación',
+};
+
 export const NewsCard: React.FC<NewsCardProps> = ({ article }) => {
-  const categoryVariants = {
-    conservation: 'success',
-    events: 'primary',
-    education: 'warning',
-  } as const;
-
-  const categoryLabels = {
-    conservation: 'Conservación',
-    events: 'Eventos',
-    education: 'Educación',
-  };
-
   return (
     <motion.div
       initial={{ opacity: 0, y: 20 }}
@@ -51,8 +41,8 @@ export const NewsCard: React.FC<NewsCardProps> = ({ article }) => {
         )}
         
         <div className="flex items-center justify-between mb-3">
-          <Badge variant={categoryVariants[article.category]}>
-            {categoryLabels[article.category]}
+          <Badge variant={CATEGORY_VARIANTS[article.category]}>
+            {CATEGORY_LABELS[article.category]}
           </Badge>
           {article.featured && <Badge variant="primary">Destacado</Badge>}
         </div>

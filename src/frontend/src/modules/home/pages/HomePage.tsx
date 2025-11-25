@@ -8,100 +8,16 @@ import { EventCard } from '@/components/EventCard';
 import { NewsCard } from '@/components/NewsCard';
 import { STRINGS } from '@/constants/strings';
 import { ROUTES } from '@/constants/routes';
+import { MOCK_PROJECTS } from '@/data/projects';
+import { MOCK_EVENTS } from '@/data/events';
+import { MOCK_NEWS } from '@/data/news';
 import { ArrowRight, Leaf, Map, Users } from 'lucide-react';
 
 export const HomePage: React.FC = () => {
-  // Mock preview data
-  const featuredProjects = [
-    {
-      id: '1',
-      title: 'Reforestación Cerro Grande',
-      description: 'Plantación de 500 árboles nativos en la zona norte del Cerro Grande.',
-      location: 'Cerro Grande, Zona Norte',
-      status: 'active' as const,
-      progress: 65,
-      startDate: 'Enero 2024',
-    },
-    {
-      id: '2',
-      title: 'Limpieza Sendero El Mirador',
-      description: 'Jornada mensual de limpieza y mantenimiento del sendero principal.',
-      location: 'Sendero El Mirador',
-      status: 'active' as const,
-      progress: 80,
-      startDate: 'Marzo 2024',
-    },
-    {
-      id: '3',
-      title: 'Jardín de Mariposas',
-      description: 'Creación de un jardín con plantas nativas para atraer mariposas.',
-      location: 'Parque Central',
-      status: 'planned' as const,
-      progress: 15,
-      startDate: 'Junio 2024',
-    },
-  ];
-
-  const upcomingEvents = [
-    {
-      id: '1',
-      title: 'Jornada de Limpieza Cerro Grande',
-      description: 'Únete a nuestra jornada mensual de limpieza.',
-      date: '2024-12-15',
-      time: '08:00 - 12:00',
-      location: 'Cerro Grande',
-      type: 'cleanup' as const,
-      attendees: 45,
-      maxAttendees: 60,
-    },
-    {
-      id: '2',
-      title: 'Taller de Compostaje',
-      description: 'Aprende técnicas de compostaje casero.',
-      date: '2024-12-20',
-      time: '15:00 - 17:00',
-      location: 'Centro Comunitario',
-      type: 'workshop' as const,
-      attendees: 18,
-      maxAttendees: 25,
-    },
-    {
-      id: '3',
-      title: 'Reforestación Quebrada Los Pinos',
-      description: 'Plantaremos 200 árboles nativos.',
-      date: '2024-12-28',
-      time: '07:00 - 13:00',
-      location: 'Quebrada Los Pinos',
-      type: 'reforestation' as const,
-      attendees: 32,
-      maxAttendees: 50,
-    },
-  ];
-
-  const latestNews = [
-    {
-      id: '1',
-      title: 'Exitosa Jornada de Reforestación en Cerro Grande',
-      excerpt: 'Más de 50 voluntarios participaron en la plantación de 300 árboles nativos.',
-      category: 'conservation' as const,
-      date: '2024-11-20',
-      featured: true,
-    },
-    {
-      id: '2',
-      title: 'Nuevo Taller de Educación Ambiental para Niños',
-      excerpt: 'Lanzamos un programa educativo dirigido a escuelas primarias.',
-      category: 'education' as const,
-      date: '2024-11-18',
-    },
-    {
-      id: '3',
-      title: 'Limpieza Masiva Recolecta 500kg de Residuos',
-      excerpt: 'La comunidad se unió para limpiar el Sendero El Mirador.',
-      category: 'events' as const,
-      date: '2024-11-15',
-    },
-  ];
+  // Get preview data (first 3 items from each)
+  const featuredProjects = MOCK_PROJECTS.slice(0, 3);
+  const upcomingEvents = MOCK_EVENTS.filter(e => new Date(e.date) >= new Date()).slice(0, 3);
+  const latestNews = MOCK_NEWS.slice(0, 3);
 
   return (
     <div className="space-y-12 md:space-y-20 pb-20">
@@ -262,11 +178,38 @@ export const HomePage: React.FC = () => {
             </a>
           </Link>
         </div>
-        <div className="grid grid-cols-1 md:grid-cols-3 gap-6">
-          {upcomingEvents.map((event) => (
-            <EventCard key={event.id} event={event} />
-          ))}
-        </div>
+        {upcomingEvents.length > 0 ? (
+          <div className="grid grid-cols-1 md:grid-cols-3 gap-6">
+            {upcomingEvents.map((event) => (
+              <EventCard key={event.id} event={event} />
+            ))}
+          </div>
+        ) : (
+          <motion.div
+            initial={{ opacity: 0, y: 20 }}
+            animate={{ opacity: 1, y: 0 }}
+            className="text-center py-12"
+          >
+            <Card className="max-w-md mx-auto">
+              <div className="w-16 h-16 mx-auto mb-4 rounded-full bg-secondary/20 flex items-center justify-center">
+                <span className="text-3xl">📅</span>
+              </div>
+              <h3 className="text-xl font-semibold text-text-main mb-2">
+                No hay eventos próximos
+              </h3>
+              <p className="text-text-muted mb-4">
+                Estamos planificando nuevas actividades. Vuelve pronto para ver las próximas jornadas.
+              </p>
+              <Link href={ROUTES.EVENTOS}>
+                <a>
+                  <Button variant="outline" size="sm">
+                    Ver eventos pasados
+                  </Button>
+                </a>
+              </Link>
+            </Card>
+          </motion.div>
+        )}
       </section>
 
       {/* Latest News */}

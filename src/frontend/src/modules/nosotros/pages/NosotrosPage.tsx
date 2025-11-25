@@ -1,48 +1,11 @@
 import React from 'react';
 import { motion } from 'framer-motion';
 import { IconTarget, IconEye, IconTrophy } from '@tabler/icons-react';
-import { TeamMember, type TeamMemberData } from '@/components/TeamMember';
+import { TeamMember } from '@/components/TeamMember';
 import { PieChart } from '@/components/StatsChart';
 import { Card } from '@/components/ui/Card';
 import { STRINGS } from '@/constants/strings';
-
-// Mock data
-const teamMembers: TeamMemberData[] = [
-  {
-    id: '1',
-    name: 'María González',
-    role: 'Directora de Conservación',
-    bio: 'Bióloga especializada en ecosistemas montañosos con 15 años de experiencia.',
-    email: 'maria@naturalezaviva.org',
-  },
-  {
-    id: '2',
-    name: 'Carlos Ramírez',
-    role: 'Coordinador de Voluntarios',
-    bio: 'Apasionado por la educación ambiental y la participación comunitaria.',
-    email: 'carlos@naturalezaviva.org',
-  },
-  {
-    id: '3',
-    name: 'Ana Martínez',
-    role: 'Especialista en Reforestación',
-    bio: 'Ingeniera forestal dedicada a la restauración de ecosistemas nativos.',
-    email: 'ana@naturalezaviva.org',
-  },
-  {
-    id: '4',
-    name: 'Luis Torres',
-    role: 'Educador Ambiental',
-    bio: 'Maestro comprometido con la formación de nuevas generaciones conscientes.',
-    email: 'luis@naturalezaviva.org',
-  },
-];
-
-const impactData = [
-  { id: 'arboles', label: 'Árboles Plantados', value: 2500 },
-  { id: 'voluntarios', label: 'Voluntarios Activos', value: 150 },
-  { id: 'hectareas', label: 'Hectáreas Protegidas', value: 45 },
-];
+import { MOCK_TEAM_MEMBERS, IMPACT_DATA } from '@/data/team';
 
 export const NosotrosPage: React.FC = () => {
   return (
@@ -113,7 +76,7 @@ export const NosotrosPage: React.FC = () => {
             <IconTrophy size={24} className="text-primary" />
             <h2 className="text-2xl font-bold text-text-main">Nuestro Impacto</h2>
           </div>
-          <PieChart data={impactData} />
+          <PieChart data={IMPACT_DATA} />
         </Card>
       </section>
 
@@ -126,7 +89,7 @@ export const NosotrosPage: React.FC = () => {
           </p>
         </div>
         <div className="grid grid-cols-1 md:grid-cols-2 lg:grid-cols-4 gap-6">
-          {teamMembers.map((member, index) => (
+          {MOCK_TEAM_MEMBERS.map((member, index) => (
             <motion.div
               key={member.id}
               initial={{ opacity: 0, y: 20 }}

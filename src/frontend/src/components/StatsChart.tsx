@@ -1,16 +1,40 @@
 import React from 'react';
 import { ResponsiveBar } from '@nivo/bar';
 import { ResponsivePie } from '@nivo/pie';
+import type { BarChartData, PieChartData } from '@/types';
 
 interface BarChartProps {
-  data: any[];
+  data: BarChartData[];
   keys: string[];
   indexBy: string;
 }
 
 interface PieChartProps {
-  data: any[];
+  data: PieChartData[];
 }
+
+const CHART_THEME = {
+  text: {
+    fill: '#4A3B30',
+    fontSize: 12,
+  },
+  axis: {
+    ticks: {
+      text: {
+        fill: '#70625A',
+      }
+    }
+  },
+  grid: {
+    line: {
+      stroke: '#E0D8D0',
+      strokeWidth: 1,
+    }
+  }
+};
+
+const BAR_COLORS = { scheme: 'brown_blueGreen' } as const;
+const PIE_COLORS = { scheme: 'brown_blueGreen' } as const;
 
 export const BarChart: React.FC<BarChartProps> = ({ data, keys, indexBy }) => {
   return (
@@ -22,7 +46,7 @@ export const BarChart: React.FC<BarChartProps> = ({ data, keys, indexBy }) => {
         margin={{ top: 20, right: 20, bottom: 50, left: 60 }}
         padding={0.3}
         valueScale={{ type: 'linear' }}
-        colors={{ scheme: 'brown_blueGreen' }}
+        colors={BAR_COLORS}
         borderRadius={8}
         borderColor={{
           from: 'color',
@@ -43,25 +67,7 @@ export const BarChart: React.FC<BarChartProps> = ({ data, keys, indexBy }) => {
         labelSkipWidth={12}
         labelSkipHeight={12}
         labelTextColor="#FDF5E6"
-        theme={{
-          text: {
-            fill: '#4A3B30',
-            fontSize: 12,
-          },
-          axis: {
-            ticks: {
-              text: {
-                fill: '#70625A',
-              }
-            }
-          },
-          grid: {
-            line: {
-              stroke: '#E0D8D0',
-              strokeWidth: 1,
-            }
-          }
-        }}
+        theme={CHART_THEME}
         animate={true}
         motionConfig="gentle"
       />
@@ -79,7 +85,7 @@ export const PieChart: React.FC<PieChartProps> = ({ data }) => {
         padAngle={0.7}
         cornerRadius={3}
         activeOuterRadiusOffset={8}
-        colors={{ scheme: 'brown_blueGreen' }}
+        colors={PIE_COLORS}
         borderWidth={1}
         borderColor={{
           from: 'color',
@@ -91,12 +97,7 @@ export const PieChart: React.FC<PieChartProps> = ({ data }) => {
         arcLinkLabelsColor={{ from: 'color' }}
         arcLabelsSkipAngle={10}
         arcLabelsTextColor="#FDF5E6"
-        theme={{
-          text: {
-            fill: '#4A3B30',
-            fontSize: 12,
-          }
-        }}
+        theme={CHART_THEME}
         animate={true}
         motionConfig="gentle"
       />

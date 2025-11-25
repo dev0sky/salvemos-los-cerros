@@ -2,15 +2,7 @@ import React from 'react';
 import { motion } from 'framer-motion';
 import { IconMail } from '@tabler/icons-react';
 import { Card } from './ui/Card';
-
-export interface TeamMemberData {
-  id: string;
-  name: string;
-  role: string;
-  bio: string;
-  email?: string;
-  image?: string;
-}
+import type { TeamMemberData } from '@/types';
 
 interface TeamMemberProps {
   member: TeamMemberData;

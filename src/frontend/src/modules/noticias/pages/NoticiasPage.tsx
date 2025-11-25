@@ -1,73 +1,20 @@
 import React from 'react';
 import { motion } from 'framer-motion';
 import { IconFilter, IconNews } from '@tabler/icons-react';
-import { NewsCard, type NewsArticle } from '@/components/NewsCard';
+import { NewsCard } from '@/components/NewsCard';
 import { Button } from '@/components/ui/Button';
 import { STRINGS } from '@/constants/strings';
 import { useAppStore } from '@/stores/useAppStore';
-
-// Mock data
-const mockNews: NewsArticle[] = [
-  {
-    id: '1',
-    title: 'Exitosa Jornada de Reforestación en Cerro Grande',
-    excerpt: 'Más de 50 voluntarios participaron en la plantación de 300 árboles nativos, superando nuestra meta inicial.',
-    category: 'conservation',
-    date: '2024-11-20',
-    author: 'María González',
-    featured: true,
-  },
-  {
-    id: '2',
-    title: 'Nuevo Taller de Educación Ambiental para Niños',
-    excerpt: 'Lanzamos un programa educativo dirigido a escuelas primarias para fomentar el amor por la naturaleza.',
-    category: 'education',
-    date: '2024-11-18',
-    author: 'Luis Torres',
-  },
-  {
-    id: '3',
-    title: 'Limpieza Masiva Recolecta 500kg de Residuos',
-    excerpt: 'La comunidad se unió para limpiar el Sendero El Mirador, recolectando media tonelada de basura.',
-    category: 'events',
-    date: '2024-11-15',
-    author: 'Carlos Ramírez',
-  },
-  {
-    id: '4',
-    title: 'Descubren Nueva Especie de Mariposa en la Reserva',
-    excerpt: 'Investigadores identifican una especie de mariposa no documentada previamente en nuestra región.',
-    category: 'conservation',
-    date: '2024-11-10',
-    author: 'Ana Martínez',
-    featured: true,
-  },
-  {
-    id: '5',
-    title: 'Alianza con Universidad para Monitoreo Ecológico',
-    excerpt: 'Firmamos convenio con la universidad local para estudios de biodiversidad a largo plazo.',
-    category: 'conservation',
-    date: '2024-11-05',
-    author: 'María González',
-  },
-  {
-    id: '6',
-    title: 'Taller de Compostaje Atrae a 40 Participantes',
-    excerpt: 'Gran éxito del taller sobre técnicas de compostaje casero y reducción de residuos orgánicos.',
-    category: 'education',
-    date: '2024-11-01',
-    author: 'Luis Torres',
-  },
-];
+import { MOCK_NEWS } from '@/data/news';
 
 export const NoticiasPage: React.FC = () => {
   const { newsCategory, setNewsCategory } = useAppStore();
 
-  const filteredNews = mockNews.filter(article => 
+  const filteredNews = MOCK_NEWS.filter(article => 
     newsCategory === 'all' || article.category === newsCategory
   );
 
-  const featuredArticle = mockNews.find(article => article.featured);
+  const featuredArticle = MOCK_NEWS.find(article => article.featured);
 
   const filters = [
     { value: 'all' as const, label: STRINGS.FILTER_ALL },
