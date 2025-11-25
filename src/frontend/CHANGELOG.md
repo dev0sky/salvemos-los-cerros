@@ -1,5 +1,138 @@
 # Changelog - Frontend
 
+## [2025-11-24] - Módulo de Galería y Mejoras de Imágenes
+
+### Tipo de cambio:
+
+- (feat) Módulo de galería completo con lightbox
+- (feat) Integración de API de imágenes (static.photos)
+- (feat) Imágenes en todos los componentes de cards
+- (fix) Tamaños de imágenes y botones en cards
+- (refactor) Servicio de imágenes centralizado
+
+### Descripción breve:
+
+**Módulo de Galería:**
+- Página de galería con grid responsive (1/2/3 columnas)
+- Filtros por categoría (Todas, Proyectos, Eventos, Naturaleza, Equipo)
+- Lightbox para visualización de imágenes a pantalla completa
+- Navegación con teclado (← → ESC) y botones
+- 9 imágenes de muestra con metadata completa
+- Animaciones de entrada y hover effects
+
+**Servicio de Imágenes:**
+- Integración con `https://static.photos/` para imágenes de prueba
+- Servicio centralizado `imageService.ts` con funciones reutilizables
+- Temas predefinidos: NATURE, CLEANUP, REFORESTATION, WORKSHOP, etc.
+- Separación de responsabilidades: API calls fuera de componentes
+
+**Imágenes en Cards:**
+- ProjectCard: 6 proyectos con imágenes temáticas
+- EventCard: 7 eventos con imágenes relevantes
+- NewsCard: 6 noticias con imágenes
+- Todas las imágenes usando aspect-ratio 4:3 para consistencia
+
+**Mejoras de Layout:**
+- Cards con aspect-ratio 4:3 (responsive)
+- Eliminados márgenes negativos problemáticos
+- Padding consistente de 24px (p-6) en contenido
+- Botones con `whitespace-nowrap` para evitar wrap
+- Badges con `flex-wrap` y `gap-2` para flexibilidad
+
+### Archivos nuevos:
+
+**Servicios:**
+- src/services/imageService.ts
+
+**Componentes:**
+- src/components/Lightbox.tsx
+
+**Páginas:**
+- src/modules/galeria/pages/GaleriaPage.tsx
+
+**Tipos:**
+- src/types/gallery.ts (luego integrado en index.ts)
+
+**Datos:**
+- src/data/gallery.ts
+
+### Archivos modificados:
+
+**Componentes:**
+- src/components/ProjectCard.tsx (imágenes + layout)
+- src/components/EventCard.tsx (imágenes + layout)
+- src/components/NewsCard.tsx (imágenes + layout)
+
+**Datos:**
+- src/data/projects.ts (agregadas imágenes)
+- src/data/events.ts (agregadas imágenes)
+- src/data/news.ts (agregadas imágenes)
+- src/data/index.ts (export MOCK_GALLERY)
+
+**Tipos:**
+- src/types/index.ts (agregado GalleryImage)
+
+**Rutas:**
+- src/constants/routes.ts (agregada ruta /galeria)
+- src/constants/strings.ts (agregado NAV_GALERIA)
+
+**Core:**
+- src/App.tsx (ruta de galería)
+- src/layouts/MainLayout.tsx (link de galería en nav)
+
+### Características del Lightbox:
+
+- ✅ Visualización a pantalla completa
+- ✅ Navegación anterior/siguiente con botones
+- ✅ Navegación con teclado (← → ESC)
+- ✅ Click fuera para cerrar
+- ✅ Información de imagen (título, descripción, fecha, fotógrafo)
+- ✅ Contador de posición (ej: "3 / 9")
+- ✅ Animaciones suaves entre imágenes (Framer Motion)
+
+### Mejoras de Cards:
+
+**Antes:**
+- Altura fija de imágenes (h-48)
+- Márgenes negativos (-m-6)
+- Botones que hacían wrap
+- Layout inconsistente
+
+**Ahora:**
+- Aspect ratio 4:3 responsive
+- Sin márgenes negativos
+- Botones con whitespace-nowrap
+- Layout consistente con flex-col
+
+### API de Imágenes:
+
+**URL Format:**
+```
+https://static.photos/800x600?nature,forest,trees
+https://static.photos/1200x800?conservation,wildlife,nature
+```
+
+**Funciones:**
+- `getStaticPhoto(topic, width, height)` - Imagen por tema
+- `getStaticPhotoById(id, width, height)` - Imagen por ID
+
+### Build:
+
+✅ Build exitoso en 27.29s
+- Bundle size: 651.18 kB (gzip: 211.35 kB)
+- CSS: 25.93 kB (gzip: 5.43 kB)
+
+### Beneficios:
+
+- ✅ Galería funcional con experiencia de usuario premium
+- ✅ Imágenes consistentes en toda la aplicación
+- ✅ Servicio centralizado para fácil mantenimiento
+- ✅ Cards con layout profesional y responsive
+- ✅ Separación de responsabilidades (API calls aislados)
+- ✅ Preparado para migración a imágenes reales
+
+---
+
 ## [2025-11-24] - Reorganización de Código
 
 ### Tipo de cambio:
