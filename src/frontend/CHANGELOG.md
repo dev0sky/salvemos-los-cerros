@@ -1,5 +1,24 @@
 # Changelog - Frontend
 
+## [2025-11-24] - Mapas y Cerros
+
+### Tipo de cambio:
+
+- (feat) Módulo de mapas con Leaflet y `react-leaflet`
+- (feat) Página `/mapa` con vista completa de todos los cerros
+- (feat) Página `/cerros` con cuadrícula de tarjetas de cerro
+- (feat) Detalle de cerro (`/cerros/:id`) con información completa y mapa centrado
+- (fix) Downgrade a `react-leaflet@4.2.1` (compatible con React 18)
+- (fix) Solución de iconos de marcador en Leaflet (carga explícita de assets)
+- (refactor) `useEffect` para forzar resize y evitar mapa invisible
+- (style) Contenedor del mapa con bordes, sombra y `rounded-2xl` acorde al estilo "Naturaleza Viva"
+
+### Descripción breve:
+
+Se integró un mapa interactivo que muestra la ubicación de cada cerro mediante marcadores. Cada marcador abre un popup con nombre, altitud y enlace al detalle del cerro. Las páginas de cerros presentan tarjetas con foto, datos clave y botón "Ver detalles". La navegación se actualizó para incluir enlaces a "Mapa" y "Cerros".
+
+---
+
 ## [2025-11-24] - Módulo de Galería y Mejoras de Imágenes
 
 ### Tipo de cambio:
