@@ -1,5 +1,59 @@
 # Changelog - Frontend
 
+## [2025-11-24] - Sistema de Animaciones y Micro-interacciones
+
+### Tipo de cambio:
+
+- (feat) Sistema de animaciones centralizado con `framer-motion`
+- (feat) Transiciones de página y filtrado fluido con `AnimatePresence`
+- (feat) Micro-interacciones (hover effects) en componentes UI
+- (refactor) Estandarización de constantes de animación
+
+### Descripción breve:
+
+**Sistema de Animaciones:**
+- Se creó `src/constants/animations.ts` para centralizar curvas de easing, duraciones y variantes.
+- Implementación consistente de `PAGE_VARIANTS` para transiciones de entrada en todas las páginas.
+- Uso de `STAGGER_CONTAINER` y `FADE_UP_ITEM` para entradas escalonadas de contenido.
+- `AnimatePresence` añadido a listas filtrables (Proyectos, Eventos, Noticias, Galería) para transiciones suaves de entrada/salida.
+
+**Páginas Actualizadas:**
+- **Home:** Animaciones de entrada para hero y features.
+- **Proyectos/Eventos/Noticias:** Filtrado animado con reordenamiento fluido.
+- **Galería:** Grid animado y efectos de hover en imágenes.
+- **Nosotros:** Entrada escalonada de secciones y tarjetas de equipo.
+- **Cerro Detalle:** Animación de zoom en imagen principal y entrada de contenido.
+
+**Micro-interacciones:**
+- `HOVER_LIFT`: Elevación sutil (-5px) en tarjetas al pasar el mouse.
+- `HOVER_SCALE`: Escala ligera (1.02x) en elementos interactivos.
+- Botones con transiciones de color y sombra.
+
+### Archivos nuevos:
+
+**Constantes:**
+- src/constants/animations.ts
+
+### Archivos modificados:
+
+**Páginas:**
+- src/modules/home/pages/HomePage.tsx
+- src/modules/proyectos/pages/ProyectosPage.tsx
+- src/modules/eventos/pages/EventosPage.tsx
+- src/modules/noticias/pages/NoticiasPage.tsx
+- src/modules/galeria/pages/GaleriaPage.tsx
+- src/modules/nosotros/pages/NosotrosPage.tsx
+- src/modules/cerros/components/CerroDetail.tsx
+- src/modules/cerros/pages/CerroDetallePage.tsx
+
+### Build:
+
+✅ Build exitoso en 17.36s
+- Bundle size optimizado (tree-shaking de framer-motion)
+- Sin errores de TypeScript ni Lint
+
+---
+
 ## [2025-11-24] - Mapas y Cerros
 
 ### Tipo de cambio:
