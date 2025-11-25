@@ -1,0 +1,30 @@
+# Node.js
+node_modules/
+npm-debug.log*
+yarn-debug.log*
+yarn-error.log*
+.pnp/
+.pnp.js
+.env
+.env.development.local
+.env.test.local
+.env.production.local
+.env.local
+
+# React
+build/
+dist/
+.parcel-cache/
+.cache/
+.next/ # Next.js specific
+out/ # Next.js static export
+public/build/ # Create React App build output in public folder
+
+# IDEs and OS
+.vscode/
+.idea/
+.DS_Store
+Thumbs.db
+*.log
+*.tgz
+*.zip
