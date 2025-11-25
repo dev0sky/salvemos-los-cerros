@@ -42,32 +42,32 @@ export const NewsCard: React.FC<NewsCardProps> = ({ article }) => {
         
         <div className="p-6 flex flex-col flex-1">
           <div className="flex items-center justify-between mb-3 flex-wrap gap-2">
-          <Badge variant={CATEGORY_VARIANTS[article.category]}>
-            {CATEGORY_LABELS[article.category]}
-          </Badge>
-          {article.featured && <Badge variant="primary">Destacado</Badge>}
-        </div>
-
-        <h3 className="text-xl font-semibold text-text-main mb-2">
-          {article.title}
-        </h3>
-
-        <p className="text-text-muted text-sm mb-4 flex-1">
-          {article.excerpt}
-        </p>
-
-        <div className="flex items-center justify-between pt-4 border-t border-border-soft">
-          <div className="flex items-center gap-2 text-xs text-text-muted">
-            <IconCalendar size={14} />
-            <span>{article.date}</span>
+            <Badge variant={CATEGORY_VARIANTS[article.category]}>
+              {CATEGORY_LABELS[article.category]}
+            </Badge>
+            {article.featured && <Badge variant="primary">Destacado</Badge>}
           </div>
-          <a 
-            href="#" 
-            className="text-primary text-sm font-semibold flex items-center gap-1 hover:gap-2 transition-all whitespace-nowrap"
-          >
-            Leer más <IconArrowRight size={14} />
-          </a>
-        </div>
+
+          <h3 className="text-xl font-semibold text-text-main mb-2">
+            {article.title}
+          </h3>
+
+          <p className="text-text-muted text-sm mb-4 flex-1">
+            {article.excerpt}
+          </p>
+
+          <div className="flex items-center justify-between pt-4 border-t border-border-soft">
+            <div className="flex items-center gap-2 text-xs text-text-muted">
+              <IconCalendar size={14} />
+              <span>{article.date}</span>
+            </div>
+            <a 
+              href="#" 
+              className="text-primary text-sm font-semibold flex items-center gap-1 hover:gap-2 transition-all whitespace-nowrap"
+            >
+              Leer más <IconArrowRight size={14} />
+            </a>
+          </div>
         </div>
       </Card>
     </motion.div>

@@ -1,9 +1,10 @@
 import React from 'react';
 import { motion } from 'framer-motion';
-import { IconMapPin, IconCalendar, IconArrowRight } from '@tabler/icons-react';
+import { IconMapPin, IconCalendar, IconArrowRight, IconMap } from '@tabler/icons-react';
 import { Card } from './ui/Card';
 import { Badge } from './ui/Badge';
 import type { Project } from '@/types';
+import { Link } from 'wouter';
 
 interface ProjectCardProps {
   project: Project;
@@ -80,8 +81,12 @@ export const ProjectCard: React.FC<ProjectCardProps> = ({ project }) => {
           </div>
 
           <div className="flex items-center justify-between pt-4 border-t border-border-soft">
-            <div className="text-xs text-text-muted">
-              Inicio: {project.startDate}
+            <div className="flex gap-2">
+               <Link href="/mapa">
+                  <a className="text-xs text-primary flex items-center gap-1 hover:underline" title="Ver en mapa">
+                    <IconMap size={14} /> Mapa
+                  </a>
+               </Link>
             </div>
             <a 
               href="#" 

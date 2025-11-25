@@ -21,6 +21,8 @@ export const MainLayout: React.FC<MainLayoutProps> = ({ children }) => {
     { label: STRINGS.NAV_EVENTOS, path: ROUTES.EVENTOS },
     { label: STRINGS.NAV_NOTICIAS, path: ROUTES.NOTICIAS },
     { label: STRINGS.NAV_GALERIA, path: ROUTES.GALERIA },
+    { label: STRINGS.NAV_MAPA, path: ROUTES.MAPA },
+    { label: STRINGS.NAV_CERROS, path: ROUTES.CERROS },
   ];
 
   const isActive = (path: string) => location === path;

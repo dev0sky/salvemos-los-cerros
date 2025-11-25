@@ -1,9 +1,10 @@
 import React from 'react';
 import { motion } from 'framer-motion';
-import { IconCalendar, IconClock, IconMapPin, IconUsers, IconArrowRight } from '@tabler/icons-react';
+import { IconCalendar, IconClock, IconMapPin, IconUsers, IconArrowRight, IconMap } from '@tabler/icons-react';
 import { Card } from './ui/Card';
 import { Badge } from './ui/Badge';
 import type { Event } from '@/types';
+import { Link } from 'wouter';
 
 interface EventCardProps {
   event: Event;
@@ -84,8 +85,12 @@ export const EventCard: React.FC<EventCardProps> = ({ event }) => {
           </div>
 
           <div className="flex items-center justify-between pt-4 border-t border-border-soft">
-            <div className="text-xs text-text-muted">
-              {event.date}
+            <div className="flex gap-2">
+               <Link href="/mapa">
+                  <a className="text-xs text-primary flex items-center gap-1 hover:underline" title="Ver en mapa">
+                    <IconMap size={14} /> Mapa
+                  </a>
+               </Link>
             </div>
             {!isPast ? (
               <a 

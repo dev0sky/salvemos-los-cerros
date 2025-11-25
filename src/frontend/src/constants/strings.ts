@@ -9,8 +9,10 @@ export const STRINGS = {
     NAV_EVENTOS: 'Eventos',
     NAV_NOTICIAS: 'Noticias',
     NAV_GALERIA: 'Galería',
+    NAV_MAPA: 'Mapa',
+    NAV_CERROS: 'Cerros',
     
-    // Home Page
+    // Hero Section
     HERO_TITLE: 'Protegiendo Nuestros Cerros',
     HERO_SUBTITLE: 'Únete a la iniciativa para conservar los espacios naturales de nuestra comunidad. Juntos podemos marcar la diferencia.',
     CTA_PRIMARY: 'Unirse Ahora',
