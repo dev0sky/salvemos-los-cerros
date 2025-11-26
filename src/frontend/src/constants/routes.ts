@@ -11,4 +11,9 @@ export const ROUTES = {
     MAPA: '/mapa',
     CERROS: '/cerros',
     CERRO_DETALLE: '/cerros/:id',
+    LOGIN: '/login',
+    REGISTER: '/register',
+    VOLUNTARIADO: '/voluntariado',
+    FAQ: '/preguntas-frecuentes',
+    CONTRIBUCIONES: '/contribuciones',
 } as const;
