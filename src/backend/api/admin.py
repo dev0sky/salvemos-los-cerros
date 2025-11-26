@@ -1,5 +1,5 @@
 from django.contrib import admin
-from .models import Cerro, Project, Event, NewsArticle, TeamMember, GalleryImage
+from .models import Cerro, Project, Event, NewsArticle, TeamMember, GalleryImage, Subscriber, Volunteer, FAQ, ContributionItem
 
 @admin.register(Cerro)
 class CerroAdmin(admin.ModelAdmin):
@@ -34,3 +34,29 @@ class GalleryImageAdmin(admin.ModelAdmin):
     list_display = ('title', 'category', 'date', 'photographer')
     list_filter = ('category', 'date')
     search_fields = ('title', 'description')
+
+@admin.register(Subscriber)
+class SubscriberAdmin(admin.ModelAdmin):
+    list_display = ('email', 'phone', 'receive_news', 'receive_events', 'receive_projects', 'created_at')
+    list_filter = ('receive_news', 'receive_events', 'receive_projects', 'created_at')
+    search_fields = ('email', 'phone')
+
+@admin.register(Volunteer)
+class VolunteerAdmin(admin.ModelAdmin):
+    list_display = ('name', 'email', 'phone', 'project', 'event', 'created_at')
+    list_filter = ('project', 'event', 'created_at')
+    search_fields = ('name', 'email', 'interests')
+
+@admin.register(FAQ)
+class FAQAdmin(admin.ModelAdmin):
+    list_display = ('question', 'order', 'created_at')
+    list_filter = ('created_at',)
+    search_fields = ('question', 'answer')
+    ordering = ('order', '-created_at')
+
+@admin.register(ContributionItem)
+class ContributionItemAdmin(admin.ModelAdmin):
+    list_display = ('title', 'order', 'link', 'created_at')
+    list_filter = ('created_at',)
+    search_fields = ('title', 'description')
+    ordering = ('order', '-created_at')

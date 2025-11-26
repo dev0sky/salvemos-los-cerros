@@ -1,5 +1,5 @@
 from rest_framework import serializers
-from .models import Cerro, Project, Event, NewsArticle, TeamMember, GalleryImage
+from .models import Cerro, Project, Event, NewsArticle, TeamMember, GalleryImage, Subscriber, Volunteer, FAQ, ContributionItem
 
 class CerroSerializer(serializers.ModelSerializer):
     location = serializers.SerializerMethodField()
@@ -52,3 +52,23 @@ class GalleryImageSerializer(serializers.ModelSerializer):
     class Meta:
         model = GalleryImage
         fields = ['id', 'title', 'description', 'imageUrl', 'category', 'date', 'photographer', 'tags']
+
+class SubscriberSerializer(serializers.ModelSerializer):
+    class Meta:
+        model = Subscriber
+        fields = '__all__'
+
+class VolunteerSerializer(serializers.ModelSerializer):
+    class Meta:
+        model = Volunteer
+        fields = '__all__'
+
+class FAQSerializer(serializers.ModelSerializer):
+    class Meta:
+        model = FAQ
+        fields = '__all__'
+
+class ContributionItemSerializer(serializers.ModelSerializer):
+    class Meta:
+        model = ContributionItem
+        fields = '__all__'

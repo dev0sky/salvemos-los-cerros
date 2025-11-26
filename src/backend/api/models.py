@@ -103,3 +103,55 @@ class GalleryImage(models.Model):
 
     def __str__(self):
         return self.title
+
+class Subscriber(models.Model):
+    email = models.EmailField(unique=True, null=True, blank=True)
+    phone = models.CharField(max_length=20, null=True, blank=True)
+    receive_news = models.BooleanField(default=True)
+    receive_events = models.BooleanField(default=True)
+    receive_projects = models.BooleanField(default=True)
+    created_at = models.DateTimeField(auto_now_add=True)
+
+    def __str__(self):
+        return self.email or self.phone
+
+class Volunteer(models.Model):
+    name = models.CharField(max_length=200)
+    email = models.EmailField()
+    phone = models.CharField(max_length=20, null=True, blank=True)
+    interests = models.TextField(help_text="Areas of interest for volunteering")
+    availability = models.CharField(max_length=100)
+    project = models.ForeignKey(Project, on_delete=models.SET_NULL, null=True, blank=True, related_name='volunteers')
+    event = models.ForeignKey(Event, on_delete=models.SET_NULL, null=True, blank=True, related_name='volunteers')
+    created_at = models.DateTimeField(auto_now_add=True)
+
+    def __str__(self):
+        return self.name
+
+class FAQ(models.Model):
+    question = models.CharField(max_length=500)
+    answer = models.TextField()
+    order = models.IntegerField(default=0)
+    created_at = models.DateTimeField(auto_now_add=True)
+
+    class Meta:
+        ordering = ['order', '-created_at']
+        verbose_name = 'FAQ'
+        verbose_name_plural = 'FAQs'
+
+    def __str__(self):
+        return self.question
+
+class ContributionItem(models.Model):
+    title = models.CharField(max_length=200)
+    description = models.TextField()
+    image = models.ImageField(upload_to='contributions/', null=True, blank=True)
+    link = models.URLField(null=True, blank=True)
+    order = models.IntegerField(default=0)
+    created_at = models.DateTimeField(auto_now_add=True)
+
+    class Meta:
+        ordering = ['order', '-created_at']
+
+    def __str__(self):
+        return self.title
