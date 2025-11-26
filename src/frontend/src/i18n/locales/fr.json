@@ -4,19 +4,22 @@
     "nav": {
         "home": "Accueil",
         "projects": "Projets",
-        "about": "À Propos",
+        "about": "À propos",
         "events": "Événements",
-        "news": "Nouvelles",
+        "news": "Actualités",
         "gallery": "Galerie",
         "map": "Carte",
-        "hills": "Collines"
+        "hills": "Collines",
+        "faq": "FAQ",
+        "contributions": "Contributions",
+        "volunteer": "Bénévolat"
     },
     "hero": {
         "badge": "Initiative Communautaire",
         "title": "Sauvons les Collines de Chihuahua",
-        "subtitle": "Une association d'activisme social pour la protection des zones naturelles à Chihuahua comme les collines, les rivières, les lacs, les lagunes, les barrages, les montagnes, les canyons, et la flore et la faune qui les habitent.",
-        "description": "Actuellement, nous sommes seulement à Chihuahua capitale mais nous cherchons à aller dans tout l'état à l'avenir. Nous sommes apolitiques, nous réalisons des manifestations et des changements qui cherchent à inspirer et à réaliser des changements pour la durabilité commune des habitants, en sensibilisant aux dangers de la gentrification et en permettant également de sensibiliser à l'utilisation appropriée des ressources naturelles et comment mieux les exploiter.",
-        "cta_primary": "À Propos de Nous",
+        "subtitle": "Une association d'activisme social pour la protection des zones naturelles de Chihuahua telles que les collines, rivières, lacs, lagunes, barrages, montagnes, canyons, ainsi que la flore et la faune qui les habitent.",
+        "description": "Actuellement, nous sommes seulement dans la capitale de Chihuahua mais nous cherchons à nous étendre à tout l'État à l'avenir. Nous sommes apolitiques, nous organisons des manifestations et des changements qui cherchent à inspirer et à réaliser des changements pour la durabilité commune des habitants, en sensibilisant aux dangers de la gentrification et en permettant également de sensibiliser à l'utilisation appropriée des ressources naturelles et à la manière de mieux les exploiter.",
+        "cta_primary": "À propos de nous",
         "cta_secondary": "Nos Projets"
     },
     "features": {
@@ -27,13 +30,13 @@
         },
         "volunteer": {
             "title": "Bénévolat",
-            "description": "Rejoignez nos journées de nettoyage et de reboisement. Votre aide est fondamentale.",
+            "description": "Rejoignez nos journées de nettoyage et de reforestation. Votre aide est fondamentale.",
             "link": "Voir les événements"
         },
         "education": {
             "title": "Éducation Environnementale",
-            "description": "Ateliers et conférences pour sensibiliser à l'importance de notre flore et faune indigènes.",
-            "link": "Lire les nouvelles"
+            "description": "Ateliers et conférences pour sensibiliser à l'importance de notre flore et faune natives.",
+            "link": "Lire les actualités"
         }
     },
     "sections": {
@@ -42,8 +45,11 @@
             "subtitle": "Découvrez nos initiatives actives",
             "view_all": "Voir tout",
             "empty_title": "Aucun projet en vedette",
-            "empty_desc": "Nous publierons bientôt de nouvelles initiatives. Restez à l'écoute !",
-            "empty_btn": "Voir tous les projets"
+            "empty_desc": "Nous publierons bientôt de nouvelles initiatives. Restez à l'écoute!",
+            "empty_btn": "Voir tous les projets",
+            "stats_title": "Projets par Mois",
+            "filter_label": "Filtrer par:",
+            "no_filter_results": "Aucun projet avec ce filtre."
         },
         "events": {
             "title": "Événements à Venir",
@@ -51,15 +57,126 @@
             "view_all": "Voir tout",
             "empty_title": "Aucun événement à venir",
             "empty_desc": "Nous planifions de nouvelles activités. Revenez bientôt pour voir les prochaines journées.",
-            "empty_btn": "Voir les événements passés"
+            "empty_btn": "Voir les événements passés",
+            "badge": "Événements à Venir",
+            "filter_label": "Filtrer par:",
+            "no_filter_results": "Aucun événement avec ce filtre."
         },
         "news": {
-            "title": "Dernières Nouvelles",
+            "title": "Dernières Actualités",
             "subtitle": "Restez informé de nos activités",
             "view_all": "Voir tout",
-            "empty_title": "Aucune nouvelle récente",
-            "empty_desc": "Nous travaillons sur de nouvelles mises à jour. Revenez bientôt !",
-            "empty_btn": "Voir toutes les nouvelles"
+            "empty_title": "Aucune actualité récente",
+            "empty_desc": "Nous travaillons sur de nouvelles mises à jour. Revenez bientôt!",
+            "empty_btn": "Voir toutes les actualités",
+            "badge": "Dernières Actualités",
+            "filter_label": "Filtrer par catégorie:",
+            "no_filter_results": "Aucune actualité dans cette catégorie."
         }
+    },
+    "footer": {
+        "tagline": "Protéger nos collines et zones naturelles pour les générations futures.",
+        "quick_links": "Liens Rapides",
+        "contact": "Contact",
+        "stay_informed": "Restez Informé",
+        "email_placeholder": "Adresse e-mail",
+        "phone_placeholder": "Téléphone (optionnel)",
+        "interests_label": "Je souhaite recevoir:",
+        "news_label": "Actualités",
+        "events_label": "Événements",
+        "projects_label": "Projets",
+        "subscribe_btn": "S'abonner",
+        "subscribing_btn": "Abonnement en cours...",
+        "subscribe_success": "Merci de vous être abonné!",
+        "subscribe_error": "Erreur lors de l'abonnement. Veuillez réessayer.",
+        "email_or_phone_required": "Veuillez entrer un e-mail ou un téléphone",
+        "all_rights_reserved": "Tous droits réservés."
+    },
+    "volunteer": {
+        "title": "Bénévolat",
+        "intro": "Rejoignez notre communauté de bénévoles et aidez-nous à préserver les collines de notre ville. Votre participation est essentielle pour avoir un impact positif sur notre environnement.",
+        "why_title": "Pourquoi devenir bénévole?",
+        "reason_1": "Contribuer à la conservation de l'environnement.",
+        "reason_2": "Apprendre sur la flore et la faune locales.",
+        "reason_3": "Rencontrer des personnes partageant les mêmes intérêts.",
+        "reason_4": "Participer à des événements exclusifs pour les bénévoles.",
+        "form_title": "Rejoignez-nous en tant que Bénévole",
+        "form_subtitle": "Aidez-nous à protéger nos collines.",
+        "name_label": "Nom Complet",
+        "name_placeholder": "Votre nom",
+        "email_label": "E-mail",
+        "email_placeholder": "vous@email.com",
+        "phone_label": "Téléphone",
+        "phone_placeholder": "+33 6 12 34 56 78",
+        "interests_label": "Intérêts",
+        "interests_placeholder": "Ex: Reforestation, éducation environnementale, nettoyage...",
+        "availability_label": "Disponibilité",
+        "availability_placeholder": "Ex: Week-ends, matins...",
+        "submit_btn": "Soumettre l'inscription",
+        "submitting_btn": "Envoi en cours...",
+        "required_field": "Ce champ est requis",
+        "invalid_email": "E-mail invalide",
+        "interests_required": "Dites-nous ce qui vous intéresse",
+        "availability_required": "Indiquez votre disponibilité",
+        "success_message": "Merci de vous être inscrit comme bénévole!",
+        "error_message": "Erreur lors de l'envoi du formulaire. Veuillez réessayer."
+    },
+    "faq": {
+        "title": "Questions Fréquemment Posées",
+        "subtitle": "Trouvez des réponses aux questions les plus courantes sur notre organisation et comment vous pouvez aider.",
+        "loading": "Chargement des questions...",
+        "empty": "Aucune question fréquemment posée disponible pour le moment."
+    },
+    "cerros": {
+        "title": "Nos Collines",
+        "subtitle": "Rencontrez les gardiens naturels de notre ville. Chaque colline est un écosystème unique que nous devons protéger.",
+        "error": "Erreur lors du chargement des collines."
+    },
+    "cerro_detail": {
+        "ecological_value": "Valeur Écologique",
+        "flora": "Flore",
+        "fauna": "Faune",
+        "history_geology": "Histoire et Géologie",
+        "cultural_value": "Valeur Culturelle",
+        "geology": "Géologie",
+        "rock_type": "Type de Roche",
+        "geological_age": "Âge Géologique",
+        "notes": "Notes",
+        "legal_status": "Statut Juridique",
+        "proposed_protection": "Protection Proposée",
+        "current_status": "Statut Actuel",
+        "threats": "Menaces",
+        "mineral_resources": "Ressources Minérales",
+        "main_flora": "Flore Principale",
+        "view_details": "Voir les détails"
+    },
+    "contributions": {
+        "title": "Contributions",
+        "subtitle": "Découvrez les différentes façons dont vous pouvez soutenir notre cause et aider à préserver les collines.",
+        "loading": "Chargement des contributions...",
+        "empty": "Aucune option de contribution disponible pour le moment.",
+        "more_info": "Plus d'informations"
+    },
+    "filters": {
+        "all": "Tous",
+        "active": "Actifs",
+        "completed": "Terminés",
+        "planned": "Planifiés",
+        "upcoming": "À venir",
+        "past": "Passés"
+    },
+    "categories": {
+        "conservation": "Conservation",
+        "events": "Événements",
+        "education": "Éducation"
+    },
+    "common": {
+        "loading": "Chargement...",
+        "error": "Erreur",
+        "retry": "Réessayer",
+        "read_more": "Lire la suite",
+        "view_all": "Voir tout",
+        "no_results": "Aucun résultat",
+        "geology_label": "Géologie:"
     }
 }

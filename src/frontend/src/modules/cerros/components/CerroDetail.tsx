@@ -1,4 +1,5 @@
 import React from "react";
+import { useTranslation } from "react-i18next";
 import { motion, Variants } from "framer-motion";
 import {
   IconMountain,
@@ -53,6 +54,8 @@ const imageVariants: Variants = {
 };
 
 export const CerroDetail: React.FC<CerroDetailProps> = ({ cerro }) => {
+  const { t } = useTranslation();
+
   return (
     <motion.div
       className="space-y-8"
@@ -103,12 +106,12 @@ export const CerroDetail: React.FC<CerroDetailProps> = ({ cerro }) => {
               <div className="p-2 bg-green-100 text-green-700 rounded-lg">
                 <IconLeaf size={24} />
               </div>
-              Valor Ecológico
+              {t("cerro_detail.ecological_value")}
             </h2>
             <div className="grid grid-cols-1 md:grid-cols-2 gap-4">
               <Card className="hover:shadow-md transition-shadow duration-300 border-l-4 border-l-green-500">
                 <h3 className="font-semibold text-green-700 mb-3 flex items-center gap-2 text-lg">
-                  <IconLeaf size={20} /> Flora
+                  <IconLeaf size={20} /> {t("cerro_detail.flora")}
                 </h3>
                 <ul className="space-y-2">
                   {cerro.ecological_value.flora.map((item, i) => (
@@ -124,7 +127,7 @@ export const CerroDetail: React.FC<CerroDetailProps> = ({ cerro }) => {
               </Card>
               <Card className="hover:shadow-md transition-shadow duration-300 border-l-4 border-l-amber-500">
                 <h3 className="font-semibold text-amber-700 mb-3 flex items-center gap-2 text-lg">
-                  <IconPaw size={20} /> Fauna
+                  <IconPaw size={20} /> {t("cerro_detail.fauna")}
                 </h3>
                 <ul className="space-y-2">
                   {cerro.ecological_value.fauna.map((item, i) => (
@@ -147,12 +150,12 @@ export const CerroDetail: React.FC<CerroDetailProps> = ({ cerro }) => {
               <div className="p-2 bg-blue-100 text-blue-700 rounded-lg">
                 <IconHistory size={24} />
               </div>
-              Historia y Geología
+              {t("cerro_detail.history_geology")}
             </h2>
             <Card className="space-y-6 hover:shadow-md transition-shadow duration-300">
               <div>
                 <h3 className="font-semibold text-text-main mb-3 text-lg">
-                  Valor Cultural
+                  {t("cerro_detail.cultural_value")}
                 </h3>
                 <ul className="grid grid-cols-1 md:grid-cols-2 gap-3">
                   {cerro.ecological_value.cultural.map((item, i) => (
@@ -168,12 +171,13 @@ export const CerroDetail: React.FC<CerroDetailProps> = ({ cerro }) => {
               </div>
               <div className="border-t border-border-soft pt-6">
                 <h3 className="font-semibold text-text-main mb-4 flex items-center gap-2 text-lg">
-                  <IconMountain size={20} className="text-secondary" /> Geología
+                  <IconMountain size={20} className="text-secondary" />{" "}
+                  {t("cerro_detail.geology")}
                 </h3>
                 <div className="grid grid-cols-1 sm:grid-cols-2 gap-6 text-sm bg-surface p-4 rounded-xl">
                   <div>
                     <span className="text-text-muted block text-xs uppercase tracking-wider mb-1">
-                      Tipo de Roca
+                      {t("cerro_detail.rock_type")}
                     </span>
                     <span className="font-semibold text-text-main text-base">
                       {cerro.geology.rock}
@@ -181,7 +185,7 @@ export const CerroDetail: React.FC<CerroDetailProps> = ({ cerro }) => {
                   </div>
                   <div>
                     <span className="text-text-muted block text-xs uppercase tracking-wider mb-1">
-                      Era Geológica
+                      {t("cerro_detail.geological_age")}
                     </span>
                     <span className="font-semibold text-text-main text-base">
                       {cerro.geology.age}
@@ -189,7 +193,7 @@ export const CerroDetail: React.FC<CerroDetailProps> = ({ cerro }) => {
                   </div>
                   <div className="sm:col-span-2 border-t border-border-soft/50 pt-3 mt-1">
                     <span className="text-text-muted block text-xs uppercase tracking-wider mb-1">
-                      Notas
+                      {t("cerro_detail.notes")}
                     </span>
                     <span className="text-text-main leading-relaxed">
                       {cerro.geology.notes}
@@ -216,12 +220,13 @@ export const CerroDetail: React.FC<CerroDetailProps> = ({ cerro }) => {
           {/* Legal Status */}
           <Card className="hover:shadow-md transition-shadow duration-300">
             <h3 className="font-semibold text-text-main mb-4 flex items-center gap-2">
-              <IconPick size={18} className="text-primary" /> Estatus Legal
+              <IconPick size={18} className="text-primary" />{" "}
+              {t("cerro_detail.legal_status")}
             </h3>
             <div className="space-y-4">
               <div className="bg-surface p-3 rounded-lg">
                 <span className="text-xs text-text-muted uppercase tracking-wider block mb-1">
-                  Protección Propuesta
+                  {t("cerro_detail.proposed_protection")}
                 </span>
                 <p className="font-medium text-primary">
                   {cerro.legal_status.proposed_protection}
@@ -229,7 +234,7 @@ export const CerroDetail: React.FC<CerroDetailProps> = ({ cerro }) => {
               </div>
               <div className="bg-surface p-3 rounded-lg">
                 <span className="text-xs text-text-muted uppercase tracking-wider block mb-1">
-                  Estado Actual
+                  {t("cerro_detail.current_status")}
                 </span>
                 <p className="text-sm text-text-main">
                   {cerro.legal_status.status}
@@ -241,7 +246,7 @@ export const CerroDetail: React.FC<CerroDetailProps> = ({ cerro }) => {
           {/* Threats */}
           <Card className="border-red-200 bg-red-50/50 hover:shadow-md transition-shadow duration-300">
             <h3 className="font-semibold text-red-700 mb-4 flex items-center gap-2">
-              <IconAlertTriangle size={18} /> Amenazas
+              <IconAlertTriangle size={18} /> {t("cerro_detail.threats")}
             </h3>
             <ul className="space-y-3">
               {cerro.threats.map((threat, i) => (
@@ -259,8 +264,8 @@ export const CerroDetail: React.FC<CerroDetailProps> = ({ cerro }) => {
           {/* Materials */}
           <Card className="hover:shadow-md transition-shadow duration-300">
             <h3 className="font-semibold text-text-main mb-3 flex items-center gap-2">
-              <IconPick size={18} className="text-secondary" /> Recursos
-              Minerales
+              <IconPick size={18} className="text-secondary" />{" "}
+              {t("cerro_detail.mineral_resources")}
             </h3>
             <p className="text-sm text-text-muted bg-surface p-3 rounded-lg leading-relaxed">
               {cerro.materials.minerals}

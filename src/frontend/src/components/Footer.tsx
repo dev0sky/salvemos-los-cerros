@@ -26,7 +26,7 @@ export const Footer: React.FC = () => {
   const handleSubmit = async (e: React.FormEvent) => {
     e.preventDefault();
     if (!email && !phone) {
-      toast.error("Por favor ingresa un correo o teléfono");
+      toast.error(t("footer.email_or_phone_required"));
       return;
     }
     setLoading(true);
@@ -38,12 +38,12 @@ export const Footer: React.FC = () => {
         receive_events: preferences.events,
         receive_projects: preferences.projects,
       });
-      toast.success("¡Gracias por suscribirte!");
+      toast.success(t("footer.subscribe_success"));
       setEmail("");
       setPhone("");
     } catch (error) {
       console.error(error);
-      toast.error("Error al suscribirse. Intenta de nuevo.");
+      toast.error(t("footer.subscribe_error"));
     } finally {
       setLoading(false);
     }
@@ -58,10 +58,7 @@ export const Footer: React.FC = () => {
             <h3 className="text-xl font-bold text-text-main">
               {t("app_title")}
             </h3>
-            <p className="text-sm text-text-muted">
-              Protegiendo nuestros cerros y áreas naturales para las futuras
-              generaciones.
-            </p>
+            <p className="text-sm text-text-muted">{t("footer.tagline")}</p>
             <div className="flex gap-4">
               <a
                 href="#"
@@ -86,7 +83,9 @@ export const Footer: React.FC = () => {
 
           {/* Quick Links */}
           <div className="space-y-4">
-            <h4 className="font-semibold text-text-main">Enlaces Rápidos</h4>
+            <h4 className="font-semibold text-text-main">
+              {t("footer.quick_links")}
+            </h4>
             <ul className="space-y-2 text-sm text-text-muted">
               <li>
                 <Link
@@ -125,7 +124,7 @@ export const Footer: React.FC = () => {
                   href={ROUTES.FAQ}
                   className="hover:text-primary transition-colors"
                 >
-                  Preguntas Frecuentes
+                  {t("nav.faq")}
                 </Link>
               </li>
               <li>
@@ -133,7 +132,7 @@ export const Footer: React.FC = () => {
                   href={ROUTES.CONTRIBUCIONES}
                   className="hover:text-primary transition-colors"
                 >
-                  Contribuciones
+                  {t("nav.contributions")}
                 </Link>
               </li>
             </ul>
@@ -141,7 +140,9 @@ export const Footer: React.FC = () => {
 
           {/* Contact */}
           <div className="space-y-4">
-            <h4 className="font-semibold text-text-main">Contacto</h4>
+            <h4 className="font-semibold text-text-main">
+              {t("footer.contact")}
+            </h4>
             <ul className="space-y-2 text-sm text-text-muted">
               <li className="flex items-center gap-2">
                 <IconMail size={16} />
@@ -156,18 +157,20 @@ export const Footer: React.FC = () => {
 
           {/* Subscription Form */}
           <div className="space-y-4">
-            <h4 className="font-semibold text-text-main">Mantente Informado</h4>
+            <h4 className="font-semibold text-text-main">
+              {t("footer.stay_informed")}
+            </h4>
             <form onSubmit={handleSubmit} className="space-y-3">
               <input
                 type="email"
-                placeholder="Correo electrónico"
+                placeholder={t("footer.email_placeholder")}
                 className="w-full px-3 py-2 rounded-lg border border-border-soft bg-surface text-sm focus:outline-none focus:ring-2 focus:ring-primary/50"
                 value={email}
                 onChange={(e) => setEmail(e.target.value)}
               />
               <input
                 type="tel"
-                placeholder="Teléfono (opcional)"
+                placeholder={t("footer.phone_placeholder")}
                 className="w-full px-3 py-2 rounded-lg border border-border-soft bg-surface text-sm focus:outline-none focus:ring-2 focus:ring-primary/50"
                 value={phone}
                 onChange={(e) => setPhone(e.target.value)}
@@ -175,7 +178,7 @@ export const Footer: React.FC = () => {
 
               <div className="space-y-2">
                 <p className="text-xs text-text-muted font-medium">
-                  Me interesa recibir:
+                  {t("footer.interests_label")}
                 </p>
                 <div className="flex flex-wrap gap-2 text-xs text-text-muted">
                   <label className="flex items-center gap-1 cursor-pointer">
@@ -190,7 +193,7 @@ export const Footer: React.FC = () => {
                       }
                       className="rounded text-primary focus:ring-primary"
                     />
-                    Noticias
+                    {t("footer.news_label")}
                   </label>
                   <label className="flex items-center gap-1 cursor-pointer">
                     <input
@@ -204,7 +207,7 @@ export const Footer: React.FC = () => {
                       }
                       className="rounded text-primary focus:ring-primary"
                     />
-                    Eventos
+                    {t("footer.events_label")}
                   </label>
                   <label className="flex items-center gap-1 cursor-pointer">
                     <input
@@ -218,7 +221,7 @@ export const Footer: React.FC = () => {
                       }
                       className="rounded text-primary focus:ring-primary"
                     />
-                    Proyectos
+                    {t("footer.projects_label")}
                   </label>
                 </div>
               </div>
@@ -228,7 +231,9 @@ export const Footer: React.FC = () => {
                 disabled={loading}
                 className="w-full bg-primary text-white py-2 rounded-lg text-sm font-medium hover:bg-primary/90 transition-colors disabled:opacity-50"
               >
-                {loading ? "Suscribiendo..." : "Suscribirse"}
+                {loading
+                  ? t("footer.subscribing_btn")
+                  : t("footer.subscribe_btn")}
               </button>
             </form>
           </div>
@@ -236,8 +241,8 @@ export const Footer: React.FC = () => {
 
         <div className="border-t border-border-soft pt-8 text-center text-sm text-text-muted">
           <p>
-            &copy; {new Date().getFullYear()} {t("app_title")}. Todos los
-            derechos reservados.
+            &copy; {new Date().getFullYear()} {t("app_title")}.{" "}
+            {t("footer.all_rights_reserved")}
           </p>
         </div>
       </div>

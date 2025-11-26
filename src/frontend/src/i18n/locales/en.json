@@ -9,7 +9,10 @@
         "news": "News",
         "gallery": "Gallery",
         "map": "Map",
-        "hills": "Hills"
+        "hills": "Hills",
+        "faq": "FAQ",
+        "contributions": "Contributions",
+        "volunteer": "Volunteer"
     },
     "hero": {
         "badge": "Community Initiative",
@@ -43,7 +46,10 @@
             "view_all": "View all",
             "empty_title": "No featured projects",
             "empty_desc": "We will publish new initiatives soon. Stay tuned!",
-            "empty_btn": "View all projects"
+            "empty_btn": "View all projects",
+            "stats_title": "Projects by Month",
+            "filter_label": "Filter by:",
+            "no_filter_results": "No projects with this filter."
         },
         "events": {
             "title": "Upcoming Events",
@@ -51,7 +57,10 @@
             "view_all": "View all",
             "empty_title": "No upcoming events",
             "empty_desc": "We are planning new activities. Come back soon to see the next days.",
-            "empty_btn": "View past events"
+            "empty_btn": "View past events",
+            "badge": "Upcoming Events",
+            "filter_label": "Filter by:",
+            "no_filter_results": "No events with this filter."
         },
         "news": {
             "title": "Latest News",
@@ -59,7 +68,115 @@
             "view_all": "View all",
             "empty_title": "No recent news",
             "empty_desc": "We are working on new updates. Come back soon!",
-            "empty_btn": "View all news"
+            "empty_btn": "View all news",
+            "badge": "Latest News",
+            "filter_label": "Filter by category:",
+            "no_filter_results": "No news in this category."
         }
+    },
+    "footer": {
+        "tagline": "Protecting our hills and natural areas for future generations.",
+        "quick_links": "Quick Links",
+        "contact": "Contact",
+        "stay_informed": "Stay Informed",
+        "email_placeholder": "Email address",
+        "phone_placeholder": "Phone (optional)",
+        "interests_label": "I'm interested in receiving:",
+        "news_label": "News",
+        "events_label": "Events",
+        "projects_label": "Projects",
+        "subscribe_btn": "Subscribe",
+        "subscribing_btn": "Subscribing...",
+        "subscribe_success": "Thank you for subscribing!",
+        "subscribe_error": "Error subscribing. Please try again.",
+        "email_or_phone_required": "Please enter an email or phone",
+        "all_rights_reserved": "All rights reserved."
+    },
+    "volunteer": {
+        "title": "Volunteer",
+        "intro": "Join our volunteer community and help us preserve the hills of our city. Your participation is essential to achieve a positive impact on our environment.",
+        "why_title": "Why volunteer?",
+        "reason_1": "Contribute to environmental conservation.",
+        "reason_2": "Learn about local flora and fauna.",
+        "reason_3": "Meet people with the same interests.",
+        "reason_4": "Participate in exclusive events for volunteers.",
+        "form_title": "Join as a Volunteer",
+        "form_subtitle": "Help us protect our hills.",
+        "name_label": "Full Name",
+        "name_placeholder": "Your name",
+        "email_label": "Email",
+        "email_placeholder": "you@email.com",
+        "phone_label": "Phone",
+        "phone_placeholder": "+1 300 123 4567",
+        "interests_label": "Interests",
+        "interests_placeholder": "E.g.: Reforestation, environmental education, cleanup...",
+        "availability_label": "Availability",
+        "availability_placeholder": "E.g.: Weekends, mornings...",
+        "submit_btn": "Submit Registration",
+        "submitting_btn": "Submitting...",
+        "required_field": "This field is required",
+        "invalid_email": "Invalid email",
+        "interests_required": "Tell us what interests you",
+        "availability_required": "Indicate your availability",
+        "success_message": "Thank you for registering as a volunteer!",
+        "error_message": "Error submitting the form. Please try again."
+    },
+    "faq": {
+        "title": "Frequently Asked Questions",
+        "subtitle": "Find answers to the most common questions about our organization and how you can help.",
+        "loading": "Loading questions...",
+        "empty": "No frequently asked questions available at the moment."
+    },
+    "cerros": {
+        "title": "Our Hills",
+        "subtitle": "Meet the natural guardians of our city. Each hill is a unique ecosystem that we must protect.",
+        "error": "Error loading hills."
+    },
+    "cerro_detail": {
+        "ecological_value": "Ecological Value",
+        "flora": "Flora",
+        "fauna": "Fauna",
+        "history_geology": "History and Geology",
+        "cultural_value": "Cultural Value",
+        "geology": "Geology",
+        "rock_type": "Rock Type",
+        "geological_age": "Geological Age",
+        "notes": "Notes",
+        "legal_status": "Legal Status",
+        "proposed_protection": "Proposed Protection",
+        "current_status": "Current Status",
+        "threats": "Threats",
+        "mineral_resources": "Mineral Resources",
+        "main_flora": "Main Flora",
+        "view_details": "View details"
+    },
+    "contributions": {
+        "title": "Contributions",
+        "subtitle": "Discover the different ways you can support our cause and help preserve the hills.",
+        "loading": "Loading contributions...",
+        "empty": "No contribution options available at the moment.",
+        "more_info": "More information"
+    },
+    "filters": {
+        "all": "All",
+        "active": "Active",
+        "completed": "Completed",
+        "planned": "Planned",
+        "upcoming": "Upcoming",
+        "past": "Past"
+    },
+    "categories": {
+        "conservation": "Conservation",
+        "events": "Events",
+        "education": "Education"
+    },
+    "common": {
+        "loading": "Loading...",
+        "error": "Error",
+        "retry": "Retry",
+        "read_more": "Read more",
+        "view_all": "View all",
+        "no_results": "No results",
+        "geology_label": "Geology:"
     }
 }

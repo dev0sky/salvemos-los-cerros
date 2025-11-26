@@ -1,10 +1,12 @@
-import React from 'react';
-import { motion } from 'framer-motion';
-import { CerroCard } from '@/components/CerroCard';
-import { LoadingSpinner } from '@/components/ui/LoadingSpinner';
-import { useCerros } from '@/hooks/useData';
+import React from "react";
+import { useTranslation } from "react-i18next";
+import { motion } from "framer-motion";
+import { CerroCard } from "@/components/CerroCard";
+import { LoadingSpinner } from "@/components/ui/LoadingSpinner";
+import { useCerros } from "@/hooks/useData";
 
 export const CerrosPage: React.FC = () => {
+  const { t } = useTranslation();
   const { data: cerros = [], isLoading, error } = useCerros();
 
   if (isLoading) {
@@ -14,7 +16,7 @@ export const CerrosPage: React.FC = () => {
   if (error) {
     return (
       <div className="flex justify-center items-center h-screen text-red-500">
-        Error al cargar cerros.
+        {t("cerros.error")}
       </div>
     );
   }
@@ -30,11 +32,9 @@ export const CerrosPage: React.FC = () => {
             className="max-w-3xl"
           >
             <h1 className="text-4xl md:text-5xl font-bold text-text-main mb-4">
-              Nuestros Cerros
+              {t("cerros.title")}
             </h1>
-            <p className="text-text-muted text-lg">
-              Conoce los guardianes naturales de nuestra ciudad. Cada cerro es un ecosistema único que debemos proteger.
-            </p>
+            <p className="text-text-muted text-lg">{t("cerros.subtitle")}</p>
           </motion.div>
         </div>
       </section>

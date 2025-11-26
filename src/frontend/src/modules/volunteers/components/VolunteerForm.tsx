@@ -1,5 +1,6 @@
-import React, { useState } from "react";
+import React from "react";
 import { useForm } from "react-hook-form";
+import { useTranslation } from "react-i18next";
 import { toast } from "sonner";
 import api from "../../../lib/api";
 import { IconHeartHandshake } from "@tabler/icons-react";
@@ -13,6 +14,7 @@ interface VolunteerFormData {
 }
 
 export const VolunteerForm: React.FC = () => {
+  const { t } = useTranslation();
   const {
     register,
     handleSubmit,
@@ -23,13 +25,11 @@ export const VolunteerForm: React.FC = () => {
   const onSubmit = async (data: VolunteerFormData) => {
     try {
       await api.post("/volunteers/", data);
-      toast.success("¡Gracias por registrarte como voluntario!");
+      toast.success(t("volunteer.success_message"));
       reset();
     } catch (error) {
       console.error("Error registering volunteer:", error);
-      toast.error(
-        "Error al enviar el formulario. Por favor intenta nuevamente."
-      );
+      toast.error(t("volunteer.error_message"));
     }
   };
 
@@ -41,23 +41,21 @@ export const VolunteerForm: React.FC = () => {
         </div>
         <div>
           <h2 className="text-2xl font-bold text-text-main">
-            Únete como Voluntario
+            {t("volunteer.form_title")}
           </h2>
-          <p className="text-text-muted">
-            Ayúdanos a proteger nuestros cerros.
-          </p>
+          <p className="text-text-muted">{t("volunteer.form_subtitle")}</p>
         </div>
       </div>
 
       <form onSubmit={handleSubmit(onSubmit)} className="space-y-4">
         <div>
           <label className="block text-sm font-medium text-text-main mb-1">
-            Nombre Completo
+            {t("volunteer.name_label")}
           </label>
           <input
-            {...register("name", { required: "Este campo es requerido" })}
+            {...register("name", { required: t("volunteer.required_field") })}
             className="w-full px-4 py-2 rounded-xl bg-surface border border-border-soft focus:border-primary focus:ring-1 focus:ring-primary outline-none transition-colors"
-            placeholder="Tu nombre"
+            placeholder={t("volunteer.name_placeholder")}
           />
           {errors.name && (
             <span className="text-xs text-red-500 mt-1">
@@ -69,18 +67,18 @@ export const VolunteerForm: React.FC = () => {
         <div className="grid grid-cols-1 md:grid-cols-2 gap-4">
           <div>
             <label className="block text-sm font-medium text-text-main mb-1">
-              Email
+              {t("volunteer.email_label")}
             </label>
             <input
               {...register("email", {
-                required: "Este campo es requerido",
+                required: t("volunteer.required_field"),
                 pattern: {
                   value: /^[A-Z0-9._%+-]+@[A-Z0-9.-]+\.[A-Z]{2,}$/i,
-                  message: "Email inválido",
+                  message: t("volunteer.invalid_email"),
                 },
               })}
               className="w-full px-4 py-2 rounded-xl bg-surface border border-border-soft focus:border-primary focus:ring-1 focus:ring-primary outline-none transition-colors"
-              placeholder="tu@email.com"
+              placeholder={t("volunteer.email_placeholder")}
             />
             {errors.email && (
               <span className="text-xs text-red-500 mt-1">
@@ -91,26 +89,26 @@ export const VolunteerForm: React.FC = () => {
 
           <div>
             <label className="block text-sm font-medium text-text-main mb-1">
-              Teléfono
+              {t("volunteer.phone_label")}
             </label>
             <input
               {...register("phone")}
               className="w-full px-4 py-2 rounded-xl bg-surface border border-border-soft focus:border-primary focus:ring-1 focus:ring-primary outline-none transition-colors"
-              placeholder="+57 300 123 4567"
+              placeholder={t("volunteer.phone_placeholder")}
             />
           </div>
         </div>
 
         <div>
           <label className="block text-sm font-medium text-text-main mb-1">
-            Intereses
+            {t("volunteer.interests_label")}
           </label>
           <textarea
             {...register("interests", {
-              required: "Cuéntanos qué te interesa",
+              required: t("volunteer.interests_required"),
             })}
             className="w-full px-4 py-2 rounded-xl bg-surface border border-border-soft focus:border-primary focus:ring-1 focus:ring-primary outline-none transition-colors min-h-[100px]"
-            placeholder="Ej: Reforestación, educación ambiental, limpieza..."
+            placeholder={t("volunteer.interests_placeholder")}
           />
           {errors.interests && (
             <span className="text-xs text-red-500 mt-1">
@@ -121,14 +119,14 @@ export const VolunteerForm: React.FC = () => {
 
         <div>
           <label className="block text-sm font-medium text-text-main mb-1">
-            Disponibilidad
+            {t("volunteer.availability_label")}
           </label>
           <input
             {...register("availability", {
-              required: "Indica tu disponibilidad",
+              required: t("volunteer.availability_required"),
             })}
             className="w-full px-4 py-2 rounded-xl bg-surface border border-border-soft focus:border-primary focus:ring-1 focus:ring-primary outline-none transition-colors"
-            placeholder="Ej: Fines de semana, mañanas..."
+            placeholder={t("volunteer.availability_placeholder")}
           />
           {errors.availability && (
             <span className="text-xs text-red-500 mt-1">
@@ -142,7 +140,9 @@ export const VolunteerForm: React.FC = () => {
           disabled={isSubmitting}
           className="w-full bg-primary text-white font-semibold py-3 rounded-xl hover:opacity-90 transition-opacity disabled:opacity-50"
         >
-          {isSubmitting ? "Enviando..." : "Enviar Registro"}
+          {isSubmitting
+            ? t("volunteer.submitting_btn")
+            : t("volunteer.submit_btn")}
         </button>
       </form>
     </div>

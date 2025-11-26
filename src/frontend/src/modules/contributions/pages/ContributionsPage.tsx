@@ -1,4 +1,5 @@
 import React, { useState, useEffect } from "react";
+import { useTranslation } from "react-i18next";
 import { IconHeartHandshake, IconExternalLink } from "@tabler/icons-react";
 import api from "../../../lib/api";
 
@@ -11,6 +12,7 @@ interface ContributionItem {
 }
 
 export const ContributionsPage: React.FC = () => {
+  const { t } = useTranslation();
   const [contributions, setContributions] = useState<ContributionItem[]>([]);
   const [loading, setLoading] = useState(true);
 
@@ -36,18 +38,17 @@ export const ContributionsPage: React.FC = () => {
           <IconHeartHandshake size={32} />
         </div>
         <h1 className="text-4xl font-bold text-text-main mb-4">
-          Contribuciones
+          {t("contributions.title")}
         </h1>
         <p className="text-text-muted max-w-2xl mx-auto">
-          Descubre las diferentes formas en las que puedes apoyar nuestra causa
-          y ayudar a preservar los cerros.
+          {t("contributions.subtitle")}
         </p>
       </div>
 
       <div className="grid grid-cols-1 md:grid-cols-2 lg:grid-cols-3 gap-8">
         {loading ? (
           <div className="col-span-full text-center py-8 text-text-muted">
-            Cargando contribuciones...
+            {t("contributions.loading")}
           </div>
         ) : contributions.length > 0 ? (
           contributions.map((item) => (
@@ -78,7 +79,7 @@ export const ContributionsPage: React.FC = () => {
                     rel="noopener noreferrer"
                     className="inline-flex items-center justify-center gap-2 bg-primary text-white px-4 py-2 rounded-lg font-medium hover:bg-primary/90 transition-colors w-full"
                   >
-                    <span>Más información</span>
+                    <span>{t("contributions.more_info")}</span>
                     <IconExternalLink size={18} />
                   </a>
                 )}
@@ -87,7 +88,7 @@ export const ContributionsPage: React.FC = () => {
           ))
         ) : (
           <div className="col-span-full text-center py-8 text-text-muted">
-            No hay opciones de contribución disponibles por el momento.
+            {t("contributions.empty")}
           </div>
         )}
       </div>

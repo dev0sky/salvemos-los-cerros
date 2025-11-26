@@ -1,4 +1,5 @@
 import React, { useState, useEffect } from "react";
+import { useTranslation } from "react-i18next";
 import {
   IconChevronDown,
   IconChevronUp,
@@ -13,6 +14,7 @@ interface FAQ {
 }
 
 export const FAQPage: React.FC = () => {
+  const { t } = useTranslation();
   const [faqs, setFaqs] = useState<FAQ[]>([]);
   const [openId, setOpenId] = useState<number | null>(null);
   const [loading, setLoading] = useState(true);
@@ -43,18 +45,15 @@ export const FAQPage: React.FC = () => {
           <IconHelpCircle size={32} />
         </div>
         <h1 className="text-4xl font-bold text-text-main mb-4">
-          Preguntas Frecuentes
+          {t("faq.title")}
         </h1>
-        <p className="text-text-muted max-w-2xl mx-auto">
-          Encuentra respuestas a las dudas más comunes sobre nuestra
-          organización y cómo puedes ayudar.
-        </p>
+        <p className="text-text-muted max-w-2xl mx-auto">{t("faq.subtitle")}</p>
       </div>
 
       <div className="max-w-3xl mx-auto space-y-4">
         {loading ? (
           <div className="text-center py-8 text-text-muted">
-            Cargando preguntas...
+            {t("faq.loading")}
           </div>
         ) : faqs.length > 0 ? (
           faqs.map((faq) => (
@@ -84,7 +83,7 @@ export const FAQPage: React.FC = () => {
           ))
         ) : (
           <div className="text-center py-8 text-text-muted">
-            No hay preguntas frecuentes disponibles por el momento.
+            {t("faq.empty")}
           </div>
         )}
       </div>
