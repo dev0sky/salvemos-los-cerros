@@ -24,12 +24,13 @@ trigger: always_on
 ---
 
 ## 2. Paleta de Color
-Colores inspirados en una paleta marrón elegante y moderna:
+Colores inspirados en una paleta que combina tonos tierra (marrón) y naturaleza (verde):
 
 | Uso               | Color                 | Tailwind (custom) |
 | :---------------- | :-------------------- | :---------------- |
-| Primario          | #6F4E37 (marrón café) | `primary`         |
-| Secundario        | #B8A79B (marrón topo) | `secondary`       |
+| Primario          | #3A6B35 (verde bosque)| `primary`         |
+| Secundario        | #6F4E37 (marrón café) | `secondary`       |
+| Acento Verde      | #8BC34A (verde claro) | `accent-green`    |
 | Fondo Principal   | #FDF5E6 (crema suave) | `surface`         |
 | Fondo Tarjetas    | #FFFAF0 (blanco floral)| `card`            |
 | Texto Principal   | #4A3B30 (marrón oscuro)| `text-main`       |
@@ -42,8 +43,9 @@ Extensión recomendada en `tailwind.config`:
 theme: {
   extend: {
     colors: {
-      primary: '#6F4E37',
-      secondary: '#B8A79B',
+      primary: '#3A6B35',
+      secondary: '#6F4E37',
+      'accent-green': '#8BC34A',
       surface: '#FDF5E6',
       card: '#FFFAF0',
       'text-main': '#4A3B30',
