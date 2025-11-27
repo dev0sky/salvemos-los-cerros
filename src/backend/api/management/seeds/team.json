@@ -1,44 +1,107 @@
 [
     {
+        "id": 1,
         "name": "Luis Andrés Rivera Levario",
         "role": "Vocero del Colectivo",
         "bio": "Activista ambiental y vocero principal de Salvemos los Cerros. Lidera iniciativas de protección y restauración de áreas naturales en Chihuahua. Comprometido con la defensa de los derechos humanos y la justicia ambiental. Ha sido figura clave en la organización de manifestaciones, audiencias públicas y proyectos de reforestación.",
-        "email": "luis@salvemosloscerros.org"
+        "email": "luis@salvemosloscerros.org",
+        "specialties": [
+            "Activismo",
+            "Organización comunitaria",
+            "Defensa ambiental"
+        ],
+        "contributions": "Ha liderado más de 50 eventos de protesta y concientización, organizando a cientos de voluntarios en la defensa de los cerros.",
+        "active": true,
+        "order": 1
     },
     {
+        "id": 2,
         "name": "Santiago de la Peña Grajeda",
         "role": "Coordinador de Proyectos",
         "bio": "Especialista en gestión de proyectos ambientales y coordinación de actividades comunitarias del colectivo. Responsable de la organización de jornadas de reforestación, talleres educativos y eventos de participación ciudadana. Su trabajo ha sido fundamental para el éxito de proyectos como el huerto comunitario del Cerro Coronel.",
-        "email": "santiago@salvemosloscerros.org"
+        "email": "santiago@salvemosloscerros.org",
+        "specialties": [
+            "Gestión de proyectos",
+            "Coordinación",
+            "Agricultura urbana"
+        ],
+        "contributions": "Ha coordinado más de 30 jornadas de reforestación y 15 talleres educativos, involucrando a más de 500 voluntarios.",
+        "active": true,
+        "order": 2
     },
     {
+        "id": 3,
         "name": "María Elena Soto",
         "role": "Coordinadora de Educación Ambiental",
         "bio": "Educadora ambiental dedicada a la concientización sobre la importancia de los ecosistemas locales. Imparte talleres sobre transparencia, participación ciudadana y conservación. Su labor educativa ha llegado a escuelas, comunidades y grupos ciudadanos en toda la región.",
-        "email": "maria@salvemosloscerros.org"
+        "email": "maria@salvemosloscerros.org",
+        "specialties": [
+            "Educación ambiental",
+            "Participación ciudadana",
+            "Talleres"
+        ],
+        "contributions": "Ha impartido más de 40 talleres en escuelas y comunidades, educando a más de 1,000 personas sobre conservación.",
+        "active": true,
+        "order": 3
     },
     {
+        "id": 4,
         "name": "Roberto Márquez",
         "role": "Coordinador de Reforestación",
         "bio": "Biólogo especializado en especies endémicas del desierto chihuahuense. Coordina las jornadas de reforestación y asegura que se utilicen especies nativas apropiadas para cada ecosistema. Ha liderado la plantación de más de 500 árboles y plantas en los cerros de Chihuahua.",
-        "email": "roberto@salvemosloscerros.org"
+        "email": "roberto@salvemosloscerros.org",
+        "specialties": [
+            "Biología",
+            "Especies nativas",
+            "Restauración ecológica"
+        ],
+        "contributions": "Ha supervisado la plantación de más de 3,000 árboles nativos y ha capacitado a decenas de voluntarios en técnicas de reforestación.",
+        "active": true,
+        "order": 4
     },
     {
+        "id": 5,
         "name": "Ana Lucía Fernández",
         "role": "Coordinadora de Comunicación",
         "bio": "Periodista y comunicadora social encargada de difundir las actividades del colectivo y visibilizar la crisis ambiental. Gestiona redes sociales, relaciones con medios y campañas de concientización. Su trabajo ha sido clave para amplificar la voz del movimiento.",
-        "email": "ana@salvemosloscerros.org"
+        "email": "ana@salvemosloscerros.org",
+        "specialties": [
+            "Comunicación",
+            "Redes sociales",
+            "Relaciones públicas"
+        ],
+        "contributions": "Ha logrado más de 100 publicaciones en medios locales y nacionales, aumentando la visibilidad del movimiento.",
+        "active": true,
+        "order": 5
     },
     {
+        "id": 6,
         "name": "Carlos Ramírez",
         "role": "Asesor Legal",
         "bio": "Abogado especializado en derecho ambiental. Asesora al colectivo en procesos legales, amparos y audiencias públicas. Ha sido fundamental en la defensa legal del Cerro Grande y el Cerro Mesa de los Caballos, asegurando que se respeten los derechos ambientales de la ciudadanía.",
-        "email": "carlos@salvemosloscerros.org"
+        "email": "carlos@salvemosloscerros.org",
+        "specialties": [
+            "Derecho ambiental",
+            "Litigio",
+            "Asesoría legal"
+        ],
+        "contributions": "Ha presentado más de 10 amparos y recursos legales en defensa de los cerros, logrando suspensiones de obras.",
+        "active": true,
+        "order": 6
     },
     {
+        "id": 7,
         "name": "Arturo Sáenz",
         "role": "Ingeniero de Software",
         "bio": "Ingeniero de software con experiencia en desarrollo de aplicaciones web y móviles. Lidera el equipo de desarrollo de Salvemos los Cerros, creando herramientas tecnológicas para mejorar la organización y comunicación del colectivo.",
-        "email": "arturo@salvemosloscerros.org"
+        "email": "arturo@salvemosloscerros.org",
+        "specialties": [
+            "Desarrollo web",
+            "Aplicaciones móviles",
+            "Tecnología"
+        ],
+        "contributions": "Ha desarrollado la plataforma web y aplicación móvil del colectivo, facilitando la participación de miles de personas.",
+        "active": true,
+        "order": 7
     }
 ]

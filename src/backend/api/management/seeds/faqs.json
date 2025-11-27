@@ -1,0 +1,42 @@
+[
+    {
+        "question": "¿Cómo puedo ser voluntario?",
+        "answer": "Puedes registrarte en nuestra página de voluntariado o asistir a cualquiera de nuestros eventos. No se requiere experiencia previa. Solo necesitas ganas de ayudar y compromiso con la conservación ambiental.",
+        "order": 1
+    },
+    {
+        "question": "¿Las actividades tienen costo?",
+        "answer": "La mayoría de nuestras actividades son completamente gratuitas. Algunas pueden tener un costo simbólico para cubrir materiales específicos, pero siempre buscamos que sean accesibles para todos.",
+        "order": 2
+    },
+    {
+        "question": "¿Qué debo llevar a una jornada de reforestación?",
+        "answer": "Te recomendamos llevar: ropa cómoda y resistente, zapatos cerrados, gorra, protector solar, agua suficiente y guantes de trabajo si tienes. Nosotros proporcionamos las herramientas y los árboles.",
+        "order": 3
+    },
+    {
+        "question": "¿Puedo donar árboles o plantas?",
+        "answer": "Sí, aceptamos donaciones de especies nativas. Es importante que sean plantas apropiadas para el ecosistema local. Contáctanos para coordinar la donación y asegurarnos de que sean las especies adecuadas.",
+        "order": 4
+    },
+    {
+        "question": "¿Cómo puedo reportar daños a los cerros?",
+        "answer": "Puedes reportar cualquier daño ambiental a través de nuestro correo electrónico o redes sociales. Incluye fotos, ubicación exacta y descripción del daño. Nosotros nos encargaremos de dar seguimiento.",
+        "order": 5
+    },
+    {
+        "question": "¿Organizan actividades para niños?",
+        "answer": "Sí, organizamos talleres y actividades especialmente diseñadas para niños y familias. Creemos que la educación ambiental desde temprana edad es fundamental para crear conciencia.",
+        "order": 6
+    },
+    {
+        "question": "¿Cómo puedo hacer una donación económica?",
+        "answer": "Puedes hacer donaciones a través de nuestra página web o contactarnos directamente. Todas las donaciones se utilizan para proyectos de conservación, reforestación y educación ambiental.",
+        "order": 7
+    },
+    {
+        "question": "¿Qué cerros están bajo protección?",
+        "answer": "Trabajamos principalmente con el Cerro Grande, Cerro Coronel y otros cerros urbanos de Chihuahua. Puedes ver el mapa completo de cerros en nuestra sección de Cerros.",
+        "order": 8
+    }
+]

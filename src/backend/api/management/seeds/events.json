@@ -1,90 +1,169 @@
 [
     {
         "title": "Manifestación por Protección de Cerros y Contra Incendios",
-        "description": "Manifestación pacífica frente al Palacio de Gobierno para exigir protección urgente de los cerros y acciones contra incendios forestales. Participación de activistas, familias y ciudadanos comprometidos con la defensa del medio ambiente.",
-        "date": "2025-12-15",
-        "time": "10:00:00",
+        "description": "Manifestación pacífica frente al Palacio de Gobierno para exigir protección urgente de los cerros y acciones contra incendios forestales.",
+        "content": "# Manifestación por Protección de Cerros\n\nÚnete a nuestra manifestación pacífica para exigir:\n\n- Protección urgente de los cerros urbanos\n- Acciones efectivas contra incendios forestales\n- Declaración de áreas naturales protegidas\n\n## Punto de Reunión\nPalacio de Gobierno, frente a la plaza principal.\n\n## Qué traer\n- Pancartas (nosotros también tendremos)\n- Agua\n- Actitud pacífica y propositiva",
+        "startDatetime": "2025-12-15T10:00:00",
+        "timezone": "America/Mexico_City",
         "location": "Palacio de Gobierno, Chihuahua",
-        "type": "other",
+        "category": "other",
         "attendees": 0,
-        "max_attendees": 300,
+        "maxAttendees": 300,
+        "organizer_ids": [
+            1,
+            5
+        ],
         "image_url": "https://picsum.photos/800/600?protest"
     },
     {
         "title": "Jornada de Reforestación Cerro Coronel",
-        "description": "Reforestación comunitaria en el Cerro Coronel con plantas nativas de la región. Traeremos herramientas, plantas y conocimiento. Familias y senderistas son bienvenidos. Contribuye a la restauración del ecosistema local.",
-        "date": "2025-12-20",
-        "time": "08:00:00",
+        "description": "Reforestación comunitaria en el Cerro Coronel con plantas nativas de la región.",
+        "content": "# Jornada de Reforestación\n\nPlantaremos especies nativas en el Cerro Coronel.\n\n## Incluye\n- Herramientas\n- Plantas nativas\n- Capacitación\n- Refrigerio\n\n## Requisitos\n- Ropa cómoda y resistente\n- Zapatos cerrados\n- Gorra y protector solar\n- Agua",
+        "startDatetime": "2025-12-20T08:00:00",
+        "endDatetime": "2025-12-20T12:00:00",
+        "timezone": "America/Mexico_City",
         "location": "Cerro Coronel, Chihuahua",
-        "type": "reforestation",
+        "category": "reforestation",
         "attendees": 0,
-        "max_attendees": 100,
+        "maxAttendees": 100,
+        "requirements": [
+            "Ser mayor de 10 años",
+            "Llevar ropa adecuada",
+            "Registrarse previamente"
+        ],
+        "organizer_ids": [
+            2,
+            4
+        ],
+        "contactInfo": "santiago@salvemosloscerros.org",
         "image_url": "https://picsum.photos/800/600?planting"
     },
     {
         "title": "Taller de Educación Ambiental: Importancia de los Cerros",
-        "description": "Taller educativo sobre la importancia ecológica de los cerros como captadores de agua, reguladores de temperatura, barreras naturales contra desastres y hábitat de especies endémicas. Abierto a todas las edades.",
-        "date": "2026-01-10",
-        "time": "16:00:00",
+        "description": "Taller educativo sobre la importancia ecológica de los cerros como captadores de agua, reguladores de temperatura y hábitat de especies endémicas.",
+        "content": "# Taller de Educación Ambiental\n\n## Temario\n1. Los cerros como captadores de agua\n2. Regulación de temperatura urbana\n3. Barreras naturales contra desastres\n4. Biodiversidad local\n5. Importancia cultural e histórica\n\n## Dirigido a\nTodas las edades. Especialmente recomendado para familias y estudiantes.",
+        "startDatetime": "2026-01-10T16:00:00",
+        "endDatetime": "2026-01-10T18:00:00",
+        "timezone": "America/Mexico_City",
         "location": "Centro Comunitario, Chihuahua",
-        "type": "workshop",
+        "category": "workshop",
         "attendees": 0,
-        "max_attendees": 50,
+        "maxAttendees": 50,
+        "organizer_ids": [
+            3
+        ],
+        "contactInfo": "maria@salvemosloscerros.org",
         "image_url": "https://picsum.photos/800/600?education"
     },
     {
         "title": "Limpieza Comunitaria Cerro Grande",
-        "description": "Jornada de limpieza para retirar basura acumulada en el Cerro Grande. Contribuye a proteger el ecosistema y las cuevas con pinturas rupestres. Traeremos bolsas y guantes. ¡Tu participación hace la diferencia!",
-        "date": "2026-01-25",
-        "time": "09:00:00",
+        "description": "Jornada de limpieza para retirar basura acumulada en el Cerro Grande y proteger las cuevas con pinturas rupestres.",
+        "content": "# Limpieza del Cerro Grande\n\nAyúdanos a mantener limpio nuestro patrimonio natural y cultural.\n\n## Incluimos\n- Bolsas para basura\n- Guantes\n- Herramientas\n- Refrigerio\n\n## Importante\nEl Cerro Grande alberga cuevas con pinturas rupestres. Respetemos nuestro patrimonio.",
+        "startDatetime": "2026-01-25T09:00:00",
+        "endDatetime": "2026-01-25T13:00:00",
+        "timezone": "America/Mexico_City",
         "location": "Cerro Grande (Arewákawi), Chihuahua",
-        "type": "cleanup",
+        "locationDetails": "Punto de reunión: Estacionamiento del parque a las 8:30 AM",
+        "category": "cleanup",
         "attendees": 0,
-        "max_attendees": 80,
+        "maxAttendees": 80,
+        "requirements": [
+            "Llevar ropa cómoda",
+            "Zapatos cerrados",
+            "Agua"
+        ],
+        "organizer_ids": [
+            2
+        ],
         "image_url": "https://picsum.photos/800/600?cleanup"
     },
     {
         "title": "Audiencia Pública: Defensa del Cerro Mesa de los Caballos",
-        "description": "Audiencia pública para discutir la protección del Cerro Mesa de los Caballos frente a proyectos de urbanización. Participación ciudadana y diálogo con autoridades. Exigimos transparencia y respeto al medio ambiente.",
-        "date": "2026-02-05",
-        "time": "18:00:00",
+        "description": "Audiencia pública para discutir la protección del Cerro Mesa de los Caballos frente a proyectos de urbanización.",
+        "content": "# Audiencia Pública\n\nParticipa en el diálogo con autoridades sobre la protección del Cerro Mesa de los Caballos.\n\n## Agenda\n1. Presentación de la situación actual\n2. Impacto ambiental de proyectos propuestos\n3. Alternativas de desarrollo sustentable\n4. Participación ciudadana\n5. Compromisos de autoridades\n\n## Tu voz importa\nExigimos transparencia y respeto al medio ambiente.",
+        "startDatetime": "2026-02-05T18:00:00",
+        "endDatetime": "2026-02-05T20:00:00",
+        "timezone": "America/Mexico_City",
         "location": "Auditorio Municipal, Chihuahua",
-        "type": "other",
+        "category": "conference",
         "attendees": 0,
-        "max_attendees": 200,
+        "maxAttendees": 200,
+        "organizer_ids": [
+            1,
+            6
+        ],
+        "contactInfo": "luis@salvemosloscerros.org",
         "image_url": "https://picsum.photos/800/600?meeting"
     },
     {
         "title": "Caminata Ecológica: Conoce el Cerro Coronel",
-        "description": "Caminata guiada por el Cerro Coronel para conocer su flora, fauna y el huerto comunitario. Actividad familiar que busca crear conciencia sobre la importancia de proteger nuestros espacios naturales.",
-        "date": "2026-02-15",
-        "time": "07:00:00",
+        "description": "Caminata guiada por el Cerro Coronel para conocer su flora, fauna y el huerto comunitario.",
+        "content": "# Caminata Ecológica\n\nRecorrido guiado de 3 horas por el Cerro Coronel.\n\n## Veremos\n- Flora nativa\n- Fauna local\n- Huerto comunitario\n- Miradores naturales\n\n## Nivel\nModerado. Apto para familias con niños mayores de 8 años.",
+        "startDatetime": "2026-02-15T07:00:00",
+        "endDatetime": "2026-02-15T10:00:00",
+        "timezone": "America/Mexico_City",
         "location": "Cerro Coronel, Chihuahua",
-        "type": "other",
+        "locationDetails": "Punto de reunión: Entrada principal del cerro",
+        "category": "other",
         "attendees": 0,
-        "max_attendees": 60,
+        "maxAttendees": 60,
+        "requirements": [
+            "Zapatos para caminar",
+            "Agua",
+            "Gorra"
+        ],
+        "organizer_ids": [
+            4
+        ],
         "image_url": "https://picsum.photos/800/600?hiking"
     },
     {
         "title": "Taller de Transparencia y Participación Ciudadana",
-        "description": "Taller sobre herramientas de transparencia y participación ciudadana en temas ambientales. Aprende cómo ejercer tus derechos y defender el medio ambiente de manera efectiva y legal.",
-        "date": "2026-03-01",
-        "time": "17:00:00",
+        "description": "Taller sobre herramientas de transparencia y participación ciudadana en temas ambientales.",
+        "content": "# Taller de Participación Ciudadana\n\n## Aprenderás\n- Cómo solicitar información pública\n- Derechos ambientales\n- Mecanismos de participación\n- Recursos legales disponibles\n- Casos de éxito\n\n## Impartido por\nAbogados especializados en derecho ambiental.",
+        "startDatetime": "2026-03-01T17:00:00",
+        "endDatetime": "2026-03-01T19:00:00",
+        "timezone": "America/Mexico_City",
         "location": "Centro Comunitario, Chihuahua",
-        "type": "workshop",
+        "category": "workshop",
         "attendees": 0,
-        "max_attendees": 40,
+        "maxAttendees": 40,
+        "organizer_ids": [
+            3,
+            6
+        ],
+        "contactInfo": "carlos@salvemosloscerros.org",
         "image_url": "https://picsum.photos/800/600?workshop"
     },
     {
         "title": "Reforestación Masiva: Picos de la Luna",
-        "description": "Gran jornada de reforestación en Picos de la Luna con especies endémicas. Objetivo: plantar 200 árboles nativos. Evento familiar con actividades educativas para niños. ¡Juntos restauramos nuestro ecosistema!",
-        "date": "2026-03-20",
-        "time": "08:00:00",
+        "description": "Gran jornada de reforestación en Picos de la Luna con especies endémicas. Objetivo: plantar 200 árboles nativos.",
+        "content": "# Reforestación Masiva\n\n¡Nuestro evento más grande del año!\n\n## Meta\nPlantar 200 árboles nativos en un solo día.\n\n## Incluye\n- Todas las herramientas\n- Plantas nativas\n- Capacitación\n- Comida\n- Actividades para niños\n- Certificado de participación\n\n## Familias bienvenidas\nHabrá actividades especiales para niños mientras los adultos plantan.",
+        "startDatetime": "2026-03-20T08:00:00",
+        "endDatetime": "2026-03-20T14:00:00",
+        "timezone": "America/Mexico_City",
         "location": "Picos de la Luna, Chihuahua",
-        "type": "reforestation",
+        "locationDetails": "Transporte disponible desde el centro. Salida 7:30 AM",
+        "category": "reforestation",
         "attendees": 0,
-        "max_attendees": 150,
+        "maxAttendees": 150,
+        "requirements": [
+            "Registrarse con anticipación",
+            "Llevar ropa adecuada",
+            "Zapatos cerrados"
+        ],
+        "organizer_ids": [
+            1,
+            2,
+            4
+        ],
+        "contactInfo": "eventos@salvemosloscerros.org",
+        "registrationLink": "https://forms.gle/ejemplo",
+        "tags": [
+            "reforestación",
+            "familia",
+            "evento especial"
+        ],
         "image_url": "https://picsum.photos/800/600?forest"
     }
 ]

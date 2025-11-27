@@ -1,18 +1,32 @@
 from rest_framework import viewsets, filters
-from .models import Cerro, Project, Event, NewsArticle, TeamMember, GalleryImage, Subscriber, Volunteer, FAQ, ContributionItem
+from rest_framework.decorators import api_view
+from rest_framework.response import Response
+from django.db.models import Count, Sum, Q
+from django.db.models.functions import TruncMonth, TruncYear
+from datetime import datetime, timedelta
+from collections import defaultdict
+
+from .models import (
+    Cerro, Project, Event, NewsArticle, TeamMember, GalleryImage,
+    Subscriber, Volunteer, FAQ, ContributionItem, Comment, Donation
+)
 from .serializers import (
     CerroSerializer, ProjectSerializer, EventSerializer, 
     NewsArticleSerializer, TeamMemberSerializer, GalleryImageSerializer,
-    SubscriberSerializer, VolunteerSerializer, FAQSerializer, ContributionItemSerializer
+    SubscriberSerializer, VolunteerSerializer, FAQSerializer,
+    ContributionItemSerializer, CommentSerializer, DonationSerializer
 )
+
 
 class CerroViewSet(viewsets.ModelViewSet):
     queryset = Cerro.objects.all()
     serializer_class = CerroSerializer
 
+
 class ProjectViewSet(viewsets.ModelViewSet):
     queryset = Project.objects.all()
     serializer_class = ProjectSerializer
+
 
 class EventViewSet(viewsets.ModelViewSet):
     queryset = Event.objects.all()
@@ -23,45 +37,86 @@ class EventViewSet(viewsets.ModelViewSet):
         start_date = self.request.query_params.get('start', None)
         end_date = self.request.query_params.get('end', None)
         if start_date is not None:
-            queryset = queryset.filter(date__gte=start_date)
+            queryset = queryset.filter(start_datetime__gte=start_date)
         if end_date is not None:
-            queryset = queryset.filter(date__lte=end_date)
+            queryset = queryset.filter(start_datetime__lte=end_date)
         return queryset
+
 
 class NewsArticleViewSet(viewsets.ModelViewSet):
     queryset = NewsArticle.objects.all()
     serializer_class = NewsArticleSerializer
+    
+    def retrieve(self, request, *args, **kwargs):
+        instance = self.get_object()
+        # Incrementar vistas
+        instance.views += 1
+        instance.save(update_fields=['views'])
+        serializer = self.get_serializer(instance)
+        return Response(serializer.data)
+
 
 class TeamMemberViewSet(viewsets.ModelViewSet):
-    queryset = TeamMember.objects.all()
+    queryset = TeamMember.objects.filter(active=True)
     serializer_class = TeamMemberSerializer
+
 
 class GalleryImageViewSet(viewsets.ModelViewSet):
     queryset = GalleryImage.objects.all()
     serializer_class = GalleryImageSerializer
 
+
 class SubscriberViewSet(viewsets.ModelViewSet):
     queryset = Subscriber.objects.all()
     serializer_class = SubscriberSerializer
+
 
 class VolunteerViewSet(viewsets.ModelViewSet):
     queryset = Volunteer.objects.all()
     serializer_class = VolunteerSerializer
 
+
 class FAQViewSet(viewsets.ModelViewSet):
     queryset = FAQ.objects.all()
     serializer_class = FAQSerializer
+
 
 class ContributionItemViewSet(viewsets.ModelViewSet):
     queryset = ContributionItem.objects.all()
     serializer_class = ContributionItemSerializer
 
-from rest_framework.decorators import api_view
-from rest_framework.response import Response
-from django.db.models import Count, Sum, Q
-from django.db.models.functions import TruncMonth, TruncYear
-from datetime import datetime, timedelta
-from collections import defaultdict
+
+class CommentViewSet(viewsets.ModelViewSet):
+    queryset = Comment.objects.filter(approved=True, parent=None)
+    serializer_class = CommentSerializer
+    
+    def get_queryset(self):
+        queryset = Comment.objects.filter(approved=True, parent=None)
+        project_id = self.request.query_params.get('project', None)
+        event_id = self.request.query_params.get('event', None)
+        news_id = self.request.query_params.get('news', None)
+        
+        if project_id:
+            queryset = queryset.filter(project_id=project_id)
+        elif event_id:
+            queryset = queryset.filter(event_id=event_id)
+        elif news_id:
+            queryset = queryset.filter(news_article_id=news_id)
+            
+        return queryset
+
+
+class DonationViewSet(viewsets.ModelViewSet):
+    queryset = Donation.objects.all()
+    serializer_class = DonationSerializer
+    
+    def get_queryset(self):
+        queryset = Donation.objects.all()
+        project_id = self.request.query_params.get('project', None)
+        if project_id:
+            queryset = queryset.filter(project_id=project_id)
+        return queryset
+
 
 @api_view(['GET'])
 def statistics(request):
@@ -75,7 +130,7 @@ def statistics(request):
     total_cerros = Cerro.objects.count()
     
     # Calcular árboles plantados (estimación basada en eventos de reforestación)
-    reforestation_events = Event.objects.filter(type='reforestation').count()
+    reforestation_events = Event.objects.filter(category='reforestation').count()
     trees_planted = reforestation_events * 100  # Estimación: 100 árboles por evento
     
     # Si no hay voluntarios en la BD, usar attendees de eventos como proxy
@@ -88,9 +143,9 @@ def statistics(request):
     
     # Obtener eventos por mes
     monthly_events_query = Event.objects.filter(
-        date__gte=twelve_months_ago
+        start_datetime__gte=twelve_months_ago
     ).annotate(
-        month=TruncMonth('date')
+        month=TruncMonth('start_datetime')
     ).values('month').annotate(
         count=Count('id'),
         total_attendees=Sum('attendees')
@@ -123,53 +178,47 @@ def statistics(request):
     project_distribution = []
     
     # Contar eventos por tipo
-    event_types = Event.objects.values('type').annotate(count=Count('id'))
+    event_types = Event.objects.values('category').annotate(count=Count('id'))
     
     type_labels = {
         'cleanup': 'Limpieza',
         'reforestation': 'Reforestación',
         'workshop': 'Educación',
-        'other': 'Defensa Legal'
+        'conference': 'Conferencias',
+        'fundraising': 'Recaudación',
+        'other': 'Otros'
     }
     
     type_colors = {
         'cleanup': '#3A6B35',
         'reforestation': '#8BC34A',
         'workshop': '#6F4E37',
+        'conference': '#4A90E2',
+        'fundraising': '#F5A623',
         'other': '#B8A79B'
     }
     
     total_typed_events = sum(item['count'] for item in event_types)
     
-    if total_typed_events > 0:
-        for event_type in event_types:
-            type_key = event_type['type']
-            count = event_type['count']
-            percentage = (count / total_typed_events * 100)
-            
-            project_distribution.append({
-                'id': type_labels.get(type_key, 'Otros'),
-                'label': type_labels.get(type_key, 'Otros'),
-                'value': round(percentage, 1),
-                'color': type_colors.get(type_key, '#E0D8D0')
-            })
+    for item in event_types:
+        event_type = item['category']
+        count = item['count']
+        percentage = (count / total_typed_events * 100) if total_typed_events > 0 else 0
         
-        # Ordenar por valor descendente
-        project_distribution.sort(key=lambda x: x['value'], reverse=True)
-        
-        # Asegurar que sume 100%
-        total_percentage = sum(item['value'] for item in project_distribution)
-        if total_percentage < 100:
-            if project_distribution:
-                project_distribution[0]['value'] += round(100 - total_percentage, 1)
-    else:
-        # Datos por defecto si no hay eventos
+        project_distribution.append({
+            'id': event_type,
+            'label': type_labels.get(event_type, event_type.capitalize()),
+            'value': count,
+            'color': type_colors.get(event_type, '#B8A79B')
+        })
+    
+    # Si no hay datos, proporcionar datos de ejemplo
+    if not project_distribution:
         project_distribution = [
-            {'id': 'Reforestación', 'label': 'Reforestación', 'value': 35, 'color': '#8BC34A'},
-            {'id': 'Educación', 'label': 'Educación', 'value': 25, 'color': '#6F4E37'},
-            {'id': 'Limpieza', 'label': 'Limpieza', 'value': 20, 'color': '#3A6B35'},
-            {'id': 'Defensa Legal', 'label': 'Defensa Legal', 'value': 15, 'color': '#B8A79B'},
-            {'id': 'Otros', 'label': 'Otros', 'value': 5, 'color': '#E0D8D0'},
+            {'id': 'reforestation', 'label': 'Reforestación', 'value': 5, 'color': '#8BC34A'},
+            {'id': 'cleanup', 'label': 'Limpieza', 'value': 3, 'color': '#3A6B35'},
+            {'id': 'workshop', 'label': 'Educación', 'value': 4, 'color': '#6F4E37'},
+            {'id': 'other', 'label': 'Otros', 'value': 2, 'color': '#B8A79B'}
         ]
     
     return Response({

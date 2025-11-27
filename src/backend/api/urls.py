@@ -4,7 +4,7 @@ from .views import (
     CerroViewSet, ProjectViewSet, EventViewSet, 
     NewsArticleViewSet, TeamMemberViewSet, GalleryImageViewSet,
     SubscriberViewSet, VolunteerViewSet, FAQViewSet, ContributionItemViewSet,
-    statistics
+    CommentViewSet, DonationViewSet, statistics
 )
 from rest_framework_simplejwt.views import (
     TokenObtainPairView,
@@ -22,6 +22,8 @@ router.register(r'subscribers', SubscriberViewSet)
 router.register(r'volunteers', VolunteerViewSet)
 router.register(r'faqs', FAQViewSet)
 router.register(r'contributions', ContributionItemViewSet)
+router.register(r'comments', CommentViewSet)
+router.register(r'donations', DonationViewSet)
 
 urlpatterns = [
     path('', include(router.urls)),
@@ -29,4 +31,3 @@ urlpatterns = [
     path('token/', TokenObtainPairView.as_view(), name='token_obtain_pair'),
     path('token/refresh/', TokenRefreshView.as_view(), name='token_refresh'),
 ]
-

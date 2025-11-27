@@ -1,0 +1,22 @@
+[
+    {
+        "title": "Voluntariado",
+        "description": "Participa en nuestras jornadas de reforestación, limpieza y educación ambiental. Únete a un equipo comprometido con la conservación de nuestros cerros.",
+        "order": 1
+    },
+    {
+        "title": "Donaciones",
+        "description": "Apoya nuestros proyectos con donaciones económicas o en especie. Cada aportación nos ayuda a continuar con nuestra labor de conservación.",
+        "order": 2
+    },
+    {
+        "title": "Difusión",
+        "description": "Comparte nuestras publicaciones en redes sociales y ayúdanos a crear conciencia sobre la importancia de proteger nuestros ecosistemas.",
+        "order": 3
+    },
+    {
+        "title": "Educación",
+        "description": "Asiste a nuestros talleres y comparte el conocimiento sobre conservación ambiental con tu comunidad, familia y amigos.",
+        "order": 4
+    }
+]
