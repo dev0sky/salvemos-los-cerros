@@ -23,7 +23,7 @@ import {
   PAGE_VARIANTS,
   FADE_UP_ITEM,
   STAGGER_CONTAINER,
-  HOVER_LIFT,
+  HOVER_SCALE,
   SCALE_IN,
 } from "@/constants/animations";
 
@@ -138,7 +138,7 @@ export const HomePage: React.FC = () => {
           <Link href={ROUTES.MAPA}>
             <motion.div
               variants={FADE_UP_ITEM}
-              whileHover={HOVER_LIFT}
+              whileHover={HOVER_SCALE}
               className="h-full"
             >
               <Card className="h-full p-8 flex flex-col items-center text-center cursor-pointer hover:border-primary/50 transition-colors group">
@@ -161,7 +161,7 @@ export const HomePage: React.FC = () => {
           <Link href={ROUTES.EVENTOS}>
             <motion.div
               variants={FADE_UP_ITEM}
-              whileHover={HOVER_LIFT}
+              whileHover={HOVER_SCALE}
               className="h-full"
             >
               <Card className="h-full p-8 flex flex-col items-center text-center cursor-pointer hover:border-primary/50 transition-colors group">
@@ -184,7 +184,7 @@ export const HomePage: React.FC = () => {
           <Link href={ROUTES.NOTICIAS}>
             <motion.div
               variants={FADE_UP_ITEM}
-              whileHover={HOVER_LIFT}
+              whileHover={HOVER_SCALE}
               className="h-full"
             >
               <Card className="h-full p-8 flex flex-col items-center text-center cursor-pointer hover:border-primary/50 transition-colors group">
@@ -244,7 +244,7 @@ export const HomePage: React.FC = () => {
               <motion.div
                 key={project.id}
                 variants={SCALE_IN}
-                whileHover={HOVER_LIFT}
+                whileHover={HOVER_SCALE}
                 className="h-full"
               >
                 <ProjectCard project={project} />
@@ -319,7 +319,7 @@ export const HomePage: React.FC = () => {
               <motion.div
                 key={event.id}
                 variants={SCALE_IN}
-                whileHover={HOVER_LIFT}
+                whileHover={HOVER_SCALE}
                 className="h-full"
               >
                 <EventCard event={event} />
@@ -394,7 +394,7 @@ export const HomePage: React.FC = () => {
               <motion.div
                 key={article.id}
                 variants={SCALE_IN}
-                whileHover={HOVER_LIFT}
+                whileHover={HOVER_SCALE}
                 className="h-full"
               >
                 <NewsCard article={article} />
