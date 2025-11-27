@@ -3,6 +3,7 @@ import { Swiper, SwiperSlide } from "swiper/react";
 import { Autoplay, Navigation, Pagination } from "swiper/modules";
 import { Link } from "wouter";
 import { IconArrowRight, IconCalendar } from "@tabler/icons-react";
+import { useTranslation } from "react-i18next";
 import "swiper/css";
 import "swiper/css/navigation";
 import "swiper/css/pagination";
@@ -26,6 +27,8 @@ export const RelatedItemsSlider: React.FC<RelatedItemsSliderProps> = ({
   title,
   items,
 }) => {
+  const { t } = useTranslation();
+
   if (!items || items.length === 0) return null;
 
   return (
@@ -79,7 +82,7 @@ export const RelatedItemsSlider: React.FC<RelatedItemsSliderProps> = ({
                     />
                   ) : (
                     <div className="w-full h-full flex items-center justify-center text-text-muted">
-                      No image
+                      {t("common.no_image")}
                     </div>
                   )}
 
@@ -124,7 +127,7 @@ export const RelatedItemsSlider: React.FC<RelatedItemsSliderProps> = ({
 
                   <Link href={item.link}>
                     <a className="inline-flex items-center gap-1 text-sm font-semibold text-primary hover:gap-2 transition-all">
-                      Ver más <IconArrowRight size={16} />
+                      {t("common.view_more")} <IconArrowRight size={16} />
                     </a>
                   </Link>
                 </div>

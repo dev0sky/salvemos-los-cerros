@@ -178,8 +178,23 @@
         "retry": "Reintentar",
         "read_more": "Leer más",
         "view_all": "Ver todos",
+        "view_more": "Ver más",
         "no_results": "No hay resultados",
-        "geology_label": "Geología:"
+        "geology_label": "Geología:",
+        "cancel": "Cancelar",
+        "send": "Enviar",
+        "sending": "Enviando...",
+        "no_image": "Sin imagen"
+    },
+    "comments": {
+        "title": "Comentarios",
+        "leave_comment": "Deja un comentario",
+        "reply": "Responder",
+        "replying_to": "Respondiendo a",
+        "name": "Nombre",
+        "email": "Email",
+        "message": "Mensaje",
+        "no_comments": "No hay comentarios aún. ¡Sé el primero en comentar!"
     },
     "news_card": {
         "featured": "Destacado",
@@ -233,7 +248,12 @@
         "vision_text": "Un futuro donde la naturaleza y la comunidad coexistan en armonía, con espacios verdes prósperos para las generaciones venideras.",
         "impact_title": "Nuestro Impacto",
         "team_title": "Nuestro Equipo",
-        "team_subtitle": "Conoce a las personas dedicadas que hacen posible nuestra misión de conservación."
+        "team_subtitle": "Conoce a las personas dedicadas que hacen posible nuestra misión de conservación.",
+        "monthly_activity_chart_title": "Actividad Mensual",
+        "chart_legend_month": "Mes",
+        "chart_legend_quantity": "Cantidad",
+        "monthly_activity_chart_aria_label": "Gráfica de actividad mensual",
+        "project_distribution_chart_title": "Distribución de Proyectos"
     },
     "galeria_page": {
         "title": "Galería",
@@ -253,6 +273,9 @@
         "badge": "Próximos Eventos",
         "filter_label": "Filtrar por:",
         "no_events": "No hay eventos con este filtro."
+    },
+    "loadingSpinner": {
+        "loading_content": "Cargando contenido..."
     },
     "proyectos_page": {
         "title": "Nuestros Proyectos",
