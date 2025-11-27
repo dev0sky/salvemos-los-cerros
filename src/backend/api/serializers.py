@@ -96,7 +96,7 @@ class EventSerializer(serializers.ModelSerializer):
         model = Event
         fields = [
             'id', 'title', 'description', 'content', 'startDatetime',
-            'endDatetime', 'timezone', 'location', 'locationDetails',
+            'endDatetime', 'location', 'locationDetails',
             'latitude', 'longitude', 'category', 'attendees',
             'maxAttendees', 'image', 'requirements', 'organizers',
             'contactInfo', 'registrationLink', 'gallery_images',

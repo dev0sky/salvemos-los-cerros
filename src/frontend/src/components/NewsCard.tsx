@@ -102,7 +102,14 @@ export const NewsCard: React.FC<NewsCardProps> = ({ article }) => {
             <div className="flex items-center justify-between pt-4 border-t border-border-soft">
               <div className="flex items-center gap-2 text-xs text-text-muted">
                 <IconCalendar size={14} />
-                <span>{article.date}</span>
+                <span>
+                  {new Date(article.date).toLocaleDateString(undefined, {
+                    year: "numeric",
+                    month: "long",
+                    day: "numeric",
+                    timeZone: "America/Chihuahua",
+                  })}
+                </span>
               </div>
               <button
                 onClick={handleReadMore}

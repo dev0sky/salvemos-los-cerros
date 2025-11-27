@@ -91,7 +91,14 @@ export const ProjectCard: React.FC<ProjectCardProps> = ({ project }) => {
                   size={16}
                   className="text-primary flex-shrink-0"
                 />
-                <span>{project.startDate}</span>
+                <span>
+                  {new Date(project.startDate).toLocaleDateString(undefined, {
+                    year: "numeric",
+                    month: "long",
+                    day: "numeric",
+                    timeZone: "America/Chihuahua",
+                  })}
+                </span>
               </div>
             </div>
 

@@ -1,5 +1,7 @@
 import React from "react";
 import { useParams, useLocation } from "wouter";
+import ReactMarkdown from "react-markdown";
+import remarkGfm from "remark-gfm";
 import { useTranslation } from "react-i18next";
 import { motion } from "framer-motion";
 import {
@@ -108,19 +110,29 @@ export const EventoDetallePage: React.FC = () => {
             <h1 className="text-3xl md:text-5xl font-bold text-white mb-4">
               {event.title}
             </h1>
+
             <div className="flex flex-wrap gap-4 text-white/90 text-sm">
               <div className="flex items-center gap-2">
                 <IconCalendar size={16} />
                 <span>
-                  {new Date(event.startDatetime).toLocaleDateString()}
+                  {new Date(event.startDatetime).toLocaleDateString(undefined, {
+                    weekday: "long",
+                    year: "numeric",
+                    month: "long",
+                    day: "numeric",
+                    timeZone: "America/Chihuahua",
+                  })}
                 </span>
               </div>
               <div className="flex items-center gap-2">
                 <IconClock size={16} />
                 <span>
-                  {new Date(event.startDatetime).toLocaleTimeString()}
-                  {event.endDatetime &&
-                    ` - ${new Date(event.endDatetime).toLocaleTimeString()}`}
+                  {new Date(event.startDatetime).toLocaleTimeString(undefined, {
+                    hour: "2-digit",
+                    minute: "2-digit",
+                    timeZone: "America/Chihuahua",
+                    timeZoneName: "short",
+                  })}
                 </span>
               </div>
               <div className="flex items-center gap-2">
@@ -142,9 +154,84 @@ export const EventoDetallePage: React.FC = () => {
               <h2 className="text-2xl font-bold text-text-main mb-4">
                 {t("event_detail.description")}
               </h2>
-              <p className="text-text-muted leading-relaxed whitespace-pre-line">
-                {event.content || event.description}
-              </p>
+              <div className="markdown-content">
+                <ReactMarkdown
+                  remarkPlugins={[remarkGfm]}
+                  components={{
+                    h1: ({ node, ...props }: any) => (
+                      <h1
+                        className="text-3xl font-bold text-text-main mb-4 mt-8 first:mt-0"
+                        {...props}
+                      />
+                    ),
+                    h2: ({ node, ...props }: any) => (
+                      <h2
+                        className="text-2xl font-bold text-text-main mb-3 mt-6"
+                        {...props}
+                      />
+                    ),
+                    h3: ({ node, ...props }: any) => (
+                      <h3
+                        className="text-xl font-semibold text-text-main mb-2 mt-4"
+                        {...props}
+                      />
+                    ),
+                    p: ({ node, ...props }: any) => (
+                      <p
+                        className="text-text-muted leading-relaxed mb-4"
+                        {...props}
+                      />
+                    ),
+                    ul: ({ node, ...props }: any) => (
+                      <ul
+                        className="list-disc list-inside text-text-muted mb-4 space-y-2 ml-4"
+                        {...props}
+                      />
+                    ),
+                    ol: ({ node, ...props }: any) => (
+                      <ol
+                        className="list-decimal list-inside text-text-muted mb-4 space-y-2 ml-4"
+                        {...props}
+                      />
+                    ),
+                    li: ({ node, ...props }: any) => (
+                      <li
+                        className="text-text-muted leading-relaxed"
+                        {...props}
+                      />
+                    ),
+                    strong: ({ node, ...props }: any) => (
+                      <strong className="font-bold text-text-main" {...props} />
+                    ),
+                    a: ({ node, ...props }: any) => (
+                      <a
+                        className="text-primary hover:underline font-medium"
+                        {...props}
+                      />
+                    ),
+                    blockquote: ({ node, ...props }: any) => (
+                      <blockquote
+                        className="border-l-4 border-primary pl-4 italic text-text-muted my-4"
+                        {...props}
+                      />
+                    ),
+                    code: ({ node, inline, ...props }: any) =>
+                      inline ? (
+                        <code
+                          className="bg-secondary/10 text-primary px-1.5 py-0.5 rounded text-sm font-mono"
+                          {...props}
+                        />
+                      ) : (
+                        <code
+                          className="block bg-secondary/10 text-text-main p-4 rounded-lg text-sm font-mono overflow-x-auto my-4"
+                          {...props}
+                        />
+                      ),
+                  }}
+                >
+                  {event.content || event.description}
+                </ReactMarkdown>
+              </div>
             </Card>
 
             {/* Location Details */}

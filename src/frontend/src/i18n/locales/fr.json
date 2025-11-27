@@ -255,5 +255,51 @@
     "proyectos_page": {
         "title": "Nos Projets",
         "subtitle": "Initiatives actives pour la conservation et la restauration de nos espaces naturels"
+    },
+    "team_member": {
+        "website": "Site Web",
+        "contact": "Contact",
+        "contributions": "Contributions",
+        "specialties": "Spécialités",
+        "joined": "Rejoint",
+        "bio": "Biographie",
+        "social_media": "Réseaux Sociaux"
+    },
+    "news_detail": {
+        "not_found": "Actualité non trouvée",
+        "back_to_news": "Retour aux actualités",
+        "published_on": "Publié le",
+        "by": "Par"
+    },
+    "project_detail": {
+        "not_found": "Projet non trouvé",
+        "back_to_projects": "Retour aux projets",
+        "description": "Description",
+        "objectives": "Objectifs",
+        "achievements": "Réalisations",
+        "gallery": "Galerie",
+        "progress": "Progrès",
+        "budget": "Budget",
+        "partners": "Partenaires",
+        "team": "Équipe",
+        "location": "Emplacement",
+        "start_date": "Date de début",
+        "end_date": "Date de fin",
+        "status": "Statut"
+    },
+    "event_detail": {
+        "not_found": "Événement non trouvé",
+        "back_to_events": "Retour aux événements",
+        "description": "Description",
+        "requirements": "Exigences",
+        "gallery": "Galerie",
+        "location": "Emplacement",
+        "date": "Date",
+        "time": "Heure",
+        "attendees": "Participants",
+        "organizers": "Organisateurs",
+        "contact": "Contact",
+        "register": "S'inscrire",
+        "back": "Retour"
     }
 }

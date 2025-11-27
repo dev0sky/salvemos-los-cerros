@@ -106,7 +106,17 @@ export const ProyectoDetallePage: React.FC = () => {
               </div>
               <div className="flex items-center gap-2">
                 <IconCalendar size={16} />
-                <span>{project.startDate}</span>
+                <span>
+                  {new Date(project.startDate).toLocaleDateString(undefined, {
+                    year: "numeric",
+                    month: "long",
+                    day: "numeric",
+                    hour: "2-digit",
+                    minute: "2-digit",
+                    timeZone: "America/Chihuahua",
+                    timeZoneName: "short",
+                  })}
+                </span>
               </div>
             </div>
           </motion.div>
@@ -234,7 +244,15 @@ export const ProyectoDetallePage: React.FC = () => {
                       <IconCalendar size={16} />
                       <span>
                         {t("project_detail.end_date")}:{" "}
-                        {new Date(project.endDate).toLocaleDateString()}
+                        {new Date(project.endDate).toLocaleDateString(
+                          undefined,
+                          {
+                            year: "numeric",
+                            month: "long",
+                            day: "numeric",
+                            timeZone: "America/Chihuahua",
+                          }
+                        )}
                       </span>
                     </div>
                   </div>

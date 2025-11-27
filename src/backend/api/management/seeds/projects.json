@@ -5,7 +5,7 @@
         "location": "Cerro Grande, Chihuahua",
         "status": "active",
         "progress": 75,
-        "start_date": "2019-01-01",
+        "start_date": "2019-01-01T00:00:00-07:00",
         "image_url": "https://picsum.photos/800/600?mountains"
     },
     {
@@ -14,7 +14,7 @@
         "location": "Cerro Coronel, Chihuahua",
         "status": "completed",
         "progress": 100,
-        "start_date": "2024-06-01",
+        "start_date": "2024-06-01T00:00:00-06:00",
         "image_url": "https://picsum.photos/800/600?garden"
     },
     {
@@ -23,7 +23,7 @@
         "location": "Chihuahua Capital",
         "status": "active",
         "progress": 45,
-        "start_date": "2023-01-01",
+        "start_date": "2023-01-01T00:00:00-07:00",
         "image_url": "https://picsum.photos/800/600?conservation"
     },
     {
@@ -32,7 +32,7 @@
         "location": "Cerro Mesa de los Caballos, Chihuahua",
         "status": "active",
         "progress": 30,
-        "start_date": "2024-11-01",
+        "start_date": "2024-11-01T00:00:00-07:00",
         "image_url": "https://picsum.photos/800/600?justice"
     },
     {
@@ -41,7 +41,7 @@
         "location": "Varios cerros de Chihuahua",
         "status": "active",
         "progress": 60,
-        "start_date": "2020-01-01",
+        "start_date": "2020-01-01T00:00:00-07:00",
         "image_url": "https://picsum.photos/800/600?trees"
     },
     {
@@ -50,7 +50,7 @@
         "location": "Río Sacramento, Chihuahua",
         "status": "completed",
         "progress": 100,
-        "start_date": "2024-08-01",
+        "start_date": "2024-08-01T00:00:00-06:00",
         "image_url": "https://picsum.photos/800/600?river"
     },
     {
@@ -59,7 +59,7 @@
         "location": "Chihuahua Capital",
         "status": "active",
         "progress": 55,
-        "start_date": "2024-01-01",
+        "start_date": "2024-01-01T00:00:00-07:00",
         "image_url": "https://picsum.photos/800/600?wind"
     },
     {
@@ -68,7 +68,7 @@
         "location": "Cerro Coronel, Chihuahua",
         "status": "completed",
         "progress": 100,
-        "start_date": "2023-03-01",
+        "start_date": "2023-03-01T00:00:00-07:00",
         "image_url": "https://picsum.photos/800/600?community"
     }
 ]

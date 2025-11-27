@@ -255,5 +255,51 @@
     "proyectos_page": {
         "title": "I Nostri Progetti",
         "subtitle": "Iniziative attive per la conservazione e il ripristino dei nostri spazi naturali"
+    },
+    "team_member": {
+        "website": "Sito Web",
+        "contact": "Contatto",
+        "contributions": "Contributi",
+        "specialties": "Specialità",
+        "joined": "Iscritto",
+        "bio": "Biografia",
+        "social_media": "Social Media"
+    },
+    "news_detail": {
+        "not_found": "Notizia non trovata",
+        "back_to_news": "Torna alle notizie",
+        "published_on": "Pubblicato il",
+        "by": "Da"
+    },
+    "project_detail": {
+        "not_found": "Progetto non trovato",
+        "back_to_projects": "Torna ai progetti",
+        "description": "Descrizione",
+        "objectives": "Obiettivi",
+        "achievements": "Risultati",
+        "gallery": "Galleria",
+        "progress": "Progresso",
+        "budget": "Budget",
+        "partners": "Partner",
+        "team": "Team",
+        "location": "Posizione",
+        "start_date": "Data di inizio",
+        "end_date": "Data di fine",
+        "status": "Stato"
+    },
+    "event_detail": {
+        "not_found": "Evento non trovato",
+        "back_to_events": "Torna agli eventi",
+        "description": "Descrizione",
+        "requirements": "Requisiti",
+        "gallery": "Galleria",
+        "location": "Posizione",
+        "date": "Data",
+        "time": "Ora",
+        "attendees": "Partecipanti",
+        "organizers": "Organizzatori",
+        "contact": "Contatto",
+        "register": "Registrati",
+        "back": "Indietro"
     }
 }

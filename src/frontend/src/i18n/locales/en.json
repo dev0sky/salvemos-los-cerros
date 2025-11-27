@@ -255,5 +255,51 @@
     "proyectos_page": {
         "title": "Our Projects",
         "subtitle": "Active initiatives for the conservation and restoration of our natural spaces"
+    },
+    "team_member": {
+        "website": "Website",
+        "contact": "Contact",
+        "contributions": "Contributions",
+        "specialties": "Specialties",
+        "joined": "Joined",
+        "bio": "Biography",
+        "social_media": "Social Media"
+    },
+    "news_detail": {
+        "not_found": "News not found",
+        "back_to_news": "Back to News",
+        "published_on": "Published on",
+        "by": "By"
+    },
+    "project_detail": {
+        "not_found": "Project not found",
+        "back_to_projects": "Back to Projects",
+        "description": "Description",
+        "objectives": "Objectives",
+        "achievements": "Achievements",
+        "gallery": "Gallery",
+        "progress": "Progress",
+        "budget": "Budget",
+        "partners": "Partners",
+        "team": "Team",
+        "location": "Location",
+        "start_date": "Start Date",
+        "end_date": "End Date",
+        "status": "Status"
+    },
+    "event_detail": {
+        "not_found": "Event not found",
+        "back_to_events": "Back to Events",
+        "description": "Description",
+        "requirements": "Requirements",
+        "gallery": "Gallery",
+        "location": "Location",
+        "date": "Date",
+        "time": "Time",
+        "attendees": "Attendees",
+        "organizers": "Organizers",
+        "contact": "Contact",
+        "register": "Register",
+        "back": "Back"
     }
 }

@@ -337,12 +337,7 @@ class Event(models.Model):
         blank=True,
         verbose_name="Fecha y hora de finalización"
     )
-    timezone = models.CharField(
-        max_length=50,
-        default='America/Mexico_City',
-        verbose_name="Zona horaria",
-        help_text="Zona horaria del evento"
-    )
+
     location = models.CharField(
         max_length=200,
         verbose_name="Ubicación"

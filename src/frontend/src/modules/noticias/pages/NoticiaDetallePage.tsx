@@ -113,7 +113,17 @@ export const NoticiaDetallePage: React.FC = () => {
               )}
               <div className="flex items-center gap-2">
                 <IconCalendar size={16} />
-                <span>{article.date}</span>
+                <span>
+                  {new Date(article.date).toLocaleDateString(undefined, {
+                    year: "numeric",
+                    month: "long",
+                    day: "numeric",
+                    hour: "2-digit",
+                    minute: "2-digit",
+                    timeZone: "America/Chihuahua",
+                    timeZoneName: "short",
+                  })}
+                </span>
               </div>
               {article.views !== undefined && (
                 <div className="flex items-center gap-2">

@@ -40,10 +40,13 @@ export const EventCard: React.FC<EventCardProps> = ({ event }) => {
     year: "numeric",
     month: "long",
     day: "numeric",
+    timeZone: "America/Chihuahua",
   });
   const timeStr = startDate.toLocaleTimeString(undefined, {
     hour: "2-digit",
     minute: "2-digit",
+    timeZone: "America/Chihuahua",
+    timeZoneName: "short",
   });
 
   const galleryImage: GalleryImage = {
