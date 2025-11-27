@@ -1,4 +1,4 @@
-import React from "react";
+import React, { useState } from "react";
 import { useTranslation } from "react-i18next";
 import { motion } from "framer-motion";
 import {
@@ -14,7 +14,9 @@ import { ResponsiveBar } from "@nivo/bar";
 import { ResponsivePie } from "@nivo/pie";
 import { Card } from "@/components/ui/Card";
 import { LoadingSpinner } from "@/components/ui/LoadingSpinner";
+import { TeamMemberModal } from "@/components/TeamMemberModal";
 import { useTeam, useStatistics } from "@/hooks/useData";
+import type { TeamMemberData } from "@/types";
 import {
   PAGE_VARIANTS,
   FADE_UP_ITEM,
@@ -25,6 +27,7 @@ export const NosotrosPage: React.FC = () => {
   const { t } = useTranslation();
   const { data: team = [], isLoading: teamLoading } = useTeam();
   const { data: statistics, isLoading: statsLoading } = useStatistics();
+  const [selectedMember, setSelectedMember] = useState<TeamMemberData | null>(null);
 
   const isLoading = teamLoading || statsLoading;
 
@@ -301,7 +304,8 @@ export const NosotrosPage: React.FC = () => {
               key={member.id}
               variants={FADE_UP_ITEM}
               whileHover={{ y: -5 }}
-              className="bg-card rounded-2xl p-6 border border-border-soft hover:border-primary/30 transition-all hover:shadow-lg"
+              className="bg-card rounded-2xl p-6 border border-border-soft hover:border-primary/30 transition-all hover:shadow-lg cursor-pointer"
+              onClick={() => setSelectedMember(member)}
             >
               <div className="flex items-start gap-4">
                 <div className="w-16 h-16 bg-gradient-to-br from-primary/20 to-accent-green/20 rounded-full flex items-center justify-center flex-shrink-0">
@@ -321,6 +325,7 @@ export const NosotrosPage: React.FC = () => {
                     <a
                       href={`mailto:${member.email}`}
                       className="inline-flex items-center gap-1 text-xs text-primary hover:text-primary/80 transition-colors"
+                      onClick={(e) => e.stopPropagation()}
                     >
                       <IconMail size={14} />
                       <span className="truncate">{member.email}</span>
@@ -332,6 +337,14 @@ export const NosotrosPage: React.FC = () => {
           ))}
         </motion.div>
       </section>
+
+      {/* Modal de Miembro del Equipo */}
+      {selectedMember && (
+        <TeamMemberModal
+          member={selectedMember}
+          onClose={() => setSelectedMember(null)}
+        />
+      )}
     </motion.div>
   );
 };

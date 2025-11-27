@@ -1,5 +1,5 @@
 import api from './api';
-import type { Project, Event, NewsArticle, TeamMemberData, GalleryImage, Cerro, Statistics } from '@/types';
+import type { Project, Event, NewsArticle, TeamMemberData, GalleryImage, Cerro, Statistics, FAQ, ContributionItem } from '@/types';
 
 export const getProjects = async (): Promise<Project[]> => {
   const response = await api.get<Project[]>('/projects/');
@@ -38,5 +38,15 @@ export const getCerroById = async (id: string): Promise<Cerro> => {
 
 export const getStatistics = async (): Promise<Statistics> => {
   const response = await api.get<Statistics>('/statistics/');
+  return response.data;
+};
+
+export const getFAQs = async (): Promise<FAQ[]> => {
+  const response = await api.get<FAQ[]>('/faqs/');
+  return response.data;
+};
+
+export const getContributions = async (): Promise<ContributionItem[]> => {
+  const response = await api.get<ContributionItem[]>('/contributions/');
   return response.data;
 };

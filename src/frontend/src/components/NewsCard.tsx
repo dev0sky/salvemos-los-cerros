@@ -3,9 +3,11 @@ import { createPortal } from "react-dom";
 import { useTranslation } from "react-i18next";
 import { motion, AnimatePresence } from "framer-motion";
 import { IconCalendar, IconArrowRight } from "@tabler/icons-react";
+import { useLocation } from "wouter";
 import { Card } from "./ui/Card";
 import { Badge } from "./ui/Badge";
 import { Lightbox } from "./Lightbox";
+import { ROUTES } from "@/constants/routes";
 import type { NewsArticle, GalleryImage } from "@/types";
 
 interface NewsCardProps {
@@ -16,10 +18,13 @@ const CATEGORY_VARIANTS = {
   conservation: "success",
   events: "primary",
   education: "warning",
+  community: "info",
+  achievements: "success",
 } as const;
 
 export const NewsCard: React.FC<NewsCardProps> = ({ article }) => {
   const { t } = useTranslation();
+  const [, navigate] = useLocation();
   const [lightboxOpen, setLightboxOpen] = useState(false);
 
   const galleryImage: GalleryImage = {
@@ -32,6 +37,21 @@ export const NewsCard: React.FC<NewsCardProps> = ({ article }) => {
     tags: [article.category],
   };
 
+  const handleCardClick = () => {
+    navigate(ROUTES.NOTICIA_DETALLE.replace(":id", article.id));
+  };
+
+  const handleImageClick = (e: React.MouseEvent) => {
+    e.stopPropagation();
+    setLightboxOpen(true);
+  };
+
+  const handleReadMore = (e: React.MouseEvent) => {
+    e.preventDefault();
+    e.stopPropagation();
+    navigate(ROUTES.NOTICIA_DETALLE.replace(":id", article.id));
+  };
+
   return (
     <>
       <motion.div
@@ -41,11 +61,14 @@ export const NewsCard: React.FC<NewsCardProps> = ({ article }) => {
         whileHover={{ scale: 1.02 }}
         className="h-full"
       >
-        <Card className="overflow-hidden h-full flex flex-col">
+        <Card 
+          className="overflow-hidden h-full flex flex-col cursor-pointer" 
+          onClick={handleCardClick}
+        >
           {article.image && (
             <div
-              className="w-full aspect-[4/3] bg-secondary/10 overflow-hidden cursor-pointer group/image"
-              onClick={() => setLightboxOpen(true)}
+              className="w-full aspect-[4/3] bg-secondary/10 overflow-hidden group/image"
+              onClick={handleImageClick}
             >
               <motion.img
                 src={article.image}
@@ -59,7 +82,7 @@ export const NewsCard: React.FC<NewsCardProps> = ({ article }) => {
 
           <div className="p-6 flex flex-col flex-1">
             <div className="flex items-center justify-between mb-3 flex-wrap gap-2">
-              <Badge variant={CATEGORY_VARIANTS[article.category]}>
+              <Badge variant={CATEGORY_VARIANTS[article.category] || "primary"}>
                 {t(`news_card.categories.${article.category}`)}
               </Badge>
               {article.featured && (
@@ -80,12 +103,12 @@ export const NewsCard: React.FC<NewsCardProps> = ({ article }) => {
                 <IconCalendar size={14} />
                 <span>{article.date}</span>
               </div>
-              <a
-                href="#"
+              <button
+                onClick={handleReadMore}
                 className="text-primary text-sm font-semibold flex items-center gap-1 hover:gap-2 transition-all whitespace-nowrap"
               >
                 {t("news_card.read_more")} <IconArrowRight size={14} />
-              </a>
+              </button>
             </div>
           </div>
         </Card>
