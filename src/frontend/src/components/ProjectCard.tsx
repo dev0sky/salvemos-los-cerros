@@ -1,28 +1,30 @@
-import React from 'react';
-import { motion } from 'framer-motion';
-import { IconMapPin, IconCalendar, IconArrowRight, IconMap } from '@tabler/icons-react';
-import { Card } from './ui/Card';
-import { Badge } from './ui/Badge';
-import type { Project } from '@/types';
-import { Link } from 'wouter';
+import React from "react";
+import { useTranslation } from "react-i18next";
+import { motion } from "framer-motion";
+import {
+  IconMapPin,
+  IconCalendar,
+  IconArrowRight,
+  IconMap,
+} from "@tabler/icons-react";
+import { Card } from "./ui/Card";
+import { Badge } from "./ui/Badge";
+import type { Project } from "@/types";
+import { Link } from "wouter";
 
 interface ProjectCardProps {
   project: Project;
 }
 
 const STATUS_VARIANTS = {
-  active: 'primary',
-  completed: 'success',
-  planned: 'warning',
+  active: "primary",
+  completed: "success",
+  planned: "warning",
 } as const;
 
-const STATUS_LABELS = {
-  active: 'Activo',
-  completed: 'Completado',
-  planned: 'Planificado',
-};
-
 export const ProjectCard: React.FC<ProjectCardProps> = ({ project }) => {
+  const { t } = useTranslation();
+
   return (
     <motion.div
       initial={{ opacity: 0, y: 20 }}
@@ -33,20 +35,23 @@ export const ProjectCard: React.FC<ProjectCardProps> = ({ project }) => {
       <Card className="overflow-hidden h-full flex flex-col">
         {project.image && (
           <div className="w-full aspect-[4/3] bg-secondary/10 overflow-hidden">
-            <img 
-              src={project.image} 
+            <img
+              src={project.image}
               alt={project.title}
               className="w-full h-full object-cover"
             />
           </div>
         )}
-        
+
         <div className="p-6 flex flex-col flex-1">
           <div className="flex items-center justify-between mb-3 flex-wrap gap-2">
             <Badge variant={STATUS_VARIANTS[project.status]}>
-              {STATUS_LABELS[project.status]}
+              {t(`project_card.status.${project.status}`)}
             </Badge>
-            <span className="text-xs text-text-muted">{project.progress}% completado</span>
+            <span className="text-xs text-text-muted">
+              {project.progress}
+              {t("project_card.completed_label")}
+            </span>
           </div>
 
           <h3 className="text-xl font-semibold text-text-main mb-2">
@@ -82,17 +87,20 @@ export const ProjectCard: React.FC<ProjectCardProps> = ({ project }) => {
 
           <div className="flex items-center justify-between pt-4 border-t border-border-soft">
             <div className="flex gap-2">
-               <Link href="/mapa">
-                  <a className="text-xs text-primary flex items-center gap-1 hover:underline" title="Ver en mapa">
-                    <IconMap size={14} /> Mapa
-                  </a>
-               </Link>
+              <Link href="/mapa">
+                <a
+                  className="text-xs text-primary flex items-center gap-1 hover:underline"
+                  title={t("project_card.map")}
+                >
+                  <IconMap size={14} /> {t("project_card.map")}
+                </a>
+              </Link>
             </div>
-            <a 
-              href="#" 
+            <a
+              href="#"
               className="text-primary text-sm font-semibold flex items-center gap-1 hover:gap-2 transition-all whitespace-nowrap"
             >
-              Ver detalles <IconArrowRight size={14} />
+              {t("project_card.view_details")} <IconArrowRight size={14} />
             </a>
           </div>
         </div>

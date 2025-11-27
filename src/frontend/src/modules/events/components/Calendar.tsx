@@ -31,14 +31,12 @@ interface Event {
 export const Calendar: React.FC = () => {
   const [currentDate, setCurrentDate] = useState(new Date());
   const [events, setEvents] = useState<Event[]>([]);
-  const [loading, setLoading] = useState(false);
 
   useEffect(() => {
     fetchEvents();
   }, [currentDate]);
 
   const fetchEvents = async () => {
-    setLoading(true);
     const start = format(startOfMonth(currentDate), "yyyy-MM-dd");
     const end = format(endOfMonth(currentDate), "yyyy-MM-dd");
     try {
@@ -46,8 +44,6 @@ export const Calendar: React.FC = () => {
       setEvents(response.data);
     } catch (error) {
       console.error("Error fetching events:", error);
-    } finally {
-      setLoading(false);
     }
   };
 
@@ -119,7 +115,7 @@ export const Calendar: React.FC = () => {
             {day}
           </div>
         ))}
-        {days.map((day, dayIdx) => {
+        {days.map((day) => {
           const dayEvents = getEventsForDay(day);
           return (
             <div

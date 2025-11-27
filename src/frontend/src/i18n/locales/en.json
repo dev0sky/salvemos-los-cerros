@@ -178,5 +178,82 @@
         "view_all": "View all",
         "no_results": "No results",
         "geology_label": "Geology:"
+    },
+    "news_card": {
+        "featured": "Featured",
+        "read_more": "Read more",
+        "categories": {
+            "conservation": "Conservation",
+            "events": "Events",
+            "education": "Education"
+        }
+    },
+    "project_card": {
+        "status": {
+            "active": "Active",
+            "completed": "Completed",
+            "planned": "Planned"
+        },
+        "completed_label": "% completed",
+        "view_details": "View details",
+        "map": "Map"
+    },
+    "event_card": {
+        "types": {
+            "cleanup": "Cleanup",
+            "reforestation": "Reforestation",
+            "workshop": "Workshop",
+            "other": "Other"
+        },
+        "status": {
+            "past": "Past",
+            "full": "Full",
+            "event_full": "Event full",
+            "register": "Register",
+            "finished": "Event finished"
+        },
+        "map_title": "View on map",
+        "map_label": "Map",
+        "participants": "participants"
+    },
+    "noticias_page": {
+        "title": "News",
+        "filter_label": "Filter by category:",
+        "no_news": "No news in this category.",
+        "read_more": "Read more"
+    },
+    "nosotros_page": {
+        "title": "About Us",
+        "subtitle": "Meet the team behind the conservation of our hills",
+        "mission_title": "Our Mission",
+        "mission_text": "Protect and restore the natural ecosystems of our region, promoting environmental education and community participation.",
+        "vision_title": "Our Vision",
+        "vision_text": "A future where nature and community coexist in harmony, with thriving green spaces for generations to come.",
+        "impact_title": "Our Impact",
+        "team_title": "Our Team",
+        "team_subtitle": "Meet the dedicated people who make our conservation mission possible."
+    },
+    "galeria_page": {
+        "title": "Gallery",
+        "subtitle": "Explore our captured moments in nature",
+        "filter_label": "Filter by:",
+        "filters": {
+            "projects": "Projects",
+            "events": "Events",
+            "nature": "Nature",
+            "team": "Team"
+        },
+        "no_images": "No images with this filter."
+    },
+    "eventos_page": {
+        "title": "Events",
+        "subtitle": "Join our activities and be part of the change",
+        "badge": "Upcoming Events",
+        "filter_label": "Filter by:",
+        "no_events": "No events with this filter."
+    },
+    "proyectos_page": {
+        "title": "Our Projects",
+        "subtitle": "Active initiatives for the conservation and restoration of our natural spaces"
     }
 }

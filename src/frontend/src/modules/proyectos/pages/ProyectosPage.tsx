@@ -3,26 +3,21 @@ import { useTranslation } from "react-i18next";
 import { motion, AnimatePresence } from "framer-motion";
 import { IconFilter } from "@tabler/icons-react";
 import { ProjectCard } from "@/components/ProjectCard";
-import { BarChart } from "@/components/StatsChart";
 import { Button } from "@/components/ui/Button";
 import { LoadingSpinner } from "@/components/ui/LoadingSpinner";
-import { STRINGS } from "@/constants/strings";
 import { useAppStore } from "@/stores/useAppStore";
 import { useProjects } from "@/hooks/useData";
-import { PROJECT_STATS_DATA } from "@/data/projects"; // Keep stats mock for now or calculate from data
 import {
   PAGE_VARIANTS,
   FADE_UP_ITEM,
   SCALE_IN,
   HOVER_LIFT,
 } from "@/constants/animations";
-
 import { ErrorState } from "@/components/ui/ErrorState";
 
 export const ProyectosPage: React.FC = () => {
   const { t } = useTranslation();
   const { projectFilter, setProjectFilter } = useAppStore();
-
   const { data: projects = [], isLoading, error, refetch } = useProjects();
 
   const filteredProjects = projects.filter(
@@ -30,10 +25,10 @@ export const ProyectosPage: React.FC = () => {
   );
 
   const filters = [
-    { value: "all" as const, label: STRINGS.FILTER_ALL },
-    { value: "active" as const, label: STRINGS.FILTER_ACTIVE },
-    { value: "completed" as const, label: STRINGS.FILTER_COMPLETED },
-    { value: "planned" as const, label: STRINGS.FILTER_PLANNED },
+    { value: "all" as const, label: t("filters.all") },
+    { value: "active" as const, label: t("filters.active") },
+    { value: "completed" as const, label: t("filters.completed") },
+    { value: "planned" as const, label: t("filters.planned") },
   ];
 
   return (
@@ -43,47 +38,30 @@ export const ProyectosPage: React.FC = () => {
       animate="visible"
       variants={PAGE_VARIANTS}
     >
-      {/* Hero Section */}
-      <section className="bg-surface rounded-b-3xl p-10 md:p-20 border-b border-border-soft">
-        <div className="container mx-auto">
-          <motion.div variants={FADE_UP_ITEM} className="max-w-3xl">
-            <h1 className="text-4xl md:text-5xl font-bold text-text-main mb-4">
-              {STRINGS.PROYECTOS_TITLE}
-            </h1>
-            <p className="text-text-muted text-lg">
-              {STRINGS.PROYECTOS_SUBTITLE}
-            </p>
-          </motion.div>
-        </div>
-      </section>
-
-      {/* Stats Section */}
-      <section className="container mx-auto px-4">
-        <motion.div
-          className="bg-card rounded-2xl border border-border-soft p-6 md:p-8"
+      <section className="bg-surface rounded-3xl p-10 md:p-16 text-center space-y-6">
+        <motion.h1
+          className="text-4xl md:text-5xl font-bold text-text-main"
           variants={FADE_UP_ITEM}
         >
-          <h2 className="text-2xl font-bold text-text-main mb-6">
-            {t("sections.projects.stats_title")}
-          </h2>
-          <BarChart
-            data={PROJECT_STATS_DATA}
-            keys={["proyectos"]}
-            indexBy="month"
-          />
-        </motion.div>
-      </section>
-
-      {/* Filter Section */}
-      <section className="container mx-auto px-4">
-        <motion.div
-          className="flex items-center gap-3 flex-wrap"
+          {t("proyectos_page.title")}
+        </motion.h1>
+        <motion.p
+          className="text-lg text-text-muted max-w-2xl mx-auto"
           variants={FADE_UP_ITEM}
         >
-          <IconFilter size={20} className="text-text-muted" />
-          <span className="text-sm font-medium text-text-muted">
-            {t("sections.projects.filter_label")}
-          </span>
+          {t("proyectos_page.subtitle")}
+        </motion.p>
+
+        <motion.div
+          className="flex flex-wrap justify-center gap-3 pt-6"
+          variants={FADE_UP_ITEM}
+        >
+          <div className="flex items-center gap-2 mr-4">
+            <IconFilter size={20} className="text-text-muted" />
+            <span className="text-sm font-medium text-text-muted">
+              {t("sections.projects.filter_label")}
+            </span>
+          </div>
           {filters.map((filter) => (
             <Button
               key={filter.value}
@@ -98,7 +76,6 @@ export const ProyectosPage: React.FC = () => {
         </motion.div>
       </section>
 
-      {/* Projects Grid */}
       <section className="container mx-auto px-4">
         {isLoading ? (
           <div className="flex justify-center py-12">

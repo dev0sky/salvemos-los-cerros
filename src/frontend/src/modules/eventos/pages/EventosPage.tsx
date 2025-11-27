@@ -1,85 +1,87 @@
-import React from 'react';
-import { motion, AnimatePresence } from 'framer-motion';
-import { IconFilter, IconCalendarEvent } from '@tabler/icons-react';
-import { EventCard } from '@/components/EventCard';
-import { Button } from '@/components/ui/Button';
-import { LoadingSpinner } from '@/components/ui/LoadingSpinner';
-import { STRINGS } from '@/constants/strings';
-import { useAppStore } from '@/stores/useAppStore';
-import { useEvents } from '@/hooks/useData';
-import { PAGE_VARIANTS, FADE_UP_ITEM, SCALE_IN, HOVER_LIFT } from '@/constants/animations';
-import { ErrorState } from '@/components/ui/ErrorState';
+import React, { useState } from "react";
+import { useTranslation } from "react-i18next";
+import { motion, AnimatePresence } from "framer-motion";
+import { IconCalendarEvent, IconFilter } from "@tabler/icons-react";
+import { EventCard } from "@/components/EventCard";
+import { Button } from "@/components/ui/Button";
+import { LoadingSpinner } from "@/components/ui/LoadingSpinner";
+import { useEvents } from "@/hooks/useData";
+import {
+  PAGE_VARIANTS,
+  FADE_UP_ITEM,
+  SCALE_IN,
+  HOVER_LIFT,
+} from "@/constants/animations";
+import { ErrorState } from "@/components/ui/ErrorState";
 
 export const EventosPage: React.FC = () => {
-  const { eventFilter, setEventFilter } = useAppStore();
-
+  const { t } = useTranslation();
   const { data: events = [], isLoading, error, refetch } = useEvents();
+  const [filter, setFilter] = useState<"all" | "upcoming" | "past">("all");
 
-  const now = new Date();
-  const filteredEvents = events.filter(event => {
-    const eventDate = new Date(event.date);
-    if (eventFilter === 'upcoming') return eventDate >= now;
-    if (eventFilter === 'past') return eventDate < now;
-    return true;
+  const filteredEvents = events.filter((event) => {
+    if (filter === "all") return true;
+    const isPast = new Date(event.date) < new Date();
+    return filter === "past" ? isPast : !isPast;
   });
 
   const filters = [
-    { value: 'all' as const, label: STRINGS.FILTER_ALL },
-    { value: 'upcoming' as const, label: STRINGS.FILTER_UPCOMING },
-    { value: 'past' as const, label: STRINGS.FILTER_PAST },
+    { value: "all" as const, label: t("filters.all") },
+    { value: "upcoming" as const, label: t("filters.upcoming") },
+    { value: "past" as const, label: t("filters.past") },
   ];
 
   return (
-    <motion.div 
+    <motion.div
       className="space-y-12 md:space-y-20 pb-20"
       initial="hidden"
       animate="visible"
       variants={PAGE_VARIANTS}
     >
-      {/* Hero Section */}
-      <section className="bg-surface rounded-b-3xl p-10 md:p-20 border-b border-border-soft">
-        <div className="container mx-auto">
-          <motion.div
-            variants={FADE_UP_ITEM}
-            className="max-w-3xl"
-          >
-            <div className="inline-flex items-center gap-2 px-3 py-1 rounded-full bg-primary/10 text-primary text-sm font-medium mb-4">
-              <IconCalendarEvent size={16} />
-              <span>Próximos Eventos</span>
-            </div>
-            <h1 className="text-4xl md:text-5xl font-bold text-text-main mb-4">
-              {STRINGS.EVENTOS_TITLE}
-            </h1>
-            <p className="text-text-muted text-lg">
-              {STRINGS.EVENTOS_SUBTITLE}
-            </p>
-          </motion.div>
-        </div>
-      </section>
-
-      {/* Filter Section */}
-      <section className="container mx-auto px-4">
-        <motion.div 
-          className="flex items-center gap-3 flex-wrap"
+      <section className="bg-surface rounded-3xl p-10 md:p-16 text-center space-y-6">
+        <motion.div
+          className="inline-flex items-center justify-center p-3 bg-primary/10 rounded-full text-primary mb-4"
           variants={FADE_UP_ITEM}
         >
-          <IconFilter size={20} className="text-text-muted" />
-          <span className="text-sm font-medium text-text-muted">Filtrar por:</span>
-          {filters.map((filter) => (
+          <IconCalendarEvent size={32} />
+        </motion.div>
+        <motion.h1
+          className="text-4xl md:text-5xl font-bold text-text-main"
+          variants={FADE_UP_ITEM}
+        >
+          {t("eventos_page.title")}
+        </motion.h1>
+        <motion.p
+          className="text-lg text-text-muted max-w-2xl mx-auto"
+          variants={FADE_UP_ITEM}
+        >
+          {t("eventos_page.subtitle")}
+        </motion.p>
+
+        <motion.div
+          className="flex flex-wrap justify-center gap-3 pt-6"
+          variants={FADE_UP_ITEM}
+        >
+          <div className="flex items-center gap-2 mr-4">
+            <IconFilter size={20} className="text-text-muted" />
+            <span className="text-sm font-medium text-text-muted">
+              {t("eventos_page.filter_label")}
+            </span>
+          </div>
+          {filters.map((f) => (
             <Button
-              key={filter.value}
-              variant={eventFilter === filter.value ? 'primary' : 'outline'}
+              key={f.value}
+              variant={filter === f.value ? "primary" : "outline"}
               size="sm"
-              onClick={() => setEventFilter(filter.value)}
+              onClick={() => setFilter(f.value)}
               className="transition-all duration-300"
             >
-              {filter.label}
+              {f.label}
             </Button>
           ))}
         </motion.div>
       </section>
 
-      {/* Events Grid */}
       <section className="container mx-auto px-4">
         {isLoading ? (
           <div className="flex justify-center py-12">
@@ -88,14 +90,14 @@ export const EventosPage: React.FC = () => {
         ) : error ? (
           <ErrorState onRetry={() => refetch()} />
         ) : filteredEvents.length > 0 ? (
-          <motion.div 
+          <motion.div
             className="grid grid-cols-1 md:grid-cols-2 lg:grid-cols-3 gap-6"
             layout
           >
-            <AnimatePresence mode='popLayout'>
+            <AnimatePresence mode="popLayout">
               {filteredEvents.map((event) => (
-                <motion.div 
-                  key={event.id} 
+                <motion.div
+                  key={event.id}
                   variants={SCALE_IN}
                   initial="hidden"
                   animate="visible"
@@ -109,12 +111,12 @@ export const EventosPage: React.FC = () => {
             </AnimatePresence>
           </motion.div>
         ) : (
-          <motion.div 
+          <motion.div
             className="text-center py-12"
             initial={{ opacity: 0 }}
             animate={{ opacity: 1 }}
           >
-            <p className="text-text-muted">No hay eventos con este filtro.</p>
+            <p className="text-text-muted">{t("eventos_page.no_events")}</p>
           </motion.div>
         )}
       </section>

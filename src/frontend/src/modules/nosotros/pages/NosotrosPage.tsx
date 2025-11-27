@@ -1,127 +1,139 @@
-import React from 'react';
-import { motion } from 'framer-motion';
-import { IconTarget, IconEye, IconTrophy } from '@tabler/icons-react';
-import { TeamMember } from '@/components/TeamMember';
-import { PieChart } from '@/components/StatsChart';
-import { Card } from '@/components/ui/Card';
-import { LoadingSpinner } from '@/components/ui/LoadingSpinner';
-import { STRINGS } from '@/constants/strings';
-import { useTeam } from '@/hooks/useData';
-import { IMPACT_DATA } from '@/data/team'; // Keep impact data mock for now
-import { PAGE_VARIANTS, FADE_UP_ITEM, STAGGER_CONTAINER, SCALE_IN, HOVER_LIFT } from '@/constants/animations';
-
-import { ErrorState } from '@/components/ui/ErrorState';
+import React from "react";
+import { useTranslation } from "react-i18next";
+import { motion } from "framer-motion";
+import { IconUsers, IconLeaf, IconTarget } from "@tabler/icons-react";
+import { Card } from "@/components/ui/Card";
+import {
+  PAGE_VARIANTS,
+  FADE_UP_ITEM,
+  STAGGER_CONTAINER,
+} from "@/constants/animations";
 
 export const NosotrosPage: React.FC = () => {
-  const { data: team = [], isLoading, error, refetch } = useTeam();
+  const { t } = useTranslation();
 
   return (
-    <motion.div 
+    <motion.div
       className="space-y-12 md:space-y-20 pb-20"
       initial="hidden"
       animate="visible"
       variants={PAGE_VARIANTS}
     >
       {/* Hero Section */}
-      <section className="bg-surface rounded-b-3xl p-10 md:p-20 border-b border-border-soft">
-        <div className="container mx-auto">
-          <motion.div
-            variants={FADE_UP_ITEM}
-            className="max-w-3xl"
-          >
-            <h1 className="text-4xl md:text-5xl font-bold text-text-main mb-4">
-              {STRINGS.NOSOTROS_TITLE}
-            </h1>
-            <p className="text-text-muted text-lg">
-              {STRINGS.NOSOTROS_SUBTITLE}
-            </p>
-          </motion.div>
-        </div>
-      </section>
-
-      {/* Mission & Vision */}
-      <section className="container mx-auto px-4">
-        <motion.div 
-          className="grid grid-cols-1 md:grid-cols-2 gap-6"
-          variants={STAGGER_CONTAINER}
-        >
-          <motion.div variants={FADE_UP_ITEM} whileHover={HOVER_LIFT}>
-            <Card className="h-full">
-              <div className="w-12 h-12 rounded-xl bg-primary/10 flex items-center justify-center mb-4">
-                <IconTarget size={24} className="text-primary" />
-              </div>
-              <h2 className="text-2xl font-bold text-text-main mb-3">
-                {STRINGS.MISSION_TITLE}
-              </h2>
-              <p className="text-text-muted">
-                {STRINGS.MISSION_TEXT}
-              </p>
-            </Card>
-          </motion.div>
-
-          <motion.div variants={FADE_UP_ITEM} whileHover={HOVER_LIFT}>
-            <Card className="h-full">
-              <div className="w-12 h-12 rounded-xl bg-secondary/20 flex items-center justify-center mb-4">
-                <IconEye size={24} className="text-text-main" />
-              </div>
-              <h2 className="text-2xl font-bold text-text-main mb-3">
-                {STRINGS.VISION_TITLE}
-              </h2>
-              <p className="text-text-muted">
-                {STRINGS.VISION_TEXT}
-              </p>
-            </Card>
-          </motion.div>
-        </motion.div>
-      </section>
-
-      {/* Impact Stats */}
-      <section className="container mx-auto px-4">
-        <motion.div variants={FADE_UP_ITEM}>
-          <Card>
-            <div className="flex items-center gap-3 mb-6">
-              <IconTrophy size={24} className="text-primary" />
-              <h2 className="text-2xl font-bold text-text-main">Nuestro Impacto</h2>
-            </div>
-            <PieChart data={IMPACT_DATA} />
-          </Card>
-        </motion.div>
-      </section>
-
-      {/* Team Section */}
-      <section className="container mx-auto px-4">
-        <motion.div 
-          className="text-center mb-12"
+      <section className="bg-surface rounded-3xl p-10 md:p-16 text-center space-y-6">
+        <motion.div
+          className="inline-flex items-center justify-center p-3 bg-primary/10 rounded-full text-primary mb-4"
           variants={FADE_UP_ITEM}
         >
-          <h2 className="text-3xl font-bold text-text-main mb-4">Nuestro Equipo</h2>
+          <IconUsers size={32} />
+        </motion.div>
+        <motion.h1
+          className="text-4xl md:text-5xl font-bold text-text-main"
+          variants={FADE_UP_ITEM}
+        >
+          {t("nosotros_page.title")}
+        </motion.h1>
+        <motion.p
+          className="text-lg text-text-muted max-w-2xl mx-auto"
+          variants={FADE_UP_ITEM}
+        >
+          {t("nosotros_page.subtitle")}
+        </motion.p>
+      </section>
+
+      {/* Misión y Visión */}
+      <section className="container mx-auto px-4">
+        <motion.div
+          className="grid md:grid-cols-2 gap-8"
+          variants={STAGGER_CONTAINER}
+        >
+          <motion.div variants={FADE_UP_ITEM} className="h-full">
+            <Card className="p-8 h-full flex flex-col items-center text-center space-y-4 hover:border-primary/30 transition-colors">
+              <div className="p-3 bg-accent-green/10 rounded-full text-accent-green">
+                <IconTarget size={32} />
+              </div>
+              <h2 className="text-2xl font-bold text-text-main">
+                {t("nosotros_page.mission_title")}
+              </h2>
+              <p className="text-text-muted leading-relaxed">
+                {t("nosotros_page.mission_text")}
+              </p>
+            </Card>
+          </motion.div>
+
+          <motion.div variants={FADE_UP_ITEM} className="h-full">
+            <Card className="p-8 h-full flex flex-col items-center text-center space-y-4 hover:border-primary/30 transition-colors">
+              <div className="p-3 bg-primary/10 rounded-full text-primary">
+                <IconLeaf size={32} />
+              </div>
+              <h2 className="text-2xl font-bold text-text-main">
+                {t("nosotros_page.vision_title")}
+              </h2>
+              <p className="text-text-muted leading-relaxed">
+                {t("nosotros_page.vision_text")}
+              </p>
+            </Card>
+          </motion.div>
+        </motion.div>
+      </section>
+
+      {/* Impacto (Placeholder) */}
+      <section className="container mx-auto px-4">
+        <motion.div
+          className="bg-secondary/5 rounded-3xl p-8 md:p-12 text-center"
+          variants={FADE_UP_ITEM}
+        >
+          <h2 className="text-3xl font-bold text-text-main mb-8">
+            {t("nosotros_page.impact_title")}
+          </h2>
+          <div className="grid grid-cols-2 md:grid-cols-4 gap-8">
+            {[
+              { number: "50+", label: "Eventos" },
+              { number: "1000+", label: "Voluntarios" },
+              { number: "5", label: "Cerros Protegidos" },
+              { number: "20+", label: "Aliados" },
+            ].map((stat, index) => (
+              <div key={index} className="space-y-2">
+                <div className="text-4xl font-bold text-primary">
+                  {stat.number}
+                </div>
+                <div className="text-text-muted font-medium">{stat.label}</div>
+              </div>
+            ))}
+          </div>
+        </motion.div>
+      </section>
+
+      {/* Equipo (Placeholder) */}
+      <section className="container mx-auto px-4 text-center space-y-12">
+        <motion.div variants={FADE_UP_ITEM}>
+          <h2 className="text-3xl font-bold text-text-main mb-4">
+            {t("nosotros_page.team_title")}
+          </h2>
           <p className="text-text-muted max-w-2xl mx-auto">
-            Conoce a las personas dedicadas que hacen posible nuestra misión de conservación.
+            {t("nosotros_page.team_subtitle")}
           </p>
         </motion.div>
-        {isLoading ? (
-          <div className="flex justify-center py-12">
-            <LoadingSpinner />
-          </div>
-        ) : error ? (
-          <ErrorState onRetry={() => refetch()} />
-        ) : (
-          <motion.div 
-            className="grid grid-cols-1 md:grid-cols-2 lg:grid-cols-4 gap-6"
-            variants={STAGGER_CONTAINER}
-          >
-            {team.map((member) => (
-              <motion.div
-                key={member.id}
-                variants={SCALE_IN}
-                whileHover={HOVER_LIFT}
-                className="h-full"
-              >
-                <TeamMember member={member} />
-              </motion.div>
-            ))}
-          </motion.div>
-        )}
+
+        {/* Aquí iría el grid de miembros del equipo cuando haya datos */}
+        <div className="grid grid-cols-1 sm:grid-cols-2 md:grid-cols-3 lg:grid-cols-4 gap-6">
+          {/* Placeholder cards */}
+          {[1, 2, 3, 4].map((i) => (
+            <motion.div
+              key={i}
+              variants={FADE_UP_ITEM}
+              className="bg-card rounded-2xl p-6 border border-border-soft space-y-4"
+            >
+              <div className="w-24 h-24 bg-secondary/20 rounded-full mx-auto" />
+              <div>
+                <h3 className="font-semibold text-text-main">Miembro {i}</h3>
+                <p className="text-sm text-text-muted">
+                  Rol en la organización
+                </p>
+              </div>
+            </motion.div>
+          ))}
+        </div>
       </section>
     </motion.div>
   );

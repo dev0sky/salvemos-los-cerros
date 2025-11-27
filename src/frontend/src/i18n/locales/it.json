@@ -178,5 +178,82 @@
         "view_all": "Vedi tutti",
         "no_results": "Nessun risultato",
         "geology_label": "Geologia:"
+    },
+    "news_card": {
+        "featured": "In evidenza",
+        "read_more": "Leggi di più",
+        "categories": {
+            "conservation": "Conservazione",
+            "events": "Eventi",
+            "education": "Educazione"
+        }
+    },
+    "project_card": {
+        "status": {
+            "active": "Attivo",
+            "completed": "Completato",
+            "planned": "Pianificato"
+        },
+        "completed_label": "% completato",
+        "view_details": "Vedi dettagli",
+        "map": "Mappa"
+    },
+    "event_card": {
+        "types": {
+            "cleanup": "Pulizia",
+            "reforestation": "Riforestazione",
+            "workshop": "Workshop",
+            "other": "Altro"
+        },
+        "status": {
+            "past": "Passato",
+            "full": "Completo",
+            "event_full": "Evento completo",
+            "register": "Registrati",
+            "finished": "Evento terminato"
+        },
+        "map_title": "Vedi sulla mappa",
+        "map_label": "Mappa",
+        "participants": "partecipanti"
+    },
+    "noticias_page": {
+        "title": "Notizie",
+        "filter_label": "Filtra per categoria:",
+        "no_news": "Nessuna notizia in questa categoria.",
+        "read_more": "Leggi di più"
+    },
+    "nosotros_page": {
+        "title": "Chi Siamo",
+        "subtitle": "Incontra il team dietro la conservazione delle nostre colline",
+        "mission_title": "La Nostra Missione",
+        "mission_text": "Proteggere e ripristinare gli ecosistemi naturali della nostra regione, promuovendo l'educazione ambientale e la partecipazione della comunità.",
+        "vision_title": "La Nostra Visione",
+        "vision_text": "Un futuro in cui natura e comunità coesistono in armonia, con spazi verdi prosperi per le generazioni future.",
+        "impact_title": "Il Nostro Impatto",
+        "team_title": "Il Nostro Team",
+        "team_subtitle": "Incontra le persone dedicate che rendono possibile la nostra missione di conservazione."
+    },
+    "galeria_page": {
+        "title": "Galleria",
+        "subtitle": "Esplora i nostri momenti catturati nella natura",
+        "filter_label": "Filtra per:",
+        "filters": {
+            "projects": "Progetti",
+            "events": "Eventi",
+            "nature": "Natura",
+            "team": "Team"
+        },
+        "no_images": "Nessuna immagine con questo filtro."
+    },
+    "eventos_page": {
+        "title": "Eventi",
+        "subtitle": "Unisciti alle nostre attività e fai parte del cambiamento",
+        "badge": "Eventi prossimi",
+        "filter_label": "Filtra per:",
+        "no_events": "Nessun evento con questo filtro."
+    },
+    "proyectos_page": {
+        "title": "I Nostri Progetti",
+        "subtitle": "Iniziative attive per la conservazione e il ripristino dei nostri spazi naturali"
     }
 }

@@ -180,5 +180,82 @@
         "view_all": "Ver todos",
         "no_results": "No hay resultados",
         "geology_label": "Geología:"
+    },
+    "news_card": {
+        "featured": "Destacado",
+        "read_more": "Leer más",
+        "categories": {
+            "conservation": "Conservación",
+            "events": "Eventos",
+            "education": "Educación"
+        }
+    },
+    "project_card": {
+        "status": {
+            "active": "Activo",
+            "completed": "Completado",
+            "planned": "Planificado"
+        },
+        "completed_label": "% completado",
+        "view_details": "Ver detalles",
+        "map": "Mapa"
+    },
+    "event_card": {
+        "types": {
+            "cleanup": "Limpieza",
+            "reforestation": "Reforestación",
+            "workshop": "Taller",
+            "other": "Otro"
+        },
+        "status": {
+            "past": "Pasado",
+            "full": "Lleno",
+            "event_full": "Evento lleno",
+            "register": "Registrarse",
+            "finished": "Evento finalizado"
+        },
+        "map_title": "Ver en mapa",
+        "map_label": "Mapa",
+        "participants": "participantes"
+    },
+    "noticias_page": {
+        "title": "Noticias",
+        "filter_label": "Filtrar por categoría:",
+        "no_news": "No hay noticias en esta categoría.",
+        "read_more": "Leer más"
+    },
+    "nosotros_page": {
+        "title": "Sobre Nosotros",
+        "subtitle": "Conoce al equipo detrás de la conservación de nuestros cerros",
+        "mission_title": "Nuestra Misión",
+        "mission_text": "Proteger y restaurar los ecosistemas naturales de nuestra región, promoviendo la educación ambiental y la participación comunitaria.",
+        "vision_title": "Nuestra Visión",
+        "vision_text": "Un futuro donde la naturaleza y la comunidad coexistan en armonía, con espacios verdes prósperos para las generaciones venideras.",
+        "impact_title": "Nuestro Impacto",
+        "team_title": "Nuestro Equipo",
+        "team_subtitle": "Conoce a las personas dedicadas que hacen posible nuestra misión de conservación."
+    },
+    "galeria_page": {
+        "title": "Galería",
+        "subtitle": "Explora nuestros momentos capturados en la naturaleza",
+        "filter_label": "Filtrar por:",
+        "filters": {
+            "projects": "Proyectos",
+            "events": "Eventos",
+            "nature": "Naturaleza",
+            "team": "Equipo"
+        },
+        "no_images": "No hay imágenes con este filtro."
+    },
+    "eventos_page": {
+        "title": "Eventos",
+        "subtitle": "Únete a nuestras actividades y forma parte del cambio",
+        "badge": "Próximos Eventos",
+        "filter_label": "Filtrar por:",
+        "no_events": "No hay eventos con este filtro."
+    },
+    "proyectos_page": {
+        "title": "Nuestros Proyectos",
+        "subtitle": "Iniciativas activas para la conservación y restauración de nuestros espacios naturales"
     }
 }

@@ -1,27 +1,24 @@
-import React from 'react';
-import { motion } from 'framer-motion';
-import { IconCalendar, IconArrowRight } from '@tabler/icons-react';
-import { Card } from './ui/Card';
-import { Badge } from './ui/Badge';
-import type { NewsArticle } from '@/types';
+import React from "react";
+import { useTranslation } from "react-i18next";
+import { motion } from "framer-motion";
+import { IconCalendar, IconArrowRight } from "@tabler/icons-react";
+import { Card } from "./ui/Card";
+import { Badge } from "./ui/Badge";
+import type { NewsArticle } from "@/types";
 
 interface NewsCardProps {
   article: NewsArticle;
 }
 
 const CATEGORY_VARIANTS = {
-  conservation: 'success',
-  events: 'primary',
-  education: 'warning',
+  conservation: "success",
+  events: "primary",
+  education: "warning",
 } as const;
 
-const CATEGORY_LABELS = {
-  conservation: 'Conservación',
-  events: 'Eventos',
-  education: 'Educación',
-};
-
 export const NewsCard: React.FC<NewsCardProps> = ({ article }) => {
+  const { t } = useTranslation();
+
   return (
     <motion.div
       initial={{ opacity: 0, y: 20 }}
@@ -32,20 +29,22 @@ export const NewsCard: React.FC<NewsCardProps> = ({ article }) => {
       <Card className="overflow-hidden h-full flex flex-col">
         {article.image && (
           <div className="w-full aspect-[4/3] bg-secondary/10 overflow-hidden">
-            <img 
-              src={article.image} 
+            <img
+              src={article.image}
               alt={article.title}
               className="w-full h-full object-cover"
             />
           </div>
         )}
-        
+
         <div className="p-6 flex flex-col flex-1">
           <div className="flex items-center justify-between mb-3 flex-wrap gap-2">
             <Badge variant={CATEGORY_VARIANTS[article.category]}>
-              {CATEGORY_LABELS[article.category]}
+              {t(`news_card.categories.${article.category}`)}
             </Badge>
-            {article.featured && <Badge variant="primary">Destacado</Badge>}
+            {article.featured && (
+              <Badge variant="primary">{t("news_card.featured")}</Badge>
+            )}
           </div>
 
           <h3 className="text-xl font-semibold text-text-main mb-2">
@@ -61,11 +60,11 @@ export const NewsCard: React.FC<NewsCardProps> = ({ article }) => {
               <IconCalendar size={14} />
               <span>{article.date}</span>
             </div>
-            <a 
-              href="#" 
+            <a
+              href="#"
               className="text-primary text-sm font-semibold flex items-center gap-1 hover:gap-2 transition-all whitespace-nowrap"
             >
-              Leer más <IconArrowRight size={14} />
+              {t("news_card.read_more")} <IconArrowRight size={14} />
             </a>
           </div>
         </div>
