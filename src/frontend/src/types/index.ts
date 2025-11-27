@@ -99,3 +99,24 @@ export interface Cerro {
   threats: string[];
   image: string;
 }
+
+// Statistics types
+export interface Statistics {
+  stats: {
+    total_events: number;
+    total_volunteers: number;
+    trees_planted: number;
+    protected_cerros: number;
+  };
+  monthly_activity: {
+    month: string;
+    eventos: number;
+    voluntarios: number;
+  }[];
+  project_distribution: {
+    id: string;
+    label: string;
+    value: number;
+    color: string;
+  }[];
+}

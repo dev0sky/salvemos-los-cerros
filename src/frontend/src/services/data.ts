@@ -1,5 +1,5 @@
 import api from './api';
-import type { Project, Event, NewsArticle, TeamMemberData, GalleryImage, Cerro } from '@/types';
+import type { Project, Event, NewsArticle, TeamMemberData, GalleryImage, Cerro, Statistics } from '@/types';
 
 export const getProjects = async (): Promise<Project[]> => {
   const response = await api.get<Project[]>('/projects/');
@@ -33,5 +33,10 @@ export const getCerros = async (): Promise<Cerro[]> => {
 
 export const getCerroById = async (id: string): Promise<Cerro> => {
   const response = await api.get<Cerro>(`/cerros/${id}/`);
+  return response.data;
+};
+
+export const getStatistics = async (): Promise<Statistics> => {
+  const response = await api.get<Statistics>('/statistics/');
   return response.data;
 };

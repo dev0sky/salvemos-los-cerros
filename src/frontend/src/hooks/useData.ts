@@ -1,5 +1,5 @@
 import { useQuery } from '@tanstack/react-query';
-import { getProjects, getEvents, getNews, getTeam, getGallery, getCerros, getCerroById } from '@/services/data';
+import { getProjects, getEvents, getNews, getTeam, getGallery, getCerros, getCerroById, getStatistics } from '@/services/data';
 
 export const useProjects = () => {
   return useQuery({
@@ -50,3 +50,11 @@ export const useCerro = (id: string | null) => {
     enabled: !!id,
   });
 };
+
+export const useStatistics = () => {
+  return useQuery({
+    queryKey: ['statistics'],
+    queryFn: () => getStatistics(),
+  });
+};
+
