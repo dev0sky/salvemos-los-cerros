@@ -1,270 +1,306 @@
 ﻿{
-    "app_title":  "Naturaleza Viva",
-    "footer_text":  "Todos los derechos reservados.",
-    "nav":  {
-                "home":  "Inicio",
-                "projects":  "Proyectos",
-                "about":  "Nosotros",
-                "events":  "Eventos",
-                "news":  "Noticias",
-                "gallery":  "Galería",
-                "map":  "Mapa",
-                "hills":  "Cerros",
-                "faq":  "Preguntas Frecuentes",
-                "contributions":  "Contribuciones",
-                "volunteer":  "Voluntariado"
-            },
-    "hero":  {
-                 "badge":  "Iniciativa Comunitaria",
-                 "title":  "Salvemos los Cerros de Chihuahua",
-                 "subtitle":  "Una asociación de activismo social para la protección de áreas naturales en Chihuahua como cerros, ríos, lagos, lagunas, presas, montañas, cañones, de la flora y la fauna que habitan en ellos.",
-                 "description":  "Actualmente estamos solo en Chihuahua capital pero buscamos ir a todo el estado en un futuro. Somos apolíticos, realizamos manifestaciones y cambios que buscan inspirar y realizar cambios para la sostenibilidad común de los habitantes, haciendo conciencia sobre los peligros de la gentrificación y permitiendo también concientizar sobre el uso adecuado de los recursos naturales y cómo aprovecharlos mejor.",
-                 "cta_primary":  "Conócenos",
-                 "cta_secondary":  "Nuestros Proyectos"
-             },
-    "features":  {
-                     "map":  {
-                                 "title":  "Mapeo de Áreas",
-                                 "description":  "Identificamos y catalogamos las zonas de alto valor ecológico para su protección prioritaria.",
-                                 "link":  "Ver mapa"
-                             },
-                     "volunteer":  {
-                                       "title":  "Voluntariado",
-                                       "description":  "Únete a nuestras jornadas de limpieza y reforestación. Tu ayuda es fundamental.",
-                                       "link":  "Ver eventos"
-                                   },
-                     "education":  {
-                                       "title":  "Educación Ambiental",
-                                       "description":  "Talleres y charlas para concientizar sobre la importancia de nuestra flora y fauna nativa.",
-                                       "link":  "Leer noticias"
-                                   }
-                 },
-    "sections":  {
-                     "projects":  {
-                                      "title":  "Proyectos Destacados",
-                                      "subtitle":  "Conoce nuestras iniciativas activas",
-                                      "view_all":  "Ver todos",
-                                      "empty_title":  "No hay proyectos destacados",
-                                      "empty_desc":  "Pronto publicaremos nuevas iniciativas. ¡Mantente atento!",
-                                      "empty_btn":  "Ver todos los proyectos",
-                                      "stats_title":  "Proyectos por Mes",
-                                      "filter_label":  "Filtrar por:",
-                                      "no_filter_results":  "No hay proyectos con este filtro."
-                                  },
-                     "events":  {
-                                    "title":  "Próximos Eventos",
-                                    "subtitle":  "Únete a nuestras actividades",
-                                    "view_all":  "Ver todos",
-                                    "empty_title":  "No hay eventos próximos",
-                                    "empty_desc":  "Estamos planificando nuevas actividades. Vuelve pronto para ver las próximas jornadas.",
-                                    "empty_btn":  "Ver eventos pasados",
-                                    "badge":  "Próximos Eventos",
-                                    "filter_label":  "Filtrar por:",
-                                    "no_filter_results":  "No hay eventos con este filtro."
-                                },
-                     "news":  {
-                                  "title":  "Últimas Noticias",
-                                  "subtitle":  "Mantente informado sobre nuestras actividades",
-                                  "view_all":  "Ver todas",
-                                  "empty_title":  "No hay noticias recientes",
-                                  "empty_desc":  "Estamos trabajando en nuevas actualizaciones. ¡Vuelve pronto!",
-                                  "empty_btn":  "Ver todas las noticias",
-                                  "badge":  "Últimas Noticias",
-                                  "filter_label":  "Filtrar por categoría:",
-                                  "no_filter_results":  "No hay noticias en esta categoría."
-                              }
-                 },
-    "footer":  {
-                   "tagline":  "Protegiendo nuestros cerros y áreas naturales para las futuras generaciones.",
-                   "quick_links":  "Enlaces Rápidos",
-                   "contact":  "Contacto",
-                   "stay_informed":  "Mantente Informado",
-                   "email_placeholder":  "Correo electrónico",
-                   "phone_placeholder":  "Teléfono (opcional)",
-                   "interests_label":  "Me interesa recibir:",
-                   "news_label":  "Noticias",
-                   "events_label":  "Eventos",
-                   "projects_label":  "Proyectos",
-                   "subscribe_btn":  "Suscribirse",
-                   "subscribing_btn":  "Suscribiendo...",
-                   "subscribe_success":  "¡Gracias por suscribirte!",
-                   "subscribe_error":  "Error al suscribirse. Intenta de nuevo.",
-                   "email_or_phone_required":  "Por favor ingresa un correo o teléfono",
-                   "all_rights_reserved":  "Todos los derechos reservados."
-               },
-    "volunteer":  {
-                      "title":  "Voluntariado",
-                      "intro":  "Únete a nuestra comunidad de voluntarios y ayúdanos a preservar los cerros de nuestra ciudad. Tu participación es fundamental para lograr un impacto positivo en nuestro entorno.",
-                      "why_title":  "¿Por qué ser voluntario?",
-                      "reason_1":  "Contribuye a la conservación del medio ambiente.",
-                      "reason_2":  "Aprende sobre la flora y fauna local.",
-                      "reason_3":  "Conoce personas con tus mismos intereses.",
-                      "reason_4":  "Participa en eventos exclusivos para voluntarios.",
-                      "form_title":  "Únete como Voluntario",
-                      "form_subtitle":  "Ayúdanos a proteger nuestros cerros.",
-                      "name_label":  "Nombre Completo",
-                      "name_placeholder":  "Tu nombre",
-                      "email_label":  "Email",
-                      "email_placeholder":  "tu@email.com",
-                      "phone_label":  "Teléfono",
-                      "phone_placeholder":  "+57 300 123 4567",
-                      "interests_label":  "Intereses",
-                      "interests_placeholder":  "Ej: Reforestación, educación ambiental, limpieza...",
-                      "availability_label":  "Disponibilidad",
-                      "availability_placeholder":  "Ej: Fines de semana, mañanas...",
-                      "submit_btn":  "Enviar Registro",
-                      "submitting_btn":  "Enviando...",
-                      "required_field":  "Este campo es requerido",
-                      "invalid_email":  "Email inválido",
-                      "interests_required":  "Cuéntanos qué te interesa",
-                      "availability_required":  "Indica tu disponibilidad",
-                      "success_message":  "¡Gracias por registrarte como voluntario!",
-                      "error_message":  "Error al enviar el formulario. Por favor intenta nuevamente."
-                  },
-    "faq":  {
-                "title":  "Preguntas Frecuentes",
-                "subtitle":  "Encuentra respuestas a las dudas más comunes sobre nuestra organización y cómo puedes ayudar.",
-                "loading":  "Cargando preguntas...",
-                "empty":  "No hay preguntas frecuentes disponibles por el momento."
-            },
-    "cerros":  {
-                   "title":  "Nuestros Cerros",
-                   "subtitle":  "Conoce los guardianes naturales de nuestra ciudad. Cada cerro es un ecosistema único que debemos proteger.",
-                   "error":  "Error al cargar cerros.",
-                   "not_found":  "Cerro no encontrado",
-                   "back_to_list":  "Volver a Cerros"
-               },
-    "cerro_detail":  {
-                         "ecological_value":  "Valor Ecológico",
-                         "flora":  "Flora",
-                         "fauna":  "Fauna",
-                         "history_geology":  "Historia y Geología",
-                         "cultural_value":  "Valor Cultural",
-                         "geology":  "Geología",
-                         "rock_type":  "Tipo de Roca",
-                         "geological_age":  "Era Geológica",
-                         "notes":  "Notas",
-                         "legal_status":  "Estatus Legal",
-                         "proposed_protection":  "Protección Propuesta",
-                         "current_status":  "Estado Actual",
-                         "threats":  "Amenazas",
-                         "mineral_resources":  "Recursos Minerales",
-                         "main_flora":  "Flora Principal",
-                         "view_details":  "Ver detalles"
-                     },
-    "contributions":  {
-                          "title":  "Contribuciones",
-                          "subtitle":  "Descubre las diferentes formas en las que puedes apoyar nuestra causa y ayudar a preservar los cerros.",
-                          "loading":  "Cargando contribuciones...",
-                          "empty":  "No hay opciones de contribución disponibles por el momento.",
-                          "more_info":  "Más información"
-                      },
-    "filters":  {
-                    "all":  "Todos",
-                    "active":  "Activos",
-                    "completed":  "Completados",
-                    "planned":  "Planificados",
-                    "upcoming":  "Próximos",
-                    "past":  "Pasados"
-                },
-    "categories":  {
-                       "conservation":  "Conservación",
-                       "events":  "Eventos",
-                       "education":  "Educación"
-                   },
-    "common":  {
-                   "loading":  "Cargando...",
-                   "error":  "Error",
-                   "retry":  "Reintentar",
-                   "read_more":  "Leer más",
-                   "view_all":  "Ver todos",
-                   "no_results":  "No hay resultados",
-                   "geology_label":  "Geología:"
-               },
-    "news_card":  {
-                      "featured":  "Destacado",
-                      "read_more":  "Leer más",
-                      "categories":  {
-                                         "conservation":  "Conservación",
-                                         "events":  "Eventos",
-                                         "education":  "Educación"
-                                     }
-                  },
-    "project_card":  {
-                         "status":  {
-                                        "active":  "Activo",
-                                        "completed":  "Completado",
-                                        "planned":  "Planificado"
-                                    },
-                         "completed_label":  "% completado",
-                         "view_details":  "Ver detalles",
-                         "map":  "Mapa"
-                     },
-    "event_card":  {
-                       "types":  {
-                                     "cleanup":  "Limpieza",
-                                     "reforestation":  "Reforestación",
-                                     "workshop":  "Taller",
-                                     "other":  "Otro"
-                                 },
-                       "status":  {
-                                      "past":  "Pasado",
-                                      "full":  "Lleno",
-                                      "event_full":  "Evento lleno",
-                                      "register":  "Registrarse",
-                                      "finished":  "Evento finalizado"
-                                  },
-                       "map_title":  "Ver en mapa",
-                       "map_label":  "Mapa",
-                       "participants":  "participantes"
-                   },
-    "noticias_page":  {
-                          "title":  "Noticias",
-                          "filter_label":  "Filtrar por categoría:",
-                          "no_news":  "No hay noticias en esta categoría.",
-                          "read_more":  "Leer más"
-                      },
-    "nosotros_page":  {
-                          "title":  "Sobre Nosotros",
-                          "subtitle":  "Conoce al equipo detrás de la conservación de nuestros cerros",
-                          "mission_title":  "Nuestra Misión",
-                          "mission_text":  "Proteger y restaurar los ecosistemas naturales de nuestra región, promoviendo la educación ambiental y la participación comunitaria.",
-                          "vision_title":  "Nuestra Visión",
-                          "vision_text":  "Un futuro donde la naturaleza y la comunidad coexistan en armonía, con espacios verdes prósperos para las generaciones venideras.",
-                          "impact_title":  "Nuestro Impacto",
-                          "team_title":  "Nuestro Equipo",
-                          "team_subtitle":  "Conoce a las personas dedicadas que hacen posible nuestra misión de conservación."
-                      },
-    "galeria_page":  {
-                         "title":  "Galería",
-                         "subtitle":  "Explora nuestros momentos capturados en la naturaleza",
-                         "filter_label":  "Filtrar por:",
-                         "filters":  {
-                                         "projects":  "Proyectos",
-                                         "events":  "Eventos",
-                                         "nature":  "Naturaleza",
-                                         "team":  "Equipo"
-                                     },
-                         "no_images":  "No hay imágenes con este filtro."
-                     },
-    "eventos_page":  {
-                         "title":  "Eventos",
-                         "subtitle":  "Únete a nuestras actividades y forma parte del cambio",
-                         "badge":  "Próximos Eventos",
-                         "filter_label":  "Filtrar por:",
-                         "no_events":  "No hay eventos con este filtro."
-                     },
-    "proyectos_page":  {
-                           "title":  "Nuestros Proyectos",
-                           "subtitle":  "Iniciativas activas para la conservación y restauración de nuestros espacios naturales"
-                       },
-    "team_member":  {
-                        "website":  "Sitio Web",
-                        "contact":  "Contacto",
-                        "contributions":  "Contribuciones",
-                        "specialties":  "Especialidades",
-                        "joined":  "Se unió",
-                        "bio":  "Biografía",
-                        "social_media":  "Redes Sociales"
-                    }
+    "app_title": "Naturaleza Viva",
+    "footer_text": "Todos los derechos reservados.",
+    "nav": {
+        "home": "Inicio",
+        "projects": "Proyectos",
+        "about": "Nosotros",
+        "events": "Eventos",
+        "news": "Noticias",
+        "gallery": "Galería",
+        "map": "Mapa",
+        "hills": "Cerros",
+        "faq": "Preguntas Frecuentes",
+        "contributions": "Contribuciones",
+        "volunteer": "Voluntariado"
+    },
+    "hero": {
+        "badge": "Iniciativa Comunitaria",
+        "title": "Salvemos los Cerros de Chihuahua",
+        "subtitle": "Una asociación de activismo social para la protección de áreas naturales en Chihuahua como cerros, ríos, lagos, lagunas, presas, montañas, cañones, de la flora y la fauna que habitan en ellos.",
+        "description": "Actualmente estamos solo en Chihuahua capital pero buscamos ir a todo el estado en un futuro. Somos apolíticos, realizamos manifestaciones y cambios que buscan inspirar y realizar cambios para la sostenibilidad común de los habitantes, haciendo conciencia sobre los peligros de la gentrificación y permitiendo también concientizar sobre el uso adecuado de los recursos naturales y cómo aprovecharlos mejor.",
+        "cta_primary": "Conócenos",
+        "cta_secondary": "Nuestros Proyectos"
+    },
+    "features": {
+        "map": {
+            "title": "Mapeo de Áreas",
+            "description": "Identificamos y catalogamos las zonas de alto valor ecológico para su protección prioritaria.",
+            "link": "Ver mapa"
+        },
+        "volunteer": {
+            "title": "Voluntariado",
+            "description": "Únete a nuestras jornadas de limpieza y reforestación. Tu ayuda es fundamental.",
+            "link": "Ver eventos"
+        },
+        "education": {
+            "title": "Educación Ambiental",
+            "description": "Talleres y charlas para concientizar sobre la importancia de nuestra flora y fauna nativa.",
+            "link": "Leer noticias"
+        }
+    },
+    "sections": {
+        "projects": {
+            "title": "Proyectos Destacados",
+            "subtitle": "Conoce nuestras iniciativas activas",
+            "view_all": "Ver todos",
+            "empty_title": "No hay proyectos destacados",
+            "empty_desc": "Pronto publicaremos nuevas iniciativas. ¡Mantente atento!",
+            "empty_btn": "Ver todos los proyectos",
+            "stats_title": "Proyectos por Mes",
+            "filter_label": "Filtrar por:",
+            "no_filter_results": "No hay proyectos con este filtro."
+        },
+        "events": {
+            "title": "Próximos Eventos",
+            "subtitle": "Únete a nuestras actividades",
+            "view_all": "Ver todos",
+            "empty_title": "No hay eventos próximos",
+            "empty_desc": "Estamos planificando nuevas actividades. Vuelve pronto para ver las próximas jornadas.",
+            "empty_btn": "Ver eventos pasados",
+            "badge": "Próximos Eventos",
+            "filter_label": "Filtrar por:",
+            "no_filter_results": "No hay eventos con este filtro."
+        },
+        "news": {
+            "title": "Últimas Noticias",
+            "subtitle": "Mantente informado sobre nuestras actividades",
+            "view_all": "Ver todas",
+            "empty_title": "No hay noticias recientes",
+            "empty_desc": "Estamos trabajando en nuevas actualizaciones. ¡Vuelve pronto!",
+            "empty_btn": "Ver todas las noticias",
+            "badge": "Últimas Noticias",
+            "filter_label": "Filtrar por categoría:",
+            "no_filter_results": "No hay noticias en esta categoría."
+        }
+    },
+    "footer": {
+        "tagline": "Protegiendo nuestros cerros y áreas naturales para las futuras generaciones.",
+        "quick_links": "Enlaces Rápidos",
+        "contact": "Contacto",
+        "stay_informed": "Mantente Informado",
+        "email_placeholder": "Correo electrónico",
+        "phone_placeholder": "Teléfono (opcional)",
+        "interests_label": "Me interesa recibir:",
+        "news_label": "Noticias",
+        "events_label": "Eventos",
+        "projects_label": "Proyectos",
+        "subscribe_btn": "Suscribirse",
+        "subscribing_btn": "Suscribiendo...",
+        "subscribe_success": "¡Gracias por suscribirte!",
+        "subscribe_error": "Error al suscribirse. Intenta de nuevo.",
+        "email_or_phone_required": "Por favor ingresa un correo o teléfono",
+        "all_rights_reserved": "Todos los derechos reservados."
+    },
+    "volunteer": {
+        "title": "Voluntariado",
+        "intro": "Únete a nuestra comunidad de voluntarios y ayúdanos a preservar los cerros de nuestra ciudad. Tu participación es fundamental para lograr un impacto positivo en nuestro entorno.",
+        "why_title": "¿Por qué ser voluntario?",
+        "reason_1": "Contribuye a la conservación del medio ambiente.",
+        "reason_2": "Aprende sobre la flora y fauna local.",
+        "reason_3": "Conoce personas con tus mismos intereses.",
+        "reason_4": "Participa en eventos exclusivos para voluntarios.",
+        "form_title": "Únete como Voluntario",
+        "form_subtitle": "Ayúdanos a proteger nuestros cerros.",
+        "name_label": "Nombre Completo",
+        "name_placeholder": "Tu nombre",
+        "email_label": "Email",
+        "email_placeholder": "tu@email.com",
+        "phone_label": "Teléfono",
+        "phone_placeholder": "+57 300 123 4567",
+        "interests_label": "Intereses",
+        "interests_placeholder": "Ej: Reforestación, educación ambiental, limpieza...",
+        "availability_label": "Disponibilidad",
+        "availability_placeholder": "Ej: Fines de semana, mañanas...",
+        "submit_btn": "Enviar Registro",
+        "submitting_btn": "Enviando...",
+        "required_field": "Este campo es requerido",
+        "invalid_email": "Email inválido",
+        "interests_required": "Cuéntanos qué te interesa",
+        "availability_required": "Indica tu disponibilidad",
+        "success_message": "¡Gracias por registrarte como voluntario!",
+        "error_message": "Error al enviar el formulario. Por favor intenta nuevamente."
+    },
+    "faq": {
+        "title": "Preguntas Frecuentes",
+        "subtitle": "Encuentra respuestas a las dudas más comunes sobre nuestra organización y cómo puedes ayudar.",
+        "loading": "Cargando preguntas...",
+        "empty": "No hay preguntas frecuentes disponibles por el momento."
+    },
+    "cerros": {
+        "title": "Nuestros Cerros",
+        "subtitle": "Conoce los guardianes naturales de nuestra ciudad. Cada cerro es un ecosistema único que debemos proteger.",
+        "error": "Error al cargar cerros.",
+        "not_found": "Cerro no encontrado",
+        "back_to_list": "Volver a Cerros"
+    },
+    "cerro_detail": {
+        "ecological_value": "Valor Ecológico",
+        "flora": "Flora",
+        "fauna": "Fauna",
+        "history_geology": "Historia y Geología",
+        "cultural_value": "Valor Cultural",
+        "geology": "Geología",
+        "rock_type": "Tipo de Roca",
+        "geological_age": "Era Geológica",
+        "notes": "Notas",
+        "legal_status": "Estatus Legal",
+        "proposed_protection": "Protección Propuesta",
+        "current_status": "Estado Actual",
+        "threats": "Amenazas",
+        "mineral_resources": "Recursos Minerales",
+        "main_flora": "Flora Principal",
+        "view_details": "Ver detalles"
+    },
+    "contributions": {
+        "title": "Contribuciones",
+        "subtitle": "Descubre las diferentes formas en las que puedes apoyar nuestra causa y ayudar a preservar los cerros.",
+        "loading": "Cargando contribuciones...",
+        "empty": "No hay opciones de contribución disponibles por el momento.",
+        "more_info": "Más información"
+    },
+    "filters": {
+        "all": "Todos",
+        "active": "Activos",
+        "completed": "Completados",
+        "planned": "Planificados",
+        "upcoming": "Próximos",
+        "past": "Pasados"
+    },
+    "categories": {
+        "conservation": "Conservación",
+        "events": "Eventos",
+        "education": "Educación"
+    },
+    "common": {
+        "loading": "Cargando...",
+        "error": "Error",
+        "retry": "Reintentar",
+        "read_more": "Leer más",
+        "view_all": "Ver todos",
+        "no_results": "No hay resultados",
+        "geology_label": "Geología:"
+    },
+    "news_card": {
+        "featured": "Destacado",
+        "read_more": "Leer más",
+        "categories": {
+            "conservation": "Conservación",
+            "events": "Eventos",
+            "education": "Educación"
+        }
+    },
+    "project_card": {
+        "status": {
+            "active": "Activo",
+            "completed": "Completado",
+            "planned": "Planificado"
+        },
+        "completed_label": "% completado",
+        "view_details": "Ver detalles",
+        "map": "Mapa"
+    },
+    "event_card": {
+        "types": {
+            "cleanup": "Limpieza",
+            "reforestation": "Reforestación",
+            "workshop": "Taller",
+            "other": "Otro"
+        },
+        "status": {
+            "past": "Pasado",
+            "full": "Lleno",
+            "event_full": "Evento lleno",
+            "register": "Registrarse",
+            "finished": "Evento finalizado"
+        },
+        "map_title": "Ver en mapa",
+        "map_label": "Mapa",
+        "participants": "participantes"
+    },
+    "noticias_page": {
+        "title": "Noticias",
+        "filter_label": "Filtrar por categoría:",
+        "no_news": "No hay noticias en esta categoría.",
+        "read_more": "Leer más"
+    },
+    "nosotros_page": {
+        "title": "Sobre Nosotros",
+        "subtitle": "Conoce al equipo detrás de la conservación de nuestros cerros",
+        "mission_title": "Nuestra Misión",
+        "mission_text": "Proteger y restaurar los ecosistemas naturales de nuestra región, promoviendo la educación ambiental y la participación comunitaria.",
+        "vision_title": "Nuestra Visión",
+        "vision_text": "Un futuro donde la naturaleza y la comunidad coexistan en armonía, con espacios verdes prósperos para las generaciones venideras.",
+        "impact_title": "Nuestro Impacto",
+        "team_title": "Nuestro Equipo",
+        "team_subtitle": "Conoce a las personas dedicadas que hacen posible nuestra misión de conservación."
+    },
+    "galeria_page": {
+        "title": "Galería",
+        "subtitle": "Explora nuestros momentos capturados en la naturaleza",
+        "filter_label": "Filtrar por:",
+        "filters": {
+            "projects": "Proyectos",
+            "events": "Eventos",
+            "nature": "Naturaleza",
+            "team": "Equipo"
+        },
+        "no_images": "No hay imágenes con este filtro."
+    },
+    "eventos_page": {
+        "title": "Eventos",
+        "subtitle": "Únete a nuestras actividades y forma parte del cambio",
+        "badge": "Próximos Eventos",
+        "filter_label": "Filtrar por:",
+        "no_events": "No hay eventos con este filtro."
+    },
+    "proyectos_page": {
+        "title": "Nuestros Proyectos",
+        "subtitle": "Iniciativas activas para la conservación y restauración de nuestros espacios naturales"
+    },
+    "team_member": {
+        "website": "Sitio Web",
+        "contact": "Contacto",
+        "contributions": "Contribuciones",
+        "specialties": "Especialidades",
+        "joined": "Se unió",
+        "bio": "Biografía",
+        "social_media": "Redes Sociales"
+    },
+    "news_detail": {
+        "not_found": "Noticia no encontrada",
+        "back_to_news": "Volver a Noticias",
+        "published_on": "Publicado el",
+        "by": "Por"
+    },
+    "project_detail": {
+        "not_found": "Proyecto no encontrado",
+        "back_to_projects": "Volver a Proyectos",
+        "description": "Descripción",
+        "objectives": "Objetivos",
+        "achievements": "Logros",
+        "gallery": "Galería",
+        "progress": "Progreso",
+        "budget": "Presupuesto",
+        "partners": "Socios",
+        "team": "Equipo",
+        "location": "Ubicación",
+        "start_date": "Fecha de inicio",
+        "end_date": "Fecha de finalización",
+        "status": "Estado"
+    },
+    "event_detail": {
+        "not_found": "Evento no encontrado",
+        "back_to_events": "Volver a Eventos",
+        "description": "Descripción",
+        "requirements": "Requisitos",
+        "gallery": "Galería",
+        "location": "Ubicación",
+        "date": "Fecha",
+        "time": "Hora",
+        "attendees": "Asistentes",
+        "organizers": "Organizadores",
+        "contact": "Contacto",
+        "register": "Registrarse"
+    }
 }

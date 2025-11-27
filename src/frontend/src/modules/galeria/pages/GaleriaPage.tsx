@@ -7,12 +7,7 @@ import { Badge } from "@/components/ui/Badge";
 import { Lightbox } from "@/components/Lightbox";
 import { LoadingSpinner } from "@/components/ui/LoadingSpinner";
 import { useGallery } from "@/hooks/useData";
-import {
-  PAGE_VARIANTS,
-  FADE_UP_ITEM,
-  SCALE_IN,
-  HOVER_LIFT,
-} from "@/constants/animations";
+import { PAGE_VARIANTS, FADE_UP_ITEM, SCALE_IN } from "@/constants/animations";
 import { GalleryImage } from "@/types";
 
 export const GaleriaPage: React.FC = () => {
@@ -123,14 +118,13 @@ export const GaleriaPage: React.FC = () => {
                   initial="hidden"
                   animate="visible"
                   exit={{ opacity: 0, scale: 0.9 }}
-                  whileHover={HOVER_LIFT}
                   className="relative group cursor-pointer overflow-hidden rounded-2xl shadow-lg hover:shadow-2xl transition-all duration-500 break-inside-avoid mb-4 md:mb-6"
                   onClick={() => handleImageClick(image)}
                 >
                   <img
                     src={image.imageUrl}
                     alt={image.title}
-                    className="w-full h-auto object-cover transition-transform duration-700 group-hover:scale-110"
+                    className="w-full h-auto object-cover transition-transform duration-700"
                     loading="lazy"
                   />
 

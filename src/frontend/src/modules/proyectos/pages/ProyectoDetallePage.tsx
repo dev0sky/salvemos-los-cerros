@@ -32,7 +32,7 @@ export const ProyectoDetallePage: React.FC = () => {
   const { t } = useTranslation();
   const { data: projects = [], isLoading } = useProjects();
 
-  const project = projects.find((p) => p.id === id);
+  const project = projects.find((p) => String(p.id) === id);
 
   if (isLoading) {
     return (
@@ -233,7 +233,8 @@ export const ProyectoDetallePage: React.FC = () => {
                     <div className="flex items-center gap-2 text-sm text-text-muted">
                       <IconCalendar size={16} />
                       <span>
-                        {t("project_detail.end_date")}: {new Date(project.endDate).toLocaleDateString()}
+                        {t("project_detail.end_date")}:{" "}
+                        {new Date(project.endDate).toLocaleDateString()}
                       </span>
                     </div>
                   </div>
@@ -254,12 +255,20 @@ export const ProyectoDetallePage: React.FC = () => {
                 </div>
                 <div className="space-y-2">
                   <div className="flex justify-between text-sm">
-                    <span className="text-text-muted">{t("project_detail.requested")}</span>
-                    <span className="font-bold">${project.budgetRequested.toLocaleString()}</span>
+                    <span className="text-text-muted">
+                      {t("project_detail.requested")}
+                    </span>
+                    <span className="font-bold">
+                      ${project.budgetRequested.toLocaleString()}
+                    </span>
                   </div>
                   <div className="flex justify-between text-sm">
-                    <span className="text-text-muted">{t("project_detail.raised")}</span>
-                    <span className="font-bold text-primary">${(project.budgetRaised || 0).toLocaleString()}</span>
+                    <span className="text-text-muted">
+                      {t("project_detail.raised")}
+                    </span>
+                    <span className="font-bold text-primary">
+                      ${(project.budgetRaised || 0).toLocaleString()}
+                    </span>
                   </div>
                   {project.budgetProgress !== undefined && (
                     <div className="pt-2">
@@ -267,7 +276,9 @@ export const ProyectoDetallePage: React.FC = () => {
                         <motion.div
                           className="h-full bg-accent-green rounded-full"
                           initial={{ width: 0 }}
-                          animate={{ width: `${Math.min(project.budgetProgress, 100)}%` }}
+                          animate={{
+                            width: `${Math.min(project.budgetProgress, 100)}%`,
+                          }}
                           transition={{ duration: 1, delay: 0.2 }}
                         />
                       </div>

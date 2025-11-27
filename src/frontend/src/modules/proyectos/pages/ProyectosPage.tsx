@@ -7,12 +7,7 @@ import { Button } from "@/components/ui/Button";
 import { LoadingSpinner } from "@/components/ui/LoadingSpinner";
 import { useAppStore } from "@/stores/useAppStore";
 import { useProjects } from "@/hooks/useData";
-import {
-  PAGE_VARIANTS,
-  FADE_UP_ITEM,
-  SCALE_IN,
-  HOVER_LIFT,
-} from "@/constants/animations";
+import { PAGE_VARIANTS, FADE_UP_ITEM, SCALE_IN } from "@/constants/animations";
 import { ErrorState } from "@/components/ui/ErrorState";
 
 export const ProyectosPage: React.FC = () => {
@@ -97,7 +92,6 @@ export const ProyectosPage: React.FC = () => {
                   animate="visible"
                   exit={{ opacity: 0, scale: 0.9 }}
                   layout
-                  whileHover={HOVER_LIFT}
                 >
                   <ProjectCard project={project} />
                 </motion.div>

@@ -20,18 +20,31 @@ interface EventCardProps {
   event: Event;
 }
 
-const TYPE_VARIANTS = {
+const CATEGORY_VARIANTS = {
   cleanup: "success",
   reforestation: "primary",
   workshop: "warning",
+  conference: "secondary",
+  fundraising: "danger",
   other: "default",
 } as const;
 
 export const EventCard: React.FC<EventCardProps> = ({ event }) => {
   const { t } = useTranslation();
-  const isPast = new Date(event.date) < new Date();
+  const startDate = new Date(event.startDatetime);
+  const isPast = startDate < new Date();
   const isFull = event.maxAttendees && event.attendees >= event.maxAttendees;
   const [lightboxOpen, setLightboxOpen] = useState(false);
+
+  const dateStr = startDate.toLocaleDateString(undefined, {
+    year: "numeric",
+    month: "long",
+    day: "numeric",
+  });
+  const timeStr = startDate.toLocaleTimeString(undefined, {
+    hour: "2-digit",
+    minute: "2-digit",
+  });
 
   const galleryImage: GalleryImage = {
     id: event.id,
@@ -39,8 +52,8 @@ export const EventCard: React.FC<EventCardProps> = ({ event }) => {
     description: event.description,
     imageUrl: event.image || "",
     category: "event",
-    date: event.date,
-    tags: [event.type, event.location],
+    date: event.startDatetime,
+    tags: [event.category, event.location],
   };
 
   return (
@@ -49,10 +62,9 @@ export const EventCard: React.FC<EventCardProps> = ({ event }) => {
         initial={{ opacity: 0, y: 20 }}
         animate={{ opacity: 1, y: 0 }}
         transition={{ duration: 0.3 }}
-        whileHover={{ scale: 1.02 }}
         className="h-full"
       >
-        <Card className="overflow-hidden h-full flex flex-col">
+        <Card className="overflow-hidden h-full flex flex-col hover:shadow-2xl hover:border-primary/30 transition-all duration-300">
           {event.image && (
             <div
               className="w-full aspect-[4/3] bg-secondary/10 overflow-hidden cursor-pointer group/image"
@@ -62,7 +74,6 @@ export const EventCard: React.FC<EventCardProps> = ({ event }) => {
                 src={event.image}
                 alt={event.title}
                 className="w-full h-full object-cover"
-                whileHover={{ scale: 1.05 }}
                 transition={{ duration: 0.3 }}
               />
             </div>
@@ -70,15 +81,16 @@ export const EventCard: React.FC<EventCardProps> = ({ event }) => {
 
           <div className="p-6 flex flex-col flex-1">
             <div className="flex items-center justify-between mb-3 flex-wrap gap-2">
-              <Badge variant={TYPE_VARIANTS[event.type]}>
-                {t(`event_card.types.${event.type}`)}
+              <Badge variant={CATEGORY_VARIANTS[event.category]}>
+                {t(`event_card.types.${event.category}`)}
               </Badge>
-              {isPast && (
-                <Badge variant="default">{t("event_card.status.past")}</Badge>
-              )}
-              {isFull && !isPast && (
-                <Badge variant="danger">{t("event_card.status.full")}</Badge>
-              )}
+              <div className="flex items-center gap-1 text-xs text-text-muted">
+                <IconUsers size={14} />
+                <span>
+                  {event.attendees}
+                  {event.maxAttendees ? `/${event.maxAttendees}` : ""}
+                </span>
+              </div>
             </div>
 
             <h3 className="text-xl font-semibold text-text-main mb-2">
@@ -95,23 +107,15 @@ export const EventCard: React.FC<EventCardProps> = ({ event }) => {
                   size={16}
                   className="text-primary flex-shrink-0"
                 />
-                <span>{event.date}</span>
+                <span>{dateStr}</span>
               </div>
               <div className="flex items-center gap-2 text-sm text-text-muted">
                 <IconClock size={16} className="text-primary flex-shrink-0" />
-                <span>{event.time}</span>
+                <span>{timeStr}</span>
               </div>
               <div className="flex items-center gap-2 text-sm text-text-muted">
                 <IconMapPin size={16} className="text-primary flex-shrink-0" />
                 <span className="line-clamp-1">{event.location}</span>
-              </div>
-              <div className="flex items-center gap-2 text-sm text-text-muted">
-                <IconUsers size={16} className="text-primary flex-shrink-0" />
-                <span>
-                  {event.attendees}{" "}
-                  {event.maxAttendees ? `/ ${event.maxAttendees}` : ""}{" "}
-                  {t("event_card.participants")}
-                </span>
               </div>
             </div>
 
@@ -127,19 +131,20 @@ export const EventCard: React.FC<EventCardProps> = ({ event }) => {
                 </Link>
               </div>
               {!isPast ? (
-                <a
-                  href="#"
-                  className={`text-sm font-semibold flex items-center gap-1 hover:gap-2 transition-all whitespace-nowrap ${
-                    isFull
-                      ? "text-text-muted cursor-not-allowed"
-                      : "text-primary"
-                  }`}
-                >
-                  {isFull
-                    ? t("event_card.status.event_full")
-                    : t("event_card.status.register")}{" "}
-                  <IconArrowRight size={14} />
-                </a>
+                <Link href={`/eventos/${event.id}`}>
+                  <a
+                    className={`text-sm font-semibold flex items-center gap-1 hover:gap-2 transition-all whitespace-nowrap ${
+                      isFull
+                        ? "text-text-muted cursor-not-allowed"
+                        : "text-primary"
+                    }`}
+                  >
+                    {isFull
+                      ? t("event_card.status.full")
+                      : t("event_card.status.register")}{" "}
+                    {!isFull && <IconArrowRight size={14} />}
+                  </a>
+                </Link>
               ) : (
                 <span className="text-xs text-text-muted">
                   {t("event_card.status.finished")}

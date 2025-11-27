@@ -23,7 +23,6 @@ import {
   PAGE_VARIANTS,
   FADE_UP_ITEM,
   STAGGER_CONTAINER,
-  HOVER_SCALE,
   SCALE_IN,
 } from "@/constants/animations";
 
@@ -53,7 +52,7 @@ export const HomePage: React.FC = () => {
   // Get preview data (first 3 items from each)
   const featuredProjects = projects.slice(0, 3);
   const upcomingEvents = events
-    .filter((e) => new Date(e.date) >= new Date())
+    .filter((e) => new Date(e.startDatetime) >= new Date())
     .slice(0, 3);
   const latestNews = news.slice(0, 3);
 
@@ -136,12 +135,8 @@ export const HomePage: React.FC = () => {
           variants={STAGGER_CONTAINER}
         >
           <Link href={ROUTES.MAPA}>
-            <motion.div
-              variants={FADE_UP_ITEM}
-              whileHover={HOVER_SCALE}
-              className="h-full"
-            >
-              <Card className="h-full p-8 flex flex-col items-center text-center cursor-pointer hover:border-primary/50 transition-colors group">
+            <motion.div variants={FADE_UP_ITEM} className="h-full">
+              <Card className="h-full p-8 flex flex-col items-center text-center cursor-pointer hover:border-primary/50 transition-colors group hover:shadow-2xl duration-300">
                 <div className="w-16 h-16 rounded-2xl bg-primary/10 flex items-center justify-center mb-6 group-hover:bg-primary/20 transition-colors text-primary">
                   <IconMap size={32} />
                 </div>
@@ -159,12 +154,8 @@ export const HomePage: React.FC = () => {
           </Link>
 
           <Link href={ROUTES.EVENTOS}>
-            <motion.div
-              variants={FADE_UP_ITEM}
-              whileHover={HOVER_SCALE}
-              className="h-full"
-            >
-              <Card className="h-full p-8 flex flex-col items-center text-center cursor-pointer hover:border-primary/50 transition-colors group">
+            <motion.div variants={FADE_UP_ITEM} className="h-full">
+              <Card className="h-full p-8 flex flex-col items-center text-center cursor-pointer hover:border-primary/50 transition-colors group hover:shadow-2xl duration-300">
                 <div className="w-16 h-16 rounded-2xl bg-secondary/20 flex items-center justify-center mb-6 group-hover:bg-secondary/30 transition-colors text-text-main">
                   <IconUsers size={32} />
                 </div>
@@ -182,12 +173,8 @@ export const HomePage: React.FC = () => {
           </Link>
 
           <Link href={ROUTES.NOTICIAS}>
-            <motion.div
-              variants={FADE_UP_ITEM}
-              whileHover={HOVER_SCALE}
-              className="h-full"
-            >
-              <Card className="h-full p-8 flex flex-col items-center text-center cursor-pointer hover:border-primary/50 transition-colors group">
+            <motion.div variants={FADE_UP_ITEM} className="h-full">
+              <Card className="h-full p-8 flex flex-col items-center text-center cursor-pointer hover:border-primary/50 transition-colors group hover:shadow-2xl duration-300">
                 <div className="w-16 h-16 rounded-2xl bg-green-100 flex items-center justify-center mb-6 group-hover:bg-green-200 transition-colors text-green-700">
                   <IconLeaf size={32} />
                 </div>
@@ -244,7 +231,6 @@ export const HomePage: React.FC = () => {
               <motion.div
                 key={project.id}
                 variants={SCALE_IN}
-                whileHover={HOVER_SCALE}
                 className="h-full"
               >
                 <ProjectCard project={project} />
@@ -316,12 +302,7 @@ export const HomePage: React.FC = () => {
             variants={STAGGER_CONTAINER}
           >
             {upcomingEvents.map((event) => (
-              <motion.div
-                key={event.id}
-                variants={SCALE_IN}
-                whileHover={HOVER_SCALE}
-                className="h-full"
-              >
+              <motion.div key={event.id} variants={SCALE_IN} className="h-full">
                 <EventCard event={event} />
               </motion.div>
             ))}
@@ -394,7 +375,6 @@ export const HomePage: React.FC = () => {
               <motion.div
                 key={article.id}
                 variants={SCALE_IN}
-                whileHover={HOVER_SCALE}
                 className="h-full"
               >
                 <NewsCard article={article} />

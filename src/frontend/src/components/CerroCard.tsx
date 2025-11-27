@@ -19,9 +19,8 @@ export const CerroCard: React.FC<CerroCardProps> = ({ cerro }) => {
       initial={{ opacity: 0, y: 20 }}
       animate={{ opacity: 1, y: 0 }}
       transition={{ duration: 0.3 }}
-      whileHover={{ y: -4 }}
     >
-      <Card className="overflow-hidden h-full flex flex-col">
+      <Card className="overflow-hidden h-full flex flex-col hover:shadow-2xl hover:border-primary/30 transition-all duration-300">
         <div className="w-full aspect-[4/3] bg-secondary/10 overflow-hidden relative">
           <img
             src={cerro.image}

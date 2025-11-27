@@ -35,7 +35,7 @@ export const EventoDetallePage: React.FC = () => {
   const { t } = useTranslation();
   const { data: events = [], isLoading } = useEvents();
 
-  const event = events.find((e) => e.id === id);
+  const event = events.find((e) => String(e.id) === id);
 
   if (isLoading) {
     return (
@@ -111,13 +111,16 @@ export const EventoDetallePage: React.FC = () => {
             <div className="flex flex-wrap gap-4 text-white/90 text-sm">
               <div className="flex items-center gap-2">
                 <IconCalendar size={16} />
-                <span>{new Date(event.startDatetime).toLocaleDateString()}</span>
+                <span>
+                  {new Date(event.startDatetime).toLocaleDateString()}
+                </span>
               </div>
               <div className="flex items-center gap-2">
                 <IconClock size={16} />
                 <span>
                   {new Date(event.startDatetime).toLocaleTimeString()}
-                  {event.endDatetime && ` - ${new Date(event.endDatetime).toLocaleTimeString()}`}
+                  {event.endDatetime &&
+                    ` - ${new Date(event.endDatetime).toLocaleTimeString()}`}
                 </span>
               </div>
               <div className="flex items-center gap-2">
@@ -250,7 +253,9 @@ export const EventoDetallePage: React.FC = () => {
                         }`}
                         initial={{ width: 0 }}
                         animate={{
-                          width: `${(event.attendees / event.maxAttendees) * 100}%`,
+                          width: `${
+                            (event.attendees / event.maxAttendees) * 100
+                          }%`,
                         }}
                         transition={{ duration: 1, delay: 0.2 }}
                       />

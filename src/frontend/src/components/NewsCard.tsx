@@ -14,13 +14,16 @@ interface NewsCardProps {
   article: NewsArticle;
 }
 
-const CATEGORY_VARIANTS = {
+const CATEGORY_VARIANTS: Record<
+  string,
+  "default" | "primary" | "secondary" | "success" | "warning" | "danger"
+> = {
   conservation: "success",
-  events: "primary",
-  education: "warning",
-  community: "info",
-  achievements: "success",
-} as const;
+  events: "warning",
+  education: "primary",
+  community: "secondary",
+  achievements: "default",
+};
 
 export const NewsCard: React.FC<NewsCardProps> = ({ article }) => {
   const { t } = useTranslation();
@@ -58,11 +61,10 @@ export const NewsCard: React.FC<NewsCardProps> = ({ article }) => {
         initial={{ opacity: 0, y: 20 }}
         animate={{ opacity: 1, y: 0 }}
         transition={{ duration: 0.3 }}
-        whileHover={{ scale: 1.02 }}
         className="h-full"
       >
-        <Card 
-          className="overflow-hidden h-full flex flex-col cursor-pointer" 
+        <Card
+          className="overflow-hidden h-full flex flex-col cursor-pointer hover:shadow-2xl hover:border-primary/30 transition-all duration-300"
           onClick={handleCardClick}
         >
           {article.image && (
@@ -74,7 +76,6 @@ export const NewsCard: React.FC<NewsCardProps> = ({ article }) => {
                 src={article.image}
                 alt={article.title}
                 className="w-full h-full object-cover"
-                whileHover={{ scale: 1.05 }}
                 transition={{ duration: 0.3 }}
               />
             </div>

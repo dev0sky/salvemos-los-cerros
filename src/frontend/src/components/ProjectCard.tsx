@@ -8,11 +8,11 @@ import {
   IconArrowRight,
   IconMap,
 } from "@tabler/icons-react";
+import { Link } from "wouter";
 import { Card } from "./ui/Card";
 import { Badge } from "./ui/Badge";
 import { Lightbox } from "./Lightbox";
 import type { Project, GalleryImage } from "@/types";
-import { Link } from "wouter";
 
 interface ProjectCardProps {
   project: Project;
@@ -22,6 +22,7 @@ const STATUS_VARIANTS = {
   active: "primary",
   completed: "success",
   planned: "warning",
+  paused: "default",
 } as const;
 
 export const ProjectCard: React.FC<ProjectCardProps> = ({ project }) => {
@@ -44,10 +45,9 @@ export const ProjectCard: React.FC<ProjectCardProps> = ({ project }) => {
         initial={{ opacity: 0, y: 20 }}
         animate={{ opacity: 1, y: 0 }}
         transition={{ duration: 0.3 }}
-        whileHover={{ scale: 1.02 }}
         className="h-full"
       >
-        <Card className="overflow-hidden h-full flex flex-col">
+        <Card className="overflow-hidden h-full flex flex-col hover:shadow-2xl hover:border-primary/30 transition-all duration-300">
           {project.image && (
             <div
               className="w-full aspect-[4/3] bg-secondary/10 overflow-hidden cursor-pointer group/image"
@@ -57,7 +57,6 @@ export const ProjectCard: React.FC<ProjectCardProps> = ({ project }) => {
                 src={project.image}
                 alt={project.title}
                 className="w-full h-full object-cover"
-                whileHover={{ scale: 1.05 }}
                 transition={{ duration: 0.3 }}
               />
             </div>
@@ -119,12 +118,11 @@ export const ProjectCard: React.FC<ProjectCardProps> = ({ project }) => {
                   </a>
                 </Link>
               </div>
-              <a
-                href="#"
-                className="text-primary text-sm font-semibold flex items-center gap-1 hover:gap-2 transition-all whitespace-nowrap"
-              >
-                {t("project_card.view_details")} <IconArrowRight size={14} />
-              </a>
+              <Link href={`/proyectos/${project.id}`}>
+                <a className="text-primary text-sm font-semibold flex items-center gap-1 hover:gap-2 transition-all whitespace-nowrap">
+                  {t("project_card.view_details")} <IconArrowRight size={14} />
+                </a>
+              </Link>
             </div>
           </div>
         </Card>
