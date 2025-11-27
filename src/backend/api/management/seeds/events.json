@@ -1,0 +1,90 @@
+[
+    {
+        "title": "Manifestación por Protección de Cerros y Contra Incendios",
+        "description": "Manifestación pacífica frente al Palacio de Gobierno para exigir protección urgente de los cerros y acciones contra incendios forestales. Participación de activistas, familias y ciudadanos comprometidos con la defensa del medio ambiente.",
+        "date": "2025-12-15",
+        "time": "10:00:00",
+        "location": "Palacio de Gobierno, Chihuahua",
+        "type": "other",
+        "attendees": 0,
+        "max_attendees": 300,
+        "image_url": "https://picsum.photos/800/600?protest"
+    },
+    {
+        "title": "Jornada de Reforestación Cerro Coronel",
+        "description": "Reforestación comunitaria en el Cerro Coronel con plantas nativas de la región. Traeremos herramientas, plantas y conocimiento. Familias y senderistas son bienvenidos. Contribuye a la restauración del ecosistema local.",
+        "date": "2025-12-20",
+        "time": "08:00:00",
+        "location": "Cerro Coronel, Chihuahua",
+        "type": "reforestation",
+        "attendees": 0,
+        "max_attendees": 100,
+        "image_url": "https://picsum.photos/800/600?planting"
+    },
+    {
+        "title": "Taller de Educación Ambiental: Importancia de los Cerros",
+        "description": "Taller educativo sobre la importancia ecológica de los cerros como captadores de agua, reguladores de temperatura, barreras naturales contra desastres y hábitat de especies endémicas. Abierto a todas las edades.",
+        "date": "2026-01-10",
+        "time": "16:00:00",
+        "location": "Centro Comunitario, Chihuahua",
+        "type": "workshop",
+        "attendees": 0,
+        "max_attendees": 50,
+        "image_url": "https://picsum.photos/800/600?education"
+    },
+    {
+        "title": "Limpieza Comunitaria Cerro Grande",
+        "description": "Jornada de limpieza para retirar basura acumulada en el Cerro Grande. Contribuye a proteger el ecosistema y las cuevas con pinturas rupestres. Traeremos bolsas y guantes. ¡Tu participación hace la diferencia!",
+        "date": "2026-01-25",
+        "time": "09:00:00",
+        "location": "Cerro Grande (Arewákawi), Chihuahua",
+        "type": "cleanup",
+        "attendees": 0,
+        "max_attendees": 80,
+        "image_url": "https://picsum.photos/800/600?cleanup"
+    },
+    {
+        "title": "Audiencia Pública: Defensa del Cerro Mesa de los Caballos",
+        "description": "Audiencia pública para discutir la protección del Cerro Mesa de los Caballos frente a proyectos de urbanización. Participación ciudadana y diálogo con autoridades. Exigimos transparencia y respeto al medio ambiente.",
+        "date": "2026-02-05",
+        "time": "18:00:00",
+        "location": "Auditorio Municipal, Chihuahua",
+        "type": "other",
+        "attendees": 0,
+        "max_attendees": 200,
+        "image_url": "https://picsum.photos/800/600?meeting"
+    },
+    {
+        "title": "Caminata Ecológica: Conoce el Cerro Coronel",
+        "description": "Caminata guiada por el Cerro Coronel para conocer su flora, fauna y el huerto comunitario. Actividad familiar que busca crear conciencia sobre la importancia de proteger nuestros espacios naturales.",
+        "date": "2026-02-15",
+        "time": "07:00:00",
+        "location": "Cerro Coronel, Chihuahua",
+        "type": "other",
+        "attendees": 0,
+        "max_attendees": 60,
+        "image_url": "https://picsum.photos/800/600?hiking"
+    },
+    {
+        "title": "Taller de Transparencia y Participación Ciudadana",
+        "description": "Taller sobre herramientas de transparencia y participación ciudadana en temas ambientales. Aprende cómo ejercer tus derechos y defender el medio ambiente de manera efectiva y legal.",
+        "date": "2026-03-01",
+        "time": "17:00:00",
+        "location": "Centro Comunitario, Chihuahua",
+        "type": "workshop",
+        "attendees": 0,
+        "max_attendees": 40,
+        "image_url": "https://picsum.photos/800/600?workshop"
+    },
+    {
+        "title": "Reforestación Masiva: Picos de la Luna",
+        "description": "Gran jornada de reforestación en Picos de la Luna con especies endémicas. Objetivo: plantar 200 árboles nativos. Evento familiar con actividades educativas para niños. ¡Juntos restauramos nuestro ecosistema!",
+        "date": "2026-03-20",
+        "time": "08:00:00",
+        "location": "Picos de la Luna, Chihuahua",
+        "type": "reforestation",
+        "attendees": 0,
+        "max_attendees": 150,
+        "image_url": "https://picsum.photos/800/600?forest"
+    }
+]

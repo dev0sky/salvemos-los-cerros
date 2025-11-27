@@ -1,0 +1,232 @@
+[
+    {
+        "id": "cerro-grande",
+        "name": "Cerro Grande (Arewákawi)",
+        "altitude": 1900,
+        "municipality": "Chihuahua, Chihuahua",
+        "latitude": 28.595,
+        "longitude": -106.095,
+        "geology_info": {
+            "rock": "Toba ignimbrita (ígnea extrusiva)",
+            "age": "Oligoceno",
+            "notes": "También hay granodiorita intrusiva en la base. Formación volcánica característica de la región."
+        },
+        "ecological_info": {
+            "flora": [
+                "Encino chihuahuense (Quercus chihuahuensis)",
+                "Cactus diversos",
+                "Arbustos nativos",
+                "Matorral desértico",
+                "Especies endémicas de la región"
+            ],
+            "fauna": [
+                "Cánidos (coyotes)",
+                "Felinos silvestres",
+                "Aves rapaces",
+                "Reptiles del desierto",
+                "Mamíferos menores"
+            ],
+            "cultural": [
+                "Cuevas con pinturas rupestres protegidas por INAH",
+                "Ojo de agua como fuente vital para fauna",
+                "Cerro sagrado para el pueblo Rarámuri",
+                "Símbolo de identidad para Chihuahua capital",
+                "Zona de recarga hídrica importante"
+            ]
+        },
+        "materials_info": {
+            "minerals": "Inventario de recursos minerales documenta presencia de rocas ígneas, pómice y material volcánico útil para construcción."
+        },
+        "legal_status": {
+            "proposed_protection": "Área Natural Protegida / Zona de Restauración Ecológica",
+            "status": "Zona E en el Plan de Desarrollo Urbano de Chihuahua - Pendiente declaratoria oficial"
+        },
+        "threats": [
+            "Urbanización acelerada",
+            "Destrucción del paisaje y cuevas arqueológicas",
+            "Presión inmobiliaria",
+            "Proyectos de gasolineras en las faldas",
+            "Acumulación de basura",
+            "Incendios forestales"
+        ],
+        "image_url": "https://picsum.photos/1200/800?mountains"
+    },
+    {
+        "id": "cerro-coronel",
+        "name": "Cerro Coronel (Guaguachic)",
+        "altitude": 1655,
+        "municipality": "Chihuahua, Chihuahua",
+        "latitude": 28.625,
+        "longitude": -106.06,
+        "geology_info": {
+            "rock": "Ignimbrita riolítica (volcánica extinta)",
+            "age": "Oligoceno",
+            "notes": "Origen volcánico según inventario geológico. Laderas con fracturas naturales."
+        },
+        "ecological_info": {
+            "flora": [
+                "Vegetación desértica",
+                "Arbustos xerófilos",
+                "Plantas nativas reforestadas",
+                "Especies del huerto comunitario"
+            ],
+            "fauna": [
+                "Fauna desértica local",
+                "Aves migratorias",
+                "Reptiles adaptados al clima árido"
+            ],
+            "cultural": [
+                "Símbolo icónico de la ciudad",
+                "Mirador urbano natural",
+                "Zona de huerto comunitario (transformación 2025)",
+                "Espacio de convivencia familiar"
+            ]
+        },
+        "materials_info": {
+            "minerals": "Antiguamente fue mina de oro. Actualmente sin explotación activa."
+        },
+        "legal_status": {
+            "proposed_protection": "Área Natural Protegida - Zona E para preservación ecológica",
+            "status": "Protección municipal prevista en Plan de Desarrollo Urbano. Pendiente declaratoria."
+        },
+        "threats": [
+            "Deslizamientos por laderas fracturadas",
+            "Urbanización irregular",
+            "Presión para desarrollo inmobiliario",
+            "Estacionamientos ilegales (algunos ya recuperados)",
+            "Agresiones a activistas ambientales"
+        ],
+        "image_url": "https://picsum.photos/1200/800?desert"
+    },
+    {
+        "id": "cerro-mesa-caballos",
+        "name": "Cerro Mesa de los Caballos",
+        "altitude": 1750,
+        "municipality": "Chihuahua, Chihuahua",
+        "latitude": 28.61,
+        "longitude": -106.08,
+        "geology_info": {
+            "rock": "Formación volcánica",
+            "age": "Terciario",
+            "notes": "Zona de recarga hídrica fundamental para la región."
+        },
+        "ecological_info": {
+            "flora": [
+                "Bosque de encino",
+                "Vegetación riparia",
+                "Especies nativas del desierto chihuahuense"
+            ],
+            "fauna": [
+                "Fauna silvestre diversa",
+                "Aves endémicas",
+                "Mamíferos del desierto"
+            ],
+            "cultural": [
+                "Zona de recarga hídrica vital",
+                "Importancia para el abastecimiento de agua",
+                "Área de alto valor ecológico"
+            ]
+        },
+        "materials_info": {
+            "minerals": "Sin explotación mineral documentada."
+        },
+        "legal_status": {
+            "proposed_protection": "Área Natural Protegida - En proceso legal",
+            "status": "Bajo amenaza de urbanización. Colectivo exige proceso legal transparente."
+        },
+        "threats": [
+            "Proyectos de urbanización",
+            "Fraccionamientos residenciales",
+            "Desmonte de vegetación",
+            "Invasión de suelo forestal",
+            "Crisis hídrica agravada por desarrollo urbano"
+        ],
+        "image_url": "https://picsum.photos/1200/800?landscape"
+    },
+    {
+        "id": "canon-del-marro",
+        "name": "Cañón del Marro",
+        "altitude": 1600,
+        "municipality": "Chihuahua, Chihuahua",
+        "latitude": 28.58,
+        "longitude": -106.12,
+        "geology_info": {
+            "rock": "Formación sedimentaria y volcánica",
+            "age": "Terciario",
+            "notes": "Cañón natural con formaciones rocosas características."
+        },
+        "ecological_info": {
+            "flora": [
+                "Vegetación de cañón",
+                "Especies riparias",
+                "Matorral desértico"
+            ],
+            "fauna": [
+                "Aves de cañón",
+                "Mamíferos menores",
+                "Reptiles"
+            ],
+            "cultural": [
+                "Formación geológica única",
+                "Valor paisajístico",
+                "Zona de recreación natural"
+            ]
+        },
+        "materials_info": {
+            "minerals": "Rocas sedimentarias y volcánicas sin explotación comercial."
+        },
+        "legal_status": {
+            "proposed_protection": "Zona de Restauración Ecológica - Propuesta 2023",
+            "status": "Pendiente declaratoria municipal antes de 2028."
+        },
+        "threats": [
+            "Expansión urbana",
+            "Contaminación",
+            "Acumulación de residuos"
+        ],
+        "image_url": "https://picsum.photos/1200/800?canyon"
+    },
+    {
+        "id": "picos-de-la-luna",
+        "name": "Picos de la Luna",
+        "altitude": 1800,
+        "municipality": "Chihuahua, Chihuahua",
+        "latitude": 28.64,
+        "longitude": -106.05,
+        "geology_info": {
+            "rock": "Formación volcánica",
+            "age": "Terciario",
+            "notes": "Picos característicos visibles desde la ciudad."
+        },
+        "ecological_info": {
+            "flora": [
+                "Vegetación desértica",
+                "Arbustos nativos",
+                "Especies xerófilas"
+            ],
+            "fauna": [
+                "Fauna del desierto chihuahuense",
+                "Aves rapaces",
+                "Mamíferos adaptados"
+            ],
+            "cultural": [
+                "Referencia visual icónica de Chihuahua",
+                "Valor paisajístico",
+                "Símbolo natural de la ciudad"
+            ]
+        },
+        "materials_info": {
+            "minerals": "Sin explotación mineral activa."
+        },
+        "legal_status": {
+            "proposed_protection": "Zona de Restauración Ecológica - Propuesta 2023",
+            "status": "Pendiente declaratoria municipal antes de 2028."
+        },
+        "threats": [
+            "Desarrollo inmobiliario",
+            "Urbanización",
+            "Contaminación visual"
+        ],
+        "image_url": "https://picsum.photos/1200/800?peaks"
+    }
+]

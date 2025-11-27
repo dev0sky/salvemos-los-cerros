@@ -1,0 +1,212 @@
+[
+    {
+        "title": "Huerto Comunitario Cerro Coronel - Vista Panorámica",
+        "description": "Transformación exitosa de estacionamiento ilegal en huerto comunitario con más de 500 plantas nativas del desierto chihuahuense.",
+        "category": "project",
+        "photographer": "Salvemos los Cerros",
+        "tags": [
+            "reforestación",
+            "cerro coronel",
+            "huerto comunitario",
+            "plantas nativas"
+        ],
+        "date": "2025-06-26",
+        "image_url": "https://picsum.photos/1200/800?garden"
+    },
+    {
+        "title": "Manifestación Palacio de Gobierno",
+        "description": "Activistas exigen protección de cerros y acciones contra incendios forestales frente al Palacio de Gobierno de Chihuahua.",
+        "category": "event",
+        "photographer": "Tiempo.com.mx",
+        "tags": [
+            "manifestación",
+            "protesta",
+            "palacio gobierno",
+            "activismo"
+        ],
+        "date": "2024-12-15",
+        "image_url": "https://picsum.photos/1200/800?protest"
+    },
+    {
+        "title": "Cerro Grande (Arewákawi) - Amanecer",
+        "description": "Vista panorámica del Cerro Grande al amanecer, mostrando su importancia como símbolo de Chihuahua y cerro sagrado Rarámuri.",
+        "category": "nature",
+        "photographer": "Roberto Márquez",
+        "tags": [
+            "cerro grande",
+            "arewákawi",
+            "paisaje",
+            "amanecer"
+        ],
+        "date": "2024-08-10",
+        "image_url": "https://picsum.photos/1200/800?mountains"
+    },
+    {
+        "title": "Jornada de Reforestación - Familias Plantando",
+        "description": "Familias y voluntarios plantando especies endémicas durante jornada de reforestación en el Cerro Coronel.",
+        "category": "event",
+        "photographer": "Ana Lucía Fernández",
+        "tags": [
+            "reforestación",
+            "voluntarios",
+            "familias",
+            "comunidad"
+        ],
+        "date": "2025-03-20",
+        "image_url": "https://picsum.photos/1200/800?planting"
+    },
+    {
+        "title": "Flora Endémica - Encino Chihuahuense",
+        "description": "Ejemplar de Encino chihuahuense (Quercus chihuahuensis), especie nativa de los cerros de Chihuahua.",
+        "category": "nature",
+        "photographer": "Roberto Márquez",
+        "tags": [
+            "flora",
+            "encino",
+            "especies nativas",
+            "biodiversidad"
+        ],
+        "date": "2024-09-05",
+        "image_url": "https://picsum.photos/1200/800?tree"
+    },
+    {
+        "title": "Equipo Salvemos los Cerros - Reunión de Planeación",
+        "description": "Miembros del equipo de Salvemos los Cerros durante reunión de planeación de estrategias de conservación.",
+        "category": "team",
+        "photographer": "María Elena Soto",
+        "tags": [
+            "equipo",
+            "planeación",
+            "estrategia",
+            "organización"
+        ],
+        "date": "2025-01-15",
+        "image_url": "https://picsum.photos/1200/800?meeting"
+    },
+    {
+        "title": "Cerro Coronel - Vista desde la Ciudad",
+        "description": "El Cerro Coronel visto desde la ciudad de Chihuahua, símbolo icónico y mirador natural urbano.",
+        "category": "nature",
+        "photographer": "Luis Andrés Rivera Levario",
+        "tags": [
+            "cerro coronel",
+            "paisaje urbano",
+            "símbolo",
+            "chihuahua"
+        ],
+        "date": "2024-11-20",
+        "image_url": "https://picsum.photos/1200/800?cityscape"
+    },
+    {
+        "title": "Taller de Educación Ambiental con Niños",
+        "description": "Niños participando en taller de educación ambiental sobre la importancia de proteger los cerros y la biodiversidad local.",
+        "category": "event",
+        "photographer": "María Elena Soto",
+        "tags": [
+            "educación",
+            "niños",
+            "taller",
+            "concientización"
+        ],
+        "date": "2025-02-10",
+        "image_url": "https://picsum.photos/1200/800?children"
+    },
+    {
+        "title": "Río Sacramento - Zona Ribereña Protegida",
+        "description": "Zona ribereña del Río Sacramento que fue salvada de la destrucción gracias a la intervención del colectivo.",
+        "category": "nature",
+        "photographer": "Santiago de la Peña Grajeda",
+        "tags": [
+            "río sacramento",
+            "ecosistema ribereño",
+            "conservación",
+            "agua"
+        ],
+        "date": "2024-08-15",
+        "image_url": "https://picsum.photos/1200/800?river"
+    },
+    {
+        "title": "Audiencia Pública - Defensa del Cerro Grande",
+        "description": "Primera audiencia pública en Chihuahua (2019) para la defensa del Cerro Grande, marcando precedente en participación ciudadana.",
+        "category": "event",
+        "photographer": "Difusión Norte",
+        "tags": [
+            "audiencia pública",
+            "participación ciudadana",
+            "cerro grande",
+            "histórico"
+        ],
+        "date": "2019-05-10",
+        "image_url": "https://picsum.photos/1200/800?audience"
+    },
+    {
+        "title": "Picos de la Luna - Atardecer",
+        "description": "Los Picos de la Luna al atardecer, referencia visual icónica de Chihuahua y zona propuesta para protección ecológica.",
+        "category": "nature",
+        "photographer": "Roberto Márquez",
+        "tags": [
+            "picos de la luna",
+            "atardecer",
+            "paisaje",
+            "chihuahua"
+        ],
+        "date": "2024-10-05",
+        "image_url": "https://picsum.photos/1200/800?sunset"
+    },
+    {
+        "title": "Voluntarios Limpiando el Cerro Grande",
+        "description": "Grupo de voluntarios durante jornada de limpieza en el Cerro Grande, retirando basura acumulada para proteger el ecosistema.",
+        "category": "event",
+        "photographer": "Ana Lucía Fernández",
+        "tags": [
+            "limpieza",
+            "voluntarios",
+            "cerro grande",
+            "comunidad"
+        ],
+        "date": "2025-04-15",
+        "image_url": "https://picsum.photos/1200/800?cleanup"
+    },
+    {
+        "title": "Cactus Endémico del Desierto Chihuahuense",
+        "description": "Especie de cactus endémico del desierto chihuahuense, parte de la biodiversidad que se busca proteger en los cerros.",
+        "category": "nature",
+        "photographer": "Roberto Márquez",
+        "tags": [
+            "cactus",
+            "flora",
+            "desierto",
+            "biodiversidad"
+        ],
+        "date": "2024-07-20",
+        "image_url": "https://picsum.photos/1200/800?cactus"
+    },
+    {
+        "title": "Caminata Ecológica Familiar - Cerro Coronel",
+        "description": "Familias participando en caminata ecológica guiada por el Cerro Coronel, aprendiendo sobre flora y fauna local.",
+        "category": "event",
+        "photographer": "María Elena Soto",
+        "tags": [
+            "caminata",
+            "familias",
+            "educación",
+            "cerro coronel"
+        ],
+        "date": "2025-05-10",
+        "image_url": "https://picsum.photos/1200/800?hiking"
+    },
+    {
+        "title": "Cerro Mesa de los Caballos - Zona de Recarga Hídrica",
+        "description": "Vista del Cerro Mesa de los Caballos, zona de recarga hídrica fundamental bajo amenaza de urbanización.",
+        "category": "nature",
+        "photographer": "Luis Andrés Rivera Levario",
+        "tags": [
+            "mesa de los caballos",
+            "recarga hídrica",
+            "conservación",
+            "agua"
+        ],
+        "date": "2024-11-25",
+        "image_url": "https://picsum.photos/1200/800?mesa"
+    }
+]
