@@ -21,6 +21,7 @@ import {
   RelatedItemsSlider,
   RelatedItem,
 } from "@/components/RelatedItemsSlider";
+import { CommentsSection } from "@/components/CommentsSection";
 import { PAGE_VARIANTS, FADE_UP_ITEM } from "@/constants/animations";
 
 const CATEGORY_VARIANTS = {
@@ -337,6 +338,8 @@ export const NoticiaDetallePage: React.FC = () => {
                 </ul>
               </Card>
             )}
+            {/* Comments Section */}
+            <CommentsSection type="news" id={id || ""} />
           </div>
 
           {/* Right Column - Sidebar */}

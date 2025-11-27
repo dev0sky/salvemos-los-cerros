@@ -1,5 +1,5 @@
 import api from './api';
-import type { Project, Event, NewsArticle, TeamMemberData, GalleryImage, Cerro, Statistics, FAQ, ContributionItem } from '@/types';
+import type { Project, Event, NewsArticle, TeamMemberData, GalleryImage, Cerro, Statistics, FAQ, ContributionItem, Comment } from '@/types';
 
 export const getProjects = async (): Promise<Project[]> => {
   const response = await api.get<Project[]>('/projects/');
@@ -48,5 +48,15 @@ export const getFAQs = async (): Promise<FAQ[]> => {
 
 export const getContributions = async (): Promise<ContributionItem[]> => {
   const response = await api.get<ContributionItem[]>('/contributions/');
+  return response.data;
+};
+
+export const getComments = async (params: { project?: string; event?: string; news?: string }): Promise<Comment[]> => {
+  const response = await api.get<Comment[]>('/comments/', { params });
+  return response.data;
+};
+
+export const createComment = async (data: Partial<Comment>): Promise<Comment> => {
+  const response = await api.post<Comment>('/comments/', data);
   return response.data;
 };

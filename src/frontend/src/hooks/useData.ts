@@ -1,5 +1,5 @@
-import { useQuery } from '@tanstack/react-query';
-import { getProjects, getEvents, getNews, getTeam, getGallery, getCerros, getCerroById, getStatistics, getFAQs, getContributions } from '@/services/data';
+import { useQuery, useMutation, useQueryClient } from '@tanstack/react-query';
+import { getProjects, getEvents, getNews, getTeam, getGallery, getCerros, getCerroById, getStatistics, getFAQs, getContributions, getComments, createComment } from '@/services/data';
 
 export const useProjects = () => {
   return useQuery({
@@ -69,5 +69,30 @@ export const useContributions = () => {
   return useQuery({
     queryKey: ['contributions'],
     queryFn: getContributions,
+  });
+};
+
+export const useComments = (params: { project?: string; event?: string; news?: string }) => {
+  return useQuery({
+    queryKey: ['comments', params],
+    queryFn: () => getComments(params),
+    enabled: !!(params.project || params.event || params.news),
+  });
+};
+
+export const useCreateComment = () => {
+  const queryClient = useQueryClient();
+  
+  return useMutation({
+    mutationFn: createComment,
+    onSuccess: (_, variables) => {
+      // Invalidate comments query to refetch
+      const params: { project?: string; event?: string; news?: string } = {};
+      if (variables.project) params.project = variables.project;
+      if (variables.event) params.event = variables.event;
+      if (variables.news_article) params.news = variables.news_article;
+      
+      queryClient.invalidateQueries({ queryKey: ['comments', params] });
+    },
   });
 };

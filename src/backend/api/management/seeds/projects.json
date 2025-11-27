@@ -6,7 +6,23 @@
         "status": "active",
         "progress": 75,
         "start_date": "2019-01-01T00:00:00-07:00",
-        "image_url": "https://picsum.photos/800/600?mountains"
+        "image_url": "https://picsum.photos/800/600?mountains",
+        "comments": [
+            {
+                "author_name": "Ana García",
+                "author_email": "ana@example.com",
+                "content": "¡Increíble iniciativa! El Cerro Grande es vital para nuestra ciudad.",
+                "approved": true,
+                "created_at": "2023-01-15T10:00:00-07:00"
+            },
+            {
+                "author_name": "Carlos López",
+                "author_email": "carlos@example.com",
+                "content": "¿Cómo puedo unirme a las actividades de protección?",
+                "approved": true,
+                "created_at": "2023-01-16T14:30:00-07:00"
+            }
+        ]
     },
     {
         "title": "Huerto Comunitario Cerro Coronel",

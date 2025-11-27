@@ -21,6 +21,7 @@ import {
   RelatedItemsSlider,
   RelatedItem,
 } from "@/components/RelatedItemsSlider";
+import { CommentsSection } from "@/components/CommentsSection";
 import { PAGE_VARIANTS, FADE_UP_ITEM } from "@/constants/animations";
 
 const STATUS_VARIANTS = {
@@ -251,6 +252,8 @@ export const ProyectoDetallePage: React.FC = () => {
                 </div>
               </Card>
             )}
+            {/* Comments Section */}
+            <CommentsSection type="project" id={id || ""} />
           </div>
 
           {/* Right Column - Sidebar */}

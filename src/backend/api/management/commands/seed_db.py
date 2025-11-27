@@ -7,8 +7,9 @@ from django.utils import timezone
 from datetime import timedelta
 from api.models import (
     Cerro, Project, Event, NewsArticle, TeamMember, GalleryImage,
-    FAQ, ContributionItem, Subscriber, Volunteer
+    FAQ, ContributionItem, Subscriber, Volunteer, Comment
 )
+
 
 
 class Command(BaseCommand):
@@ -27,6 +28,7 @@ class Command(BaseCommand):
         GalleryImage.objects.all().delete()
         FAQ.objects.all().delete()
         ContributionItem.objects.all().delete()
+        Comment.objects.all().delete()
 
         # Get the seeds directory path
         seeds_dir = os.path.join(os.path.dirname(__file__), '..', 'seeds')
@@ -106,6 +108,9 @@ class Command(BaseCommand):
             if 'budgetRaised' in data:
                 data['budget_raised'] = data.pop('budgetRaised')
             
+            # Pop comments before creating project
+            comments_data = data.pop('comments', [])
+
             project = Project(**data)
             
             if image_url:
@@ -121,6 +126,18 @@ class Command(BaseCommand):
                 team_members = TeamMember.objects.filter(id__in=team_member_ids)
                 project.team_members.set(team_members)
             
+            # Add comments
+            # Add comments
+            for comment_data in comments_data:
+                Comment.objects.create(
+                    project=project,
+                    author_name=comment_data.get('author_name'),
+                    author_email=comment_data.get('author_email'),
+                    content=comment_data.get('content'),
+                    approved=comment_data.get('approved', True),
+                    created_at=comment_data.get('created_at', timezone.now())
+                )
+
             self.stdout.write(f'  ✓ Created: {project.title}')
 
     def seed_events(self, seeds_dir):
@@ -156,6 +173,9 @@ class Command(BaseCommand):
                 except Project.DoesNotExist:
                     pass
             
+            # Pop comments before creating event
+            comments_data = data.pop('comments', [])
+
             event = Event(**data)
             
             if image_url:
@@ -171,6 +191,18 @@ class Command(BaseCommand):
                 organizers = TeamMember.objects.filter(id__in=organizer_ids)
                 event.organizers.set(organizers)
             
+            # Add comments
+            # Add comments
+            for comment_data in comments_data:
+                Comment.objects.create(
+                    event=event,
+                    author_name=comment_data.get('author_name'),
+                    author_email=comment_data.get('author_email'),
+                    content=comment_data.get('content'),
+                    approved=comment_data.get('approved', True),
+                    created_at=comment_data.get('created_at', timezone.now())
+                )
+
             self.stdout.write(f'  ✓ Created: {event.title}')
 
     def seed_news(self, seeds_dir):
@@ -213,6 +245,9 @@ class Command(BaseCommand):
                 except Event.DoesNotExist:
                     pass
             
+            # Pop comments before creating news
+            comments_data = data.pop('comments', [])
+
             news = NewsArticle(**data)
             
             if image_url:
@@ -222,6 +257,20 @@ class Command(BaseCommand):
                     news.image.save(f"{safe_title[:50]}.jpg", image_content, save=False)
             
             news.save()
+
+
+            # Add comments
+            # Add comments
+            for comment_data in comments_data:
+                Comment.objects.create(
+                    news_article=news,
+                    author_name=comment_data.get('author_name'),
+                    author_email=comment_data.get('author_email'),
+                    content=comment_data.get('content'),
+                    approved=comment_data.get('approved', True),
+                    created_at=comment_data.get('created_at', timezone.now())
+                )
+
             self.stdout.write(f'  ✓ Created: {news.title}')
 
     def seed_team(self, seeds_dir):

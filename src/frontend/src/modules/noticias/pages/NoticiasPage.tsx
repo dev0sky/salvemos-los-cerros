@@ -42,7 +42,7 @@ export const NoticiasPage: React.FC = () => {
       variants={PAGE_VARIANTS}
     >
       {/* Header con logo y filtros */}
-      <header className="bg-surface border-b border-border-soft py-4 md:py-6">
+      <header className="bg-surface border-b border-border-soft py-4 md:py-6 mb-0">
         <div className="container mx-auto flex flex-col md:flex-row items-center justify-between px-4">
           <div className="flex items-center gap-2">
             <IconNews size={24} className="text-primary" />
@@ -72,7 +72,7 @@ export const NoticiasPage: React.FC = () => {
 
       {/* Artículo destacado al estilo Google News */}
       {featuredArticle && newsCategory === "all" && !isLoading && !error && (
-        <section className="relative h-96 md:h-[30rem] overflow-hidden rounded-2xl shadow-lg">
+        <section className="relative h-96 md:h-[30rem] overflow-hidden shadow-lg">
           <img
             src={featuredArticle.image || "https://picsum.photos/1200/600"}
             alt={featuredArticle.title}
