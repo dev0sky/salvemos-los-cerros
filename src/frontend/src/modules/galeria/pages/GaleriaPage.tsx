@@ -1,12 +1,7 @@
 import React, { useState } from "react";
 import { useTranslation } from "react-i18next";
 import { motion, AnimatePresence } from "framer-motion";
-import {
-  IconFilter,
-  IconPhoto,
-  IconMapPin,
-  IconCalendar,
-} from "@tabler/icons-react";
+import { IconFilter, IconPhoto, IconCalendar } from "@tabler/icons-react";
 import { Button } from "@/components/ui/Button";
 import { Badge } from "@/components/ui/Badge";
 import { Lightbox } from "@/components/Lightbox";
@@ -73,7 +68,7 @@ export const GaleriaPage: React.FC = () => {
       animate="visible"
       variants={PAGE_VARIANTS}
     >
-      {/* Hero Section - Más compacto */}
+      {/* Hero Section */}
       <section className="relative bg-gradient-to-br from-primary/10 via-surface to-accent-green/5 border-b border-border-soft">
         <div className="container mx-auto px-4 py-12 md:py-16">
           <motion.div
@@ -90,7 +85,7 @@ export const GaleriaPage: React.FC = () => {
         </div>
       </section>
 
-      {/* Filter Section - Sticky */}
+      {/* Filter Section */}
       <section className="sticky top-0 z-30 bg-surface/95 backdrop-blur-md border-b border-border-soft shadow-sm">
         <div className="container mx-auto px-4 py-4">
           <motion.div
@@ -116,86 +111,62 @@ export const GaleriaPage: React.FC = () => {
         </div>
       </section>
 
-      {/* Gallery Grid - Masonry Layout Mejorado */}
+      {/* Gallery - Masonry Layout */}
       <section className="container mx-auto px-4 py-8 md:py-12">
         {filteredImages.length > 0 ? (
-          <motion.div
-            className="grid grid-cols-1 md:grid-cols-2 lg:grid-cols-3 gap-4 md:gap-6"
-            layout
-          >
+          <div className="columns-1 md:columns-2 lg:columns-3 gap-4 md:gap-6">
             <AnimatePresence mode="popLayout">
-              {filteredImages.map((image, idx) => (
+              {filteredImages.map((image) => (
                 <motion.div
                   key={image.id}
                   variants={SCALE_IN}
                   initial="hidden"
                   animate="visible"
                   exit={{ opacity: 0, scale: 0.9 }}
-                  layout
-                  className={`relative group cursor-pointer overflow-hidden rounded-2xl shadow-lg hover:shadow-2xl transition-all duration-500 ${
-                    idx % 5 === 0 ? "md:col-span-2 md:row-span-2" : ""
-                  }`}
-                  style={{
-                    aspectRatio:
-                      idx % 5 === 0 ? "16/9" : idx % 3 === 0 ? "4/5" : "1/1",
-                  }}
-                  onClick={() => handleImageClick(image)}
                   whileHover={HOVER_LIFT}
+                  className="relative group cursor-pointer overflow-hidden rounded-2xl shadow-lg hover:shadow-2xl transition-all duration-500 break-inside-avoid mb-4 md:mb-6"
+                  onClick={() => handleImageClick(image)}
                 >
-                  {/* Image */}
-                  <motion.img
+                  <img
                     src={image.imageUrl}
                     alt={image.title}
-                    className="absolute inset-0 w-full h-full object-cover transition-transform duration-700 group-hover:scale-110"
+                    className="w-full h-auto object-cover transition-transform duration-700 group-hover:scale-110"
                     loading="lazy"
                   />
 
-                  {/* Gradient Overlay */}
                   <div className="absolute inset-0 bg-gradient-to-t from-black/90 via-black/40 to-transparent opacity-60 group-hover:opacity-90 transition-opacity duration-500" />
 
-                  {/* Content */}
                   <div className="absolute inset-0 p-4 md:p-6 flex flex-col justify-end">
-                    {/* Category Badge */}
                     <Badge className="self-start mb-3 bg-primary/90 backdrop-blur-sm text-white border-none shadow-lg">
                       {filters.find((f) => f.value === image.category)?.label}
                     </Badge>
 
-                    {/* Title */}
-                    <h3 className="text-white font-bold text-lg md:text-2xl mb-2 line-clamp-2 transform translate-y-2 group-hover:translate-y-0 transition-transform duration-300">
+                    <h3 className="text-white font-bold text-base md:text-xl mb-2 line-clamp-2 transform translate-y-2 group-hover:translate-y-0 transition-transform duration-300">
                       {image.title}
                     </h3>
 
-                    {/* Description */}
-                    <p className="text-white/90 text-sm md:text-base mb-3 line-clamp-2 opacity-0 group-hover:opacity-100 transform translate-y-4 group-hover:translate-y-0 transition-all duration-300 delay-75">
+                    <p className="text-white/90 text-xs md:text-sm mb-3 line-clamp-2 opacity-0 group-hover:opacity-100 transform translate-y-4 group-hover:translate-y-0 transition-all duration-300 delay-75">
                       {image.description}
                     </p>
 
-                    {/* Meta Info */}
-                    <div className="flex items-center gap-3 text-white/80 text-xs md:text-sm opacity-0 group-hover:opacity-100 transform translate-y-4 group-hover:translate-y-0 transition-all duration-300 delay-100">
+                    <div className="flex items-center gap-2 md:gap-3 text-white/80 text-xs flex-wrap opacity-0 group-hover:opacity-100 transform translate-y-4 group-hover:translate-y-0 transition-all duration-300 delay-100">
                       <span className="flex items-center gap-1">
-                        <IconCalendar size={14} />
+                        <IconCalendar size={12} />
                         {image.date}
                       </span>
                       {image.photographer && (
                         <span className="flex items-center gap-1">
-                          <IconPhoto size={14} />
+                          <IconPhoto size={12} />
                           {image.photographer}
-                        </span>
-                      )}
-                      {image.location && (
-                        <span className="flex items-center gap-1">
-                          <IconMapPin size={14} />
-                          {image.location}
                         </span>
                       )}
                     </div>
 
-                    {/* Tags */}
                     {image.tags && image.tags.length > 0 && (
-                      <div className="flex items-center gap-2 mt-3 flex-wrap opacity-0 group-hover:opacity-100 transform translate-y-4 group-hover:translate-y-0 transition-all duration-300 delay-150">
-                        {image.tags.slice(0, 3).map((tag, tagIdx) => (
+                      <div className="flex items-center gap-2 mt-2 flex-wrap opacity-0 group-hover:opacity-100 transform translate-y-4 group-hover:translate-y-0 transition-all duration-300 delay-150">
+                        {image.tags.slice(0, 2).map((tag, idx) => (
                           <span
-                            key={tagIdx}
+                            key={idx}
                             className="px-2 py-1 rounded-full bg-white/20 backdrop-blur-sm text-white text-xs"
                           >
                             #{tag}
@@ -205,16 +176,15 @@ export const GaleriaPage: React.FC = () => {
                     )}
                   </div>
 
-                  {/* Hover Indicator */}
                   <div className="absolute top-4 right-4 opacity-0 group-hover:opacity-100 transition-opacity duration-300">
-                    <div className="w-10 h-10 rounded-full bg-white/20 backdrop-blur-md flex items-center justify-center">
-                      <IconPhoto size={20} className="text-white" />
+                    <div className="w-8 h-8 md:w-10 md:h-10 rounded-full bg-white/20 backdrop-blur-md flex items-center justify-center">
+                      <IconPhoto size={16} className="text-white" />
                     </div>
                   </div>
                 </motion.div>
               ))}
             </AnimatePresence>
-          </motion.div>
+          </div>
         ) : (
           <motion.div
             className="text-center py-20"
