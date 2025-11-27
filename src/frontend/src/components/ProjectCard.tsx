@@ -31,6 +31,7 @@ export const ProjectCard: React.FC<ProjectCardProps> = ({ project }) => {
       animate={{ opacity: 1, y: 0 }}
       transition={{ duration: 0.3 }}
       whileHover={{ y: -4 }}
+      className="h-full"
     >
       <Card className="overflow-hidden h-full flex flex-col">
         {project.image && (

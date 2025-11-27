@@ -245,6 +245,7 @@ export const HomePage: React.FC = () => {
                 key={project.id}
                 variants={SCALE_IN}
                 whileHover={HOVER_LIFT}
+                className="h-full"
               >
                 <ProjectCard project={project} />
               </motion.div>
@@ -319,6 +320,7 @@ export const HomePage: React.FC = () => {
                 key={event.id}
                 variants={SCALE_IN}
                 whileHover={HOVER_LIFT}
+                className="h-full"
               >
                 <EventCard event={event} />
               </motion.div>
@@ -393,6 +395,7 @@ export const HomePage: React.FC = () => {
                 key={article.id}
                 variants={SCALE_IN}
                 whileHover={HOVER_LIFT}
+                className="h-full"
               >
                 <NewsCard article={article} />
               </motion.div>

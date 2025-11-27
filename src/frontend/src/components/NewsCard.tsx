@@ -25,6 +25,7 @@ export const NewsCard: React.FC<NewsCardProps> = ({ article }) => {
       animate={{ opacity: 1, y: 0 }}
       transition={{ duration: 0.3 }}
       whileHover={{ y: -4 }}
+      className="h-full"
     >
       <Card className="overflow-hidden h-full flex flex-col">
         {article.image && (
