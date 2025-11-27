@@ -15,11 +15,15 @@ import {
   IconPhone,
   IconExternalLink,
 } from "@tabler/icons-react";
-import { useEvents } from "@/hooks/useData";
+import { useEvents, useNews, useProjects } from "@/hooks/useData";
 import { LoadingSpinner } from "@/components/ui/LoadingSpinner";
 import { Card } from "@/components/ui/Card";
 import { Badge } from "@/components/ui/Badge";
 import { Button } from "@/components/ui/Button";
+import {
+  RelatedItemsSlider,
+  RelatedItem,
+} from "@/components/RelatedItemsSlider";
 import { PAGE_VARIANTS, FADE_UP_ITEM } from "@/constants/animations";
 
 const TYPE_VARIANTS = {
@@ -35,7 +39,11 @@ export const EventoDetallePage: React.FC = () => {
   const { id } = useParams();
   const [, navigate] = useLocation();
   const { t } = useTranslation();
-  const { data: events = [], isLoading } = useEvents();
+  const { data: events = [], isLoading: isLoadingEvents } = useEvents();
+  const { data: news = [], isLoading: isLoadingNews } = useNews();
+  const { data: projects = [], isLoading: isLoadingProjects } = useProjects();
+
+  const isLoading = isLoadingEvents || isLoadingNews || isLoadingProjects;
 
   const event = events.find((e) => String(e.id) === id);
 
@@ -62,6 +70,39 @@ export const EventoDetallePage: React.FC = () => {
 
   const isPast = new Date(event.startDatetime) < new Date();
   const isFull = event.maxAttendees && event.attendees >= event.maxAttendees;
+
+  const relatedEvents: RelatedItem[] = events
+    .filter((e) => e.id !== event.id && e.category === event.category)
+    .slice(0, 5)
+    .map((e) => ({
+      id: e.id,
+      title: e.title,
+      description: e.description,
+      images: e.image ? [e.image, ...(e.gallery_images || [])] : [],
+      link: `/eventos/${e.id}`,
+      date: e.startDatetime,
+      category: e.category,
+    }));
+
+  const latestNews: RelatedItem[] = news.slice(0, 5).map((n) => ({
+    id: n.id,
+    title: n.title,
+    description: n.excerpt,
+    images: n.image ? [n.image, ...(n.galleryImages || [])] : [],
+    link: `/noticias/${n.id}`,
+    date: n.date,
+    category: n.category,
+  }));
+
+  const relatedProjects: RelatedItem[] = projects.slice(0, 5).map((p) => ({
+    id: p.id,
+    title: p.title,
+    description: p.description,
+    images: p.image ? [p.image, ...(p.gallery_images || [])] : [],
+    link: `/proyectos/${p.id}`,
+    date: p.startDate,
+    category: p.status,
+  }));
 
   return (
     <motion.div
@@ -425,6 +466,34 @@ export const EventoDetallePage: React.FC = () => {
                   ))}
                 </ul>
               </Card>
+            )}
+
+            {/* Related Events Slider */}
+            {relatedEvents.length > 0 && (
+              <RelatedItemsSlider
+                title={
+                  t("event_detail.related_events") || "Eventos Relacionados"
+                }
+                items={relatedEvents}
+              />
+            )}
+
+            {/* Latest News Slider */}
+            {latestNews.length > 0 && (
+              <RelatedItemsSlider
+                title={t("event_detail.latest_news") || "Últimas Noticias"}
+                items={latestNews}
+              />
+            )}
+
+            {/* Related Projects Slider */}
+            {relatedProjects.length > 0 && (
+              <RelatedItemsSlider
+                title={
+                  t("event_detail.related_projects") || "Proyectos de Interés"
+                }
+                items={relatedProjects}
+              />
             )}
           </div>
         </div>

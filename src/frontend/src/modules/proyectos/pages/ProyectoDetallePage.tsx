@@ -12,11 +12,15 @@ import {
   IconTrophy,
   IconCoin,
 } from "@tabler/icons-react";
-import { useProjects } from "@/hooks/useData";
+import { useProjects, useNews, useEvents } from "@/hooks/useData";
 import { LoadingSpinner } from "@/components/ui/LoadingSpinner";
 import { Card } from "@/components/ui/Card";
 import { Badge } from "@/components/ui/Badge";
 import { Button } from "@/components/ui/Button";
+import {
+  RelatedItemsSlider,
+  RelatedItem,
+} from "@/components/RelatedItemsSlider";
 import { PAGE_VARIANTS, FADE_UP_ITEM } from "@/constants/animations";
 
 const STATUS_VARIANTS = {
@@ -30,9 +34,46 @@ export const ProyectoDetallePage: React.FC = () => {
   const { id } = useParams();
   const [, navigate] = useLocation();
   const { t } = useTranslation();
-  const { data: projects = [], isLoading } = useProjects();
+  const { data: projects = [], isLoading: isLoadingProjects } = useProjects();
+  const { data: news = [], isLoading: isLoadingNews } = useNews();
+  const { data: events = [], isLoading: isLoadingEvents } = useEvents();
+
+  const isLoading = isLoadingProjects || isLoadingNews || isLoadingEvents;
 
   const project = projects.find((p) => String(p.id) === id);
+
+  const relatedProjects: RelatedItem[] = projects
+    .filter((p) => p.id !== project?.id && p.status === project?.status)
+    .slice(0, 5)
+    .map((p) => ({
+      id: p.id,
+      title: p.title,
+      description: p.description,
+      images: p.image ? [p.image, ...(p.gallery_images || [])] : [],
+      link: `/proyectos/${p.id}`,
+      date: p.startDate,
+      category: p.status,
+    }));
+
+  const latestNews: RelatedItem[] = news.slice(0, 5).map((n) => ({
+    id: n.id,
+    title: n.title,
+    description: n.excerpt,
+    images: n.image ? [n.image, ...(n.galleryImages || [])] : [],
+    link: `/noticias/${n.id}`,
+    date: n.date,
+    category: n.category,
+  }));
+
+  const relatedEvents: RelatedItem[] = events.slice(0, 5).map((e) => ({
+    id: e.id,
+    title: e.title,
+    description: e.description,
+    images: e.image ? [e.image, ...(e.gallery_images || [])] : [],
+    link: `/eventos/${e.id}`,
+    date: e.startDatetime,
+    category: e.category,
+  }));
 
   if (isLoading) {
     return (
@@ -347,6 +388,35 @@ export const ProyectoDetallePage: React.FC = () => {
                   {t("project_detail.team_members")}
                 </p>
               </Card>
+            )}
+
+            {/* Related Projects Slider */}
+            {relatedProjects.length > 0 && (
+              <RelatedItemsSlider
+                title={
+                  t("project_detail.related_projects") ||
+                  "Proyectos Relacionados"
+                }
+                items={relatedProjects}
+              />
+            )}
+
+            {/* Latest News Slider */}
+            {latestNews.length > 0 && (
+              <RelatedItemsSlider
+                title={t("project_detail.latest_news") || "Últimas Noticias"}
+                items={latestNews}
+              />
+            )}
+
+            {/* Related Events Slider */}
+            {relatedEvents.length > 0 && (
+              <RelatedItemsSlider
+                title={
+                  t("project_detail.related_events") || "Eventos de Interés"
+                }
+                items={relatedEvents}
+              />
             )}
           </div>
         </div>

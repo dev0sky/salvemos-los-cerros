@@ -77,6 +77,9 @@ importers:
       sonner:
         specifier: 2.0.7
         version: 2.0.7(react-dom@18.2.0(react@18.2.0))(react@18.2.0)
+      swiper:
+        specifier: ^12.0.3
+        version: 12.0.3
       tailwind-merge:
         specifier: 2.2.1
         version: 2.2.1
@@ -1849,6 +1852,10 @@ packages:
   supports-color@7.2.0:
     resolution: {integrity: sha512-qpCAvRl9stuOHveKsn7HncJRvv501qIacKzQlO/+Lwxc9+0q2wLyv4Dfvt80/DPn2pqOBsJdDiogXGR9+OvwRw==}
     engines: {node: '>=8'}
+
+  swiper@12.0.3:
+    resolution: {integrity: sha512-BHd6U1VPEIksrXlyXjMmRWO0onmdNPaTAFduzqR3pgjvi7KfmUCAm/0cj49u2D7B0zNjMw02TSeXfinC1hDCXg==}
+    engines: {node: '>= 4.7.0'}
 
   tailwind-merge@2.2.1:
     resolution: {integrity: sha512-o+2GTLkthfa5YUt4JxPfzMIpQzZ3adD1vLVkvKE1Twl9UAhGsEbIZhHHZVRttyW177S8PDJI3bTQNaebyofK3Q==}
@@ -3967,6 +3974,8 @@ snapshots:
   supports-color@7.2.0:
     dependencies:
       has-flag: 4.0.0
+
+  swiper@12.0.3: {}
 
   tailwind-merge@2.2.1:
     dependencies:
